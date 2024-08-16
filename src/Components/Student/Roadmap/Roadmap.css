@@ -1,0 +1,48 @@
+
+  
+  label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 150ms ease-in;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #F58612;
+    background: #fff;
+    padding: 0 0.5rem;
+  }
+  
+  .input-field {
+    position: relative;
+    
+  }
+  
+  .field {
+    outline: none;
+    width: 100%;
+    border: 2px solid #F58612;
+    padding: 16.5px 14px;
+    transition: 150ms;
+  }
+  
+  .field-focus {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: 3px;
+    width: 0;
+    transition: 150ms;
+  }
+  
+  .field:focus {
+    border: 2px solid #F58612;
+  }
+  
+  .field:focus ~ label {
+    transform: translateY(-39px);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #F58612;
+  }
+  

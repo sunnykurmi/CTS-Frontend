@@ -184,7 +184,6 @@ export default function Home() {
           <p>Host Paid Events</p>
           <p>Analytics</p>
         </div>
-
       </div>
       <div className="w-full h-32 bg-blue-300"></div>
     </div>
