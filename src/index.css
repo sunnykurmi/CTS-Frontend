@@ -6,3 +6,12 @@
 .upper{
     text-transform: uppercase;
 }
+.scroller::-webkit-scrollbar {
+
+    width: 4px;
+    background-color: #F58612;
+}
+.scroller::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 10px;
+}

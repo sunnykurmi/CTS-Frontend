@@ -7,8 +7,8 @@ export default function Roadmap() {
   return (
     <div>
         <div className="w-full flex gap-5 items-center justify-center flex-col h-[89vh] p-20 ">
-            <div className="w-[70%] h-[80vh] bg-blue-100 flex items-center justify-center">
-                    scroll Animation
+            <div className="w-[70%] h-[80vh]  flex items-center justify-center">
+                    <img className='w-[50%]' src="https://media0.giphy.com/media/ENbpTeFYVEoSSj4A55/200w.gif?cid=82a1493b4swh9qq5rselo8l5hrajpwhhhism1zldldy6tb2q&ep=v1_gifs_related&rid=200w.gif&ct=g" alt="" />
             </div>
             <div className="w-full flex items-center justify-center">
             <Link

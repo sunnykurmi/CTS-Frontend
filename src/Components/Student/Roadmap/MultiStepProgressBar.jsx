@@ -5,7 +5,7 @@ import { ProgressBar, Step } from "react-step-progress-bar";
 const MultiStepProgressBar = (props) => {
   return (
     <ProgressBar
-      percent={(props.step + 1) * 25}
+      percent={props.step}
       filledBackground="#F58612"
       height="2px"
       style={{ margin: "auto" }}
@@ -16,7 +16,7 @@ const MultiStepProgressBar = (props) => {
             style={{
               backgroundColor: `${accomplished ? "#F58612" : "white"}`
             }}
-            className={   `  h-6 w-6 rounded-full flex items-center justify-center font-semibold text-black     step ${accomplished ? "completed" : null}`}
+            className={`h-6 w-6 rounded-full flex items-center justify-center font-semibold text-black step ${accomplished ? "completed" : null}`}
           >
             1
           </div>
@@ -28,7 +28,7 @@ const MultiStepProgressBar = (props) => {
             style={{
               backgroundColor: `${accomplished ? "#F58612" : "white"}`
             }}
-            className={   `  h-6 w-6 rounded-full flex items-center justify-center font-semibold text-black     step ${accomplished ? "completed" : null}`}
+            className={`h-6 w-6 rounded-full flex items-center justify-center font-semibold text-black step ${accomplished ? "completed" : null}`}
           >
             2
           </div>
@@ -40,7 +40,7 @@ const MultiStepProgressBar = (props) => {
             style={{
               backgroundColor: `${accomplished ? "#F58612" : "white"}`
             }}
-            className={   `  h-6 w-6 rounded-full flex items-center justify-center font-semibold text-black     step ${accomplished ? "completed" : null}`}
+            className={`h-6 w-6 rounded-full flex items-center justify-center font-semibold text-black step ${accomplished ? "completed" : null}`}
           >
             3
           </div>
@@ -52,13 +52,12 @@ const MultiStepProgressBar = (props) => {
             style={{
               backgroundColor: `${accomplished ? "#F58612" : "white"}`
             }}
-            className={   `  h-6 w-6 rounded-full flex items-center justify-center font-semibold text-black     step ${accomplished ? "completed" : null}`}
+            className={`h-6 w-6 rounded-full flex items-center justify-center font-semibold text-black step ${accomplished ? "completed" : null}`}
           >
             4
           </div>
         )}
       </Step>
-      
     </ProgressBar>
   );
 };
