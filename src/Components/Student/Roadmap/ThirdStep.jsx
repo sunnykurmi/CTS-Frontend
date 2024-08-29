@@ -46,7 +46,6 @@ const ThirdStep = (props) => {
     setInputValue4(e.target.value);
   };
 
-
   const handleSubmit4 = () => {
     if (inputValue4.trim() !== "") {
       const newValues = [...submittedValues2, inputValue4];
@@ -89,14 +88,14 @@ const ThirdStep = (props) => {
   const activitiesarray = [
     "Acedmic",
     "Art",
-    "Carrier Oriented",
-    "Computer/Technology",
     "Cultural",
     "Dance",
+    "Music",
+    "Carrier Oriented",
+    "Computer/Technology",
     "Debate/Speech",
     "Environmental",
     "Internship",
-    "Music",
     "Research",
     "Robotics",
     "Social Justice",
@@ -121,9 +120,61 @@ const ThirdStep = (props) => {
     props.handleChange("activityType1")(e);
   };
 
+  const [dropdownOpenFuture, setDropdownOpenFuture] = useState(false);
+  const [inputValueFuture, setInputValueFuture] = useState(
+    props.userInput.BecomeInFuture
+  );
+  const Futurearray = [
+    "Software Engineer",
+    "Data Scientist",
+    "Doctor",
+    "Civil Engineer",
+    "Mechanical Engineer",
+    "Electrical Engineer",
+    "Nurse",
+    "Dentist",
+    "Pharmacist",
+    "Architect",
+    "Interior Designer",
+    "Fashion Designer",
+    "Graphic Designer",
+    "Designer",
+    "Teacher",
+    "Scientist",
+    "Entrepreneur",
+    "Artist",
+    "Journalist",
+    "Lawyer",
+    "Psychologist",
+    "Chef",
+    "Athlete",
+    "Musician",
+    "Actor",
+    "Politician",
+    "Police Officer",
+    "Firefighter",
+    "Military",
+    "Other",
+  ];
+  const toggleDropdownFuture = () => {
+    setDropdownOpenFuture(!dropdownOpenFuture);
+  };
+
+  const handleOptionClickFuture = (value) => {
+    setInputValueFuture(value);
+    setDropdownOpenFuture(false);
+    props.handleChange("BecomeInFuture")({ target: { value } });
+  };
+
+  const handleInputChangeFuture = (e) => {
+    setInputValueFuture(e.target.value);
+    setDropdownOpenFuture(true);
+    props.handleChange("BecomeInFuture")(e);
+  };
+
   const handleMouseLeave = () => {
     const timeoutId = setTimeout(() => {
-      setDropdownOpenActivity(false);
+      setDropdownOpenFuture(false);
     }, 1000);
     setHoverTimeout(timeoutId);
   };
@@ -134,13 +185,6 @@ const ThirdStep = (props) => {
       setHoverTimeout(null);
     }
   };
-
-  const filteredActivities = activitiesarray.filter(
-    (activity) =>
-      typeof activity === "string" &&
-      typeof inputValueActivity === "string" &&
-      activity.toLowerCase().includes(inputValueActivity.toLowerCase())
-  );
 
   const handleInterestClick = (interest) => {
     setSubmittedValues((prev) => {
@@ -167,26 +211,67 @@ const ThirdStep = (props) => {
         <div className="cursor-pointer relative w-96 h-12 border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
           <input
             type="text"
+            readOnly
             placeholder="e.g Software engineer, Data scientist, Doctor , etc."
             className="w-full h-full outline-none"
             name="BecomeInFuture"
-            value={props.userInput.BecomeInFuture}
-            onChange={props.handleChange("BecomeInFuture")}
+            onClick={toggleDropdownFuture}
+            value={inputValueFuture}
+            onChange={handleInputChangeFuture}
             id=""
           />
+          {dropdownOpenFuture && (
+            <div
+              className="absolute right-3 p-5 shadow-lg top-[103%] z-[9] w-[50vw] gap-2 flex flex-wrap bg-white  h-fit"
+              onMouseLeave={handleMouseLeave}
+              onMouseEnter={handleMouseEnter}
+            >
+              {Futurearray.map((Future) => (
+                <div
+                  key={Future}
+                  className="w-fit py-1 min-w-20 flex items-center justify-center font-semibold border-[#F58612] rounded-full px-2 border-2 hover:bg-[#F58612] hover:text-white cursor-pointer"
+                  onClick={() => handleOptionClickFuture(Future)}
+                >
+                  <p>{Future}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <div className="w-[80%] flex justify-between items-center ">
         <div className=" h-full w-fit  pt-3 ">
-          <p className="font-medium">Select Interest Field</p>
+          <p className="font-medium">Field Of Interest</p>
         </div>
-      
-        <div className="  w-fit grid  items-end  grid-cols-4 gap-2 ">
-          {["Architecture","Coding","Journalism","Data Analytics","Engineering","Computer Science","Entrepreneurship","Fashion design","Performing arts"].map((interest) => (
+
+        <div className="  w-[70%] flex flex-wrap justify-end gap-2 ">
+          {[
+           "Computer Science",
+           "Coding",
+            "Designing",
+            "Dancing",
+            "Music",
+            "Sports",
+            "Reading",
+            "Writing",
+            "Photography",
+            "Cooking",
+            "Travelling",
+            "Volunteering",
+            "Art",
+            "Craft",
+            "Fashion",
+            "Robotics",
+            "Travel",
+            "Adventure",
+            "Fitness",
+          ].map((interest) => (
             <div
               key={interest}
               className={` px-4 w-fit flex items-center justify-center h-fit py-1 border-2 border-[#F58612] rounded-full cursor-pointer ${
-                submittedValues.includes(interest) ? "bg-[#F58612] text-white" : ""
+                submittedValues.includes(interest)
+                  ? "bg-[#F58612] text-white"
+                  : ""
               }`}
               onClick={() => handleInterestClick(interest)}
             >
@@ -199,7 +284,7 @@ const ThirdStep = (props) => {
         <div className=" h-full w-fit  pt-3 ">
           <p className="font-medium">List All The Skills You Have</p>
         </div>
-        <div className="flex flex-col  ">
+        <div className="flex flex-col w-[80%]  justify-end items-end  ">
           <div className="cursor-pointer relative w-96 h-12 border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
             <input
               type="text"
@@ -217,11 +302,11 @@ const ThirdStep = (props) => {
               Submit
             </div>
           </div>
-          <div className="w-full mt-2 h-fit">
+          <div className="w-[80%] mt-2 h-fit  flex flex-wrap justify-end ">
             {submittedValues2.map((value, index) => (
               <div
                 key={index}
-                className="rounded-full w-fit pl-4 min-w-20 px-1 py-1 text-white bg-[#F58612] flex items-center justify-between gap-2 mt-4"
+                className="rounded-full scale-90 w-fit pl-4 min-w-20 px-1 py-1 text-white bg-[#F58612] flex items-center justify-between gap-2 mt-1"
               >
                 <p>{value}</p>
                 <div
@@ -243,7 +328,7 @@ const ThirdStep = (props) => {
           “Sharing Details Of Your Activities Enables Us To Better Grasp Your
           Life Experiences”
         </div>
-        <div
+        {/* <div
           onClick={handleAddActivity}
           className=" ml-7 pr-5 rounded-full w-fit  min-w-20 px-1 py-1 text-white bg-[#F58612] flex items-center justify-between gap-2 mt-4"
         >
@@ -251,18 +336,19 @@ const ThirdStep = (props) => {
             <RiAddLine />
           </div>
           <p className="cursor-pointer">Add Activity</p>
-        </div>
+        </div> */}
         <div className="w-full h-fit mt-5 flex flex-col items-center justify-center">
           <div className="w-[80%] h-fit p-6 bg-gray-100">
             <p className="text-xl font-semibold mb-5">Activity 1</p>
             <p className="font-medium">Type of Activity</p>
             <div className="relative w-[30vw] ">
               <input
-                onClick={toggleDropdownActivity}
                 placeholder="Work With NGO, Hackathon, Competition"
                 className="w-full h-10 rounded-lg outline-none px-5 border-2"
                 type="text"
+                readOnly
                 name="activityType1"
+                onClick={toggleDropdownActivity}
                 value={inputValueActivity}
                 onChange={handleInputChangeActivity}
                 id=""
@@ -270,14 +356,14 @@ const ThirdStep = (props) => {
 
               {dropdownOpenActivity && (
                 <div
-                  className="absolute top-[103%] z-[9] w-full bg-white scroller border-[#F58612] border-x-2 overflow-y-scroll h-fit max-h-48"
+                  className="absolute top-[103%] z-[9] w-[30vw] gap-2 flex flex-wrap bg-white  h-fit"
                   onMouseLeave={handleMouseLeave}
                   onMouseEnter={handleMouseEnter}
                 >
-                  {filteredActivities.map((activity) => (
+                  {activitiesarray.map((activity) => (
                     <div
                       key={activity}
-                      className="w-full h-12 flex items-center justify-center font-semibold border-[#F58612] border-b-2"
+                      className="w-fit py-1 min-w-20 flex items-center justify-center font-semibold border-[#F58612] rounded-full px-2 border-2 hover:bg-[#F58612] hover:text-white cursor-pointer"
                       onClick={() => handleOptionClickActivity(activity)}
                     >
                       <p>{activity}</p>
@@ -307,7 +393,8 @@ const ThirdStep = (props) => {
               id=""
             />
             <p className="font-medium mt-5">
-            Please describe this activity, including what you accomplished and any recognition you received, etc.
+              Please describe this activity, including what you accomplished and
+              any recognition you received, etc.
             </p>
             <input
               placeholder="Provide Foods To Needy People "

@@ -2,8 +2,10 @@ import axios from "axios";
 
 const instance = axios.create({
 
-  baseURL: "http://localhost:3030/api/v1",
-  // baseURL: "https://internshala-backend-twn2.onrender.com/",
+  // baseURL: "http://localhost:3030",
+  baseURL: "https://cts-roadmap-copy.onrender.com/",
+  // baseURL: "https://cts-roadmap.onrender.com",
+  
   withCredentials: true,
 });
 

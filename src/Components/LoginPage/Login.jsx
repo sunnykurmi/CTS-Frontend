@@ -1,12 +1,12 @@
 import { RiKeyLine, RiMailLine } from "@remixicon/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { asyncsignin } from '../../store/Actions/userActions';
+import { Link, useNavigate } from "react-router-dom";
+import { asyncsignin } from "../../store/Actions/userActions";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { isAuth, error } = useSelector((state) => state.user);
+  const { isAuth, error ,loading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const [studentFormData, setStudentFormData] = useState({
@@ -14,12 +14,10 @@ export default function Login() {
     password: "",
   });
 
-console.log(studentFormData);
   const handleStudentChange = (e) => {
     setStudentFormData({ ...studentFormData, [e.target.name]: e.target.value });
   };
 
-  //(studentFormData);
   const signinStudent = async (event) => {
     event.preventDefault();
     dispatch(asyncsignin(studentFormData));
@@ -27,7 +25,7 @@ console.log(studentFormData);
 
   useEffect(() => {
     if (isAuth) {
-      navigate("/studentname");
+      navigate("/home");
     }
   }, [isAuth, navigate]);
 
@@ -53,18 +51,27 @@ console.log(studentFormData);
             </h1>
           </div>
           <div className="w-full pt-20 flex flex-col gap-5 items-center justify-center ">
-            <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2 ">
-              <input
-               value={studentFormData.email}
-               onChange={handleStudentChange}
-                className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
-                type="text"
-                placeholder="Enter Email Address"
-                name="email"
-                id=""
-              />
-              <RiMailLine className="text-[#0000006f]" />
+            <div className="flex flex-col w-full items-center">
+              <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2 ">
+                <input
+                  value={studentFormData.email}
+                  onChange={handleStudentChange}
+                  className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
+                  type="text"
+                  placeholder="Enter Email Address"
+                  name="email"
+                  id=""
+                />
+                <RiMailLine className="text-[#0000006f]" />
+              </div>
+              <div className="w-[80%] ">
+                {
+                  error&&error==="User not found with this email address" ? <p className="text-red-600 text-sm">User not found with this email address</p> : null
+                }
+               
+              </div>
             </div>
+            <div className="flex flex-col w-full items-center">
             <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2 ">
               <input
                 className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
@@ -77,8 +84,25 @@ console.log(studentFormData);
               />
               <RiKeyLine className="text-[#0000006f]" />
             </div>
-            <div onClick={signinStudent}  className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[#ffae00]">
-              <p className="font-semibold text-lg">Login with Email</p>
+            <div className="w-[80%] ">
+
+            {
+                  error&&error==="Incorrect password" ? <p className="text-red-600 text-sm">Incorrect password</p> : null
+                }
+            </div>
+            </div>
+            <div
+              onClick={signinStudent}
+              className=" cursor-pointer w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[#ffae00]"
+            >
+              {loading ? (
+        <div className="flex items-center">
+          <div className="loader mr-2"></div>
+          <p className="font-semibold text-lg">Loading...</p>
+        </div>
+      ) : (
+        <p className="font-semibold text-lg">Login with Email</p>
+      )}
             </div>
             <div className="w-full flex items-center justify-center">
               <div className="w-[90%] flex items-center justify-between">
@@ -87,13 +111,15 @@ console.log(studentFormData);
                 <div className="w-[42%] h-[2px] bg-[#0000008b]"></div>
               </div>
             </div>
-            <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[white]">
-              <img
+            <div className=" cursor-pointer  w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[white]">
+              {/* <img
                 className="w-[12%]"
                 src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
                 alt=""
-              />
-              <p className="font-semibold text-lg">Continue with Gmail</p>
+              /> */}
+               <p className="font-semibold text-lg">
+    <Link to="/signup">Create new Account</Link>
+  </p>
             </div>
           </div>
         </div>

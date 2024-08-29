@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: null,
   isAuth: false,
-  error: null, // Include error state
+  error: null,
+  loading: false, // Add loading state
 };
 
 export const userSlice = createSlice({
@@ -13,27 +14,30 @@ export const userSlice = createSlice({
     saveUser: (state, action) => {
       state.user = action.payload;
       state.isAuth = true;
-      state.error = null; // Reset error when saving user
+      state.error = null;
+      state.loading = false; // Reset loading when saving user
     },
     removeUser: (state, action) => {
       state.user = null;
       state.isAuth = false;
-      state.error = null; // Reset error when removing user
-    },
-    sendmail: (state, action) => {
-      state.data = action.payload;
-      state.error = null; // Reset error when sending mail
+      state.error = null;
+      state.loading = false; // Reset loading when removing user
     },
     signuperror: (state, action) => {
-      state.error = action.payload; // Set error when signup fails
+      state.error = action.payload;
+      state.loading = false; // Reset loading on error
     },
     signinerror: (state, action) => {
-      state.error = action.payload; // Set error when signup fails
+      state.error = action.payload;
+      state.loading = false; // Reset loading on error
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload; // Set loading state
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { saveUser,signinerror, removeUser, sendmail, signuperror } = userSlice.actions;
+export const { saveUser, signinerror, removeUser, signuperror, setLoading } = userSlice.actions;
 
 export default userSlice.reducer;

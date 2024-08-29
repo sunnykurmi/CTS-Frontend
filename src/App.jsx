@@ -13,7 +13,7 @@ export default function App() {
     <div className="overflow-x-hidden  font-body">
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/studentname" element={<StudentHome/>} />
+        <Route path="/home" element={<StudentHome/>} />
         <Route path="/createroadmap" element={<CreateRoadmap/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/Signup" element={<Signup/>} />

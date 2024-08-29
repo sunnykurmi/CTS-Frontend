@@ -12,6 +12,7 @@ import {
 } from "@remixicon/react";
 import React from "react";
 import "./Home.css";
+import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div>
@@ -24,7 +25,7 @@ export default function Home() {
         <div className="w-[80%] bg-[#f8851127] h-24  rounded-full flex items-center justify-evenly">
           <img
             className="w-[12%]"
-            src="../../../public/Images/CTS   Logo.png"
+            src="/Images/CTS   Logo.png"
             alt=""
           />
           <div className="w-[50%] h-full flex items-center justify-evenly font-bold text-[#393E46]  ">
@@ -71,16 +72,16 @@ export default function Home() {
           </p>
         </div>
         <div className="w-full h-20 flex items-center justify-center pt-5">
-          <a
+          <div
             className=" h-12 gap-5 rounded-full pl-5 bg-[#F58612] text-white flex items-center justify-between p-2 font-bold"
             href=""
           >
-            <button className="">Start Your Journey </button>
+            <button className=""><Link to="/signup">Start Your Journey</Link> </button>
             <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
-              {" "}
+              {" "} 
               <RiArrowRightSLine className=" text-[#0000009b]" />{" "}
             </div>
-          </a>
+          </div>
         </div>
 
         <div className="  flex font-bold items-center justify-center flex-col gap-2 pt-10  w-full ">
@@ -173,19 +174,139 @@ export default function Home() {
           </div>
         </div>
         <div className="w-[80%] flex pt-10 gap-8 text-5xl font-bold text-[#0000003c] flex-col">
-          <p>Membership paywall</p>
-          <p>Gated Content</p>
-          <p>1:1 Calls</p>
-          <p>Landing Pages</p>
-          <p>Audience List</p>
-          <p>Chat Integration</p>
-          <p>Sell Digital Product</p>
-          <p>Run Challenges and Contests</p>
-          <p>Host Paid Events</p>
-          <p>Analytics</p>
+          <p className="hover:text-[#000000d0]" >Community Support</p>
+          <p className="hover:text-[#000000d0]" >Quality Content</p>
+          <p className="hover:text-[#000000d0]" >1:1 Guidance</p>
+          <p className="hover:text-[#000000d0]" >Essay Review</p>
+          <p className="hover:text-[#000000d0]" >Networking Opportunity</p>
+          <p className="hover:text-[#000000d0]" >Group Integration</p>
+          <p className="hover:text-[#000000d0]" >Online Courses</p>
+          <p className="hover:text-[#000000d0]" >Challenges and Contests</p>
+          <p className="hover:text-[#000000d0]" >Events</p>
+          <p className="hover:text-[#000000d0]" >Profile Buildup</p>
         </div>
       </div>
-      <div className="w-full h-32 bg-blue-300"></div>
+      <div className="w-full flex items-center justify-center pb-10">
+      
+    <div className="flex flex-col p-20 bg-zinc-900 rounded-[40px] max-md:px-5">
+      <div className="flex flex-wrap justify-between w-full text-sm font-medium min-h-[392px] text-zinc-400 max-md:max-w-full">
+        <img
+          loading="lazy"
+          src="/Images/CTS   Logo.png"
+          className="object-contain shrink-0 self-start aspect-[2.87] w-[152px]"
+        />
+        <div className="flex justify-center h-full min-w-[240px] w-[808px] max-md:max-w-full">
+          <div className="flex flex-col flex-1 shrink pl-20 w-full basis-0 min-w-[240px] max-md:max-w-full">
+            <div className="flex flex-wrap gap-1.5 px-1.5 w-full max-md:max-w-full">
+              <div className="flex flex-col grow shrink self-start w-[115px]">
+                <div className="pb-5 w-full text-xs uppercase whitespace-nowrap text-slate-50">
+                  Roadmap
+                </div>
+                <div className="pb-4 w-full">    <Link to="/signup">Start for free</Link>    </div>
+                <div className="pb-4 w-full whitespace-nowrap"><Link to="/login">login now</Link>   </div>
+                <div className="flex pb-4 w-full min-h-[37px]" />
+              </div>
+              <div className="flex flex-col grow shrink justify-center items-start pr-11 w-[175px]">
+                <div className="flex flex-col w-36 max-w-full min-h-[392px]">
+                  <div className="pb-5 w-full text-xs uppercase whitespace-nowrap text-slate-50">
+                    Features
+                  </div>
+                  <div className="pb-4 w-full leading-5 whitespace-nowrap">
+                    WhatsApp
+                    <br />
+                    Communities
+                  </div>
+                  <div className="pb-4 w-full whitespace-nowrap">
+                    Challenges
+                  </div>
+                  <div className="pb-4 w-full">Event Hosting</div>
+                  <div className="pb-4 w-full">CTS Internships</div>
+                  <div className="pb-4 w-full whitespace-nowrap">
+                    SATisfactory
+                  </div>
+                  <div className="pb-4 w-full">DSAT Crash Course</div>
+                  <div className="pb-4 w-full">CTS Graduate</div>
+                  <div className="pb-4 w-full">Personalized Portfolio</div>
+                  <div className="pb-4 w-full">Interlango Plus</div>
+                </div>
+              </div>
+              <div className="flex flex-col grow shrink justify-center pr-16 w-[175px]">
+                <div className="flex flex-col w-full min-h-[392px]">
+                  <div className="pb-5 w-full text-xs uppercase text-slate-50">
+                    Use cases
+                  </div>
+                  <div className="pb-4 w-full leading-5">
+                    For UnderGrade Students
+                  </div>
+                  <div className="pb-4 w-full leading-5">
+                    For High School Students
+                  </div>
+                  <div className="pb-4 w-full leading-5">
+                    For Graduate
+                    <br />
+                    Students
+                  </div>
+                  <div className="pb-4 w-full leading-5">
+                    For Aspiring
+                    <br />
+                    Parents
+                  </div>
+                  <div className="pb-4 w-full">For Networking</div>
+                  <div className="pb-4 w-full leading-5">
+                    Aspiring <br />
+                    Communities
+                    <br />
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col grow shrink w-[115px]">
+                <div className="pb-5 w-full text-xs uppercase whitespace-nowrap text-slate-50">
+                  Organization
+                </div>
+                <div className="pb-4 w-full">About Us</div>
+                <div className="pb-4 w-full">Partner With Us</div>
+                <div className="pb-4 w-full whitespace-nowrap">Career</div>
+                <div className="pb-4 w-full whitespace-nowrap">Academy</div>
+                <div className="pb-4 w-full">Contact Us</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-wrap gap-10 justify-between items-center mt-16 w-full max-md:mt-10 max-md:max-w-full">
+        <div className="flex items-center self-stretch my-auto text-xs min-w-[240px] text-neutral-400">
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/672853d61d9ca9c26ea56b11f04522b359c2870ef5dffa5c26d2659456ea84ad?placeholderIfAbsent=true&apiKey=dddf50d431064bd4b76d52f0b630fcc4"
+            className="object-contain self-stretch my-auto aspect-[9.71] w-[234px]"
+          />
+          <div className="flex self-stretch my-auto">
+            <div className="flex flex-col justify-center items-start pr-2 pl-6 max-md:pl-5">
+              <div className="min-h-[18px]">Terms of service</div>
+            </div>
+            <div className="whitespace-nowrap">Privacy</div>
+          </div>
+        </div>
+        <div className="flex items-center self-stretch my-auto">
+          <div className="flex flex-col self-stretch my-auto text-sm font-medium leading-none uppercase whitespace-nowrap text-neutral-100 text-opacity-70 w-[46px]">
+            <div className="flex justify-center items-center px-1 w-full">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/962216d2ee20b4535be6b35e1dcd699aeda0fcb74363d6fc3ac06e3d163c1997?placeholderIfAbsent=true&apiKey=dddf50d431064bd4b76d52f0b630fcc4"
+                className="object-contain shrink-0 self-stretch my-auto w-4 aspect-square"
+              />
+              <div className="self-stretch pl-1 my-auto">en</div>
+            </div>
+          </div>
+          <div className="flex flex-col items-start self-stretch pl-4 my-auto text-xs text-neutral-400">
+            <div>Copyright © 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      </div>
+      
     </div>
   );
 }

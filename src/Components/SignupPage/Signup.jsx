@@ -6,15 +6,14 @@ import {
 } from "@remixicon/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { asyncsignup } from "../../store/Actions/userActions";
 
 export default function Signup() {
   const navigate = useNavigate();
-  const { isAuth, error } = useSelector((state) => state.user);
+  const { isAuth, error , loading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const [formValid, setFormValid] = useState(false);
-
+  console.log(error);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -34,17 +33,9 @@ export default function Signup() {
 
   useEffect(() => {
     if (isAuth) {
-      navigate("/studentname");
+      navigate("/home");
     }
   }, [isAuth, navigate]);
-  useEffect(() => {
-    const isFormValid = Object.values(formData).every(
-      (value) => value.trim() !== ""
-    );
-    setFormValid(isFormValid);
-  }, [formData]);
-
-  console.log(formData);
   return (
     <>
       <div className="w-full h-[100vh] p-10 flex max-[600px]:flex-col">
@@ -67,17 +58,30 @@ export default function Signup() {
             </h1>
           </div>
           <div className="w-full pt-5 flex flex-col gap-5 items-center justify-center ">
-            <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2 ">
-              <input
-                value={formData.email}
-                onChange={handleChange}
-                className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
-                type="text"
-                placeholder="Enter Email Address"
-                name="email"
-                id=""
-              />
-              <RiMailLine className="text-[#0000006f]" />
+            <div className="w-full flex flex-col items-center">
+              <div className="w-[80%] ">
+                {error && error === "User details required" ? (
+                  <p className="text-red-600 text-sm">User details required</p>
+                ) : null}
+                {error &&
+                error === "User with this email or contact already exists" ? (
+                  <p className="text-red-600 text-sm">
+                    User with this email or contact already exists
+                  </p>
+                ) : null}
+              </div>
+              <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2 ">
+                <input
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
+                  type="text"
+                  placeholder="Enter Email Address"
+                  name="email"
+                  id=""
+                />
+                <RiMailLine className="text-[#0000006f]" />
+              </div>
             </div>
             <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2 ">
               <input
@@ -117,9 +121,17 @@ export default function Signup() {
             </div>
             <div
               onClick={signupuser}
-              className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[#ffae00]"
+              className=" cursor-pointer  w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[#ffae00]"
             >
-              <p className="font-semibold text-lg">Signup with Email</p>
+               {loading ? (
+        <div className="flex items-center">
+          <div className="loader mr-2"></div>
+          <p className="font-semibold text-lg">Loading...</p>
+        </div>
+      ) : (
+        <p className="font-semibold text-lg">Create Account</p>
+      )}
+             
             </div>
             <div className="w-full flex items-center justify-center">
               <div className="w-[90%] flex items-center justify-between">
@@ -128,13 +140,15 @@ export default function Signup() {
                 <div className="w-[42%] h-[2px] bg-[#0000008b]"></div>
               </div>
             </div>
-            <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[white]">
-              <img
+            <div className="cursor-pointer w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[white]">
+              {/* <img
                 className="w-[12%]"
                 src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
                 alt=""
-              />
-              <p className="font-semibold text-lg">Signup with Gmail</p>
+              /> */}{" "}
+              <p className="font-semibold text-lg">
+                <Link to="/login">Login with Email</Link>
+              </p>
             </div>
           </div>
         </div>

@@ -2,60 +2,49 @@ import axios from "../../utils/axios";
 import {
   saveUser,
   removeUser,
-  sendmail,
   signuperror,
   signinerror,
+  setLoading,
 } from "../Reducers/userSlice";
-
-
-
-////////////fetch loggedin user /////////////
 
 export const asynccurrentUser = () => async (dispatch, getState) => {
   try {
-    const  {data}  = await axios.post("/user/user");
+    dispatch(setLoading(true)); // Set loading to true
+    const { data } = await axios.post("/api/v1/user/user");
     dispatch(saveUser(data.user));
   } catch (error) {
-    console.log(error);
-    //(error.response.data);
+    dispatch(setLoading(false)); // Reset loading on error
   }
 };
-
-
-////////////signup user /////////////
 
 export const asyncsignup = (user) => async (dispatch, getState) => {
   try {
-    console.log("object");
-    await axios.post("/user/signup", user);
+    dispatch(setLoading(true)); // Set loading to true
+    await axios.post("/api/v1/user/signup", user);
     dispatch(asynccurrentUser());
   } catch (error) {
-    console.log(error);
-    // dispatch(signuperror(error.response.data.message)); // Pass error to the reducer(error.response.data);
+    dispatch(signuperror(error.response.data.message));
+    dispatch(setLoading(false)); // Reset loading on error
   }
 };
-
-////////////signin user /////////////
-
 
 export const asyncsignin = (user) => async (dispatch, getState) => {
   try {
-    await axios.post("/user/signin", user);
+    dispatch(setLoading(true)); // Set loading to true
+    await axios.post("/api/v1/user/signin", user);
     dispatch(asynccurrentUser());
   } catch (error) {
-    // dispatch(signinerror(error.response.data.message)); // Pass error to the reducer(error.response.data);
-    console.log(error);
+    dispatch(signinerror(error.response.data.message));
+    dispatch(setLoading(false)); // Reset loading on error
   }
 };
 
-////////////logout user /////////////
-
-
 export const asyncremoveUser = () => async (dispatch, getState) => {
   try {
+    dispatch(setLoading(true)); // Set loading to true
     await axios.post("/signout");
     dispatch(removeUser());
   } catch (error) {
-    //(error.response.data);
+    dispatch(setLoading(false)); // Reset loading on error
   }
 };

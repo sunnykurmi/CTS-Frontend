@@ -8,7 +8,7 @@ const LastStep = (props) => {
         <div className="w-[60%] flex justify-between items-center">
           <p className="font-medium">Family Income</p>
           <div className=" relative w-auto font-semibold gap-2 h-12 flex items-center justify-center">
-            {[">1 Lakh", "1-5 Lakh", "5-10 Lakh", "<10 Lakh"].map(
+            {["Less than 1 Lac", "1-5 Lac", "5-10 Lac", "more than 10 Lac"].map(
               (option) => (
                 <button
                   key={option}
@@ -82,6 +82,23 @@ const LastStep = (props) => {
             </button>
           </div>
         </div>
+        {props.userInput.physicaldisabilities === "YES" && (
+           <div className="w-[60%] flex justify-between items-center">
+          <p className="font-medium">Please Specify disabilities <sub>(optional)</sub></p>
+          <div className="cursor-pointer relative w-96 h-12 border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+          <input
+            type="text"
+     
+            placeholder="Specify like Blindness, Deafness, etc"
+            className="w-full h-full outline-none"
+            name="physicaldisabilitiestype"
+            onChange={props.handleChange("physicaldisabilitiestype")}
+            
+            id=""
+          />
+          </div>
+          </div>
+        )}
       </div>
     </>
   );
