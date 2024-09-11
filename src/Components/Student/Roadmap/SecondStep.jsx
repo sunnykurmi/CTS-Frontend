@@ -273,7 +273,6 @@ const SecondStep = (props) => {
             </div>
           </div>
         )}
-
         {selectedClass === "12th" && (
           <div className="flex flex-col">
             <p className="text-base font-medium">
@@ -618,8 +617,7 @@ const SecondStep = (props) => {
         </div>
       </div>
       )}
-
-
+      
       <div className="w-[80%] flex justify-between items-center ">
         <p className="font-medium">Are You Preparing For Any Entrance Exam ?</p>
         <div className="cursor-pointer relative w-96 h-12 border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">

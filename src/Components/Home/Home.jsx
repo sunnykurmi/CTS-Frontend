@@ -13,7 +13,18 @@ import {
 import React from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import { asynccurrentUser } from '../../store/Actions/userActions';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 export default function Home() {
+
+  // const dispatch = useDispatch(); 
+
+  // useEffect(() => {
+  //   dispatch(asynccurrentUser()); 
+  // }, [dispatch]);
+  
+
   return (
     <div>
       <div className="w-full h-14 flex items-center justify-center  bg-[#FCEEC5]">
@@ -46,16 +57,16 @@ export default function Home() {
             </a>
           </div>
           <div className="w-[25%] h-full flex items-center justify-evenly ">
-            <a href="/login">
+            <Link to="/login">
               <button className="w-32 h-14 rounded-full border-2 border-[#0000000c]  font-bold">
                 LOGIN
               </button>
-            </a>
-            <a href="/signup">
+            </Link>
+            <Link to="/signup">
               <button className="w-32 h-14 rounded-full bg-[#F58612] text-white font-bold">
                 REGISTER
               </button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -83,7 +94,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
         <div className="  flex font-bold items-center justify-center flex-col gap-2 pt-10  w-full ">
           <div className="flex items-center justify-center gap-5">
             <div className="flex border-2 w-fit px-2 py-1.5 gap-3 rounded-full items-center justify-center">

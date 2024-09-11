@@ -10,6 +10,7 @@ import Events from './Events/Events';
 import Resources from './Resources/Resources';
 import Settings from './Settings/Settings';
 import Dashboard from './Dashboard/Dashboard';
+import Loader from '../Loader/Loader';
 
 export default function StudentHome() {
   const dispatch = useDispatch(); 
@@ -21,12 +22,7 @@ export default function StudentHome() {
   }, [dispatch]);
 
   if (!user) {
-    return (
-      <div className="fixed top-0 z-[999] w-full h-[100vh] bg-[#b1b1b1d6] flex flex-col items-center justify-center">
-        <img className='w-[5%]' src="/Images/loading.webp" alt="" />
-        <p className='text-2xl mt-5 font-semibold'>Loading...</p>
-      </div>
-    ); 
+    return <Loader />;
   }
 
   return (

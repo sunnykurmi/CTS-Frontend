@@ -21,8 +21,7 @@ const FirstStep = (props) => {
           value={props.userInput.fullname}
           className="field rounded-xl"
         />
-      </div>
-      
+      </div>   
       <div className="input-field w-[70%] ">
         <p className="font-medium text-lg">Date Of Birth</p>
         <input

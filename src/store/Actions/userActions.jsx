@@ -42,9 +42,27 @@ export const asyncsignin = (user) => async (dispatch, getState) => {
 export const asyncremoveUser = () => async (dispatch, getState) => {
   try {
     dispatch(setLoading(true)); // Set loading to true
-    await axios.post("/signout");
+    await axios.post("/api/v1/user/signout");
     dispatch(removeUser());
   } catch (error) {
     dispatch(setLoading(false)); // Reset loading on error
+  }
+};
+
+export const avatar = (formData, id) => async (dispatch) => {
+  try {
+    //(formData, id);
+    await axios.post(`/api/v1/user/avatar/${id}`, formData);
+  } catch (error) {
+    //(error.response.data);
+  }
+};
+
+export const editprofile = (formData, id) => async (dispatch) => {
+  try {
+    //(formData, id);
+    await axios.post(`/api/v1/user/edituser/${id}`, formData);
+  } catch (error) {
+    //(error.response.data);
   }
 };

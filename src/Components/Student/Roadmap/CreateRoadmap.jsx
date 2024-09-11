@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ThirdStep from "./ThirdStep";
 import LastStep from "./LastStep";
 import MultiStepProgressBar from "./MultiStepProgressBar";
 import Nav from "../Nav";
 import { Link, useNavigate } from "react-router-dom";
-import { RiArrowLeftSLine, RiArrowRightSLine } from "@remixicon/react";
+import { RiArrowLeftSLine, RiArrowRightSLine, RiCloseLine } from "@remixicon/react";
 import FirstStep from "./FirstStep";
 import SecondStep from "./SecondStep";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateRoadmap } from "./../../../store/Actions/roadmapAction";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreateRoadmapp = () => {
   const [page, setPage] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [progress, setProgress] = useState(1);
+  const buttonRef = useRef(null);
   const loading = useSelector((state) => state.roadmap.loading);
   const [formSubmitted, setFormSubmitted] = useState(false); // Add state for form submission
   const [userInput, setUserInput] = useState({
@@ -71,10 +71,10 @@ const CreateRoadmapp = () => {
   const handlesubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      dispatch(CreateRoadmap(userInput));
       setFormSubmitted(true);
+      dispatch(CreateRoadmap(userInput));
     } else {
-      toast.error('❌Fill All The Details❌', {
+      toast.error("❌Fill All The Details❌", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -83,7 +83,7 @@ const CreateRoadmapp = () => {
         draggable: true,
         progress: undefined,
         theme: "dark",
-        });
+      });
       setPage(-1);
     }
   };
@@ -142,81 +142,51 @@ const CreateRoadmapp = () => {
 
   const stepPercentage = (page / 3) * 100;
 
-
   useEffect(() => {
-    if (!loading && formSubmitted) {
-      toast.success('🎉Successfully Roadmap Created 🎉 ', {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-  
-      setTimeout(() => {
-        toast.success('🎉Mail Sent Successfully 🎉 ', {
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
+    if (formSubmitted===true) {
+      console.log("Form submitted, loading calendar button...");
+      if (calendar && calendar.schedulingButton) {
+        calendar.schedulingButton.load({
+          url: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0G8fTaMy33MET908cjrTeJgCSrKH7xSG2jDbBfo_iMlJE8ELSInzJUjzUVdqEC8ELbgUIBgoFS?gv=true",
+          color: "#F58612",
+          label: "Book an appointment",
+          target: buttonRef.current,
         });
-      }, 1000); 
-  
-      setTimeout(() => {
-        navigate("/home");
-      }, 5000); 
+        console.log("Calendar button loaded.");
+      } else {
+        console.error("Calendar scheduling button script not loaded.");
+      }
+     
     }
-  }, [loading, formSubmitted, navigate]);
-
-  useEffect(() => {
-    if (loading) {
-      setProgress(0); // Reset progress to 0 when loading starts
-    }
-  }, [loading]);
-
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 98) {
-          clearInterval(interval);
-          return 98;
-        }
-        const increment = Math.floor(Math.random() * 1) +1; // Randomly skip 3-5%
-        return Math.min(prev + increment, 98);
-      });
-    }, 90000 / 98); // 90 seconds divided by 98 steps
-
-    return () => clearInterval(interval);
-  }, []);
-
+  }, [formSubmitted, navigate]);
 
   return (
     <div>
       <Nav />
-      {loading && (
-        <div className="fixed w-full h-[100vh] pb-32  bg-[#F5F5F5] z-[9] flex flex-col items-center justify-center">
-          <img className="w-[30%]" src="/Images/roadmap loading.gif" alt="" />
-          <div className="w-full flex font-semibold text-xl items-center justify-center">
-            <p>Please wait your roadmap is creating . . . </p>
-            <img className="w-[3%]" src="/Images/roadmap loading2.gif" alt="" />
-            <p>{progress}%</p>
+      {formSubmitted === true && (
+        <div className="w-full h-screen bg-[#64646476] fixed top-0 left-0 z-[9] flex items-center justify-center">
+          <div className="w-[30%] h-[40vh] bg-white border-2 z-[99] flex flex-col gap-5 items-center text-center justify-center">
+            <div className="w-full flex items-end justify-end p-1 px-2">
+              <Link to="/home">
+                <RiCloseLine className="text-red-600" />
+              </Link>
+            </div>
+            <p className="text-xl font-semibold">
+              Book 1-1 Live Session with Krishna MIT
+            </p>
+            <p>Click the below button to Book Appointment</p>
+            <div
+              ref={buttonRef}
+            >
+            </div>
+            <p className="text-red-600 text-sm font-semibold">
+              Note: It is compulsary to attend the session otherwise your
+              roadmap creation process will be neglected{" "}
+            </p>
           </div>
-            <div className="w-[50%] rounded-full h-2">
-      <div
-        className="bg-green-700 h-2 rounded-full"
-        style={{ width: `${progress}%` }}
-      ></div>
-    </div>
         </div>
-      )} 
+      )}
+
       <div className="w-full h-20  relative  flex items-center justify-center ">
         <div className="w-44 absolute left-0 h-full flex items-center justify-center">
           <Link
@@ -257,7 +227,7 @@ const CreateRoadmapp = () => {
           >
             <button className="ml-2">
               {page === 3 ? (
-                <button onClick={handlesubmit}>Create your Roadmap</button>
+                <button onClick={handlesubmit}>Submit Details</button>
               ) : (
                 "Next"
               )}
@@ -268,17 +238,17 @@ const CreateRoadmapp = () => {
             </div>
           </div>
           <ToastContainer
-position="top-center"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="dark"
-/>
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
         </div>
       </div>
     </div>

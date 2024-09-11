@@ -7,7 +7,6 @@
     text-transform: uppercase;
 }
 .scroller::-webkit-scrollbar {
-
     width: 4px;
     background-color: #F58612;
 }
@@ -28,4 +27,8 @@
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+
+  .scrollernone::-webkit-scrollbar {
+    display: none;
   }
