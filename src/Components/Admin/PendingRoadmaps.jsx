@@ -165,7 +165,8 @@ function PendingRoadmaps() {
       </div>{" "}
       <br />
       <div className="w-full h-[80vh]  overflow-y-scroll  flex flex-col gap-2 px-5  py-10 capitalize  ">
-        {pendingroadmap.map((roadmap, index) => (
+        {pendingroadmap.slice()
+        .reverse().map((roadmap, index) => (
           <div
             key={index}
             className="w-full border-2 h-[10vh] flex items-center shrink-0  justify-evenly "

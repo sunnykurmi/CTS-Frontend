@@ -144,7 +144,8 @@ export default function Profile() {
             </div>
             <div className="w-[60%] ">
               <div className="flex">
-                <div className=" w-[80%] capitalize  mb-5">
+                -
+                {/* <div className=" w-[80%] capitalize  mb-5">
                   <div className="text-[#151515d0] text-xl font-semibold ">
                     sagar college bhopal
                   </div>
@@ -168,7 +169,7 @@ export default function Profile() {
                       2019-2020
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -178,7 +179,8 @@ export default function Profile() {
             </div>
             <div className="w-[60%] ">
               <div className="flex">
-                <div className=" w-[80%] capitalize  mb-5">
+                -
+                {/* <div className=" w-[80%] capitalize  mb-5">
                   <div className="text-[#151515d0] text-xl font-semibold ">
                     National level quiz competition
                   </div>
@@ -186,7 +188,7 @@ export default function Profile() {
                     I have achieved Gold medal in national level quiz
                     competition
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -196,7 +198,8 @@ export default function Profile() {
             </div>
             <div className="w-[60%] ">
               <div className="flex">
-                <div className=" w-[80%] capitalize  mb-5">
+                -
+                {/* <div className=" w-[80%] capitalize  mb-5">
                   <div className=" flex gap-2 items-center   text-xl font-semibold ">
                     <div className="w-8 h-8 ">
                       <img
@@ -223,7 +226,7 @@ export default function Profile() {
                       />
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

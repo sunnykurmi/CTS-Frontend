@@ -59,7 +59,7 @@ export default function Dashboard() {
           >
             <p>{i + 1}✔️</p>
             <p>{formatDateToIST(roadmap.createdAt)}🗓️</p>
-            <p>{roadmap.roadmapcreater}❤️</p>
+            <p>{roadmap.name}❤️</p>
             <a
               className="text-blue-500"
               href={roadmap.path}

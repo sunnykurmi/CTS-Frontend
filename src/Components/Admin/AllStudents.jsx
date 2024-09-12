@@ -26,7 +26,8 @@ function AllStudents() {
       </div>{" "}
       <br />
       <div className="w-full h-[80vh] flex flex-col gap-2 px-5 py-10 overflow-y-scroll capitalize">
-        {allstudents.map((student, index) => (
+        {allstudents.slice()
+        .reverse().map((student, index) => (
           <div
             key={index}
             className="w-full border-2 h-[10vh] shrink-0 flex items-center justify-evenly "
