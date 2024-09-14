@@ -3,6 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
+#home {
+  transition: all 1s;
+}
+
 .upper{
     text-transform: uppercase;
 }

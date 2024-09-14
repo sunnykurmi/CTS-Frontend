@@ -9,6 +9,8 @@ import Profile from "./Components/Student/EditProfile/Profile";
 import AdminHome from "./Components/Admin/AdminHome";
 import StudentProfile from "./Components/Admin/StudentProfile";
 import GenerateRoadmap from "./Components/Student/Roadmap/GenerateRoadmap";
+import AbroadHome from "./Components/Home/AbroadHome";
+import ErrorPage from "./Components/Home/ErrorPage";
 
 export default function App() {
 
@@ -17,12 +19,14 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/home" element={<StudentHome/>} />
+        <Route path="/abroadstudy" element={<AbroadHome/>} />
         <Route path="/create-roadmap" element={<GenerateRoadmap/>} />
         <Route path="/edit-profile" element={<Profile/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/Signup" element={<Signup/>} />
         <Route path="/admin" element={<AdminHome/>} />
         <Route path="/student/:id" element={<StudentProfile/>} />
+        <Route path="/*" element={<ErrorPage/>} />
       </Routes>
     </div>
   );
