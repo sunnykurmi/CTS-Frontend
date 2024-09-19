@@ -85,7 +85,7 @@ function AbroadHome() {
             <p className="text-red-400">10$ (it worth fsfs)</p>
             <p className="text-3xl">ielts prep material</p>
             <p>ace your applications with our free, killer lor templates!</p>
-            <img className="w-full" src="/public/Images/image3.png" alt="" />
+            <img className="w-full" src="/Images/image3.png" alt="" />
         </div>
       </div>
       <div className="w-full h-20 text-center px-[50vh] mt-20

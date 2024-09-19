@@ -7,6 +7,7 @@ import { asynccurrentUser } from "../../../store/Actions/userActions";
 import EditAvatar from "./EditAvatar";
 import EditProfileForm from "./EditProfileForm";
 import Loader from "../../Loader/Loader";
+import AddEducation from "./AddEducation";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ export default function Profile() {
     <>
       {ShowAvatar && <EditAvatar onClose={closeaddavatar} />}
       {ShowForm && <EditProfileForm onClose={closeeditform} />}
+      {/* <AddEducation /> */}
       <Nav />
       <div className="w-full pt-10">
         <div className="w-44  left-0 h-full flex items-center justify-center">
@@ -145,6 +147,8 @@ export default function Profile() {
             <div className="w-[60%] ">
               <div className="flex">
                 -
+                {/* <button className="text-blue-600 font-medium">+ Add Education</button> */}
+                    
                 {/* <div className=" w-[80%] capitalize  mb-5">
                   <div className="text-[#151515d0] text-xl font-semibold ">
                     sagar college bhopal

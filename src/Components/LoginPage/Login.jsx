@@ -13,14 +13,17 @@ export default function Login() {
     email: "",
     password: "",
   });
-
   const handleStudentChange = (e) => {
     setStudentFormData({ ...studentFormData, [e.target.name]: e.target.value });
   };
 
   const signinStudent = async (event) => {
     event.preventDefault();
-    dispatch(asyncsignin(studentFormData));
+    const updatedFormData = {
+      ...studentFormData,
+      email: studentFormData.email.toLowerCase(),
+    };
+    dispatch(asyncsignin(updatedFormData));
   };
 
   useEffect(() => {
@@ -56,8 +59,10 @@ export default function Login() {
                 <input
                   value={studentFormData.email}
                   onChange={handleStudentChange}
-                  className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
+                  className="h-full text-xl w-[85%] pr-6 lowercase outline-none flex items-center justify-center "
                   type="text"
+                  autoComplete="off"
+                  autoCapitalize="off"
                   placeholder="Enter Email Address"
                   name="email"
                   id=""
@@ -76,6 +81,8 @@ export default function Login() {
               <input
                 className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
                 type="text"
+                autoCapitalize="off"
+                autoComplete="off"
                 value={studentFormData.password}
                 onChange={handleStudentChange}
                 placeholder="Enter Password"

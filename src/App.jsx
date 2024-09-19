@@ -11,6 +11,7 @@ import StudentProfile from "./Components/Admin/StudentProfile";
 import GenerateRoadmap from "./Components/Student/Roadmap/GenerateRoadmap";
 import AbroadHome from "./Components/Home/AbroadHome";
 import ErrorPage from "./Components/Home/ErrorPage";
+import IVYHome from "./Components/Home/IVYHome";
 
 export default function App() {
 
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/Signup" element={<Signup/>} />
         <Route path="/admin" element={<AdminHome/>} />
         <Route path="/student/:id" element={<StudentProfile/>} />
+        <Route path="/ivy" element={<IVYHome/>} />
         <Route path="/*" element={<ErrorPage/>} />
       </Routes>
     </div>

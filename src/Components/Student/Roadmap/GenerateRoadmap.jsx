@@ -12,15 +12,12 @@ import { CreateRoadmap } from "../../../store/Actions/roadmapAction";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
-
 export default function GenerateRoadmap() {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const buttonRef = useRef(null);
   const [formSubmitted, setFormSubmitted] = useState(false); // Add state for form submission
-const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const [userInput, setUserInput] = useState({
     // first step
     fullname: "",
@@ -63,8 +60,6 @@ const [showConfirmation, setShowConfirmation] = useState(false);
     physicaldisabilitiestype: "",
   });
   const [hoverTimeout, setHoverTimeout] = useState(null);
-
-  console.log(userInput);
 
   const handleChange = (name) => (event) => {
     const value = event.target.value;
@@ -378,10 +373,13 @@ const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleMouseLeave = () => {
     const timeoutId = setTimeout(() => {
-      // setDropdownOpenCity(false);
       setDropdownOpen(false);
-      // setDropdownOpen2(false);
-      // setDropdownOpen3(false);
+      setDropdownOpenActivity(false);
+      setDropdownOpenInterest(false);
+      setDropdownOpenFuture(false);
+      dropdownOpenCity(false);
+      setDropdownOpen2(false);
+      setDropdownOpen3(false);
     }, 1000);
     setHoverTimeout(timeoutId);
   };
@@ -476,7 +474,7 @@ const [showConfirmation, setShowConfirmation] = useState(false);
         <div className="w-full h-screen bg-[#64646476] fixed top-0 left-0 z-[9] flex items-center justify-center">
           <div className="w-[30%] h-[40vh] bg-white border-2 z-[99] flex flex-col gap-5 items-center text-center justify-center">
             <div className="w-full flex items-end justify-end p-1 px-2">
-            <button onClick={handleCloseAlert}>
+              <button onClick={handleCloseAlert}>
                 <RiCloseLine className="text-red-600" />
               </button>
             </div>
@@ -582,10 +580,12 @@ const [showConfirmation, setShowConfirmation] = useState(false);
           </div>
         </div>
       )}
-        {showConfirmation && (
+      {showConfirmation && (
         <div className="w-full h-screen bg-[#64646476] fixed top-0 left-0 z-[10] flex items-center justify-center">
           <div className="w-[30%] h-[20vh] bg-white border-2 z-[100] flex flex-col gap-5 items-center text-center justify-center">
-            <p className="text-xl font-semibold">Are you sure you want to close?</p>
+            <p className="text-xl font-semibold">
+              Are you sure you want to close?
+            </p>
             <div className="flex gap-4">
               <button
                 className="bg-red-500 text-white px-4 py-2 rounded"

@@ -13,7 +13,6 @@ export default function Signup() {
   const navigate = useNavigate();
   const { isAuth, error , loading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  console.log(error);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -26,9 +25,34 @@ export default function Signup() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const signupuser = async (event) => {
     event.preventDefault();
-    dispatch(asyncsignup(formData));
+    if (!formData.name || !formData.email || !formData.contact || !formData.password) {
+      alert("All fields are required");
+      return;
+    }
+    if (!isValidEmail(formData.email)) {
+      alert("Enter a proper email address");
+      return;
+    }
+    if (formData.name.length < 2) {
+      alert("Name should be at least 2 characters long");
+      return;
+    }
+    if (formData.password.length < 6) {
+      alert("Password should be at least 6 characters long");
+      return;
+    }
+    const updatedFormData = {
+      ...formData,
+      email: formData.email.toLowerCase(),
+    };
+    dispatch(asyncsignup(updatedFormData));
   };
 
   useEffect(() => {
@@ -76,6 +100,7 @@ export default function Signup() {
                   onChange={handleChange}
                   className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
                   type="text"
+                  autoComplete="off"
                   placeholder="Enter Email Address"
                   name="email"
                   id=""
@@ -88,6 +113,8 @@ export default function Signup() {
                 className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
                 type="text"
                 value={formData.name}
+                autoComplete="off"
+
                 onChange={handleChange}
                 placeholder="Enter Name"
                 name="name"
@@ -101,6 +128,7 @@ export default function Signup() {
                 type="number"
                 value={formData.contact}
                 onChange={handleChange}
+                autoComplete="off"
                 placeholder="Enter contact"
                 name="contact"
                 id=""
@@ -112,6 +140,8 @@ export default function Signup() {
                 className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
                 type="text"
                 placeholder="Enter Password"
+                autoComplete="off"
+
                 value={formData.password}
                 onChange={handleChange}
                 name="password"
