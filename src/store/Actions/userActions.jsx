@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import axios from "../../utils/axios";
 import {
   saveUser,
@@ -66,3 +67,31 @@ export const editprofile = (formData, id) => async (dispatch) => {
     // Handle error
   }
 };
+
+export const sendmail = (email, navigate) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    await axios.post("/api/v1/user/send-mail", email);
+    dispatch(setLoading(false));
+    alert("Mail sent successfully");
+    navigate("/login");
+  } catch (error) {
+    dispatch(signinerror(error.response.data.message));
+    dispatch(setLoading(false));
+  }
+};
+
+export const forgotpassword = (data, navigate) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const {id , password} = data;
+    await axios.post(`/api/v1/user/forget-link/${id}`,{password});
+    dispatch(setLoading(false));
+    alert("Password Changed successfully");
+    navigate("/login");
+  } catch (error) {
+    dispatch(signinerror(error.response.data.message));
+    dispatch(setLoading(false));
+  }
+};
+

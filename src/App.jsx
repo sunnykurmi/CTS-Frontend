@@ -12,6 +12,8 @@ import GenerateRoadmap from "./Components/Student/Roadmap/GenerateRoadmap";
 import AbroadHome from "./Components/Home/AbroadHome";
 import ErrorPage from "./Components/Home/ErrorPage";
 import IVYHome from "./Components/Home/IVYHome";
+import Sendmail from "./Components/Student/ForgotPassword/Sendmail";
+import ForgotPassword from "./Components/Student/ForgotPassword/ForgotPassword";
 
 export default function App() {
 
@@ -24,6 +26,8 @@ export default function App() {
         <Route path="/create-roadmap" element={<GenerateRoadmap/>} />
         <Route path="/edit-profile" element={<Profile/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/sendmail" element={<Sendmail/>} />
+        <Route path="/forget-link/:id" element={<ForgotPassword/>} />
         <Route path="/Signup" element={<Signup/>} />
         <Route path="/admin" element={<AdminHome/>} />
         <Route path="/student/:id" element={<StudentProfile/>} />

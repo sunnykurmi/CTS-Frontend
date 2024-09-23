@@ -1,4 +1,9 @@
-import { RiKeyLine, RiMailLine } from "@remixicon/react";
+import {
+  RiEyeCloseLine,
+  RiEyeLine,
+  RiKeyLine,
+  RiMailLine,
+} from "@remixicon/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,13 +11,15 @@ import { asyncsignin } from "../../store/Actions/userActions";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { isAuth, error ,loading } = useSelector((state) => state.user);
+  const { isAuth, error, loading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const [studentFormData, setStudentFormData] = useState({
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleStudentChange = (e) => {
     setStudentFormData({ ...studentFormData, [e.target.name]: e.target.value });
   };
@@ -26,12 +33,22 @@ export default function Login() {
     dispatch(asyncsignin(updatedFormData));
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+    setTimeout(() => {
+      setShowPassword(false);
+    }, 2000);
+  };
+
   useEffect(() => {
     if (isAuth) {
       navigate("/home");
     }
   }, [isAuth, navigate]);
 
+  const loginWithGoogle = () => {
+    window.open('http://localhost:3000/auth/google/callback',"_self");
+  }
   return (
     <>
       <div className="w-full h-[100vh] p-10 flex max-[600px]:flex-col">
@@ -53,7 +70,7 @@ export default function Login() {
               Login To Cross The <br /> Skylimits
             </h1>
           </div>
-          <div className="w-full pt-20 flex flex-col gap-5 items-center justify-center ">
+          <div className="w-full pt-10 flex flex-col gap-5 items-center justify-center ">
             <div className="flex flex-col w-full items-center">
               <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2 ">
                 <input
@@ -70,47 +87,73 @@ export default function Login() {
                 <RiMailLine className="text-[#0000006f]" />
               </div>
               <div className="w-[80%] ">
-                {
-                  error&&error==="User not found with this email address" ? <p className="text-red-600 text-sm">User not found with this email address</p> : null
-                }
-               
+                {error && error === "User not found with this email address" ? (
+                  <p className="text-red-600 text-sm">
+                    User not found with this email address
+                  </p>
+                ) : null}
               </div>
             </div>
             <div className="flex flex-col w-full items-center">
-            <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2 ">
-              <input
-                className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
-                type="text"
-                autoCapitalize="off"
-                autoComplete="off"
-                value={studentFormData.password}
-                onChange={handleStudentChange}
-                placeholder="Enter Password"
-                name="password"
-                id=""
-              />
-              <RiKeyLine className="text-[#0000006f]" />
-            </div>
-            <div className="w-[80%] ">
-
-            {
-                  error&&error==="Incorrect password" ? <p className="text-red-600 text-sm">Incorrect password</p> : null
-                }
-            </div>
+              <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2 ">
+                <input
+                  className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
+                  type={showPassword ? "text" : "password"}
+                  autoCapitalize="off"
+                  autoComplete="off"
+                  value={studentFormData.password}
+                  onChange={handleStudentChange}
+                  placeholder="enter Password"
+                  name="password"
+                  id=""
+                />
+                <span
+                  className="cursor-pointer text-[#0000006f]"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <RiEyeLine /> : <RiEyeCloseLine />}
+                </span>
+              </div>
+              <div className="w-[80%] ">
+                {error && error === "Incorrect password" ? (
+                  <p className="text-red-600 text-sm">Incorrect password</p>
+                ) : null}
+              </div>
+              <div className="w-[90%] flex items-end justify-end">
+                <Link
+                  to="/sendmail"
+                  className="text-[#ff7b00] text-lg font-medium"
+                >
+                  Forgot Password?
+                </Link>
+              </div>
             </div>
             <div
               onClick={signinStudent}
               className=" cursor-pointer w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[#ffae00]"
             >
               {loading ? (
-        <div className="flex items-center">
-          <div className="loader mr-2"></div>
-          <p className="font-semibold text-lg">Loading...</p>
-        </div>
-      ) : (
-        <p className="font-semibold text-lg">Login with Email</p>
-      )}
+                <div className="flex items-center">
+                  <div className="loader mr-2"></div>
+                  <p className="font-semibold text-lg">Loading...</p>
+                </div>
+              ) : (
+                <p className="font-semibold text-lg"> Login with Email</p>
+              )}
             </div>
+            <div 
+            onClick={loginWithGoogle}
+            className="cursor-pointer w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[white]">
+              <img
+                className="w-[12%]"
+                src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+                alt=""
+              />
+              <p className="font-semibold text-lg">
+               Login with Google
+              </p>
+            </div>
+
             <div className="w-full flex items-center justify-center">
               <div className="w-[90%] flex items-center justify-between">
                 <div className="w-[42%] h-[2px] bg-[#0000008b]"></div>
@@ -124,9 +167,9 @@ export default function Login() {
                 src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
                 alt=""
               /> */}
-               <p className="font-semibold text-lg">
-    <Link to="/signup">Create new Account</Link>
-  </p>
+              <p className="font-semibold text-lg">
+                <Link to="/signup">Create new Account</Link>
+              </p>
             </div>
           </div>
         </div>
