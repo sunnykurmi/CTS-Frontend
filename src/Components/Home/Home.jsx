@@ -55,22 +55,22 @@ export default function Home() {
 
   return (
     <div id="home">
-      <div className="w-full h-14 flex items-center justify-center  bg-[#FCEEC5]">
+      <div className="w-full h-14 flex items-center justify-center  bg-[#FCEEC5] max-[600px]:hidden">
         <p className="font-semibold text-lg text-[#F58612] ">
           Lets Join Us To Cross The Sky Limits 🏆
         </p>
       </div>
-      <div className="w-full h-40 flex items-center justify-center">
-        <div className="w-[80%] bg-[#f8851127] h-24  rounded-full flex items-center justify-evenly">
-          <img className="w-[12%]" src="/Images/CTS   Logo.png" alt="" />
-          <div className="w-[50%] h-full flex items-center justify-evenly font-bold text-[#393E46]  ">
+      <div className="w-full h-40 flex items-center justify-center max-[600px]:h-16 ">
+        <div className="w-[80%] bg-[#f8851127] h-24  rounded-full flex items-center justify-evenly max-[600px]:w-full max-[600px]:rounded-none max-[600px]:pr-2 max-[600px]:h-full ">
+          <img className="w-[12%] max-[600px]:w-[30%]" src="/Images/CTS   Logo.png" alt="" />
+          <div className="w-[50%] h-full flex items-center justify-evenly font-bold text-[#393E46] max-[600px]:text-xs max-[600px]:w-fit max-[600px]:gap-2  ">
             <a className="" href="#home">
               HOME
             </a>
-            <Link className="" to="/login">
+            <Link className="max-[600px]:hidden" to="/login">
               COMMUNITY
             </Link>
-            <Link className="" to="/login">
+            <Link className="max-[600px]:hidden" to="/login">
               RESOURCES
             </Link>
             <Link className="" to="/abroadstudy">
@@ -81,12 +81,12 @@ export default function Home() {
             </a>
           </div>
           <div className="w-[25%] h-full flex items-center justify-evenly ">
-            <Link to="/login">
+            <Link to="/login" className="max-[600px]:hidden">
               <button className="w-32 h-14 rounded-full border-2 border-[#0000000c]  font-bold">
                 LOGIN
               </button>
             </Link>
-            <Link to="/signup">
+            <Link to="/signup" className="max-[600px]:scale-50">
               <button className="w-32 h-14 rounded-full bg-[#F58612] text-white font-bold">
                 REGISTER
               </button>
@@ -95,20 +95,20 @@ export default function Home() {
         </div>
       </div>
       <div className="w-full flex items-center flex-col justify-evenly">
-        <div className="w-[60%]  h-40 flex items-center justify-center  text-center">
-          <p className="  font-bold text-6xl ">
+        <div className="w-[60%]  h-40 flex items-center justify-center  text-center max-[600px]:w-[80%] max-[600px]:h-24">
+          <p className="  font-bold text-6xl max-[600px]:text-2xl  ">
             Start Your Journey By Creating Your Roadmap
           </p>
         </div>
-        <div className="w-[30%]   flex items-center justify-center  text-center text-[#00000089]">
-          <p className="  font-medium text-xl">
+        <div className="w-[30%]   flex items-center justify-center  text-center text-[#00000089] max-[600px]:w-[90%]">
+          <p className="  font-medium text-xl max-[600px]:text-lg">
             All you need is the plan, the road map, and the courage to press on
             to your destination.
           </p>
         </div>
         <div className="w-full h-20 flex items-center justify-center pt-5">
           <div
-            className=" h-12 gap-5 rounded-full pl-5 bg-[#F58612] text-white flex items-center justify-between p-2 font-bold"
+            className=" h-12 gap-5 rounded-full pl-5 bg-[#F58612] text-white flex items-center justify-between p-2 font-bold max-[600px]:scale-75"
             href=""
           >
             <button className="">
@@ -120,25 +120,25 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="w-full flex items-center gap-24 justify-center mt-5">
-          <div className="bg-[#FEF6EE] text-[#946800] flex items-center justify-center flex-col rounded-full w-60 py-4">
-            <p className="font-extrabold text-3xl">
+        <div className="w-full flex items-center gap-24 justify-center mt-5 max-[600px]:mt-2 max-[600px]:gap-0">
+          <div className="bg-[#FEF6EE] text-[#946800] flex items-center justify-center flex-col rounded-full w-60 py-4 max-[600px]:py-2 ">
+            <p className="font-extrabold text-3xl max-[600px]:text-lg ">
               {studentsJoined.toLocaleString()}+
             </p>
-            <p className="font-medium">Students Joined</p>
+            <p className="font-medium max-[600px]:text-xs">Students Joined</p>
           </div>
-          <div className="bg-[#FEF6EE] text-[#946800] flex items-center justify-center flex-col rounded-full w-60 py-4">
-            <p className="font-extrabold text-3xl">
+          <div className="bg-[#FEF6EE] text-[#946800] flex items-center justify-center flex-col rounded-full w-60 py-4 max-[600px]:py-2 ">
+            <p className="font-extrabold text-3xl max-[600px]:text-lg ">
               {studentsImpacting.toLocaleString()}+
             </p>
-            <p className="font-medium">Students Impacting</p>
+            <p className="font-medium max-[600px]:text-xs">Students Impacting</p>
           </div>
-          <div className="bg-[#FEF6EE] text-[#946800] flex items-center justify-center flex-col rounded-full w-60 py-4">
-            <p className="font-extrabold text-3xl">{countries}+</p>
-            <p className="font-medium">Countries</p>
+          <div className="bg-[#FEF6EE] text-[#946800] flex items-center justify-center flex-col rounded-full w-60 py-4 max-[600px]:py-2 ">
+            <p className="font-extrabold text-3xl max-[600px]:text-lg ">{countries}+</p>
+            <p className="font-medium max-[600px]:text-xs">Countries</p>
           </div>
         </div>
-        <div className="  flex font-bold items-center justify-center flex-col gap-2 pt-10  w-full ">
+        <div className="  flex font-bold items-center justify-center flex-col gap-2 pt-10  w-full max-[600px]:whitespace-nowrap max-[600px]:scale-[.6] max-[600px]:pt-0 ">
           <div className="flex items-center justify-center gap-5">
             <div className="flex border-2 w-fit px-2 py-1.5 gap-3 rounded-full items-center justify-center">
               <div className="h-7 w-7 text-white rounded-full opacity-70 flex items-center justify-center bg-[#00C2FF]">
@@ -196,7 +196,7 @@ export default function Home() {
         </div>
         <div className="w-full flex items-center justify-center mt-10">
           <img 
-          className="w-[50%] "
+          className="w-[50%] max-[600px]:w-[90%] "
             src="/Images/Careersgif.gif"
             alt=""
           />
@@ -204,12 +204,12 @@ export default function Home() {
       </div>
 
       <div className="w-full pt-20 pb-20 flex flex-col items-center justify-center">
-        <div className="w-[80%] flex flex-col">
+        <div className="w-[80%] flex flex-col max-[600px]:text-2xl">
           <p className="text-5xl font-bold">Everything</p>
           <p className="text-5xl font-bold text-[#00000082]">A Student Needs</p>
         </div>
-        <div className="w-[80%] pt-4 ">
-          <div className=" flex items-center w-fit justify-center bg-black text-white rounded-full px-8 py-4">
+        <div className="w-[80%] pt-4  max-[600px]:w-full">
+          <div className=" flex items-center w-fit justify-center bg-black text-white rounded-full px-8 py-4 max-[600px]:scale-75">
             <RiArrowRightSFill />
             <p>Feature Walkthrough</p>
           </div>

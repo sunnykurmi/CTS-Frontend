@@ -14,18 +14,27 @@ import ErrorPage from "./Components/Home/ErrorPage";
 import IVYHome from "./Components/Home/IVYHome";
 import Sendmail from "./Components/Student/ForgotPassword/Sendmail";
 import ForgotPassword from "./Components/Student/ForgotPassword/ForgotPassword";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import Demo from "./Components/Demo";
 
 export default function App() {
-
+    const GoogleAuthWrapper=()=>{
+      return(
+        <GoogleOAuthProvider clientId="128624458006-kv7k54pmc6bie3h2ngr6q1v5ikjvcf7a.apps.googleusercontent.com">
+          <Login/>
+        </GoogleOAuthProvider>
+      )
+    }   
   return (
     <div className="overflow-x-hidden  font-body">
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/demo" element={<Demo/>} />
         <Route path="/home" element={<StudentHome/>} />
         <Route path="/abroadstudy" element={<AbroadHome/>} />
         <Route path="/create-roadmap" element={<GenerateRoadmap/>} />
         <Route path="/edit-profile" element={<Profile/>} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="/login" element={<GoogleAuthWrapper/>} />
         <Route path="/sendmail" element={<Sendmail/>} />
         <Route path="/forget-link/:id" element={<ForgotPassword/>} />
         <Route path="/Signup" element={<Signup/>} />

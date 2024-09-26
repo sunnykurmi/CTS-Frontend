@@ -21,7 +21,7 @@ export default function Userdropdown() {
     setTimeout(() => {
       dispatch(asyncremoveUser());
       navigate("/");
-      // window.location.reload();
+      window.location.reload();
     }, 1000);
   };
 

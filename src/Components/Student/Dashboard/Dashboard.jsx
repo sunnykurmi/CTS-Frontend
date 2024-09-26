@@ -23,7 +23,7 @@ export default function Dashboard() {
   if (!user) {
     return <Loader />;
   }
-  console.log(user);
+  
   return (
     <div>
       <div className="w-full h-[89vh] p-5 overflow-y-scroll scroller">

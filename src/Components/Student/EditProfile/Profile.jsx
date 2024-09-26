@@ -80,7 +80,7 @@ export default function Profile() {
                 {user.email}
               </h1>
               <h1 className="text-lg   text-[#070707b9]  font-medium ">
-                +91 {user.contact}
+                +91 {user.contact ? user.contact : "-"}
               </h1>
               <h1 className="text-lg  text-[#070707b9] font-medium capitalize">
                 {user.city

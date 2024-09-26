@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { asyncsignin } from "../../store/Actions/userActions";
+import Googlelogin from "../GoogleLogin/Googlelogin";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -46,9 +47,6 @@ export default function Login() {
     }
   }, [isAuth, navigate]);
 
-  const loginWithGoogle = () => {
-    window.open('http://localhost:3000/auth/google/callback',"_self");
-  }
   return (
     <>
       <div className="w-full h-[100vh] p-10 flex max-[600px]:flex-col">
@@ -141,17 +139,8 @@ export default function Login() {
                 <p className="font-semibold text-lg"> Login with Email</p>
               )}
             </div>
-            <div 
-            onClick={loginWithGoogle}
-            className="cursor-pointer w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[white]">
-              <img
-                className="w-[12%]"
-                src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
-                alt=""
-              />
-              <p className="font-semibold text-lg">
-               Login with Google
-              </p>
+            <div className="cursor-pointer w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[white]">
+              <Googlelogin />
             </div>
 
             <div className="w-full flex items-center justify-center">
