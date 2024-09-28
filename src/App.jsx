@@ -15,7 +15,8 @@ import IVYHome from "./Components/Home/IVYHome";
 import Sendmail from "./Components/Student/ForgotPassword/Sendmail";
 import ForgotPassword from "./Components/Student/ForgotPassword/ForgotPassword";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import Demo from "./Components/Demo";
+import InternshipForm from "./Components/Internship/InternshipForm";
+import InternProfile from "./Components/Admin/InternProfile";
 
 export default function App() {
     const GoogleAuthWrapper=()=>{
@@ -29,8 +30,8 @@ export default function App() {
     <div className="overflow-x-hidden  font-body">
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/demo" element={<Demo/>} />
         <Route path="/home" element={<StudentHome/>} />
+        <Route path="/apply-internship-form" element={<InternshipForm/>} />
         <Route path="/abroadstudy" element={<AbroadHome/>} />
         <Route path="/create-roadmap" element={<GenerateRoadmap/>} />
         <Route path="/edit-profile" element={<Profile/>} />
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="/forget-link/:id" element={<ForgotPassword/>} />
         <Route path="/Signup" element={<Signup/>} />
         <Route path="/admin" element={<AdminHome/>} />
+        <Route path="/intern/:id" element={<InternProfile/>} />
         <Route path="/student/:id" element={<StudentProfile/>} />
         <Route path="/ivy" element={<IVYHome/>} />
         <Route path="/*" element={<ErrorPage/>} />

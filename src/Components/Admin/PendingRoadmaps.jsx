@@ -7,6 +7,7 @@ import axios from "axios";
 
 function PendingRoadmaps() {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const [pendingroadmap, setpendingroadmap] = useState([]);
   const [selectedRoadmap, setSelectedRoadmap] = useState(null);
   const [formData, setFormData] = useState({
@@ -78,13 +79,15 @@ function PendingRoadmaps() {
     form.append("name", formData.name);
     form.append("email", formData.email);
     form.append("file", formData.file);
-  
+    setLoading(true);
     try {
-    await dispatch(uploadroadmap(form))
-      console.log(form);
+      await dispatch(uploadroadmap(form));
       alert("Roadmap uploaded successfully");
+      window.location.reload();
     } catch (error) {
       console.error("Error uploading the roadmap:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -92,7 +95,7 @@ function PendingRoadmaps() {
     <div className="overflow-hidden">
       {selectedRoadmap && (
         <div className="w-full h-screen bg-[#64646476] fixed top-0 left-0 z-[9] flex items-center justify-center">
-          <div className="w-[40%] h-[60vh] bg-white border-2 z-[99] flex flex-col gap-5 items-center text-center justify-center">
+          <div className="w-[40%] py-10 bg-white border-2 z-[99] flex flex-col gap-5 items-center text-center justify-center">
             <div className="w-full flex items-end justify-end p-1 px-10 ">
               <RiCloseLine
                 className="text-red-600 cursor-pointer"
@@ -149,23 +152,30 @@ function PendingRoadmaps() {
                 />
               </div>
               <div className="w-full flex justify-evenly items-center gap-5">
-                <button
-                  type="submit"
-                  className="px-4 py-2 rounded-lg bg-green-500"
-                >
-                  Send Roadmap
-                </button>
+                {loading ? (
+                  <p className="px-4 py-2 rounded-lg bg-green-500">Loading...</p>
+                ) : (
+                  <button
+                    type="submit"
+                    className="px-4 py-2 rounded-lg bg-green-500"
+                  >
+                    Send Roadmap
+                  </button>
+                )}
               </div>
             </form>
           </div>
         </div>
       )}
       <div className="w-full text-2xl pt-5 font-medium uppercase flex items-center justify-center">
-        <p>All Roadmaps Details</p>
+        <p>All Pending Roadmaps </p>
       </div>{" "}
       <br />
       <div className="w-full h-[80vh]  overflow-y-scroll  flex flex-col gap-2 px-5  py-10 capitalize  ">
-        {pendingroadmap.slice()
+      {pendingroadmap.length === 0 ? (
+          <p>No pending roadmaps present</p>
+        ) : (
+        pendingroadmap.slice()
         .reverse().map((roadmap, index) => (
           <div
             key={index}
@@ -211,7 +221,7 @@ function PendingRoadmaps() {
               </button>
             </div>
           </div>
-        ))}
+        )))}
       </div>
     </div>
   );

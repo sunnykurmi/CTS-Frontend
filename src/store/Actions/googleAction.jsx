@@ -11,11 +11,13 @@ import Cookies from "js-cookie";
 import { asynccurrentUser } from "./userActions";
 
 
-export const googleAuth = ()=> async (dispatch)=>{
+export const googleAuth = (code)=> async (dispatch)=>{
     try {
-      const data = await axios.get(`/api/v1/auth/google`);
-      console.log(data);
+      dispatch(setLoading(true));
+      await axios.get(`/api/v1/auth/google?code=${code}`);
+      dispatch(asynccurrentUser());
     } catch (error) {
-      console.log(error);
+      dispatch(signinerror(error.response.data.message));
+      dispatch(setLoading(false));
     }
   }

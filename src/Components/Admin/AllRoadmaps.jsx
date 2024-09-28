@@ -36,7 +36,10 @@ function AllRoadmaps() {
       </div>{" "}
       <br />
       <div className="w-full h-[80vh] flex flex-col gap-2 px-5 py-10 overflow-y-scroll capitalize">
-        {allroadmaps.slice()
+      {allroadmaps.length === 0 ? (
+          <p>No roadmaps present</p>
+        ) : (
+        allroadmaps.slice()
         .reverse().map((roadmap, index) => (
           <div
             key={index}
@@ -80,7 +83,7 @@ function AllRoadmaps() {
               </a>
             </div>
           </div>
-        ))}
+        )))}
       </div>
     </div>
   );

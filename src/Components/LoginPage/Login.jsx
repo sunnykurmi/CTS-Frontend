@@ -116,6 +116,9 @@ export default function Login() {
                 {error && error === "Incorrect password" ? (
                   <p className="text-red-600 text-sm">Incorrect password</p>
                 ) : null}
+                {error && error === "Illegal arguments: string, undefined" ? (
+                  <p className="text-red-600 text-sm">Try Login with google</p>
+                ) : null}
               </div>
               <div className="w-[90%] flex items-end justify-end">
                 <Link

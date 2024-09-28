@@ -36,6 +36,7 @@ export const asyncsignin = (user) => async (dispatch, getState) => {
     await axios.post("/api/v1/user/signin", user);
     dispatch(asynccurrentUser());
   } catch (error) {
+    console.log(error);
     dispatch(signinerror(error.response.data.message));
     dispatch(setLoading(false));
   }

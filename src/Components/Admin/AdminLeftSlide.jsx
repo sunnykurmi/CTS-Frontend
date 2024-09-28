@@ -44,6 +44,15 @@ export default function AdminLeftSlide({
           </div>
           <div className="w-full h-[8vh] flex items-center justify-center">
             <button
+              className={getButtonClass("AllInternships")}
+              onClick={() => setSelectedComponent("AllInternships")}
+            >
+              <RiRoadMapLine />
+              <p>All Internships</p>
+            </button>
+          </div>
+          <div className="w-full h-[8vh] flex items-center justify-center">
+            <button
               className={getButtonClass("PendingRoadmaps")}
               onClick={() => setSelectedComponent("PendingRoadmaps")}
             >
@@ -51,6 +60,7 @@ export default function AdminLeftSlide({
               <p>Pending Roadmaps</p>
             </button>
           </div>
+
         </div>
      
       </div>

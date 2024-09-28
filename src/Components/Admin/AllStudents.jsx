@@ -26,7 +26,10 @@ function AllStudents() {
       </div>{" "}
       <br />
       <div className="w-full h-[80vh] flex flex-col gap-2 px-5 py-10 overflow-y-scroll capitalize">
-        {allstudents.slice()
+      {allstudents.length === 0 ? (
+          <p>No User found</p>
+        ) : (
+        allstudents.slice()
         .reverse().map((student, index) => (
           <div
             key={index}
@@ -60,7 +63,7 @@ function AllStudents() {
               </Link>
             </div>
           </div>
-        ))}
+        )))}
       </div>
     </div>
   );

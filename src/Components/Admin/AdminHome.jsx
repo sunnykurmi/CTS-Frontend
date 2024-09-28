@@ -7,6 +7,7 @@ import Nav from '../Student/Nav';
 import Loader from '../Loader/Loader';
 import AllRoadmaps from './AllRoadmaps';
 import PendingRoadmaps from './PendingRoadmaps';
+import AllInternships from './AllInternships';
 
 export default function AdminHome() {
   const dispatch = useDispatch(); 
@@ -32,6 +33,7 @@ export default function AdminHome() {
           {selectedComponent === 'AllStudents' && <AllStudents />}
           {selectedComponent === 'AllRoadmaps' && <AllRoadmaps />}
           {selectedComponent === 'PendingRoadmaps' && <PendingRoadmaps />}
+          {selectedComponent === 'AllInternships' && <AllInternships />}
         </div>
       </div>
     </div>

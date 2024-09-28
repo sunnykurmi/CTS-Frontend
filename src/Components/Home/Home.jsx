@@ -70,8 +70,8 @@ export default function Home() {
             <Link className="max-[600px]:hidden" to="/login">
               COMMUNITY
             </Link>
-            <Link className="max-[600px]:hidden" to="/login">
-              RESOURCES
+            <Link className="max-[600px]:hidden" to="/apply-internship-form">
+              INTERNSHIP
             </Link>
             <Link className="" to="/abroadstudy">
               CTS ABROAD
@@ -205,8 +205,8 @@ export default function Home() {
 
       <div className="w-full pt-20 pb-20 flex flex-col items-center justify-center">
         <div className="w-[80%] flex flex-col max-[600px]:text-2xl">
-          <p className="text-5xl font-bold">Everything</p>
-          <p className="text-5xl font-bold text-[#00000082]">A Student Needs</p>
+          <p className="text-5xl font-bold max-[600px]:text-3xl">Everything</p>
+          <p className="text-5xl font-bold text-[#00000082] max-[600px]:text-3xl">A Student Needs</p>
         </div>
         <div className="w-[80%] pt-4  max-[600px]:w-full">
           <div className=" flex items-center w-fit justify-center bg-black text-white rounded-full px-8 py-4 max-[600px]:scale-75">
@@ -214,7 +214,7 @@ export default function Home() {
             <p>Feature Walkthrough</p>
           </div>
         </div>
-        <div className="w-[80%] relative flex pt-10 gap-8 text-5xl font-bold text-[#0000003c] flex-col">
+        <div className="w-[80%] relative flex pt-10 gap-8 text-5xl font-bold text-[#0000003c] flex-col max-[600px]:text-2xl max-[600px]:gap-2 max-[600px]:text-[#000000c1] ">
           <p className="hover:text-[#000000d0]">Personalised Roadmap</p>
           <p className="hover:text-[#000000d0]">Community Support</p>
           <p className="hover:text-[#000000d0]">Exclusive Resources </p>
@@ -225,7 +225,7 @@ export default function Home() {
           <p className="hover:text-[#000000d0]">Networking Opportunity</p>
           <p className="hover:text-[#000000d0]">Exam Preparation</p>
           <p className="hover:text-[#000000d0]">Competitions and Challenges</p>
-          <img className="absolute scale-110 right-0 top-[20%]" src="https://cdn.pixabay.com/animation/2022/11/15/11/35/11-35-07-140_512.gif" alt="" />
+          <img className="absolute scale-110 right-0 top-[20%] max-[600px]:hidden" src="https://cdn.pixabay.com/animation/2022/11/15/11/35/11-35-07-140_512.gif" alt="" />
         </div>
       </div>
       <div className="w-full flex items-center justify-center pb-10">
