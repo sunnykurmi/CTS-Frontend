@@ -49,26 +49,29 @@ export default function Login() {
 
   return (
     <>
-      <div className="w-full h-[100vh] p-10 flex max-[600px]:flex-col">
-        <div className="w-[70%] h-full flex flex-col items-center border-r-2 border-r-[#00000033] ">
-          <div className="w-full h-[20%]  ">
-            <img className="w-[30%]" src="/Images/CTS   Logo.png" alt="" />
+      <div className="w-full h-[100vh] p-10 flex max-[600px]:flex-col max-[600px]:p-2">
+        <div className="w-[70%] h-full flex flex-col items-center border-r-2 border-r-[#00000033] max-[600px]:w-full max-[600px]:border-0 max-[600px]:h-fit">
+          <div className="w-full h-[20%] max-[600px]:h-fit ">
+            <img className="w-[30%] max-[600px]:w-[40%]" src="/Images/CTS   Logo.png" alt="" />
           </div>
-          <div className="w-full flex items-center justify-center h-[80%] ">
+          <div className="w-full flex items-center justify-center h-[80%] max-[600px]:hidden ">
             <img
-              src="https://img.freepik.com/premium-vector/learning-small-people-characters-doing-various-tasks-books-trophy_113065-52.jpg"
+              src="/Images/illustration.gif"
               alt=""
             />
           </div>
         </div>
-        <div className="w-[30%] h-full">
-          <div className="w-full flex items-center justify-center h-[20vh]">
-            <img className="w-[20%]" src="/Images/logo gray.PNG" alt="" />
-            <h1 className="text-4xl font-semibold  ">
+        <div className="w-[30%] h-full max-[600px]:w-full">
+          <div className="w-full flex items-center justify-center h-[18vh]  max-[600px]:h-[15vh]">
+            <img className="w-[20%] max-[600px]:hidden" src="/Images/logo gray.PNG" alt="" />
+            <h1 className="font-semibold text-3xl max-[600px]:hidden  ">
               Login To Cross The <br /> Skylimits
             </h1>
+            <h1 className="font-semibold text-3xl lg:hidden ">
+              Login To CTS
+            </h1>
           </div>
-          <div className="w-full pt-10 flex flex-col gap-5 items-center justify-center ">
+          <div className="w-full flex flex-col gap-5 items-center justify-center  ">
             <div className="flex flex-col w-full items-center">
               <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2 ">
                 <input
@@ -123,7 +126,7 @@ export default function Login() {
               <div className="w-[90%] flex items-end justify-end">
                 <Link
                   to="/sendmail"
-                  className="text-[#ff7b00] text-lg font-medium"
+                  className="text-[#ff0000] text-lg font-medium max-[600px]:text-sm max-[600px]:mt-2"
                 >
                   Forgot Password?
                 </Link>

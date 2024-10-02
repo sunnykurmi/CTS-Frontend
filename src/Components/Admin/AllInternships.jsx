@@ -66,19 +66,23 @@ function AllInternships() {
                 className="w-full border-2 shrink-0 h-[10vh] flex items-center justify-evenly "
               >
                 <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-600">S.No</p>
+                  <p className="text-xs font-semibold text-gray-500">S.No</p>
                   <p className="font-medium text-sm">{index + 1}</p>
                 </div>
                 <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-600">Name</p>
+                  <p className="text-xs font-semibold text-gray-500">Name</p>
                   <p className="font-medium text-sm">{intern.name}</p>
                 </div>
                 <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-600">Email</p>
+                  <p className="text-xs font-semibold text-gray-500">Email</p>
                   <p className="font-medium text-sm">{intern.email}</p>
                 </div>
                 <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-600">Applied at</p>
+                  <p className="text-xs font-semibold text-gray-500">Mode</p>
+                  <p className="font-medium text-sm">{intern.mode}</p>
+                </div>
+                <div className="h-full w-[20%] flex flex-col items-center justify-center">
+                  <p className="text-xs font-semibold text-gray-500">Applied at</p>
                   <p className="font-medium text-sm">
                     {" "}
                     {formatDateToIST(intern.createdAt)}

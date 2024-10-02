@@ -1,6 +1,16 @@
-import React, { useState } from "react";
+import { RiCloseLine } from "@remixicon/react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addeducation,
+  asynccurrentUser,
+} from "../../../store/Actions/userActions";
+import Loader from "../../Loader/Loader";
 
-function AddEducation() {
+function AddEducation(props) {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
+  const [loading, setLoading] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [dropdownOpen2, setDropdownOpen2] = useState(false);
@@ -29,7 +39,7 @@ function AddEducation() {
 
   const handleOptionClick = (value) => {
     setDropdownOpen(false);
-    handleChange({ target: { name: "class", value } });
+    handleChange({ target: { name: "currentclass", value } });
   };
 
   const handleOptionClick2 = (value) => {
@@ -85,30 +95,90 @@ function AddEducation() {
   };
 
   const [educationform, seteducationform] = useState({
-    class: "",
+    currentclass: "",
     schoolname: "",
     percentage: "",
+    passingyear: "",
     educationBoard: "",
     stream: "",
     class10percentage: "",
     class10schoolname: "",
     class10educationBoard: "",
     class10passingyear: "",
-    passingyear: ""
   });
+  useEffect(() => {
+    if (user.education) {
+      seteducationform(user.education);
+    }
+  }, [user.education]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    seteducationform({
-      ...educationform,
-      [name]: value,
+    seteducationform((prevForm) => {
+      const updatedForm = { ...prevForm, [name]: value };
+
+      if (
+        name === "currentclass" &&
+        (value === "9th Class" || value === "10th Class")
+      ) {
+        updatedForm.class10percentage = "";
+        updatedForm.class10schoolname = "";
+        updatedForm.class10educationBoard = "";
+        updatedForm.class10passingyear = "";
+        updatedForm.stream = "";
+      }
+
+      return updatedForm;
     });
   };
-console.log(educationform);
+  const validateForm = () => {
+    const { currentclass, schoolname, percentage, passingyear, educationBoard, stream, class10percentage, class10schoolname, class10educationBoard, class10passingyear } = educationform;
+
+    if (currentclass === "9th Class" || currentclass === "10th Class") {
+      if (!currentclass || !schoolname || !percentage || !passingyear || !educationBoard) {
+        alert("Please fill all required fields ");
+        return false;
+      }
+    } else if (currentclass === "11th Class" || currentclass === "12th Class") {
+      if (!currentclass || !schoolname || !percentage || !passingyear || !educationBoard || !stream || !class10percentage || !class10schoolname || !class10educationBoard || !class10passingyear) {
+        alert("Please fill all required fields ");
+        return false;
+      }
+    } else {
+      alert("Please select a valid class.");
+      return false;
+    }
+
+    return true;
+  };
+  const SubmitHandler = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
+    setLoading(true);
+    await dispatch(addeducation(educationform, user._id));
+    setLoading(false);
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    dispatch(asynccurrentUser());
+  }, [dispatch]);
+
+  if (!user) {
+    return <Loader />;
+  }
   return (
     <div>
       <div className="z-10 flex items-center justify-center fixed h-screen w-full bg-black/30 overflow-hidden">
-        <div className="w-[50%] h-[80%] bg-white pt-5 rounded-lg">
+        <div className="w-[50%] py-10 bg-white pt-5 rounded-lg">
+          <RiCloseLine
+            size={30}
+            className="ml-auto mr-5 cursor-pointer   "
+            onClick={props.onClose}
+            color="#1c1c1c9d" // set custom `width` and `height`
+          />
           <div className="w-full flex items-center justify-center">
             <p className="text-2xl font-medium">Add Education</p>
           </div>
@@ -123,11 +193,11 @@ console.log(educationform);
                   type="text"
                   onMouseLeave={handleMouseLeave}
                   onMouseEnter={handleMouseEnter}
-                  value={educationform.class}
+                  value={educationform.currentclass}
                   onChange={handleInputChange}
                   placeholder="Select Class"
                   className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
-                  name="class"
+                  name="currentclass"
                   autoComplete="off"
                 />
                 {dropdownOpen && (
@@ -174,6 +244,8 @@ console.log(educationform);
                   className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
                   name="educationBoard"
                   autoComplete="off"
+                  readOnly
+
                 />
                 {dropdownOpen2 && (
                   <div className="absolute shadow-lg top-[105%] z-[99] border-2 border-b-0 w-full bg-white h-fit">
@@ -214,77 +286,46 @@ console.log(educationform);
                 onChange={handleChange}
               />
             </div>
-            {(educationform.class === "11th Class" ||
-                educationform.class === "12th Class") && (
-                <div className="flex w-[45%]  flex-col">
-                  <p className="text-base font-medium">Stream</p>
-                  <div
-                    onClick={toggleDropdown3}
-                    className="cursor-pointer relative flex items-center justify-center"
-                  >
-                    <input
-                      type="text"
-                      onMouseLeave={handleMouseLeave}
-                      onMouseEnter={handleMouseEnter}
-                      placeholder="PCM/PCB/Arts"
-                      className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
-                      name="stream"
-                      autoComplete="off"
-                      readOnly
-                      value={educationform.stream}
-                      onChange={handleInputChange3}
-                      id=""
-                    />
-                    {dropdownOpen3 && (
-                      <div className="absolute w-full border-2 border-b-0 shadow-lg top-[105%] z-[90]  bg-white ">
-                        {streams.map((cls) => (
-                          <div
-                            key={cls}
-                            className="w-full h-10 flex  items-center border-b-2 justify-center bg-white font-semibold  hover:bg-[#F58612] hover:text-white"
-                            onClick={() => handleOptionClick3(cls)}
-                          >
-                            <p>{cls}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+            {(educationform.currentclass === "11th Class" ||
+              educationform.currentclass === "12th Class") && (
+              <div className="flex w-[45%]  flex-col">
+                <p className="text-base font-medium">Stream</p>
+                <div
+                  onClick={toggleDropdown3}
+                  className="cursor-pointer relative flex items-center justify-center"
+                >
+                  <input
+                    type="text"
+                    onMouseLeave={handleMouseLeave}
+                    onMouseEnter={handleMouseEnter}
+                    placeholder="PCM/PCB/Commerce/Arts"
+                    className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
+                    name="stream"
+                    autoComplete="off"
+                    readOnly
+                    value={educationform.stream}
+                    onChange={handleInputChange3}
+                    id=""
+                  />
+                  {dropdownOpen3 && (
+                    <div className="absolute w-full border-2 border-b-0 shadow-lg top-[105%] z-[90]  bg-white ">
+                      {streams.map((cls) => (
+                        <div
+                          key={cls}
+                          className="w-full h-10 flex  items-center border-b-2 justify-center bg-white font-semibold  hover:bg-[#F58612] hover:text-white"
+                          onClick={() => handleOptionClick3(cls)}
+                        >
+                          <p>{cls}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              )}
+              </div>
+            )}
           </div>
-          {(educationform.class === "11th Class" ||
-            educationform.class === "12th Class") && (
-            <div className="w-full mt-5 flex items-center justify-between px-16">
-              <div className="w-[45%] h-full">
-                <p className="text-lg font-medium">
-                  Class 10<sup className="font-medium">th</sup> Percentage
-                </p>
-                <input
-                  className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
-                  type="text"
-                  name="class10percentage"
-                  placeholder="Enter class 10th Percentage"
-                  value={educationform.class10percentage}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="w-[45%] h-full">
-                <p className="text-lg font-medium">
-                  Class 10<sup className="font-medium">th</sup> School Name
-                </p>
-                <input
-                  className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
-                  type="text"
-                  name="class10schoolname"
-                  placeholder="Enter class 10th School name"
-                  value={educationform.class10schoolname}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-          )}
-          {(educationform.class === "11th Class" ||
-            educationform.class === "12th Class") && (
+          {(educationform.currentclass === "11th Class" ||
+            educationform.currentclass === "12th Class") && (
             <div className="w-full mt-5 flex items-center justify-between px-16">
               <div className="flex w-[45%] flex-col">
                 <p className="text-lg font-medium">
@@ -301,9 +342,11 @@ console.log(educationform);
                     value={educationform.class10educationBoard}
                     onChange={handleInputChange4}
                     placeholder="Select Board"
+                    autoComplete="off"
+                    readOnly
                     className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
                     name="class10educationBoard"
-                    autoComplete="off"
+           
                   />
                   {dropdownOpen4 && (
                     <div className="absolute shadow-lg top-[105%] z-[99] border-2 border-b-0 w-full bg-white h-fit">
@@ -335,6 +378,47 @@ console.log(educationform);
               </div>
             </div>
           )}
+          {(educationform.currentclass === "11th Class" ||
+            educationform.currentclass === "12th Class") && (
+            <div className="w-full mt-5 flex items-center justify-between px-16">
+              <div className="w-[45%] h-full">
+                <p className="text-lg font-medium">
+                  Class 10<sup className="font-medium">th</sup> Percentage
+                </p>
+                <input
+                  className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
+                  type="text"
+                  name="class10percentage"
+                  placeholder="Enter class 10th Percentage"
+                  value={educationform.class10percentage}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="w-[45%] h-full">
+                <p className="text-lg font-medium">
+                  Class 10<sup className="font-medium">th</sup> School Name
+                </p>
+                <input
+                  className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
+                  type="text"
+                  name="class10schoolname"
+                  placeholder="Enter class 10th School name"
+                  value={educationform.class10schoolname}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+          )}
+        
+          <div className="w-full center ">
+          <button
+              onClick={SubmitHandler}
+              className="py-2 px-4 rounded-lg bg-[#008BDC] text-white mt-5"
+              disabled={loading}
+            >
+              {loading ? "Submitting..." : "Submit"}
+            </button>
+          </div>
         </div>
       </div>
     </div>

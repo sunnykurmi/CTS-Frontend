@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Nav from "../Nav";
 import { Link } from "react-router-dom";
-import { RiArrowLeftSLine, RiPencilLine } from "@remixicon/react";
+import { RiArrowLeftSLine, RiEdit2Line, RiPencilLine } from "@remixicon/react";
 import { useDispatch, useSelector } from "react-redux";
 import { asynccurrentUser } from "../../../store/Actions/userActions";
 import EditAvatar from "./EditAvatar";
@@ -14,6 +14,7 @@ export default function Profile() {
   const { user } = useSelector((state) => state.user);
   const [ShowAvatar, setShowAvatar] = useState(false);
   const [ShowForm, setShowForm] = useState(false);
+  const [ShowEducation, setShowEducation] = useState(false);
 
   useEffect(() => {
     dispatch(asynccurrentUser());
@@ -32,15 +33,22 @@ export default function Profile() {
     setShowForm(false);
   };
 
+  const openEducation = () => {
+    setShowEducation(true);
+  };
+  const closeEducation = () => {
+    setShowEducation(false);
+  };
+
   if (!user) {
     return <Loader />;
   }
-
+console.log(user);
   return (
     <>
       {ShowAvatar && <EditAvatar onClose={closeaddavatar} />}
       {ShowForm && <EditProfileForm onClose={closeeditform} />}
-      {/* <AddEducation /> */}
+      {ShowEducation && <AddEducation onClose={closeEducation} />}
       <Nav />
       <div className="w-full pt-10">
         <div className="w-44  left-0 h-full flex items-center justify-center">
@@ -80,7 +88,13 @@ export default function Profile() {
                 {user.email}
               </h1>
               <h1 className="text-lg   text-[#070707b9]  font-medium ">
-                +91 {user.contact ? user.contact : "-"}
+                {user.contact ? (
+                  user.contact
+                ) : (
+                  <div 
+            onClick={openeditform}
+            className="text-[#008BDC] cursor-pointer">+add contact</div>
+                )}
               </h1>
               <h1 className="text-lg  text-[#070707b9] font-medium capitalize">
                 {user.city
@@ -110,7 +124,13 @@ export default function Profile() {
             </div>
             <div className="w-[60%] ">
               <div className="text-[#151515d0] w-[90%] text-base font-medium capitalize">
-                {user.bio ? user.bio : "-"}
+                {user.bio ? (
+                  user.bio
+                ) : (
+                  <div 
+            onClick={openeditform}
+            className="text-[#008BDC] cursor-pointer">+add bio</div>
+                )}
               </div>
             </div>
           </div>
@@ -120,7 +140,13 @@ export default function Profile() {
             </div>
             <div className="w-[60%] ">
               <div className="text-[#151515d0] w-[90%] text-base font-medium capitalize">
-                {user.summary ? user.summary : "-"}
+                {user.summary ? (
+                  user.summary
+                ) : (
+                  <div 
+            onClick={openeditform}
+            className="text-[#008BDC] cursor-pointer">+add summary</div>
+                )}
               </div>
             </div>
           </div>
@@ -130,13 +156,17 @@ export default function Profile() {
             </div>
             <div className="w-[60%] ">
               <p className="text-[#151515d0] w-[90%] text-base font-medium capitalize">
-                {user.dateofbirth
-                  ? new Date(user.dateofbirth).toLocaleDateString("en-GB", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })
-                  : "-"}
+                {user.dateofbirth ? (
+                  new Date(user.dateofbirth).toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })
+                ) : (
+                  <div 
+            onClick={openeditform}
+            className="text-[#008BDC] cursor-pointer">+add DOB</div>
+                )}
               </p>
             </div>
           </div>
@@ -145,36 +175,75 @@ export default function Profile() {
               EDUCATION
             </div>
             <div className="w-[60%] ">
-              <div className="flex">
-                -
-                {/* <button className="text-blue-600 font-medium">+ Add Education</button> */}
-                    
-                {/* <div className=" w-[80%] capitalize  mb-5">
-                  <div className="text-[#151515d0] text-xl font-semibold ">
-                    sagar college bhopal
-                  </div>
-                  <div className=" w-[40vh]  justify-between  flex gap-5">
-                    <div className="text-[#151515d0] text-base font-medium ">
-                      <b> class : </b>
-                      10<sup className="font-medium normal-case">th</sup>
-                    </div>
-                    <div className="text-[#151515d0] w-[50%] text-base font-medium ">
-                      <b> score : </b>
-                      68%
-                    </div>
-                  </div>
-                  <div className="  w-[40vh] justify-between flex gap-5">
-                    <div className="text-[#151515d0] text-base font-medium ">
-                      <b> Board : </b>
-                      CBSE
-                    </div>
-                    <div className="text-[#151515d0] w-[50%] text-base font-medium ">
-                      <b> year : </b>
-                      2019-2020
-                    </div>
-                  </div>
-                </div> */}
-              </div>
+            <div className="flex flex-col">
+  {user.education && user.education.currentclass !== "" ? (
+    <>
+    <div className="flex w-full">
+      <div className="w-[80%]  capitalize mb-5">
+        <div className="text-[#151515d0] text-xl font-semibold">
+          {user?.education?.schoolname}
+        </div>
+        <div className="w-[40vh] justify-between flex gap-5">
+          <div className="text-[#151515d0] text-base font-medium">
+            <b> class : </b>
+            {user?.education?.currentclass?.replace(" Class", "")}
+          </div>
+          <div className="text-[#151515d0] w-[50%] text-base font-medium">
+            <b> score : </b>
+            {user?.education?.percentage}%
+          </div>
+        </div>
+        <div className="w-[40vh] justify-between flex gap-5">
+          <div className="text-[#151515d0] text-base font-medium">
+            <b> Board : </b>
+            {user?.education?.educationBoard}
+          </div>
+          <div className="text-[#151515d0] w-[50%] text-base font-medium">
+            <b> year : </b>
+            {user?.education?.passingyear}
+          </div>
+        </div>
+      </div>
+      <div className=" center   ">
+        <button  onClick={openEducation} className="text-sm center py-1 px-4 border-2 rounded-full"> <RiPencilLine className="scale-75"/> Edit</button>
+      </div>
+    </div>
+      {user.education && user.education.class10schoolname !== "" ? (
+        <div className="w-[80%] capitalize mb-5">
+          <div className="text-[#151515d0] text-xl font-semibold">
+            {user?.education?.class10schoolname}
+          </div>
+          <div className="w-[40vh] justify-between flex gap-5">
+            <div className="text-[#151515d0] text-base font-medium">
+              <b> class : </b>
+              10th
+            </div>
+            <div className="text-[#151515d0] w-[50%] text-base font-medium">
+              <b> score : </b>
+              {user?.education?.class10percentage}%
+            </div>
+          </div>
+          <div className="w-[40vh] justify-between flex gap-5">
+            <div className="text-[#151515d0] text-base font-medium">
+              <b> Board : </b>
+              {user?.education?.class10educationBoard}
+            </div>
+            <div className="text-[#151515d0] w-[50%] text-base font-medium">
+              <b> year : </b>
+              {user?.education?.class10passingyear}
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+    </>
+  ) : (
+    <button onClick={openEducation} className="text-[#008BDC]  w-fit font-medium">
+      + Add Education
+    </button>
+  )}
+</div>
             </div>
           </div>
           <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">

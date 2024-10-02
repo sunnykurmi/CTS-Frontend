@@ -47,8 +47,6 @@ export const getpendingroadmap = () => async (dispatch, getState) => {
 export const uploadroadmap = (formdata) => async (dispatch, getState) => {
   try {
     dispatch(setLoading(true)); // Set loading to true
-    console.log(formdata);
-    console.log("object");
     const response = await axios.post(`/api/v1/admin/upload-update-roadmap/`,formdata);
     dispatch(setLoading(false))
     return response.data; // Return the data
@@ -73,3 +71,37 @@ export const getallinternships = () => async (dispatch, getState) => {
   }
 };
 
+export const uploadportfolio = (formdata) => async (dispatch, getState) => {
+  try {
+    dispatch(setLoading(true)); // Set loading to true
+    const response = await axios.post(`/api/v1/admin/createportfolio`,formdata);
+    dispatch(setLoading(false))
+    return response.data; // Return the data
+  } catch (error) {
+    dispatch(setLoading(false)); // Reset loading on error
+    throw error; // Throw error to handle it in the component
+  }
+};
+
+export const editportfolio = (id , formdata) => async (dispatch, getState) => {
+  try {
+    dispatch(setLoading(true)); // Set loading to true
+    const response = await axios.post(`/api/v1/admin/updateportfolio/${id}`,formdata);
+    dispatch(setLoading(false))
+    return response.data; // Return the data
+  } catch (error) {
+    dispatch(setLoading(false)); // Reset loading on error
+    throw error; // Throw error to handle it in the component
+  }
+};
+export const deleteportfolio = (id ) => async (dispatch, getState) => {
+  try {
+    dispatch(setLoading(true)); // Set loading to true
+    const response = await axios.post(`/api/v1/admin/deleteportfolio/${id}`);
+    dispatch(setLoading(false))
+    return response.data; // Return the data
+  } catch (error) {
+    dispatch(setLoading(false)); // Reset loading on error
+    throw error; // Throw error to handle it in the component
+  }
+};

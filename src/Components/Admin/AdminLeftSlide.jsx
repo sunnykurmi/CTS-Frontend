@@ -15,8 +15,8 @@ export default function AdminLeftSlide({
 }) {
   const getButtonClass = (component) => {
     return selectedComponent === component
-      ? "flex gap-4 items-center justify-start pl-6 font-semibold h-[90%] w-[80%] border-2 border-[#2a2a2ab6] rounded-lg bg-[black] text-white"
-      : "flex gap-4 items-center justify-start pl-6 font-semibold h-[90%] w-[80%] border-2 border-[#2a2a2ab6] rounded-lg";
+      ? " center font-semibold h-[90%] w-[80%] border-2 border-[#2a2a2ab6] rounded-lg bg-[black] text-white"
+      : " center font-semibold h-[90%] w-[80%] border-2 border-[#2a2a2ab6] rounded-lg";
   };
 
   return (
@@ -29,7 +29,7 @@ export default function AdminLeftSlide({
               className={getButtonClass("AllStudents")}
               onClick={() => setSelectedComponent("AllStudents")}
             >
-              <RiHome2Line />
+
               <p>AllStudents</p>
             </button>
           </div>
@@ -38,7 +38,7 @@ export default function AdminLeftSlide({
               className={getButtonClass("AllRoadmaps")}
               onClick={() => setSelectedComponent("AllRoadmaps")}
             >
-              <RiRoadMapLine />
+      
               <p>AllRoadmaps</p>
             </button>
           </div>
@@ -47,7 +47,7 @@ export default function AdminLeftSlide({
               className={getButtonClass("AllInternships")}
               onClick={() => setSelectedComponent("AllInternships")}
             >
-              <RiRoadMapLine />
+      
               <p>All Internships</p>
             </button>
           </div>
@@ -56,8 +56,17 @@ export default function AdminLeftSlide({
               className={getButtonClass("PendingRoadmaps")}
               onClick={() => setSelectedComponent("PendingRoadmaps")}
             >
-              <RiRoadMapLine />
+      
               <p>Pending Roadmaps</p>
+            </button>
+          </div>
+          <div className="w-full h-[8vh] flex items-center justify-center">
+            <button
+              className={getButtonClass("AllPortfolios")}
+              onClick={() => setSelectedComponent("AllPortfolios")}
+            >
+      
+              <p>All Portfolios</p>
             </button>
           </div>
 

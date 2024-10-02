@@ -128,165 +128,79 @@ function AbroadHome() {
         </div>
         
       </div>
-      <div className="w-full flex items-center justify-center pb-10 mt-32">
-        <div
-          id="footer"
-          className="flex flex-col p-20 bg-zinc-900 rounded-[40px] max-md:px-5"
-        >
-          <div className="flex flex-wrap justify-between w-full text-sm font-medium min-h-[392px] text-zinc-400 max-md:max-w-full">
+      <div className="w-full flex items-center  justify-center px-32 p-20 pb-10 max-[600px]:p-0">
+      <div id="footer" className=" max-[600px]:rounded-none rounded-2xl flex flex-col gap-10 w-full  bg-zinc-900 p-5">
+        <div className="footer-wrapper flex flex-wrap gap-8 lg:justify-evenly">
+          <div className="image-wrapper w-[300px] h-[100px]">
             <img
-              loading="lazy"
-              src="/Images/CTS   Logo.png"
-              className="object-contain shrink-0 self-start aspect-[2.87] w-[152px]"
+            className="max-[600px]:w-[60%] max-[600px]:mt-6 "
+              src="https://www.crosstheskylimits.online/Images/CTS%20%20%20Logo.png"
+              alt=""
             />
-            <div className="flex justify-center h-full min-w-[240px] w-[808px] max-md:max-w-full">
-              <div className="flex flex-col flex-1 shrink pl-20 w-full basis-0 min-w-[240px] max-md:max-w-full">
-                <div className="flex flex-wrap gap-1.5 px-1.5 w-full max-md:max-w-full">
-                  <div className="flex flex-col grow shrink self-start w-[115px]">
-                    <div className="pb-5 w-full text-xs uppercase whitespace-nowrap text-slate-50">
-                      Roadmap
-                    </div>
-
-                    <div className="pb-4 w-full">
-                      {" "}
-                      <a href="#home">Home</a>{" "}
-                    </div>
-                    <div className="pb-4 w-full">
-                      {" "}
-                      <Link to="/signup">Start for free</Link>{" "}
-                    </div>
-                    <div className="pb-4 w-full whitespace-nowrap">
-                      <Link to="/login">login now</Link>{" "}
-                    </div>
-                    <div className="flex pb-4 w-full min-h-[37px]" />
-                  </div>
-                  <div className="flex flex-col grow shrink justify-center items-start pr-11 w-[175px]">
-                    <div className="flex flex-col w-36 max-w-full min-h-[392px]">
-                      <div className="pb-5 w-full text-xs uppercase whitespace-nowrap text-slate-50">
-                        Features
-                      </div>
-                      <div className="pb-4 w-full leading-5 whitespace-nowrap">
-                        WhatsApp
-                        <br />
-                        Communities
-                      </div>
-                      <div className="pb-4 w-full whitespace-nowrap">
-                        Challenges
-                      </div>
-                      <div className="pb-4 w-full">Event Hosting</div>
-                      <div className="pb-4 w-full">CTS Internships</div>
-                      <div className="pb-4 w-full whitespace-nowrap">
-                        SATisfactory
-                      </div>
-                      <div className="pb-4 w-full">DSAT Crash Course</div>
-                      <div className="pb-4 w-full">CTS Graduate</div>
-                      <div className="pb-4 w-full">Personalized Portfolio</div>
-                      <div className="pb-4 w-full">Interlango Plus</div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col grow shrink justify-center pr-16 w-[175px]">
-                    <div className="flex flex-col w-full min-h-[392px]">
-                      <div className="pb-5 w-full text-xs uppercase text-slate-50">
-                        Use cases
-                      </div>
-                      <div className="pb-4 w-full leading-5">
-                        For UnderGrade Students
-                      </div>
-                      <div className="pb-4 w-full leading-5">
-                        For High School Students
-                      </div>
-                      <div className="pb-4 w-full leading-5">
-                        For Graduate
-                        <br />
-                        Students
-                      </div>
-                      <div className="pb-4 w-full leading-5">
-                        For Aspiring
-                        <br />
-                        Parents
-                      </div>
-                      <div className="pb-4 w-full">For Networking</div>
-                      <div className="pb-4 w-full leading-5">
-                        Aspiring <br />
-                        Communities
-                        <br />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col grow shrink w-[115px]">
-                    <div className="pb-5 w-full text-xs uppercase whitespace-nowrap text-slate-50">
-                      Organization
-                    </div>
-                    <div className="pb-4 w-full">About Us</div>
-                    <div className="pb-4 w-full">Partner With Us</div>
-                    <div className="pb-4 w-full whitespace-nowrap">Career</div>
-                    <div className="pb-4 w-full whitespace-nowrap">Academy</div>
-                    <div className="pb-4 w-full">Contact Us</div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-          <div className="flex flex-wrap gap-10 justify-between items-center mt-16 w-full max-md:mt-10 max-md:max-w-full">
-            <div className="flex items-center self-stretch my-auto text-xs min-w-[240px] text-neutral-400">
-            <div className="flex gap-5 mt-2 max-[600px]:gap-2 items-center">
-                <a
-                  className="hover:text-white"
-                  href="https://www.instagram.com/krishna_mit_"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <RiInstagramFill className="max-[600px]:scale-75" />
-                </a>
-                <a
-                  className="hover:text-white"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://wa.link/wbwwp2"
-                >
-                  <RiWhatsappFill className="max-[600px]:scale-75" />
-                </a>
-                <a
-                  className="hover:text-white"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://youtube.com/@krishnamit"
-                >
-                  <RiYoutubeFill className="max-[600px]:scale-75" />
-                </a>
-                <a
-                  className="hover:text-white"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.linkedin.com/in/krishna-mit"
-                >
-                  <RiLinkedinBoxFill className="max-[600px]:scale-75" />
-                </a>
-              </div>
-              <div className="flex self-stretch my-auto items-center">
-                <div className="flex flex-col justify-center items-start pr-2 pl-6 max-md:pl-5">
-                  <div className="min-h-[18px]">Terms of service</div>
-                </div>
-                <div className="whitespace-nowrap">Privacy</div>
-              </div>
+          <div className="links-wrapper grid grid-cols-2 gap-8 md:grid-cols-3 md:gap-12 md:ml-10 lg:ml-20 lg:mt-10 lg:grid-cols-4">
+            <div className="section">
+              <h2 className="text-white font-semibold mb-2">ROADMAP</h2>
+              <a href="#home" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">Home</a>
+              <a href="/signup" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">Start for free</a>
+              <a href="/login" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">Login now</a>
             </div>
-            <div className="flex items-center self-stretch my-auto">
-              <div className="flex flex-col self-stretch my-auto text-sm font-medium leading-none uppercase whitespace-nowrap text-neutral-100 text-opacity-70 w-[46px]">
-                <div className="flex justify-center items-center px-1 w-full">
-                  <img
-                    loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/962216d2ee20b4535be6b35e1dcd699aeda0fcb74363d6fc3ac06e3d163c1997?placeholderIfAbsent=true&apiKey=dddf50d431064bd4b76d52f0b630fcc4"
-                    className="object-contain shrink-0 self-stretch my-auto w-4 aspect-square"
-                  />
-                  <div className="self-stretch pl-1 my-auto">en</div>
-                </div>
-              </div>
-              <div className="flex flex-col items-start self-stretch pl-4 my-auto text-xs text-neutral-400">
-                <div>Copyright © 2024</div>
-              </div>
+            <div className="section">
+              <h2 className="text-white font-semibold mb-2">FEATURES</h2>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">WhatsApp Communities</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">Challenges</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">Event Hosting</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">CTS Internships</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">SATisfactory</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">DSAT Crash Course</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">CTS Graduate</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">Personalized Portfolio</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">Interlango Plus</a>
+            </div>
+            <div className="section">
+              <h2 className="text-white font-semibold mb-2">USE CASES</h2>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">For UnderGrade Students</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">For High School Students</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">For Graduate Students</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">For Aspiring Parents</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">For Networking</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">Aspiring Communities</a>
+            </div>
+            <div className="section">
+              <h2 className="text-white font-semibold mb-2">ORGANIZATION</h2>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">About Us</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">Partner With Us</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">Career</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">Academy</a>
+              <a href="#" className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50">Contact Us</a>
             </div>
           </div>
         </div>
+        <div className="copyright-wrapper flex flex-col gap-4 items-center justify-center">
+          <div className="socials-wrapper flex gap-4 text-3xl">
+            <a href="https://www.instagram.com/krishna_mit_" className="text-zinc-300"
+              >
+                <RiInstagramFill/>
+               
+            </a>
+            <a href="https://www.linkedin.com/in/krishna-mit" className="text-zinc-300"
+              >
+                <RiLinkedinBoxFill/>
+            </a>
+            <a href="https://wa.link/wbwwp2" className="text-zinc-300"
+              >
+              <RiWhatsappFill/>
+            </a>
+            <a href="https://youtube.com/@krishnamit" className="text-zinc-300"
+              >
+              <RiYoutubeFill/>
+            </a>
+          </div>
+          <p className="text-zinc-300">
+            © 2024 Cross The Sky Limits. All rights reserved.
+          </p>
+        </div>
+      </div>
       </div>
     </div>
   );

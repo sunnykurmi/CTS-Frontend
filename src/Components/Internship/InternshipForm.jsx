@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 export default function InternshipForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState(null);
   const [userInput, setUserInput] = useState({
     name: "",
@@ -16,6 +17,7 @@ export default function InternshipForm() {
     classGrade: "",
     city: "",
     income: "",
+    mode: "",
     board: "",
     dreamuniversity: "",
     reason: "",
@@ -31,6 +33,11 @@ export default function InternshipForm() {
     }));
   };
 
+  const handleModeChange = (mode) => (event) => {
+    event.preventDefault();
+    handleChange("mode")({ target: { value: mode } });
+  };
+
   const handleArrayChange = (name, value) => {
     setUserInput((prevInput) => ({
       ...prevInput,
@@ -38,7 +45,7 @@ export default function InternshipForm() {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const allFieldsFilled = Object.values(userInput).every(
       (value) => value !== "" && value.length !== 0
@@ -47,11 +54,13 @@ export default function InternshipForm() {
       alert("All fields are required");
       return;
     }
-    dispatch(SubmitInternship(userInput));
-    alert("Form Submitted Successfully");
-    navigate("/");
-
-    // Add form submission logic here (e.g., send data to backend)
+    setLoading(true);
+    const success = await dispatch(SubmitInternship(userInput));
+    setLoading(false);
+    if (success) {
+      alert("Form Submitted Successfully");
+      navigate("/");
+    }
   };
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -159,8 +168,13 @@ export default function InternshipForm() {
 
   return (
     <div>
-      <div className="w-full center p-10 overflow-x-hidden flex-col max-[600px]:p-0 ">
-        <div className="w-[60%] py-10 shadow-xl p-10 max-[600px]:w-full ">
+      <div className="w-full center p-5 overflow-x-hidden flex-col max-[600px]:p-0 ">
+        <div className="flex max-[600px]:flex-col">
+
+        <div className="w-[50%] p-10 h-screen flex items-start justify-center max-[600px]:h-fit max-[600px]:items-center max-[600px]:w-full">
+          <img className="w-full shadow-lg" src="/Images/intern2.jpg" alt="" />
+        </div>
+        <div className="w-[50%]   p-5 max-[600px]:w-full ">
           <div className="w-full center mb-10">
             <p className="text-2xl font-medium">Apply for Internship In CTS</p>
           </div>
@@ -226,7 +240,7 @@ export default function InternshipForm() {
               </div>
               <div className="input-field w-[45%]">
                 <p className="font-medium text-lg">
-                  Family Income{" "}
+                  FamilyAnnual Income{" "}
                   <span className="text-xs font-medium">(inRs)</span>{" "}
                 </p>
                 <input
@@ -337,7 +351,7 @@ export default function InternshipForm() {
                   <RiArrowDownSLine className="absolute right-2 cursor-pointer text-[#F58612]" />
                   {dropdownOpenInterest && (
                     <div
-                      className="absolute right-0 p-5 shadow-lg top-[103%] z-[9] w-[50vw] gap-2 flex flex-wrap bg-white h-fit max-[600px]:w-[100vw] max-[600px]:right-0 max-[600px]:p-0 max-[600px]:scale-75" 
+                      className="absolute right-0 p-5 shadow-lg top-[103%] z-[9] w-[50vw] gap-2 flex flex-wrap bg-white h-fit max-[600px]:w-[100vw] max-[600px]:right-0 max-[600px]:p-0 max-[600px]:scale-75"
                       onMouseLeave={handleMouseLeave}
                       onMouseEnter={handleMouseEnter}
                     >
@@ -360,8 +374,35 @@ export default function InternshipForm() {
               </div>
             </div>
             <div className="w-full flex justify-between items-center mt-3">
+              <p className="font-medium text-lg">Mode Of Internship</p>
+              <div className="relative w-[45%] font-semibold gap-6 h-12 flex items-center ">
+                <button
+                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
+                    userInput.mode === "Online"
+                      ? "bg-[#F58612] text-white"
+                      : "border-[#F58612]"
+                  }`}
+                  onClick={handleModeChange("Online")}
+                >
+                  Online
+                </button>
+                <button
+                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
+                    userInput.mode === "Offline"
+                      ? "bg-[#F58612] text-white"
+                      : "border-[#F58612]"
+                  }`}
+                  onClick={handleModeChange("Offline")}
+                >
+                  Offline
+                </button>
+              </div>
+            </div>
+            <div className="w-full flex justify-between items-center mt-3">
               <div className="h-full w-[45%] pt-3">
-                <p className="font-medium">Reason for joining Internship</p>
+                <p className="font-medium text-lg">
+                  Reason for joining Internship
+                </p>
               </div>
               <div className="w-[45%] flex flex-wrap justify-end gap-2">
                 <div className="w-full relative flex items-center justify-center">
@@ -377,7 +418,9 @@ export default function InternshipForm() {
             </div>
             <div className="w-full flex justify-between items-center mt-3">
               <div className="h-full w-[45%] pt-3">
-                <p className="font-medium">Your Extra Curricular Activities</p>
+                <p className="font-medium text-lg">
+                  Your Extra Curricular Activities
+                </p>
               </div>
               <div className="w-[45%] flex flex-wrap justify-end gap-2">
                 <div className="w-full relative flex items-center justify-center">
@@ -393,14 +436,21 @@ export default function InternshipForm() {
             </div>
             <div className="w-full center mt-5">
               <button
-                type="submit"
+            type="submit" disabled={loading}
                 className="bg-[#F58612] text-white font-semibold py-2 px-4 rounded-lg"
               >
-                Submit
+         {loading ? "Submitting..." : "Submit"}
               </button>
             </div>
           </form>
         </div>
+        </div>
+        <div className="flex w-full items-center justify-evenly">
+          <img className="w-[30%] max-[600px]:w-[40%]" src="/Images/intern1.jpg" alt="" />
+          <img className="w-[30%] max-[600px]:w-[40%]" src="/Images/intern3.jpg" alt="" />
+        </div>
+    
+     
         <div className="w-full center flex-col p-20 px-44 max-[600px]:p-4">
           <p className="text-2xl font-medium mb-10">About Internship</p>
 
@@ -458,6 +508,7 @@ export default function InternshipForm() {
             sure all your details are correct. <br />
           </p>
         </div>
+       
       </div>
     </div>
   );

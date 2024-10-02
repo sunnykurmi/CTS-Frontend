@@ -96,3 +96,13 @@ export const forgotpassword = (data, navigate) => async (dispatch) => {
   }
 };
 
+
+export const addeducation = (formData, id) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    await axios.post(`/api/v1/user/edituser/${id}/education`, formData);
+    dispatch(setLoading(false));
+  } catch (error) {
+    dispatch(setLoading(false));
+  }
+};

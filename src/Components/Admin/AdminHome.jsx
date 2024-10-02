@@ -8,11 +8,12 @@ import Loader from '../Loader/Loader';
 import AllRoadmaps from './AllRoadmaps';
 import PendingRoadmaps from './PendingRoadmaps';
 import AllInternships from './AllInternships';
+import AllPortfolios from './AllPortfolios';
 
 export default function AdminHome() {
   const dispatch = useDispatch(); 
   const { user } = useSelector((state) => state.user); 
-  const [selectedComponent, setSelectedComponent] = useState('PendingRoadmaps');
+  const [selectedComponent, setSelectedComponent] = useState('AllPortfolios');
 
   useEffect(() => {
     dispatch(asynccurrentUser()); 
@@ -34,6 +35,7 @@ export default function AdminHome() {
           {selectedComponent === 'AllRoadmaps' && <AllRoadmaps />}
           {selectedComponent === 'PendingRoadmaps' && <PendingRoadmaps />}
           {selectedComponent === 'AllInternships' && <AllInternships />}
+          {selectedComponent === 'AllPortfolios' && <AllPortfolios />}
         </div>
       </div>
     </div>

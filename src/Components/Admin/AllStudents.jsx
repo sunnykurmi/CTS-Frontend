@@ -44,9 +44,12 @@ function AllStudents() {
               <p className="font-medium text-sm">{student.name}</p>
             </div>
             <div className="h-full w-[20%] flex flex-col items-center justify-center">
-              <p className="text-xs font-semibold text-gray-600">Contact</p>
-              <p className="font-medium text-sm">{student.contact}</p>
+              <p className="text-xs font-semibold text-gray-600">Email</p>
+              <p className="font-medium text-sm">{student.email}</p>
             </div>
+            <div className="h-full w-[20%] flex flex-col items-center justify-center">
+              <p className="text-xs font-semibold text-gray-600">Contact</p>
+              <p className="font-medium text-sm">{student.contact ? student.contact : "-"}</p>            </div>
             <div className="h-full w-[20%] flex flex-col items-center justify-center">
               <p className="text-xs font-semibold text-gray-600">
                 Roadmaps created

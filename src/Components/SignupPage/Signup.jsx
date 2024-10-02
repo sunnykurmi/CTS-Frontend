@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { asyncsignup } from "../../store/Actions/userActions";
+import Googlelogin from "../GoogleLogin/Googlelogin";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -62,26 +63,29 @@ export default function Signup() {
   }, [isAuth, navigate]);
   return (
     <>
-      <div className="w-full h-[100vh] p-10 flex max-[600px]:flex-col">
-        <div className="w-[70%] h-full flex flex-col items-center border-r-2 border-r-[#00000033] ">
-          <div className="w-full h-[20%]  ">
-            <img className="w-[30%]" src="/Images/CTS   Logo.png" alt="" />
+      <div className="w-full h-[100vh] p-10 flex max-[600px]:flex-col max-[600px]:p-2">
+        <div className="w-[70%] h-full flex flex-col items-center border-r-2 border-r-[#00000033] max-[600px]:w-full max-[600px]:border-0 max-[600px]:h-fit ">
+          <div className="w-full h-[20%] max-[600px]:h-fit  ">
+            <img className="w-[30%] max-[600px]:w-[40%]" src="/Images/CTS   Logo.png" alt="" />
           </div>
-          <div className="w-full flex items-center justify-center h-[80%] ">
+          <div className="w-full flex items-center justify-center h-[80%] max-[600px]:hidden ">
             <img
-              src="https://img.freepik.com/premium-vector/learning-small-people-characters-doing-various-tasks-books-trophy_113065-52.jpg"
+              src="/Images/illustration.gif"
               alt=""
             />
           </div>
         </div>
-        <div className="w-[30%] h-full">
-          <div className="w-full flex items-center justify-center h-[20vh]">
-            <img className="w-[20%]" src="/Images/logo gray.PNG" alt="" />
-            <h1 className="text-4xl font-semibold  ">
+        <div className="w-[30%] h-full max-[600px]:w-full">
+          <div className="w-full flex items-center justify-center h-[16vh] max-[600px]:h-[15vh]">
+            <img className="w-[20%] max-[600px]:hidden" src="/Images/logo gray.PNG" alt="" />
+            <h1 className="font-semibold text-3xl max-[600px]:hidden ">
               Signup To Cross The <br /> Skylimits
             </h1>
+            <h1 className=" font-semibold text-3xl lg:hidden  ">
+              Signup To Join CTS
+            </h1>
           </div>
-          <div className="w-full pt-5 flex flex-col gap-5 items-center justify-center ">
+          <div className="w-full  flex flex-col gap-5 items-center justify-center  ">
             <div className="w-full flex flex-col items-center">
               <div className="w-[80%] ">
                 {error && error === "User details required" ? (
@@ -122,7 +126,7 @@ export default function Signup() {
               />
               <RiUserLine className="text-[#0000006f]" />
             </div>
-            <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2 ">
+            {/* <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2 ">
               <input
                 className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
                 type="number"
@@ -134,7 +138,7 @@ export default function Signup() {
                 id=""
               />
               <RiPhoneLine className="text-[#0000006f]" />
-            </div>
+            </div> */}
             <div className="w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2 ">
               <input
                 className="h-full text-xl w-[85%] pr-6 outline-none flex items-center justify-center "
@@ -162,6 +166,9 @@ export default function Signup() {
         <p className="font-semibold text-lg">Create Account</p>
       )}
              
+            </div>
+            <div className="cursor-pointer w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[white]">
+              <Googlelogin />
             </div>
             <div className="w-full flex items-center justify-center">
               <div className="w-[90%] flex items-center justify-between">
