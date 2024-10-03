@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { AllPortfolio } from "../../store/Actions/portfolioAction";
+import Nav from "../Student/Nav";
 
 export default function PortfolioHome() {
   const [Portfolios, setPortfolios] = useState([]);
   const dispatch = useDispatch();
+  const isAuth = useSelector ((state) => state.user.isAuth);
+
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -34,11 +37,14 @@ export default function PortfolioHome() {
 
   return (
     <div>
-      <div className="w-full flex items-center justify-between p-5 scroller ">
-        <img className="w-[10%]" src="/Images/CTS   Logo.png" alt="" />
-        <div className="w-[25%] h-full flex items-center justify-evenly ">
+    {!isAuth ? (
+      <div className="w-full flex items-center justify-between p-5 scroller">
+        <Link to="/" className="w-full">
+        <img className="w-[15%]" src="/Images/CTS   Logo.png" alt="" />
+        </Link>
+        <div className="w-[25%] h-full flex items-center justify-evenly">
           <Link to="/login" className="max-[600px]:hidden">
-            <button className="w-28 h-10 rounded-full border-2 border-[#F58612]  font-medium">
+            <button className="w-28 h-10 rounded-full border-2 border-[#F58612] font-medium">
               LOGIN
             </button>
           </Link>
@@ -49,16 +55,19 @@ export default function PortfolioHome() {
           </Link>
         </div>
       </div>
+    ) : (
+      <Nav />
+    )}
       <div className="w-full center uppercase text-4xl font-semibold">
         <p>Top Portfolios</p>
       </div>
-      <div className="w-full grid grid-cols-4 pl-10 gap-5 mt-10 py-10 max-[600px]:grid-cols-2 max-[600px]:gap-2 max-[600px]:pl-6">
+      <div className="w-full grid grid-cols-2 pl-24 gap-5 mt-10 py-10 max-[600px]:grid-cols-2 max-[600px]:gap-2 max-[600px]:pl-6">
         {Portfolios.map((portfolio, i) => (
           <div
             key={i}
             onMouseEnter={(e) => handleMouseEnter(i, e)}
             onMouseLeave={(e) => handleMouseLeave(i, e)}
-            className="relative w-[20vw] h-[20vw] overflow-hidden border-2 rounded-xl  max-[600px]:w-[40vw] max-[600px]:h-[30vw]"
+            className="relative w-[40vw] h-[20vw] overflow-hidden border-2 rounded-xl  max-[600px]:w-[40vw] max-[600px]:h-[30vw]"
           >
             <video
                loop

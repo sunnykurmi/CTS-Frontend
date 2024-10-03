@@ -6,12 +6,13 @@ import {
 } from "@remixicon/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { asyncsignin } from "../../store/Actions/userActions";
 import Googlelogin from "../GoogleLogin/Googlelogin";
 
 export default function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { isAuth, error, loading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -43,9 +44,10 @@ export default function Login() {
 
   useEffect(() => {
     if (isAuth) {
-      navigate("/home");
+      const from = location.state?.from || "/home";
+      navigate(from);
     }
-  }, [isAuth, navigate]);
+  }, [isAuth, navigate, location.state]);
 
   return (
     <>
