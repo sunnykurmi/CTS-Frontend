@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { AllPortfolio } from "../../store/Actions/portfolioAction";
 import Nav from "../Student/Nav";
+import { asynccurrentUser } from "../../store/Actions/userActions";
 
 export default function PortfolioHome() {
   const [Portfolios, setPortfolios] = useState([]);
@@ -33,6 +34,7 @@ export default function PortfolioHome() {
       }
     };
     fetchData();
+    dispatch(asynccurrentUser());
   }, [dispatch]);
 
   return (
@@ -58,7 +60,7 @@ export default function PortfolioHome() {
     ) : (
       <Nav />
     )}
-      <div className="w-full center uppercase text-4xl font-semibold">
+      <div className="w-full center uppercase text-4xl mt-5 font-semibold">
         <p>Top Portfolios</p>
       </div>
       <div className="w-full grid grid-cols-2 pl-24 gap-5 mt-10 py-10 max-[600px]:grid-cols-2 max-[600px]:gap-2 max-[600px]:pl-6">

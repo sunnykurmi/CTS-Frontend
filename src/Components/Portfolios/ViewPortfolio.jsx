@@ -3,12 +3,15 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AllPortfolio } from "../../store/Actions/portfolioAction";
 import Loader from "../Loader/Loader";
-import { sendpayment, verifypayment } from "../../store/Actions/paymentAction";
+import { sendpayment } from "../../store/Actions/paymentAction";
 import {
   RiArrowLeftCircleFill,
   RiArrowLeftLine,
   RiArrowLeftSLine,
+  RiArrowRightUpFill,
+  RiStarFill,
 } from "@remixicon/react";
+import { asynccurrentUser } from "../../store/Actions/userActions";
 
 export default function ViewPortfolio() {
   const key = "rzp_live_S2B5SbkYZAHF0J";
@@ -17,7 +20,8 @@ export default function ViewPortfolio() {
   const [Portfolios, setPortfolios] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isAuth = useSelector ((state) => state.user.isAuth);
+  const isAuth = useSelector((state) => state.user.isAuth);
+  const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,6 +32,7 @@ export default function ViewPortfolio() {
       }
     };
     fetchData();
+    dispatch(asynccurrentUser());
   }, [dispatch]);
 
   const portfolio = Portfolios.find((portfolio) => portfolio._id === id);
@@ -37,12 +42,11 @@ export default function ViewPortfolio() {
   }
 
   const checkoutHandler = async () => {
-
     if (!isAuth) {
-        window.alert("Please login first to do payment");
-        navigate("/login", { state: { from: `/portfolio/${id}` } });
-        return;
-      }
+      window.alert("Please login first to do payment");
+      navigate("/login", { state: { from: `/portfolio/${id}` } });
+      return;
+    }
 
     setIsLoading(true);
     try {
@@ -53,12 +57,12 @@ export default function ViewPortfolio() {
         currency: "INR",
         name: portfolio.name,
         description: portfolio.description,
-        image: "https://avatars.githubusercontent.com/u/25058652?v=4", //loggedinuser img
+        image: user.avatar.url, //loggedinuser img
         order_id: order.id,
-        callback_url: dispatch(verifypayment()),
+        callback_url: "https://cts-roadmap-sunny-hwm6.onrender.com/api/v1/payment/verify-payment",
         prefill: {
-          name: "Gaurav Kumar", //loggedinuser name
-          email: "gaurav.kumar@example.com", //loggedinuser email
+          name: user.name, //loggedinuser name
+          email: user.email, //loggedinuser email
         },
         notes: {
           address: "CTS Bhopal",
@@ -66,6 +70,12 @@ export default function ViewPortfolio() {
         theme: {
           color: "#121212",
         },
+        // handler: function (response) {
+        //     const userConfirmed = window.confirm("Payment successful! Check Gmail?");
+        //     if (userConfirmed) {
+        //       window.open("https://mail.google.com", "_blank");
+        //     }
+        //   },
       };
       const razor = new window.Razorpay(options);
       razor.open();
@@ -93,8 +103,8 @@ export default function ViewPortfolio() {
 
         <p>{portfolio.name}</p>
       </div>
-      <div className="center mt-10 gap-5">
-        <div className="w-[60%] h-[70vh]  overflow-hidden    rounded-lg">
+      <div className="w-full  h-fit pt-24 p-5 lg:pl-28 lg:flex lg:justify-center lg:items-center lg:gap-20  ">
+        <div className="video-container w-full h-[40vh] lg:h-[50vh] rounded-lg overflow-hidden sm:w-2/3">
           <video
             className="w-full h-full object-cover"
             loop
@@ -103,58 +113,34 @@ export default function ViewPortfolio() {
             src={portfolio.video.url}
           ></video>
         </div>
-        <div className="w-[30%] h-[70vh] font-medium ">
-          <div className="center text-3xl mb-10  font-semibold">
-            About Portfolio
+        <div className="text-container w-full h-fit mt-5 lg:w-[50%] lg:h-fit lg:p-10 ">
+          <h3 className="text-lg font-semibold">CTS Portfolio</h3>
+          <h1 className="text-4xl font-bold mt-5 capitalize">
+            {portfolio.name}
+          </h1>
+          <p className="mt-3 leading-5 lg:w-10/12">{portfolio.description}</p>
+          <h2 className="font-bold text-xl text-red-400 mt-5 inline-flex items-center gap-2 cursor-pointer  ">
+            DemoLink <RiArrowRightUpFill />
+          </h2>
+          <div className="rating-div mt-5 flex items-center gap-2 text-xl">
+            <RiStarFill />
+            <p className="font-bold">4.5/5</p>
           </div>
-          <div className="flex text-xl gap-5">
-            <p>Portfolio Name -</p>
-            <p>{portfolio.name}</p>
-          </div>
-          <div className="flex text-xl gap-5">
-            <p>Portfolio Demo Link -</p>
-
-            <a
-              className="text-blue-700 font-semibold"
-              href={
-                portfolio.livelink.startsWith("http")
-                  ? portfolio.livelink
-                  : `http://${portfolio.livelink}`
-              }
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Open
-            </a>
-          </div>
-          <div className="flex text-xl gap-5">
-            <p>Portfolio Price -</p>
-            <p>{portfolio.price}</p>
-          </div>
-          <div className="flex text-xl gap-5">
-            <p>Portfolio Purchased Count -</p>
-            <p>{portfolio.purchased}</p>
-          </div>
-          <div className="flex text-xl gap-5">
-            <p>Portfolio Description -</p>
-            <p>{portfolio.description}</p>
-          </div>
-          <div className="center ">
-            <button
-              onClick={checkoutHandler}
-              className="px-4 py-2 bg-blue-500 font-semibold text-white rounded-lg mt-5"
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <div className="center gap-3">
-                  <div className="loader"></div>
-                  Please Wait...
-                </div>
-              ) : (
-                `Pay ${portfolio.price}`
-              )}
-            </button>
-          </div>
+          <button
+            onClick={checkoutHandler}
+            disabled={isLoading}
+            className="bg-[#F58612] rounded-md text-white p-5 px-10 font-semibold mt-5 text-xl"
+          >
+            {isLoading ? (
+              <div className="center gap-3">
+                <div className="loader"></div>
+                Please Wait...
+              </div>
+            ) : (
+              ` Buy Now Rs. ${portfolio.price}`
+            )}
+          </button>
+          <p className="mt-3">Inclusive of all taxes</p>
         </div>
       </div>
     </div>

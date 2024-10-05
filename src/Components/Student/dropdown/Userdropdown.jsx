@@ -37,7 +37,7 @@ export default function Userdropdown() {
           <p className="text-2xl mt-5 font-semibold">Loading...</p>
         </div>
       ) : (
-        <div className=" text-xl fixed right-2 py-2 gap-4 px-5 border-2 flex items-start justify-center flex-col bg-white shadow-lg ">
+        <div className=" text-xl fixed z-[999] right-2 py-2 gap-4 px-5 border-2 flex items-start justify-center flex-col bg-white shadow-lg ">
             {currentPath !== "/home" && (
         <Link to="/home">
           <div className="flex cursor-pointer gap-2 items-center justify-center w-full">

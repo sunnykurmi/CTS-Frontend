@@ -19,6 +19,7 @@ import InternshipForm from "./Components/Internship/InternshipForm";
 import InternProfile from "./Components/Admin/InternProfile";
 import PortfolioHome from './Components/Portfolios/PortfolioHome';
 import ViewPortfolio from "./Components/Portfolios/ViewPortfolio";
+import PaymentSuccess from "./Components/Portfolios/PaymentSuccess";
 
 export default function App() {
     const GoogleAuthWrapper=({isLogin})=>{
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/home" element={<StudentHome/>} />
         <Route path="/portfolio" element={<PortfolioHome/>} />
         <Route path="/portfolio/:id" element={<ViewPortfolio/>} />
+        <Route path="/portfolio/paymentsuccess/:id" element={<PaymentSuccess/>} />
         <Route path="/apply-internship-form" element={<InternshipForm/>} />
         <Route path="/abroadstudy" element={<AbroadHome/>} />
         <Route path="/create-roadmap" element={<GenerateRoadmap/>} />
