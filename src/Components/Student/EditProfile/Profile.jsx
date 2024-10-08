@@ -43,7 +43,6 @@ export default function Profile() {
   if (!user) {
     return <Loader />;
   }
-console.log(user);
   return (
     <>
       {ShowAvatar && <EditAvatar onClose={closeaddavatar} />}

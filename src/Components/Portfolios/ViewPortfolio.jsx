@@ -59,7 +59,8 @@ export default function ViewPortfolio() {
         description: portfolio.description,
         image: user.avatar.url, //loggedinuser img
         order_id: order.id,
-        callback_url: "https://cts-roadmap-sunny-hwm6.onrender.com/api/v1/payment/verify-payment",
+        callback_url:
+          "https://cts-roadmap.onrender.com/api/v1/payment/verify-payment",
         prefill: {
           name: user.name, //loggedinuser name
           email: user.email, //loggedinuser email
@@ -70,12 +71,15 @@ export default function ViewPortfolio() {
         theme: {
           color: "#121212",
         },
-        // handler: function (response) {
-        //     const userConfirmed = window.confirm("Payment successful! Check Gmail?");
-        //     if (userConfirmed) {
-        //       window.open("https://mail.google.com", "_blank");
-        //     }
-        //   },
+        method: {
+          netbanking: true,
+          card: true,
+          upi: true,
+          wallet: false,
+          paylater: false,
+          banktransfer: true,
+          qr: false,
+        },
       };
       const razor = new window.Razorpay(options);
       razor.open();
@@ -88,8 +92,8 @@ export default function ViewPortfolio() {
 
   return (
     <div>
-      <div className="relative center text-7xl uppercase font-semibold mt-10 ">
-        <div className="w-44 absolute left-0 h-full flex items-center justify-center text-base ">
+      <div className="relative center ">
+        <div className="w-44 absolute left-0 h-full flex items-center justify-center text-base top-14    ">
           <Link
             className=" h-12 gap-3 rounded-full  bg-[#F58612] text-white flex items-center justify-center p-2 font-bold"
             to={`/portfolio`}
@@ -100,10 +104,11 @@ export default function ViewPortfolio() {
             <button className="mr-2">Go Back </button>
           </Link>
         </div>
-
+      </div>
+      <div className="center  text-7xl uppercase font-semibold pt-10  max-[600px]:pt-32 max-[600px]:text-4xl  ">
         <p>{portfolio.name}</p>
       </div>
-      <div className="w-full  h-fit pt-24 p-5 lg:pl-28 lg:flex lg:justify-center lg:items-center lg:gap-20  ">
+      <div className="w-full  h-fit  p-5 lg:pl-28 lg:flex  lg:justify-center lg:items-center lg:gap-20   ">
         <div className="video-container w-full h-[40vh] lg:h-[50vh] rounded-lg overflow-hidden sm:w-2/3">
           <video
             className="w-full h-full object-cover"
@@ -120,7 +125,18 @@ export default function ViewPortfolio() {
           </h1>
           <p className="mt-3 leading-5 lg:w-10/12">{portfolio.description}</p>
           <h2 className="font-bold text-xl text-red-400 mt-5 inline-flex items-center gap-2 cursor-pointer  ">
-            DemoLink <RiArrowRightUpFill />
+            <a
+              className=" font-semibold center"
+              href={
+                portfolio.livelink.startsWith("http")
+                  ? portfolio.livelink
+                  : `http://${portfolio.livelink}`
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              DemoLink <RiArrowRightUpFill />
+            </a>
           </h2>
           <div className="rating-div mt-5 flex items-center gap-2 text-xl">
             <RiStarFill />

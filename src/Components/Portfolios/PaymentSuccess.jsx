@@ -1,31 +1,78 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { asynccurrentUser } from "../../store/Actions/userActions";
 import { paymentsuccess } from "../../store/Actions/paymentAction";
 
 function PaymentSuccess() {
-  const dispatch = useDispatch();
+    const [countdown, setCountdown] = useState(6);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    console.log(id);
+    const { user } = useSelector((state) => state.user);
 
-  const { id } = useParams();
-  console.log(id);
-  const { user } = useSelector((state) => state.user);
+    useEffect(() => {
+      dispatch(asynccurrentUser());
+    }, [dispatch]);
+
+    if (user) {
+      dispatch(paymentsuccess(id, user));
+    }
+
 
   useEffect(() => {
-    dispatch(asynccurrentUser());
-  }, [dispatch]);
+    const timer = setInterval(() => {
+      setCountdown(prevCountdown => {
+        if (prevCountdown === 1) {
+          clearInterval(timer);
+          navigate('/');
+        }
+        return prevCountdown - 1;
+      });
+    }, 1000);
 
-  if (user) {
-    dispatch(paymentsuccess(id, user));
-  }
-
+    return () => clearInterval(timer);
+  }, [navigate]);
   return (
     <div>
-      <div className="center h-screen w-full flex-col text-center">
-        <p className="text-2xl font-medium"> 🎉 Your Payment is Successful 🎉</p>
-        <p className=" text-xl ">Thank you for your payment </p>
-        <p>Your </p>
-        <p></p>
+      <div className="center h-screen w-full flex-col text-center ">
+        <div className="center p-5 flex-col gap-3 shadow-xl w-[30vw]">
+          <div className="redirecting-container w-full h-fit  text-end">
+          <p className="text-sm">Redirecting to Home in {countdown} </p>
+          </div>
+          <p className="text-3xl font-semibold">Payment Success</p>
+          <img
+            className="w-[50%]"
+            src="/Images/green tick payment success.gif"
+            alt=""
+          />
+          <p className="text-2xl font-medium">
+            {" "}
+            🎉 Your Payment is Successful 🎉
+          </p>
+          <p className=" text-xl ">Thank you for your payment </p>
+          <a
+            href="https://www.gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="center"
+          >
+            <button className="px-4 py-2 w-[40%] border-2 shadow-lg rounded-lg font-semibold text-black center gap-3">
+              {" "}
+              <img
+                className="w-[15%]"
+                src="https://mailmeteor.com/logos/assets/PNG/Gmail_Logo_512px.png"
+                alt=""
+              />{" "}
+              Open Gmail
+            </button>
+          </a>
+          <p className="font-medium">Fix your meeting with our Developer Now</p>
+          <a href="/" className="font-medium text-orange-500 underline">
+            Home Page
+          </a>
+        </div>
       </div>
     </div>
   );
