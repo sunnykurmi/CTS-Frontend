@@ -85,7 +85,7 @@ export default function Home() {
             <Link className="hover-link" to="/apply-internship-form">
               INTERNSHIP
             </Link>
-            <Link className="hover-link" to="/abroadstudy">
+            <Link className="hover-link" to="/services">
               SERVICES
             </Link>
             <Link className="hover-link" to="/abroadstudy">

@@ -20,7 +20,8 @@ import InternProfile from "./Components/Admin/InternProfile";
 import PortfolioHome from './Components/Portfolios/PortfolioHome';
 import ViewPortfolio from "./Components/Portfolios/ViewPortfolio";
 import PaymentSuccess from "./Components/Portfolios/PaymentSuccess";
-
+import ServicesHome from "./Components/Home/ExclusiveServices/ServicesHome";
+import EssayHome from "./Components/Home/ExclusiveServices/Essay Editing/EssayHome";
 export default function App() {
     const GoogleAuthWrapper=({isLogin})=>{
       return(
@@ -38,6 +39,7 @@ export default function App() {
         <Route path="/portfolio/:id" element={<ViewPortfolio/>} />
         <Route path="/portfolio/paymentsuccess/:id" element={<PaymentSuccess/>} />
         <Route path="/apply-internship-form" element={<InternshipForm/>} />
+        <Route path="/services" element={<ServicesHome/>} />
         <Route path="/abroadstudy" element={<AbroadHome/>} />
         <Route path="/create-roadmap" element={<GenerateRoadmap/>} />
         <Route path="/edit-profile" element={<Profile/>} />
@@ -50,6 +52,7 @@ export default function App() {
         <Route path="/student/:id" element={<StudentProfile/>} />
         <Route path="/ivy" element={<IVYHome/>} />
         <Route path="/*" element={<ErrorPage/>} />
+        <Route path="/services/essay-editing" element={<EssayHome/>} />
       </Routes>
     </div>
   );
