@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { asynccurrentUser } from "../../store/Actions/userActions";
-import { paymentsuccess } from "../../store/Actions/paymentAction";
+import { essaypaymentsuccess } from "../../../../store/Actions/servicesAction";
+import { asynccurrentUser } from "../../../../store/Actions/userActions";
 
-function PaymentSuccess() {
+function EssaySuccess() {
     const [countdown, setCountdown] = useState(6);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -15,10 +15,13 @@ function PaymentSuccess() {
       dispatch(asynccurrentUser());
     }, [dispatch]);
 
-    if (user) {
-      dispatch(paymentsuccess(id, user));
-    }
 
+    useEffect(() => {
+        if (user && id) {
+          dispatch(essaypaymentsuccess(id, user));
+        }
+      }, [user, id, dispatch]);
+      
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -77,4 +80,4 @@ function PaymentSuccess() {
   );
 }
 
-export default PaymentSuccess;
+export default EssaySuccess;EssaySuccess

@@ -48,7 +48,7 @@ const ServicesHome = () => {
 
 
   const NavigateHandler = (link)=>{
-    console.log(link)
+  
     navigate(link)  
   }
 

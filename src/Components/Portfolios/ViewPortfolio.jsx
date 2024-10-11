@@ -48,7 +48,7 @@ export default function ViewPortfolio() {
       return;
     }
 
-    setIsLoading(true);
+    setIsLoading(true); 
     try {
       const order = await dispatch(sendpayment(id));
       const options = {

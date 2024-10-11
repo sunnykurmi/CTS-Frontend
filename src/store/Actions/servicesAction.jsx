@@ -11,7 +11,7 @@ export const essaypayment = (formData) => async (dispatch) => {
 
 export const essaypaymentsuccess = (id, user) => async (dispatch) => {
   try {
-    const order = await axios.post(`/api/v1/services/paymentsuccess/${id}`, user);
+    const order = await axios.post(`/api/v1/services/payment-success-essay/${id}`, user);
     return order.data;
   } catch (error) {
     console.log(error);
