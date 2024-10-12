@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { asynccurrentUser } from "../../store/Actions/userActions";
-import { paymentsuccess } from "../../store/Actions/paymentAction";
+import { commonapppaymentsuccess } from "../../../../store/Actions/servicesAction";
+import { asynccurrentUser } from "../../../../store/Actions/userActions";
 
-function PaymentSuccess() {
+function CommonSuccess() {
     const [countdown, setCountdown] = useState(10);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -15,11 +15,13 @@ function PaymentSuccess() {
       dispatch(asynccurrentUser());
     }, [dispatch]);
 
+
     useEffect(() => {
-      if (user && id) {
-        dispatch(paymentsuccess(id, user));
-      }
-    }, [user, id, dispatch]);
+        if (user && id) {
+          dispatch(commonapppaymentsuccess(id, user));
+        }
+      }, [user, id, dispatch]);
+      
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -68,7 +70,6 @@ function PaymentSuccess() {
               Open Gmail
             </button>
           </a>
-          <p className="font-medium">Fix your meeting with our Developer Now</p>
           <a href="/" className="font-medium text-orange-500 underline">
             Home Page
           </a>
@@ -78,4 +79,4 @@ function PaymentSuccess() {
   );
 }
 
-export default PaymentSuccess;
+export default CommonSuccess

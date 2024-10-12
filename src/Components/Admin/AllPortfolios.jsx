@@ -296,7 +296,7 @@ export default function AllPortfolios() {
           +Add Portfolio
         </button>
       </div>
-      <div className="w-full h-[80vh] flex flex-col gap-2 px-5 py-10 overflow-y-scroll capitalize">
+      <div className="w-full h-[80vh] flex flex-col gap-2 px-5 py-10 pb-20 overflow-y-scroll capitalize">
         {Portfolios.length === 0 ? (
           <p>No portfolio present</p>
         ) : (

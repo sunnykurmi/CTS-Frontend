@@ -14,7 +14,7 @@ import {
 import { asynccurrentUser } from "../../store/Actions/userActions";
 
 export default function ViewPortfolio() {
-  const key = "rzp_live_S2B5SbkYZAHF0J";
+  const key = import.meta.env.VITE_RAZORPAY_KEY;
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [Portfolios, setPortfolios] = useState([]);
@@ -55,12 +55,13 @@ export default function ViewPortfolio() {
         key: key,
         amount: portfolio.price,
         currency: "INR",
-        name: portfolio.name,
-        description: portfolio.description,
-        image: user.avatar.url, //loggedinuser img
+        name: "Cross The Skylimits",
+        description: "Payment for Portfolio",
+        image: "https://crosstheskylimits.online/Images/CTS%20%20%20Logo.png", //loggedinuser img
+
         order_id: order.id,
         callback_url:
-          "https://cts-roadmap.onrender.com/api/v1/payment/verify-payment",
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/payment/verify-payment`,
         prefill: {
           name: user.name, //loggedinuser name
           email: user.email, //loggedinuser email

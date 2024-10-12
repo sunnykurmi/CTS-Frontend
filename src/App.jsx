@@ -23,6 +23,10 @@ import PaymentSuccess from "./Components/Portfolios/PaymentSuccess";
 import ServicesHome from "./Components/Home/ExclusiveServices/ServicesHome";
 import EssayHome from "./Components/Home/ExclusiveServices/Essay Editing/EssayHome";
 import EssaySuccess from "./Components/Home/ExclusiveServices/Essay Editing/EssaySuccess";
+import CommonHome from "./Components/Home/ExclusiveServices/Common App/CommonHome";
+import CommonSuccess from "./Components/Home/ExclusiveServices/Common App/CommonSuccess";
+import AdminProtectedRoute from "./utils/AdminProtectedRoute";
+
 export default function App() {
   const GoogleAuthWrapper = ({ isLogin }) => {
     return (
@@ -53,9 +57,32 @@ export default function App() {
 
         <Route path="/forget-link/:id" element={<ForgotPassword />} />
 
-        <Route path="/admin" element={<AdminHome />} />
-        <Route path="/intern/:id" element={<InternProfile />} />
-        <Route path="/student/:id" element={<StudentProfile />} />
+        <Route
+          path="/admin"
+          element={
+            <AdminProtectedRoute
+            >
+              <AdminHome />
+            </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path="/intern/:id"
+          element={
+            <AdminProtectedRoute>
+              <InternProfile />
+            </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/:id"
+          element={
+            <AdminProtectedRoute>
+              <StudentProfile />
+            </AdminProtectedRoute>
+          }
+        />
+
 
 
         <Route path="/portfolio" element={<PortfolioHome />} />
@@ -69,6 +96,9 @@ export default function App() {
         <Route path="/services" element={<ServicesHome />} />
         <Route path="/services/essay-editing" element={<EssayHome />} />
         <Route path="/services/essay-editing/paymentsuccess/:id" element={<EssaySuccess />} />
+
+        <Route path="/services/common-app-review" element={<CommonHome />} />
+        <Route path="/services/common-app-review/paymentsuccess/:id" element={<CommonSuccess />} />
       </Routes>
     </div>
   );

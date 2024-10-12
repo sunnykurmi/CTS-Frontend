@@ -5,7 +5,7 @@ import { essaypaymentsuccess } from "../../../../store/Actions/servicesAction";
 import { asynccurrentUser } from "../../../../store/Actions/userActions";
 
 function EssaySuccess() {
-    const [countdown, setCountdown] = useState(6);
+    const [countdown, setCountdown] = useState(10);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -21,7 +21,7 @@ function EssaySuccess() {
           dispatch(essaypaymentsuccess(id, user));
         }
       }, [user, id, dispatch]);
-      
+
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -70,7 +70,6 @@ function EssaySuccess() {
               Open Gmail
             </button>
           </a>
-          <p className="font-medium">Fix your meeting with our Developer Now</p>
           <a href="/" className="font-medium text-orange-500 underline">
             Home Page
           </a>
@@ -80,4 +79,4 @@ function EssaySuccess() {
   );
 }
 
-export default EssaySuccess;EssaySuccess
+export default EssaySuccess

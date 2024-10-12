@@ -12,12 +12,12 @@ import { asynccurrentUser } from "../../../../store/Actions/userActions";
 import Loader from "../../../Loader/Loader";
 
 const EssayHome = () => {
-  const key = "rzp_test_PjRJHVEk8wvOyg";
+  const key = import.meta.env.VITE_RAZORPAY_KEY
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuth = useSelector((state) => state.user.isAuth);
   const { user } = useSelector((state) => state.user);
-  const [isLoading, setIsLoading] = useState(false);  
+  const [isLoading, setIsLoading] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isFileInputDisabled, setIsFileInputDisabled] = useState(false);
@@ -32,7 +32,7 @@ const EssayHome = () => {
     essaytext: "",
     price: "",
     essayfile: null,
-    id: "",// Use logged-in user's ID
+    id: "", // Use logged-in user's ID
   });
   useEffect(() => {
     if (user) {
@@ -127,15 +127,22 @@ const EssayHome = () => {
   };
 
   const submithandler = async () => {
-
-    if (!userInput.essaytype || !userInput.instructions || !userInput.price || !userInput.id) {
+    if (
+      !userInput.essaytype ||
+      !userInput.instructions ||
+      !userInput.price ||
+      !userInput.id
+    ) {
       alert("Please fill in all required fields. or login again");
       console.log(userInput);
       return;
     }
-  
+
     // Check for either essayfile or essaytext, but not both
-    if ((userInput.essayfile && userInput.essaytext) || (!userInput.essayfile && !userInput.essaytext)) {
+    if (
+      (userInput.essayfile && userInput.essaytext) ||
+      (!userInput.essayfile && !userInput.essaytext)
+    ) {
       alert("Please provide either an essay file or essay text, but not both.");
       return;
     }
@@ -168,16 +175,16 @@ const EssayHome = () => {
         key: key,
         amount: userInput.price * 100,
         currency: "INR",
-        name: userInput.essaytype,
-        description: userInput.essaytext,
-        image: user.avatar.url, //loggedinuser img
-                order_id: order.id,
+        name: "Cross The Skylimits",
+        description: "Payment for Essay Editing",
+        image: "https://crosstheskylimits.online/Images/CTS%20%20%20Logo.png", //loggedinuser img
+        order_id: order.id,
         callback_url:
-          "http://localhost:3030/api/v1/services/essay-verify-payment",
-          prefill: {
-            name: user.name, //loggedinuser name
-            email: user.email, //loggedinuser email
-          },
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/services/essay-verify-payment`,
+        prefill: {
+          name: user.name, //loggedinuser name
+          email: user.email, //loggedinuser email
+        },
         notes: {
           address: "CTS Bhopal",
         },
@@ -198,9 +205,7 @@ const EssayHome = () => {
       razor.open();
     } catch (error) {
       console.error("Payment failed:", error);
-
-    }
-    finally {
+    } finally {
       setIsLoading(false);
     }
   };
@@ -399,20 +404,20 @@ const EssayHome = () => {
           </div>
 
           <div className="mt-4">
-          <button
-  disabled={isLoading}
-  onClick={submithandler}
-  className="bg-[#F58612] text-xl font-medium p-5 text-white py-2 rounded-md"
->
-  {isLoading ? (
-    <div className="center gap-3">
-      <div className="loader"></div>
-      Please Wait...
-    </div>
-  ) : (
-    `Pay ${userInput.price ? `₹${userInput.price}` : ""}`
-  )}
-</button>
+            <button
+              disabled={isLoading}
+              onClick={submithandler}
+              className="bg-[#F58612] text-xl font-medium p-5 text-white py-2 rounded-md"
+            >
+              {isLoading ? (
+                <div className="center gap-3">
+                  <div className="loader"></div>
+                  Please Wait...
+                </div>
+              ) : (
+                `Pay ${userInput.price ? `₹${userInput.price}` : ""}`
+              )}
+            </button>
           </div>
         </div>
       )}

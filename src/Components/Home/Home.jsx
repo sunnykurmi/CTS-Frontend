@@ -122,12 +122,12 @@ export default function Home() {
           <RiCloseLine className="scale-150" onClick={toggleMenu} />
         </div>
         <div className=" pr-5 flex-col uppercase text-2xl font-semibold center gap-3">
-          <a href="#home">Home</a>
-          <Link to="/portfolio">Portfolio</Link>
-          <Link to="/apply-internship-form">Internship </Link>
-          <Link to="/abroadstudy">CTS Abroad</Link>
-          <Link to="/abroadstudy">Services</Link>
-          <Link to="/login" className="">
+        <a href="/">Home</a>
+       <Link to="/portfolio">Portfolio</Link>
+       <Link to="/apply-internship-form">Internship </Link>
+       <Link to="/abroadstudy">CTS Abroad</Link>
+       <Link to="/services">Services</Link>
+       <Link to="/login" className="">
             Login{" "}
           </Link>
           <Link to="/signup" className="">

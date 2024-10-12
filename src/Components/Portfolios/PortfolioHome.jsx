@@ -45,7 +45,7 @@ export default function PortfolioHome() {
     dispatch(asynccurrentUser());
   }, [dispatch]);
 
-  if(Portfolios.length === 0) return <div><Loader></Loader></div>
+  // if(Portfolios.length === 0) return <div><Loader></Loader></div>
 
 
   const toggleMenu = () => {
@@ -109,11 +109,11 @@ export default function PortfolioHome() {
        <RiCloseLine className="scale-150" onClick={toggleMenu} />
      </div>
      <div className=" pr-5 flex-col uppercase text-2xl font-semibold center gap-3">
-       <a href="#home">Home</a>
+       <a href="/">Home</a>
        <Link to="/portfolio">Portfolio</Link>
        <Link to="/apply-internship-form">Internship </Link>
        <Link to="/abroadstudy">CTS Abroad</Link>
-       <Link to="/abroadstudy">Services</Link>
+       <Link to="/services">Services</Link>
        <Link to="/login" className="">
          Login{" "}
        </Link>
@@ -129,13 +129,13 @@ export default function PortfolioHome() {
       <div className="w-full center uppercase text-4xl mt-5 font-semibold">
         <p>Top Portfolios</p>
       </div>
-      <div className="w-full grid grid-cols-2 pl-24 gap-5 mt-10 py-10 max-[600px]:grid-cols-2 max-[600px]:gap-2 max-[600px]:pl-6">
+      <div className="w-full grid grid-cols-2 pl-24 gap-5 mt-10 py-10 max-[600px]:mt-0 max-[600px]:grid-cols-1 max-[600px]:gap-5 max-[600px]:pl-0">
         {Portfolios.map((portfolio, i) => (
           <div
             key={i}
             onMouseEnter={(e) => handleMouseEnter(i, e)}
             onMouseLeave={(e) => handleMouseLeave(i, e)}
-            className="relative w-[40vw] h-[20vw] overflow-hidden border-2 rounded-xl  max-[600px]:w-[40vw] max-[600px]:h-[30vw]"
+            className="relative w-[40vw] h-[20vw] overflow-hidden border-2 rounded-xl  max-[600px]:w-[90%] max-[600px]:ml-[5%] max-[600px]:h-[60vw]"
           >
              <Link to={`/portfolio/${portfolio._id}`} >
             <video
@@ -145,6 +145,29 @@ export default function PortfolioHome() {
               src={portfolio.video.url}
             ></video>
              </Link>
+
+
+             <div className="absolute w-full flex items-center justify-end p-2 bg-gradient-to-b from-transparent to-black h-14 z-[99] bottom-0 gap-2  min-[600px]:hidden ">
+              <Link to={`/portfolio/${portfolio._id}`} >
+              <button className="px-4 py-1 border-2  text-white rounded-lg font-semibold">
+                View
+              </button>
+              </Link>
+              <a
+                    className="text-blue-600 font-semibold"
+                    href={
+                      portfolio.livelink.startsWith("http")
+                        ? portfolio.livelink
+                        : `http://${portfolio.livelink}`
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+              <button className="px-4 py-1 border-2  bg text-white rounded-lg font-semibold">
+                Demo
+              </button>
+              </a>
+            </div>
               {hoveredIndex === i  && (
             <div className="absolute w-full flex items-center justify-end p-2 bg-gradient-to-b from-transparent to-black h-14 z-[99] bottom-0 gap-2 max-[600px]:hidden  ">
               <Link to={`/portfolio/${portfolio._id}`} >
