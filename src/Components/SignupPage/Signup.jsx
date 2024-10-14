@@ -18,7 +18,6 @@ export default function Signup() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    contact: "",
     password: "",
   });
 
@@ -33,7 +32,7 @@ export default function Signup() {
 
   const signupuser = async (event) => {
     event.preventDefault();
-    if (!formData.name || !formData.email || !formData.contact || !formData.password) {
+    if (!formData.name || !formData.email  || !formData.password) {
       alert("All fields are required");
       return;
     }
