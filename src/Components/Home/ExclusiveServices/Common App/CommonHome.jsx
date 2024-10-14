@@ -150,10 +150,6 @@ const CommonHome = () => {
 
 
 
-  if (!user) {
-    return <Loader />;
-  }
-
   return (
     <div className="w-full p-5 flex flex-col ">
       <div className="w-full h-fit">

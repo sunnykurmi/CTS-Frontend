@@ -45,7 +45,7 @@ export default function PortfolioHome() {
     dispatch(asynccurrentUser());
   }, [dispatch]);
 
-  // if(Portfolios.length === 0) return <div><Loader></Loader></div>
+  if(Portfolios.length === 0) return <div><Loader></Loader></div>
 
 
   const toggleMenu = () => {
@@ -73,7 +73,7 @@ export default function PortfolioHome() {
          <Link className="hover-link" to="/apply-internship-form">
            INTERNSHIP
          </Link>
-         <Link className="hover-link" to="/abroadstudy">
+         <Link className="hover-link" to="/services">
            SERVICES
          </Link>
          <Link className="hover-link" to="/abroadstudy">

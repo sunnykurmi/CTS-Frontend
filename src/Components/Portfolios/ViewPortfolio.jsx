@@ -40,6 +40,8 @@ export default function ViewPortfolio() {
   if (!portfolio) {
     return <Loader />;
   }
+  
+  console.log(user);
 
   const checkoutHandler = async () => {
     if (!isAuth) {
@@ -50,7 +52,7 @@ export default function ViewPortfolio() {
 
     setIsLoading(true); 
     try {
-      const order = await dispatch(sendpayment(id));
+      const order = await dispatch(sendpayment(id , user._id));
       const options = {
         key: key,
         amount: portfolio.price,

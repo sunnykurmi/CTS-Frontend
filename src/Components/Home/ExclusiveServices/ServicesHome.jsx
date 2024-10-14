@@ -126,7 +126,7 @@ const ServicesHome = () => {
       <div className="w-full">
         <h1 className="text-4xl font-bold text-center">Exclusive Services</h1>
       </div>
-      <div className="w-full h-fit p-10 pl-36 pr-36 grid grid-cols-3 gap-10 place-items-center max-[1180px]:pl-10 max-[1180px]:pr-10">
+      <div className="w-full h-fit p-10 pl-36 pr-36 grid grid-cols-3  gap-10 place-items-center max-[1180px]:pl-10 max-[1180px]:pr-10">
         {services.map((service, index) => (
           <div key={index} className="w-[40vh] h-[50vh] shadow-lg rounded-md border-2">
             <img
