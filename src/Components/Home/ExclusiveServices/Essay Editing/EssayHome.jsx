@@ -217,7 +217,7 @@ const EssayHome = () => {
 
 
   return (
-    <div className="w-full p-5 flex flex-col items-center">
+    <div className="w-full p-5 flex flex-col items-center bg-white">
       <div className="w-full h-fit">
         <div className="w-44 absolute left-0 flex items-center justify-center text-base">
           <Link
@@ -227,15 +227,15 @@ const EssayHome = () => {
             <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
               <RiArrowLeftSLine className="text-[#0000009b]" />
             </div>
-            <button className="mr-2">Go Back</button>
+            <button className="mr-2 ">Go Back</button>
           </Link>
         </div>
-        <h1 className="text-4xl font-bold text-center">Exclusive Services</h1>
+        <h1 className="text-4xl font-bold text-center mt-16">Exclusive Services</h1>
       </div>
 
-      <div className="w-[70vw] h-fit m-auto mt-10 shadow-lg rounded-xl p-5 border-2">
-        <h1 className="text-4xl mt-7 ml-10 text-center">Essay Editing</h1>
-        <p className="w-[60%] text-center mt-5 m-auto text-zinc-500">
+      <div className="w-[70vw] h-fit mt-10 shadow-lg rounded-xl p-0 border-2 max-[456px]:w-full max-[456px]:border-none max-[456px]:rounded-none max-[456px]:shadow-none max-[456px]:mt-1 sm:p-5">
+        <h1 className="text-4xl mt-7 max-[456px]:mt-1 max-[456px]:ml-5 ml-10 text-center">Essay Editing</h1>
+        <p className="w-[60%] max-[456px]:w-full text-center mt-5 m-auto text-zinc-500">
           Essays Aren’t Just Essays. They’re Your Story—Let’s Make It
           Unforgettable. We’re the Experts in Crafting Standout Applications,
           Trusted by Ivy League Students and Top Achievers. Upload Your Essay,
@@ -290,10 +290,13 @@ const EssayHome = () => {
       </div>
 
       {isAuth && (
-        <div className="w-full mt-10 flex flex-col items-center p-10 pl-32 pr-32">
-          <div className="w-full grid grid-cols-3 place-items-center">
-            <div className="w-full">
-              <div className="relative inline-block w-full text-left mt-4 ">
+        <div className="wrapper-div w-full mt-10 flex flex-col items-center py-10 sm:p-10 sm:px-32">
+
+
+
+          <div className="w-full grid grid-cols-3 place-items-center max-[456px]:grid-cols-1">
+            <div className="w-full ">
+              <div className="relative inline-block w-full text-left mt-4">
                 <button
                   type="button"
                   className="w-full flex items-center justify-between px-4 py-2 text-xl font-semibold text-white bg-[#F58612] rounded-md"
@@ -375,10 +378,10 @@ const EssayHome = () => {
               ></textarea>
             </div>
 
-            <h1 className="text-xl font-medium mt-3">OR</h1>
+            <h1 className="text-xl font-medium mt-3 ">OR</h1>
 
-            <div>
-              <div className="w-[80vh] mt-16">
+            <div className="">
+              <div className="w-fit  mt-16 max-[456px]:w-full">
                 <h1 className="text-3xl font-medium mb-5">
                   Write Your Essay Here
                 </h1>
@@ -393,14 +396,13 @@ const EssayHome = () => {
                   // maxLength={5000}
                   onChange={handleTextareaChange}
                   disabled={isTextareaDisabled}
-                  className={`w-full h-52 p-4 border-2 rounded-md focus:outline-none focus:ring-orange-400 focus:border-[#F58612] ${
+                  className={`w-full h-64 p-4 border-2 rounded-md focus:outline-none focus:ring-orange-400 focus:border-[#F58612] ${
                     isTextareaDisabled ? "opacity-50" : ""
                   }`}
                 ></textarea>
               </div>
             </div>
           </div>
-
           <div className="mt-4">
             <button
               disabled={isLoading}

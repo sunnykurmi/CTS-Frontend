@@ -7,13 +7,14 @@ import { RiArrowLeftSLine } from "@remixicon/react";
 import { commonapppayment } from "../../../../store/Actions/servicesAction";
 
 const CommonHome = () => {
-  const key = import.meta.env.VITE_RAZORPAY_KEY;  
+  const key = import.meta.env.VITE_RAZORPAY_KEY;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuth = useSelector((state) => state.user.isAuth);
   const { user } = useSelector((state) => state.user);
   const [isLoading, setIsLoading] = useState(false);
   const [isCheckboxEnabled, setIsCheckboxEnabled] = useState(false);
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
   const [userInput, setUserInput] = useState({
     commonappid: "",
@@ -66,10 +67,11 @@ const CommonHome = () => {
 
   useEffect(() => {
     const { commonappid, password, meeting } = userInput;
-    if ((commonappid && password) || meeting) {
+    if ((commonappid && password) || meeting === "YES") {
       setIsCheckboxEnabled(true);
     } else {
       setIsCheckboxEnabled(false);
+      setIsCheckboxChecked(false); // Uncheck the checkbox if the fields are emptied
     }
   }, [userInput]);
 
@@ -80,6 +82,7 @@ const CommonHome = () => {
       return;
     }
   };
+
   const handleCheckboxClick = (event) => {
     const { commonappid, password, meeting } = userInput;
     if (
@@ -88,67 +91,69 @@ const CommonHome = () => {
     ) {
       event.preventDefault();
       alert(
-        "Please provide your Common App ID and password or select Yes or No for the meeting."
+        "Please provide your Common App ID and password or select Yes for the meeting."
       );
+    } else {
+      setIsCheckboxChecked(event.target.checked);
     }
   };
 
   const submitHandler = async () => {
-        if (isCheckboxEnabled) {
+    if (!isCheckboxChecked) {
+      alert("Please check the box to confirm your information.");
+      return;
+    }
 
-            const formData = new FormData();
-            formData.append("commonappid", userInput.commonappid || null);
-            formData.append("password", userInput.password || null);
-            formData.append("amount", userInput.amount);
-            formData.append("meeting", userInput.meeting); 
-            formData.append("userid", userInput.userid); 
-            setIsLoading(true);
-            try {
-                const order = await dispatch(commonapppayment(formData));
-                const options = {
-                  key: key,
-                  amount: userInput.price * 100,
-                  currency: "INR",
-                  name: "Cross The Skylimits",
-                  description: "Payment for Common App Review",
-                  image: "https://crosstheskylimits.online/Images/CTS%20%20%20Logo.png", //loggedinuser img
-                  order_id: order.id,
-                  callback_url:
-                   `${import.meta.env.VITE_BACKEND_URL}/api/v1/services/commonapp-verify-payment`,
-                  prefill: {
-                    name: user.name, //loggedinuser name
-                    email: user.email, //loggedinuser email
-                  },
-                  notes: {
-                    address: "CTS Bhopal",
-                  },
-                  theme: {
-                    color: "#121212",
-                  },
-                  method: {
-                    netbanking: true,
-                    card: true,
-                    upi: true,
-                    wallet: false,
-                    paylater: false,
-                    banktransfer: true,
-                    qr: false,
-                  },
-                };
-                const razor = new window.Razorpay(options);
-                razor.open();
-              } catch (error) {
-                console.error("Payment failed:", error);
-              } finally {
-                setIsLoading(false);
-              }
-        }
-          // Check for either essayfile or essaytext, but not both
-
-  }
-
-
-
+    if (isCheckboxEnabled) {
+      const formData = new FormData();
+      formData.append("commonappid", userInput.commonappid || null);
+      formData.append("password", userInput.password || null);
+      formData.append("amount", userInput.amount);
+      formData.append("meeting", userInput.meeting);
+      formData.append("userid", userInput.userid);
+      setIsLoading(true);
+      try {
+        const order = await dispatch(commonapppayment(formData));
+        const options = {
+          key: key,
+          amount: userInput.price * 100,
+          currency: "INR",
+          name: "Cross The Skylimits",
+          description: "Payment for Common App Review",
+          image: "https://crosstheskylimits.online/Images/CTS%20%20%20Logo.png", //loggedinuser img
+          order_id: order.id,
+          callback_url: `${
+            import.meta.env.VITE_BACKEND_URL
+          }/api/v1/services/commonapp-verify-payment`,
+          prefill: {
+            name: user.name, //loggedinuser name
+            email: user.email, //loggedinuser email
+          },
+          notes: {
+            address: "CTS Bhopal",
+          },
+          theme: {
+            color: "#121212",
+          },
+          method: {
+            netbanking: true,
+            card: true,
+            upi: true,
+            wallet: false,
+            paylater: false,
+            banktransfer: true,
+            qr: false,
+          },
+        };
+        const razor = new window.Razorpay(options);
+        razor.open();
+      } catch (error) {
+        console.error("Payment failed:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+  };
 
   return (
     <div className="w-full p-5 flex flex-col ">
@@ -167,11 +172,13 @@ const CommonHome = () => {
         <h1 className="text-4xl font-bold text-center">Exclusive Services</h1>
       </div>
 
-      <div className="w-[70vw] h-fit m-auto mt-10 shadow-lg rounded-xl p-5 border-2">
-        <h1 className="text-4xl mt-7 ml-10 text-center">Common App Review</h1>
-        <p className="w-[60%] overflow-hidden mt-5 m-auto text-zinc-500 ">
+      <div className="w-[70vw] h-fit m-auto mt-10 shadow-lg rounded-xl p-5 border-2 max-[456px]:w-full max-[456px]:border-none max-[456px]:rounded-none max-[456px]:shadow-none max-[456px]:mt-1 sm:p-5">
+        <h1 className="text-4xl mt-7 ml-10 max-[600px]:ml-2 text-center max-[600px]:text-3xl">
+          Common App Review
+        </h1>
+        <p className="w-[60%] shadow-lg max-[600px]:w-full overflow-hidden mt-5 m-auto text-zinc-500 ">
           <iframe
-            className="w-full h-[50vh] rounded-lg"
+            className="w-full h-[50vh] max-[600px]:h-[30vh] rounded-lg"
             src="https://www.youtube.com/embed/j0akw0Jc6RM"
             title="Review your common ￼App"
             frameBorder="0"
@@ -180,42 +187,14 @@ const CommonHome = () => {
             allowfullscreen
           ></iframe>
         </p>
-        <ul className="list-disc list-inside text-md text-gray-500 mt-10 ml-15">
-          <li className="text-xl">
-            <span className="font-semibold">Thesis Clarity 🎯</span>: Ensure the
-            main argument is clearly stated and remains consistent throughout
-            the essay.
-          </li>
-          <li className="text-xl">
-            <span className="font-semibold">Logical Flow 🔗</span>: Check for
-            smooth transitions between paragraphs to maintain logical coherence
-            and readability.
-          </li>
-          <li className="text-xl">
-            <span className="font-semibold">Structure 🏗️</span>: Confirm that
-            the essay has a clear introduction, body, and conclusion with
-            well-organized ideas.
-          </li>
-          <li className="text-xl">
-            <span className="font-semibold">Clarity and Coherence 📝</span>:
-            Improve clarity and coherence of your essay.
-          </li>
-          <li className="text-xl">
-            <span className="font-semibold">Grammar and Punctuation ✔️</span>:
-            Ensure proper grammar and punctuation.
-          </li>
-          <li className="text-xl">
-            <span className="font-semibold">Structure and Flow 🌊</span>:
-            Enhance the overall structure and flow.
-          </li>
-          <li className="text-xl">
-            <span className="font-semibold">Constructive Feedback 🗣️</span>:
-            Provide constructive feedback for better content.
-          </li>
-          <li className="text-xl">
-            <span className="font-semibold">Voice and Style 🎨</span>: Help in
-            refining your unique voice and style.
-          </li>
+        <ul className="list-disc list-inside text-md text-gray-800 mt-10 ml-15 px-20 text-xl text-center max-[600px]:px-5 max-[600px]:text-lg max-[600px]:text-start max-[600px]:leading-6">
+          “Make Your Common App Error-Free and Stand Out! According to the
+          survey, 80% of students making mistakes—some small, some serious—don’t
+          let yours hold you back. Enroll in our Common App Review Service to
+          have your profile thoroughly analyzed by experts. We’ll help you
+          polish your activities, perfect each section, and boost your chances
+          of admission. Ready to submit your strongest application? Let’s get
+          started today!”
         </ul>
         <div className="w-full center">
           <button
@@ -228,14 +207,14 @@ const CommonHome = () => {
       </div>
 
       {isAuth && (
-        <div className="steps-mom w-full h-fit p-20 px-48">
-          <div className="step1-wrapper">
+        <div className="steps-mom w-full overflow-hidden h-fit p-20 px-48 max-[600px]:p-0">
+          <div className="step1-wrapper max-[600px]:w-full ">
             <h1 className="text-2xl font-semibold">STEP-1:</h1>
             <p className="ml-2">
               Fill the form below to get your Common App reviewed
             </p>
 
-            <div className="flex items-center justify-between w-full p-10 px-20">
+            <div className="flex items-center justify-between w-full p-10 px-20 max-[600px]:px-10 max-[600px]:flex-col max-[1180px]:px-10">
               <div className="flex flex-col gap-5 w-80">
                 <div className="">
                   <h2 className="font-medium">Username/ID</h2>
@@ -264,9 +243,11 @@ const CommonHome = () => {
                 </div>
               </div>
 
-              <h1 className="text-xl font-medium mt-3">OR</h1>
+              <h1 className="text-xl font-medium mt-3 max-[600px]:mt-10 max-[600px]:text-3xl">
+                OR
+              </h1>
 
-              <div className="flex flex-col gap-3 w-[40%]">
+              <div className="flex flex-col gap-3 w-[40%] max-[600px]:w-full max-[600px]:mt-10">
                 <p className="text-lg font-normal leading-6">
                   Would you prefer to schedule a meeting with us to discuss your
                   application details instead of sharing your password? Please
@@ -298,19 +279,21 @@ const CommonHome = () => {
             </div>
           </div>
 
-          <div className="step2-wrapper">
+          <div className="step2-wrapper max-[600px]:w-[95%]">
             <h1 className="text-2xl font-semibold">STEP-2:</h1>
-            <p className="w-1/2 ml-2">
+            <p className="w-1/2 max-[1180px]:w-full ml-2">
               By checking this box, you agree to share your credentials
               securely. We prioritize your privacy and use advanced encryption
               to protect your data at all times.
             </p>
-            <p className="px-20 pt-8 items-center flex text-xl">
+            <p className="px-20 pt-8 items-center flex text-xl max-[600px]:text-lg max-[600px]:px-0">
               <input
                 type="checkbox"
                 disabled={!isCheckboxEnabled}
-                className="mr-2 custom-checkbox"
+                className="mr-2 custom-checkbox max-[600px]:w-20 max-[600px]:h-10"
                 onClick={handleCheckboxClick}
+                checked={isCheckboxChecked}
+                onChange={() => {}}
               />
               I confirm that the information provided is accurate, and I agree
               to the terms and conditions.
@@ -335,7 +318,7 @@ const CommonHome = () => {
                     Please Wait...
                   </div>
                 ) : (
-                 ` Pay ₹${userInput.amount}`
+                  ` Pay ₹${userInput.amount}`
                 )}
               </button>
             </div>
