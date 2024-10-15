@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import axios from "../../utils/axios";
 import {
-  saveUser,
+  setUser,
   removeUser,
   signuperror,
   signinerror,

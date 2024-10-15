@@ -11,7 +11,7 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    saveUser: (state, action) => {
+    setUser: (state, action) => {
       state.user = action.payload;
       state.isAuth = true;
       state.error = null;
@@ -38,6 +38,6 @@ export const userSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { saveUser, signinerror, removeUser, signuperror, setLoading } = userSlice.actions;
+export const { setUser, signinerror, removeUser, signuperror, setLoading } = userSlice.actions;
 
 export default userSlice.reducer;
