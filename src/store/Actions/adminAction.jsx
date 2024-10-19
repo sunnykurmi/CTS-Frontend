@@ -1,6 +1,6 @@
 import axios from "../../utils/axios";
 import {
-  setUser,
+  saveUser,
   removeUser,
   signuperror,
   signinerror,

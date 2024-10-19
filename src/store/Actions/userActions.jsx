@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import axios from "../../utils/axios";
 import {
-  setUser,
+  saveUser,
   removeUser,
   signuperror,
   signinerror,
@@ -12,12 +12,9 @@ import Cookies from "js-cookie";
 export const asynccurrentUser = () => async (dispatch, getState) => {
   try {
     dispatch(setLoading(true));
-    const { data } = await axios.get("/api/v1/user/user");
-    console.log(data);
-    dispatch(setUser(data.user));
-   return data;
+    const { data } = await axios.post("/api/v1/user/user");
+    dispatch(saveUser(data.user));
   } catch (error) {
-    console.log(error);
     dispatch(setLoading(false));
   }
 };
@@ -25,8 +22,8 @@ export const asynccurrentUser = () => async (dispatch, getState) => {
 export const asyncsignup = (user) => async (dispatch, getState) => {
   try {
     dispatch(setLoading(true));
-    const { data } = await axios.post("/api/v1/user/signup", user);
-    dispatch(setUser(data.user));
+    await axios.post("/api/v1/user/signup", user);
+    dispatch(asynccurrentUser());
   } catch (error) {
     dispatch(signuperror(error.response.data.message));
     dispatch(setLoading(false));
@@ -36,9 +33,8 @@ export const asyncsignup = (user) => async (dispatch, getState) => {
 export const asyncsignin = (user) => async (dispatch, getState) => {
   try {
     dispatch(setLoading(true));
-    const { data } = await axios.post("/api/v1/user/signin", user);
-    document.cookie = `token=${data.token}`;
-    await dispatch(setUser(data.user));
+    await axios.post("/api/v1/user/signin", user);
+    dispatch(asynccurrentUser());
   } catch (error) {
     console.log(error);
     dispatch(signinerror(error.response.data.message));

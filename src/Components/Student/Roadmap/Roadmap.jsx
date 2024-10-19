@@ -11,7 +11,7 @@ export default function Roadmap() {
             <div className="w-[70%] h-[80vh]  flex  flex-col items-center justify-center">
                     <img className='w-full scale-125' src="/Images/IMG_7138.GIF" alt="" />
             </div>
-            <div className="w-full flex items-center justify-center z-[99]">
+            <div className="w-full flex items-center justify-center z-[9]">
             <Link
             className=" h-12 gap-5 rounded-full pl-5 bg-[#F58612] text-white flex items-center justify-between p-2 font-bold"
             to="/create-roadmap"

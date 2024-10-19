@@ -1,23 +1,8 @@
-import {
-  RiCloseLine,
-  RiInstagramFill,
-  RiLinkedinBoxFill,
-  RiMenuLine,
-  RiWhatsappFill,
-  RiYoutubeFill,
-} from "@remixicon/react";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import HomeNav from "./HomeNav";
+import HomeFooter from "./HomeFooter";
 
 function IVYHome() {
-
-  
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
   return (
     <div id="home">
       <div className="w-full h-14 max-[600px]:h-6 flex items-center justify-center  bg-[#FCEEC5]">
@@ -25,79 +10,13 @@ function IVYHome() {
           Lets Join Us To Cross The Sky Limits 🏆
         </p>
       </div>
-      <div className="w-full h-40 flex items-center justify-center max-[600px]:h-16 ">
-        <div className="w-fit  bg-[#f8851127] h-24  rounded-full flex items-center justify-evenly max-[600px]:w-full max-[600px]:rounded-none max-[600px]:pr-2 max-[600px]:h-full max-[600px]:justify-between max-[600px]:px-5 ">
-          <img
-            className="w-[12%] max-[600px]:w-[30%]"
-            src="/Images/CTS   Logo.png"
-            alt=""
-          />
-          <div className="w-[50%] h-full flex items-center justify-evenly font-bold text-[#393E46] max-[600px]:text-xs max-[600px]:w-fit max-[600px]:gap-2 max-[600px]:hidden">
-            <a className="hover-link" href="#home">
-              HOME
-            </a>
-            <Link className="hover-link" to="/portfolio">
-              PORTFOLIO
-            </Link>
-            <Link className="hover-link" to="/apply-internship-form">
-              INTERNSHIP
-            </Link>
-            <Link className="hover-link" to="/abroadstudy">
-              SERVICES
-            </Link>
-            <Link className="hover-link" to="/abroadstudy">
-              CTS ABROAD
-            </Link>
-            <a className="hover-link" href="#footer">
-              ABOUT
-            </a>
-          </div>
-          <div className="w-[25%] h-full flex items-center justify-evenly max-[600px]:hidden ">
-            <Link to="/login" className="">
-              <button className="w-32 h-14 rounded-full border-2 border-[#0000000c]  font-bold">
-                LOGIN
-              </button>
-            </Link>
-            <Link to="/signup" className="max-[600px]:scale-50">
-              <button className="w-32 h-14 rounded-full bg-[#F58612] text-white font-bold">
-                REGISTER
-              </button>
-            </Link>
-          </div>
-          <div className="center flex-col min-[600px]:hidden">
-            <RiMenuLine onClick={toggleMenu} />
-          </div>
-        </div>
-      </div>
-      <div
-        className={`w-full h-fit pb-10 bg-white fixed top-0 left-0 z-[99] min-[600px]:hidden transition-transform duration-500 ${
-          menuOpen ? "translate-y-0" : "-translate-y-full"
-        }`}
-      >
-        {" "}
-        <div className="w-full flex items-center justify-end p-5">
-          <RiCloseLine className="scale-150" onClick={toggleMenu} />
-        </div>
-        <div className=" pr-5 flex-col uppercase text-2xl font-semibold center gap-3">
-          <a href="#home">Home</a>
-          <Link to="/portfolio">Portfolio</Link>
-          <Link to="/apply-internship-form">Internship </Link>
-          <Link to="/abroadstudy">CTS Abroad</Link>
-          <Link to="/abroadstudy">Services</Link>
-          <Link to="/login" className="">
-            Login{" "}
-          </Link>
-          <Link to="/signup" className="">
-            Register
-          </Link>
-        </div>
-      </div>
+      <HomeNav />
 
-      <div className="w-full flex items-center justify-center text-4xl mb-10  max-[600px]:text-xl max-[600px]:text-center">
-        <p>🚀 The World's Premier College Application Program! 🌐✨</p>
+      <div className="w-full flex items-center justify-center text-4xl mb-10 max-[600px]:mt-5 max-[600px]:mb-0 max-[600px]:text-xl max-[600px]:text-center">
+        <p>🚀 The {"World's"} Premier College Application Program! 🌐✨</p>
       </div>
       <div className="w-full flex flex-col items-center justify-center">
-        <div className="w-[70%] shadow-xl rounded-lg py-10 max-[600px]:w-full max-[600px]:py-2">
+        <div className="w-[70%] shadow-xl rounded-lg py-10 max-[600px]:w-full max-[600px]:rounded-none max-[600px]:shadow-none max-[600px]:py-2">
           <div className="w-full flex flex-col text-xl px-10 items-center justify-center max-[600px]:px-2">
             <p className="text-2xl mt-5 mb-10 max-[600px]:mt-2 max-[600px]:mb-5 max-[600px]:text-xl">
               🎓 Services That Redefine Success:
@@ -162,7 +81,7 @@ function IVYHome() {
                 12. End-to-End Support:
               </span>{" "}
               From i-20 to VISA assistance, departure flight guidance to arrival
-              support – we've got you covered.
+              support – {"we've"} got you covered.
               <br />
               <span className="font-semibold">
                 13. Post-Arrival Support:
@@ -680,166 +599,7 @@ function IVYHome() {
         </div>
       </div>
 
-      <div className="w-full mt-10 flex items-center justify-center pb-10 max-[600px]:pb-0">
-        <div
-          id="footer"
-          className="flex flex-col p-20 bg-zinc-900 rounded-[40px] max-md:px-5"
-        >
-          <div className="flex flex-wrap justify-between w-full text-sm font-medium min-h-[392px] text-zinc-400 max-md:max-w-full">
-            <img
-              loading="lazy"
-              src="/Images/CTS   Logo.png"
-              className="object-contain shrink-0 self-start aspect-[2.87] w-[152px]"
-            />
-            <div className="flex justify-center h-full min-w-[240px] w-[808px] max-md:max-w-full">
-              <div className="flex flex-col flex-1 shrink pl-20 w-full basis-0 min-w-[240px] max-md:max-w-full">
-                <div className="flex flex-wrap gap-1.5 px-1.5 w-full max-md:max-w-full">
-                  <div className="flex flex-col grow shrink self-start w-[115px]">
-                    <div className="pb-5 w-full text-xs uppercase whitespace-nowrap text-slate-50">
-                      Roadmap
-                    </div>
-
-                    <div className="pb-4 w-full">
-                      {" "}
-                      <a href="#home">Home</a>{" "}
-                    </div>
-                    <div className="pb-4 w-full">
-                      {" "}
-                      <Link to="/signup">Start for free</Link>{" "}
-                    </div>
-                    <div className="pb-4 w-full whitespace-nowrap">
-                      <Link to="/login">login now</Link>{" "}
-                    </div>
-                    <div className="flex pb-4 w-full min-h-[37px]" />
-                  </div>
-                  <div className="flex flex-col grow shrink justify-center items-start pr-11 w-[175px]">
-                    <div className="flex flex-col w-36 max-w-full min-h-[392px]">
-                      <div className="pb-5 w-full text-xs uppercase whitespace-nowrap text-slate-50">
-                        Features
-                      </div>
-                      <div className="pb-4 w-full leading-5 whitespace-nowrap">
-                        WhatsApp
-                        <br />
-                        Communities
-                      </div>
-                      <div className="pb-4 w-full whitespace-nowrap">
-                        Challenges
-                      </div>
-                      <div className="pb-4 w-full">Event Hosting</div>
-                      <div className="pb-4 w-full">CTS Internships</div>
-                      <div className="pb-4 w-full whitespace-nowrap">
-                        SATisfactory
-                      </div>
-                      <div className="pb-4 w-full">DSAT Crash Course</div>
-                      <div className="pb-4 w-full">CTS Graduate</div>
-                      <div className="pb-4 w-full">Personalized Portfolio</div>
-                      <div className="pb-4 w-full">Interlango Plus</div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col grow shrink justify-center pr-16 w-[175px]">
-                    <div className="flex flex-col w-full min-h-[392px]">
-                      <div className="pb-5 w-full text-xs uppercase text-slate-50">
-                        Use cases
-                      </div>
-                      <div className="pb-4 w-full leading-5">
-                        For UnderGrade Students
-                      </div>
-                      <div className="pb-4 w-full leading-5">
-                        For High School Students
-                      </div>
-                      <div className="pb-4 w-full leading-5">
-                        For Graduate
-                        <br />
-                        Students
-                      </div>
-                      <div className="pb-4 w-full leading-5">
-                        For Aspiring
-                        <br />
-                        Parents
-                      </div>
-                      <div className="pb-4 w-full">For Networking</div>
-                      <div className="pb-4 w-full leading-5">
-                        Aspiring <br />
-                        Communities
-                        <br />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col grow shrink w-[115px]">
-                    <div className="pb-5 w-full text-xs uppercase whitespace-nowrap text-slate-50">
-                      Organization
-                    </div>
-                    <div className="pb-4 w-full">About Us</div>
-                    <div className="pb-4 w-full">Partner With Us</div>
-                    <div className="pb-4 w-full whitespace-nowrap">Career</div>
-                    <div className="pb-4 w-full whitespace-nowrap">Academy</div>
-                    <div className="pb-4 w-full">Contact Us</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-10 justify-between items-center mt-16 w-full max-md:mt-10 max-md:max-w-full">
-            <div className="flex items-center self-stretch my-auto text-xs min-w-[240px] text-neutral-400">
-              <div className="flex gap-5 mt-2 max-[600px]:gap-2 items-center">
-                <a
-                  className="hover:text-white"
-                  href="https://www.instagram.com/krishna_mit_"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <RiInstagramFill className="max-[600px]:scale-75" />
-                </a>
-                <a
-                  className="hover:text-white"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://wa.link/wbwwp2"
-                >
-                  <RiWhatsappFill className="max-[600px]:scale-75" />
-                </a>
-                <a
-                  className="hover:text-white"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://youtube.com/@krishnamit"
-                >
-                  <RiYoutubeFill className="max-[600px]:scale-75" />
-                </a>
-                <a
-                  className="hover:text-white"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.linkedin.com/in/krishna-mit"
-                >
-                  <RiLinkedinBoxFill className="max-[600px]:scale-75" />
-                </a>
-              </div>
-              <div className="flex self-stretch my-auto items-center">
-                <div className="flex flex-col justify-center items-start pr-2 pl-6 max-md:pl-5">
-                  <div className="min-h-[18px]">Terms of service</div>
-                </div>
-                <div className="whitespace-nowrap">Privacy</div>
-              </div>
-            </div>
-            <div className="flex items-center self-stretch my-auto">
-              <div className="flex flex-col self-stretch my-auto text-sm font-medium leading-none uppercase whitespace-nowrap text-neutral-100 text-opacity-70 w-[46px]">
-                <div className="flex justify-center items-center px-1 w-full">
-                  <img
-                    loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/962216d2ee20b4535be6b35e1dcd699aeda0fcb74363d6fc3ac06e3d163c1997?placeholderIfAbsent=true&apiKey=dddf50d431064bd4b76d52f0b630fcc4"
-                    className="object-contain shrink-0 self-stretch my-auto w-4 aspect-square"
-                  />
-                  <div className="self-stretch pl-1 my-auto">en</div>
-                </div>
-              </div>
-              <div className="flex flex-col items-start self-stretch pl-4 my-auto text-xs text-neutral-400">
-                <div>Copyright © 2024</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <HomeFooter />
     </div>
   );
 }

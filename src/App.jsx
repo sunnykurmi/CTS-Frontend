@@ -26,6 +26,8 @@ import EssaySuccess from "./Components/Home/ExclusiveServices/Essay Editing/Essa
 import CommonHome from "./Components/Home/ExclusiveServices/Common App/CommonHome";
 import CommonSuccess from "./Components/Home/ExclusiveServices/Common App/CommonSuccess";
 import AdminProtectedRoute from "./utils/AdminProtectedRoute";
+import CssHome from "./Components/Home/ExclusiveServices/CSS Profile/CssHome";
+import CssSuccess from "./Components/Home/ExclusiveServices/CSS Profile/CssSuccess";
 
 export default function App() {
   const GoogleAuthWrapper = ({ isLogin }) => {
@@ -99,6 +101,9 @@ export default function App() {
 
         <Route path="/services/common-app-review" element={<CommonHome />} />
         <Route path="/services/common-app-review/paymentsuccess/:id" element={<CommonSuccess />} />
+
+        <Route path="/services/css-profile" element={<CssHome />} />
+        <Route path="/services/css-profile-review/paymentsuccess/:id" element={<CssSuccess />} />
       </Routes>
     </div>
   );

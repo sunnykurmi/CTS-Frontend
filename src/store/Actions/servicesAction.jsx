@@ -35,3 +35,21 @@ export const commonapppaymentsuccess = (id, user) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const cssProfilePayment = (formData) => async (dispatch) => {
+  try {
+    const order = await axios.post(`/api/v1/services/submit-css-profile`,formData);
+    return order.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const cssProfilePaymentSuccess = (id, user) => async (dispatch) => {
+  try {
+    const order = await axios.post(`/api/v1/services/payment-success-cssprofile/${id}`, user);
+    return order.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -618,7 +618,7 @@ export default function GenerateRoadmap() {
           </div>
         </div>
         <div className="w-full flex flex-col items-center justify-start ">
-          <div className="w-[60%] pb-10 h-full flex gap-5 flex-col items-center ">
+          <div className="w-[60%] pb-10 h-full flex gap-5 flex-col items-center max-[600px]:w-[90%] ">
             <p className="upper text-3xl font-semibold">Roadmap Form</p>
             <div className="w-full flex items-center justify-between">
               <div className="input-field w-[45%]">

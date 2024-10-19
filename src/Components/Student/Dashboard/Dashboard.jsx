@@ -29,7 +29,7 @@ export default function Dashboard() {
       <div className="w-full h-[89vh] p-5 overflow-y-scroll scroller">
         <p className="text-3xl ">Hey {user.name} 👋</p>
         <p className="text-xl mt-5">Welcome to your dashboard</p>
-        {user.roadmaps.lengt!=0 ? (
+        {user.roadmaps && user.roadmaps.length !== 0 ? (
   user.roadmaps.length === 0 ? (
     <div className="">
       <p className="text-xl mt-5">

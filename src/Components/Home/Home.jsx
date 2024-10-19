@@ -3,27 +3,22 @@ import {
   RiArrowRightSLine,
   RiBookOpenFill,
   RiCalendarEventFill,
-  RiCloseLine,
   RiCommunityFill,
   RiGraduationCapFill,
-  RiMenuLine,
   RiPresentationFill,
   RiRoadMapFill,
   RiTrophyFill,
   RiUserStarFill,
 } from "@remixicon/react";
-import {
-  RiInstagramFill,
-  RiLinkedinBoxFill,
-  RiWhatsappFill,
-  RiYoutubeFill,
-} from "@remixicon/react";
+
 import React from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { asynccurrentUser } from "../../store/Actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import HomeNav from "./HomeNav";
+import HomeFooter from "./HomeFooter";
 export default function Home() {
   // const dispatch = useDispatch();
 
@@ -55,12 +50,6 @@ export default function Home() {
     incrementValue(110, setCountries);
   }, []);
 
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
   return (
     <div id="home">
       <div className="w-full h-14 flex items-center justify-center  bg-[#FCEEC5] max-[600px]:hidden">
@@ -68,73 +57,7 @@ export default function Home() {
           Lets Join Us To Cross The Sky Limits 🏆
         </p>
       </div>
-      <div className="w-full h-40 flex items-center justify-center max-[600px]:h-16 ">
-        <div className="w-fit  bg-[#f8851127] h-24  rounded-full flex items-center justify-evenly max-[600px]:w-full max-[600px]:rounded-none max-[600px]:pr-2 max-[600px]:h-full max-[600px]:justify-between max-[600px]:px-5 ">
-          <img
-            className="w-[12%] max-[600px]:w-[30%]"
-            src="/Images/CTS   Logo.png"
-            alt=""
-          />
-          <div className="w-[50%] h-full flex items-center justify-evenly font-bold text-[#393E46] max-[600px]:text-xs max-[600px]:w-fit max-[600px]:gap-2 max-[600px]:hidden">
-            <a className="hover-link" href="#home">
-              HOME
-            </a>
-            <Link className="hover-link" to="/portfolio">
-              PORTFOLIO
-            </Link>
-            <Link className="hover-link" to="/apply-internship-form">
-              INTERNSHIP
-            </Link>
-            <Link className="hover-link" to="/services">
-              SERVICES
-            </Link>
-            <Link className="hover-link" to="/abroadstudy">
-              CTS ABROAD
-            </Link>
-            <a className="hover-link" href="#footer">
-              ABOUT
-            </a>
-          </div>
-          <div className="w-[25%] h-full flex items-center justify-evenly max-[600px]:hidden ">
-            <Link to="/login" className="">
-              <button className="w-32 h-14 rounded-full border-2 border-[#0000000c]  font-bold">
-                LOGIN
-              </button>
-            </Link>
-            <Link to="/signup" className="max-[600px]:scale-50">
-              <button className="w-32 h-14 rounded-full bg-[#F58612] text-white font-bold">
-                REGISTER
-              </button>
-            </Link>
-          </div>
-          <div className="center flex-col min-[600px]:hidden">
-            <RiMenuLine onClick={toggleMenu} />
-          </div>
-        </div>
-      </div>
-      <div
-        className={`w-full h-fit pb-10 bg-white fixed top-0 left-0 z-[99] min-[600px]:hidden transition-transform duration-500 ${
-          menuOpen ? "translate-y-0" : "-translate-y-full"
-        }`}
-      >
-        {" "}
-        <div className="w-full flex items-center justify-end p-5">
-          <RiCloseLine className="scale-150" onClick={toggleMenu} />
-        </div>
-        <div className=" pr-5 flex-col uppercase text-2xl font-semibold center gap-3">
-        <a href="/">Home</a>
-       <Link to="/portfolio">Portfolio</Link>
-       <Link to="/apply-internship-form">Internship </Link>
-       <Link to="/abroadstudy">CTS Abroad</Link>
-       <Link to="/services">Services</Link>
-       <Link to="/login" className="">
-            Login{" "}
-          </Link>
-          <Link to="/signup" className="">
-            Register
-          </Link>
-        </div>
-      </div>
+      <HomeNav />
       <div className="w-full flex items-center flex-col justify-evenly">
         <div className="w-[60%]  h-40 flex items-center justify-center  text-center max-[600px]:w-[80%] max-[600px]:h-24">
           <p className="  font-bold text-6xl max-[600px]:text-2xl  ">
@@ -284,202 +207,7 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="w-full flex items-center  justify-center px-32 p-20 pb-10 max-[600px]:p-0">
-        <div
-          id="footer"
-          className=" max-[600px]:rounded-none rounded-2xl flex flex-col gap-10 w-full  bg-zinc-900 p-5"
-        >
-          <div className="footer-wrapper flex flex-wrap gap-8 lg:justify-evenly">
-            <div className="image-wrapper w-[300px] h-[100px]">
-              <img
-                className="max-[600px]:w-[60%] max-[600px]:mt-6 "
-                src="https://www.crosstheskylimits.online/Images/CTS%20%20%20Logo.png"
-                alt=""
-              />
-            </div>
-            <div className="links-wrapper grid grid-cols-2 gap-8 md:grid-cols-3 md:gap-12 md:ml-10 lg:ml-20 lg:mt-10 lg:grid-cols-4">
-              <div className="section">
-                <h2 className="text-white font-semibold mb-2">ROADMAP</h2>
-                <a
-                  href="#home"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  Home
-                </a>
-                <a
-                  href="/signup"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  Start for free
-                </a>
-                <a
-                  href="/login"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  Login now
-                </a>
-              </div>
-              <div className="section">
-                <h2 className="text-white font-semibold mb-2">FEATURES</h2>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  WhatsApp Communities
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  Challenges
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  Event Hosting
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  CTS Internships
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  SATisfactory
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  DSAT Crash Course
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  CTS Graduate
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  Personalized Portfolio
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  Interlango Plus
-                </a>
-              </div>
-              <div className="section">
-                <h2 className="text-white font-semibold mb-2">USE CASES</h2>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  For UnderGrade Students
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  For High School Students
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  For Graduate Students
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  For Aspiring Parents
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  For Networking
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  Aspiring Communities
-                </a>
-              </div>
-              <div className="section">
-                <h2 className="text-white font-semibold mb-2">ORGANIZATION</h2>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  About Us
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  Partner With Us
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  Career
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  Academy
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
-                >
-                  Contact Us
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="copyright-wrapper flex flex-col gap-4 items-center justify-center">
-            <div className="socials-wrapper flex gap-4 text-3xl">
-              <a
-                href="https://www.instagram.com/krishna_mit_"
-                className="text-zinc-300"
-              >
-                <RiInstagramFill />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/krishna-mit"
-                className="text-zinc-300"
-              >
-                <RiLinkedinBoxFill />
-              </a>
-              <a href="https://wa.link/wbwwp2" className="text-zinc-300">
-                <RiWhatsappFill />
-              </a>
-              <a
-                href="https://youtube.com/@krishnamit"
-                className="text-zinc-300"
-              >
-                <RiYoutubeFill />
-              </a>
-            </div>
-            <p className="text-zinc-300">
-              © 2024 Cross The Sky Limits. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </div>
+      <HomeFooter />
     </div>
   );
 }

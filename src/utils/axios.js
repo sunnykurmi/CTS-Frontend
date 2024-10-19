@@ -12,9 +12,6 @@ const instance = axios.create({
   
   
   withCredentials: true,
-  headers: {
-    'Access-Control-Allow-Credentials': 'true',
-},
 });
 
 export default instance;
