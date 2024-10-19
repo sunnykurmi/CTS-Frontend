@@ -29,19 +29,19 @@ const ServicesHome = () => {
     //   button:"Comming Soon"
     // },
     {
+      title: "CSS Profile Help",
+      description:
+      "Your CSS Profile could be the key to unlocking valuable financial aid! Don’t let mistakes or overlooked sections cost you. Our CSS Profile Review program ensures your submission is accurate and maximizes your chances for aid. Let us help you secure the support you deserve—schedule your review today!",
+      image: "./Images/css-profile-helper.jpg",
+      link: "/services/css-profile",
+      button: "Book Now",
+    },
+    {
       title: "Exam Prepration",
       description:
         "Get ready to ace your exams with expert-led SAT, TOEFL, IELTS, and Duolingo English Test (DET) classes! Whether you’re aiming for top scores or need a boost in your test prep, we’ve got you covered. Join our prep classes now and give yourself the best chance at success!",
       image: "./Images/sat-exam.png",
       button: "Comming Soon",
-    },
-    {
-      title: "CSS Profile Help",
-      description:
-        "Your CSS Profile could be the key to unlocking valuable financial aid! Don’t let mistakes or overlooked sections cost you. Our CSS Profile Review program ensures your submission is accurate and maximizes your chances for aid. Let us help you secure the support you deserve—schedule your review today!",
-      image: "./Images/css-profile-helper.jpg",
-      link: "/services/css-profile",
-      button: "Book Now",
     },
   ];
 
