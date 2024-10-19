@@ -122,9 +122,7 @@ const CssHome = () => {
           description: "Payment for Common App Review",
           image: "https://crosstheskylimits.online/Images/CTS%20%20%20Logo.png", //loggedinuser img
           order_id: order.id,
-          callback_url: `${
-            import.meta.env.VITE_BACKEND_URL
-          }api/v1/services/cssprofile-verify-payment`,
+          callback_url: `${import.meta.env.VITE_BACKEND_URL}/api/v1/services/cssprofile-verify-payment`,
           prefill: {
             name: user.name, //loggedinuser name
             email: user.email, //loggedinuser email
