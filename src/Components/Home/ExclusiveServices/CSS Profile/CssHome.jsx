@@ -24,32 +24,21 @@ const CssHome = () => {
     amount: "2999",
   });
 
+  
+
   const handleChange = (name) => (event) => {
     const value = event.target.value;
     setUserInput((prevInput) => ({
       ...prevInput,
       [name]: value,
-      meeting:
-        name === "cssprofileid" || name === "password"
-          ? "NO"
-          : prevInput.meeting,
     }));
   };
 
   const handleMeetingChange = (meeting) => () => {
-    if (meeting === "YES") {
-      setUserInput((prevInput) => ({
-        ...prevInput,
-        meeting,
-        commonappid: "",
-        password: "",
-      }));
-    } else {
-      setUserInput((prevInput) => ({
-        ...prevInput,
-        meeting,
-      }));
-    }
+    setUserInput((prevInput) => ({
+      ...prevInput,
+      meeting,
+    }));
   };
 
   useEffect(() => {
@@ -60,10 +49,6 @@ const CssHome = () => {
       }));
     }
   }, [user]);
-
-  useEffect(() => {
-    dispatch(asynccurrentUser());
-  }, [dispatch]);
 
   useEffect(() => {
     const { cssprofileid, password, meeting } = userInput;
@@ -91,7 +76,7 @@ const CssHome = () => {
     ) {
       event.preventDefault();
       alert(
-        "Please provide your Common App ID and password or select Yes for the meeting."
+        "Please provide your CSS Profile ID and password or select Yes for the meeting."
       );
     } else {
       setIsCheckboxChecked(event.target.checked);
@@ -116,18 +101,18 @@ const CssHome = () => {
         const order = await dispatch(cssProfilePayment(formData));
         const options = {
           key: key,
-          amount: userInput.price * 100,
+          amount: userInput.amount * 100,
           currency: "INR",
           name: "Cross The Skylimits",
-          description: "Payment for Common App Review",
-          image: "https://crosstheskylimits.online/Images/CTS%20%20%20Logo.png", //loggedinuser img
+          description: "Payment for CSS Profile Review",
+          image: "https://crosstheskylimits.online/Images/CTS%20%20%20Logo.png",
           order_id: order.id,
           callback_url: `${
             import.meta.env.VITE_BACKEND_URL
           }/api/v1/services/cssprofile-verify-payment`,
           prefill: {
-            name: user.name, //loggedinuser name
-            email: user.email, //loggedinuser email
+            name: user.name,
+            email: user.email,
           },
           notes: {
             address: "CTS Bhopal",
@@ -214,7 +199,7 @@ const CssHome = () => {
               Fill the form below to get your CSS Profile reviewed
             </p>
 
-            <div className="flex items-center justify-between w-full p-10 px-20 max-[600px]:px-10 max-[600px]:flex-col max-[1180px]:px-10">
+            <div className="flex flex-col justify-between w-full p-10 px-20 max-[600px]:px-10 max-[600px]:flex-col max-[1180px]:px-10">
               <div className="flex flex-col gap-5 w-80">
                 <div className="">
                   <h2 className="font-medium">Username/ID</h2>
@@ -225,7 +210,7 @@ const CssHome = () => {
                     name="cssprofileid"
                     id=""
                     className="field rounded-md"
-                    value={userInput.commonappid}
+                    value={userInput.cssprofileid}
                   />
                 </div>
 
@@ -243,15 +228,10 @@ const CssHome = () => {
                 </div>
               </div>
 
-              <h1 className="text-xl font-medium mt-3 max-[600px]:mt-10 max-[600px]:text-3xl">
-                OR
-              </h1>
-
-              <div className="flex flex-col gap-3 w-[40%] max-[600px]:w-full max-[600px]:mt-10">
+              <div className="flex flex-col gap-3 w-[40%] max-[600px]:w-full mt-10">
                 <p className="text-lg font-normal leading-6">
                   Would you prefer to schedule a meeting with us to discuss your
-                  application details instead of sharing your password? Please
-                  select Yes or No.
+                  application details? Please select Yes or No.
                 </p>
                 <div className="flex gap-5">
                   <button
@@ -308,7 +288,7 @@ const CssHome = () => {
             </p>
             <div className="center">
               <button
-                disabled={isLoading}
+                disabled={isLoading || !isCheckboxChecked}
                 onClick={submitHandler}
                 className="bg-[#F58612] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
               >

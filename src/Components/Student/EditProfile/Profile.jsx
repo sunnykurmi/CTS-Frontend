@@ -77,7 +77,7 @@ export default function Profile() {
         </div>
       </div>
       <div className=" flex mb-[15vh] justify-center items-center  w-full  ">
-        <div className=" w-[60%] max-[600px]:w-full h-full max-[600px]:border-0 border-2 rounded-xl  border-[#0000000c] px-10 py-5 ">
+        <div className=" w-[60%] max-[600px]:w-full h-full max-[600px]:border-0 border-2 rounded-xl  border-[#0000000c] px-10 max-[600px]:px-5 py-5 ">
           <div className=" w-full flex justify-between flex-col-reverse pb-5">
             <div className="max-[600px]:mt-10">
               <h1 className=" capitalize flex gap-[2vh] text-4xl font-medium   text-[black]  ">
@@ -128,8 +128,8 @@ export default function Profile() {
               </div>
             </div>
           </div>
-          <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">
-            <div className="w-[30%]    text-[#1515159d] text-base font-medium ">
+          <div className="flex border-t-2 border-[#0000000c] py-[4vh] w-full  ">
+            <div className="w-[30%] text-[#1515159d] text-base font-medium ">
               BIO
             </div>
             <div className="w-[60%] ">
@@ -139,7 +139,7 @@ export default function Profile() {
                 ) : (
                   <div
                     onClick={openeditform}
-                    className="text-[#008BDC] cursor-pointer max-[600px]:ml-5"
+                    className="text-[#008BDC] cursor-pointer "
                   >
                     +add bio
                   </div>

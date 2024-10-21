@@ -29,27 +29,14 @@ const CommonHome = () => {
     setUserInput((prevInput) => ({
       ...prevInput,
       [name]: value,
-      meeting:
-        name === "commonappid" || name === "password"
-          ? "NO"
-          : prevInput.meeting,
     }));
   };
 
   const handleMeetingChange = (meeting) => () => {
-    if (meeting === "YES") {
-      setUserInput((prevInput) => ({
-        ...prevInput,
-        meeting,
-        commonappid: "",
-        password: "",
-      }));
-    } else {
-      setUserInput((prevInput) => ({
-        ...prevInput,
-        meeting,
-      }));
-    }
+    setUserInput((prevInput) => ({
+      ...prevInput,
+      meeting,
+    }));
   };
 
   useEffect(() => {
@@ -60,10 +47,6 @@ const CommonHome = () => {
       }));
     }
   }, [user]);
-
-  useEffect(() => {
-    dispatch(asynccurrentUser());
-  }, [dispatch]);
 
   useEffect(() => {
     const { commonappid, password, meeting } = userInput;
@@ -116,18 +99,18 @@ const CommonHome = () => {
         const order = await dispatch(commonapppayment(formData));
         const options = {
           key: key,
-          amount: userInput.price * 100,
+          amount: userInput.amount * 100,
           currency: "INR",
           name: "Cross The Skylimits",
           description: "Payment for Common App Review",
-          image: "https://crosstheskylimits.online/Images/CTS%20%20%20Logo.png", //loggedinuser img
+          image: "https://crosstheskylimits.online/Images/CTS%20%20%20Logo.png",
           order_id: order.id,
           callback_url: `${
             import.meta.env.VITE_BACKEND_URL
           }/api/v1/services/commonapp-verify-payment`,
           prefill: {
-            name: user.name, //loggedinuser name
-            email: user.email, //loggedinuser email
+            name: user.name,
+            email: user.email,
           },
           notes: {
             address: "CTS Bhopal",
@@ -244,7 +227,7 @@ const CommonHome = () => {
               </div>
 
               <h1 className="text-xl font-medium mt-3 max-[600px]:mt-10 max-[600px]:text-3xl">
-                OR
+                And
               </h1>
 
               <div className="flex flex-col gap-3 w-[40%] max-[600px]:w-full max-[600px]:mt-10">
@@ -308,7 +291,7 @@ const CommonHome = () => {
             </p>
             <div className="center">
               <button
-                disabled={isLoading}
+                disabled={isLoading || !isCheckboxChecked}
                 onClick={submitHandler}
                 className="bg-[#F58612] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
               >
