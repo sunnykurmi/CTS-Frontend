@@ -48,7 +48,7 @@ export default function EditProfileForm(props) {
   return (
     <div>
       <div className=" overflow-hidden z-10 flex items-center justify-center fixed h-full w-full bg-black/30">
-        <div className="w-[60%] h-screen py-20 px-20 bg-white overflow-y-scroll scroller ">
+        <div className="w-[60%] h-screen max-[600px]:w-full max-[600px]:px-5 py-10 px-20 bg-white overflow-y-scroll scroller ">
             <div className="w-full flex items-center justify-end">
           <RiCloseLine
             size={30}
@@ -147,7 +147,7 @@ export default function EditProfileForm(props) {
             </div>
             <div className="input-field w-[45%]">
               <p className="font-medium text-lg">Gender</p>
-              <div className="relative w-96 font-semibold gap-10 h-12 flex items-center">
+              <div className="relative w-96 font-semibold gap-10 max-[600px]:gap-2 h-12 flex items-center">
                 <button
                   type="button"
                   className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${

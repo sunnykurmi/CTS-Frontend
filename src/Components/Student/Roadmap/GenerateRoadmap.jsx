@@ -669,8 +669,8 @@ export default function GenerateRoadmap() {
             </div>
             <div className="w-full flex items-center justify-between">
               <div className=" flex items-center justify-between input-field w-[45%]">
-                <p className="font-medium text-lg">Gender</p>
-                <div className="relative w-fit font-semibold gap-10 h-12 flex items-center justify-end">
+                <p className="font-medium text-lg">Gender:</p>
+                <div className="relative w-fit font-semibold gap-10 h-12 flex items-center justify-end max-[600px]:ml-10">
                   <button
                     className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                       userInput.gender === "Male"
@@ -928,7 +928,7 @@ export default function GenerateRoadmap() {
                   </div>
                 </div>
               )}
-              <div className="w-[45%] flex  justify-start items-start">
+              <div className="w-[45%] max-[600px]:w-full flex  justify-start items-start">
                 <p className="text-lg font-medium">
                   Do You Want To Study Abroad?
                 </p>
@@ -969,10 +969,12 @@ export default function GenerateRoadmap() {
                 </div>
               </div>
             </div>
-            <div className="w-full flex items-center justify-between">
+
+
+            <div className="w-full flex items-center justify-between ">
               {userInput.abroadStudy === "YES" && (
-                <div className="w-[45%] flex flex-col justify-between items-start">
-                  <p className="text-lg font-medium">What About SAT Exam?</p>
+                <div className="w-[45%] flex flex-col justify-between items-start ">
+                  <p className="text-lg font-medium bg-red-300">What About SAT Exam?</p>
                   <div className="relative w-full  font-semibold  h-12 flex items-center  justify-start gap-10 ">
                     <button
                       className={`w-fit h-full border-2 rounded-lg px-2 flex items-center justify-center ${
@@ -1021,7 +1023,7 @@ export default function GenerateRoadmap() {
               )}
               {userInput.aboutsatexam === "Already Taken" && (
                 <div className="w-[45%] flex flex-col justify-between items-start">
-                  <p className="text-lg font-medium">Enter Your SAT Score</p>
+                  <p className="text-lg font-medium ">Enter Your SAT Score</p>
                   <div className="cursor-pointer field relative field  border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
                     <input
                       type="text"
@@ -1258,7 +1260,7 @@ export default function GenerateRoadmap() {
                 </div>
               </div>
             </div>
-            <div className="w-full flex justify-between items-center ">
+            <div className="w-full flex justify-between items-center">
               <div className="w-[45%]">
                 <p className="font-medium">
                   What Do You Want To Become In Future ?
@@ -1282,7 +1284,7 @@ export default function GenerateRoadmap() {
                   <RiArrowDownSLine className=" text-[#F58612]" />
                   {dropdownOpenFuture && (
                     <div
-                      className="absolute right-3 p-5 shadow-lg top-[103%] z-[9] w-[50vw] gap-2 flex flex-wrap bg-white  h-fit"
+                      className="absolute right-3 p-5 shadow-lg top-[103%] z-[9] w-[50vw] max-[600px]:w-[80vw] gap-2 flex flex-wrap bg-white  h-fit"
                       onMouseLeave={handleMouseLeave}
                       onMouseEnter={handleMouseEnter}
                     >
@@ -1300,12 +1302,12 @@ export default function GenerateRoadmap() {
                 </div>
               </div>
             </div>
-            <div className="w-full flex justify-between items-center">
-              <div className="h-full w-[45%] pt-3">
+            <div className="w-full flex justify-between items-center ">
+              <div className="h-full w-[45%] max-[600px]:w-[35%] pt-3">
                 <p className="font-medium">Field Of Interest</p>
               </div>
 
-              <div className="w-[45%] flex flex-wrap justify-end gap-2">
+              <div className="w-[45%] max-[600px]:w-[60%] flex flex-wrap justify-end gap-2">
                 <div className="w-full relative flex items-center justify-center ">
                   <textarea
                     placeholder="Select Field Of Interest"
@@ -1319,7 +1321,7 @@ export default function GenerateRoadmap() {
 
                   {dropdownOpenInterest && (
                     <div
-                      className="absolute right-3 p-5 shadow-lg top-[103%] z-[9] w-[50vw] gap-2 flex flex-wrap bg-white h-fit"
+                      className="absolute right-3 p-5 shadow-lg top-[103%] z-[9] w-[50vw] max-[600px]:w-[80vw] gap-2 flex flex-wrap bg-white h-fit"
                       onMouseLeave={handleMouseLeave}
                       onMouseEnter={handleMouseEnter}
                     >
@@ -1341,12 +1343,10 @@ export default function GenerateRoadmap() {
                 </div>
               </div>
             </div>
-            <div className="w-full flex justify-between items-center ">
-              <div className=" h-full w-[45%]   pt-3 ">
+            <div className="w-full flex flex-col items-center">
+              <div className="flex items-center w-full">
                 <p className="font-medium">List All The Skills You Have</p>
-              </div>
-              <div className="flex h-full flex-col w-[45%]  justify-end items-end  ">
-                <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                <div className="ml-4 cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
                   <input
                     type="text"
                     placeholder="e.g Designing, coding,languages ,etc."
@@ -1363,29 +1363,29 @@ export default function GenerateRoadmap() {
                     Submit
                   </div>
                 </div>
-                <div className="w-[80%] mt-2 h-fit  flex flex-wrap justify-end ">
-                  {submittedValues2.map((value, index) => (
+              </div>
+              <div className="w-[80%] max-[600px]:w-[60vw] mt-2 h-fit flex flex-wrap justify-center">
+                {submittedValues2.map((value, index) => (
+                  <div
+                    key={index}
+                    className="rounded-full max-[600px]:w-full scale-90 w-fit pl-4 min-w-20 px-1 py-1 text-white bg-[#F58612] flex items-center justify-between gap-2 mt-1"
+                  >
+                    <p>{value}</p>
                     <div
-                      key={index}
-                      className="rounded-full scale-90 w-fit pl-4 min-w-20 px-1 py-1 text-white bg-[#F58612] flex items-center justify-between gap-2 mt-1"
+                      onClick={() => handleRemove2(index)}
+                      className="p-1 cursor-pointer bg-white text-black flex items-center justify-center rounded-full"
                     >
-                      <p>{value}</p>
-                      <div
-                        onClick={() => handleRemove2(index)}
-                        className="p-1 cursor-pointer bg-white text-black flex items-center justify-center rounded-full"
-                      >
-                        <RiCloseLine />
-                      </div>
+                      <RiCloseLine />
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="w-full flex justify-between items-center ">
+            <div className="w-full flex justify-between items-center">
               <div className=" h-full w-[45%]   pt-3 ">
-                <p className="font-medium"> Activities You Have Done </p>
+                <p className="font-medium"> Activities You Have Done:</p>
               </div>
-              <div className="w-[45%]   flex items-center justify-between">
+              <div className="w-[45%] flex max-[600px]:flex-col  items-center justify-between">
                 <p className="text-lg font-medium">
                   {userInput.activities.length - 1} Activities added
                 </p>
@@ -1519,9 +1519,9 @@ export default function GenerateRoadmap() {
                 </div>
               );
             })}
-            <div className="w-full flex justify-between items-center">
-              <p className="font-medium">Family Income</p>
-              <div className=" relative w-auto font-semibold gap-2 h-12 flex items-center justify-center">
+            <div className="w-full h-[13vh] flex justify-between min-[600px]:items-center">
+              <p className="font-medium">Family Income:</p>
+              <div className=" relative w-auto font-semibold gap-2 h-12 grid grid-cols-4 max-[600px]:grid-cols-2">
                 {[
                   "Less than 1 Lac",
                   "1-5 Lac",
@@ -1546,9 +1546,9 @@ export default function GenerateRoadmap() {
                 ))}
               </div>
             </div>
-            <div className="w-full flex justify-between items-center">
+            <div className="w-full max-[600px]:h-[15vh] flex justify-between min-[600px]:items-center">
               <p className="font-medium">Caste Category</p>
-              <div className="   relative w-[45%] font-semibold gap-2 h-12 flex items-center ">
+              <div className="relative w-[45%] font-semibold gap-2 h-12 grid grid-cols-5 max-[600px]:grid-cols-2 ">
                 {["OBC", "SC", "ST", "GEN", "OTHER"].map((option) => (
                   <button
                     key={option}

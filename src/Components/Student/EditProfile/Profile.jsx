@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Nav from "../Nav";
 import { Link } from "react-router-dom";
-import { RiArrowLeftSLine, RiEdit2Line, RiPencilLine } from "@remixicon/react";
+import { RiArrowLeftSLine, RiPencilLine } from "@remixicon/react";
 import { useDispatch, useSelector } from "react-redux";
 import { asynccurrentUser } from "../../../store/Actions/userActions";
 import EditAvatar from "./EditAvatar";
@@ -50,7 +50,7 @@ export default function Profile() {
       {ShowEducation && <AddEducation onClose={closeEducation} />}
       <Nav />
       <div className="w-full pt-10">
-        <div className="w-44  left-0 h-full flex items-center justify-center">
+        <div className="w-44 max-[600px]:hidden  left-0 h-full flex items-center justify-center">
           <Link
             className=" h-12 gap-3 rounded-full  bg-[#F58612] text-white flex items-center justify-center p-2 font-bold"
             to={-1}
@@ -65,11 +65,11 @@ export default function Profile() {
       <div className=" uppercase flex justify-center items-center text-[black] text-3xl  font-semibold w-full  ">
         Profile
       </div>
-      <div className="w-full flex items-center justify-center">
-        <div className="w-[60%] flex items-center justify-end">
+      <div className="w-full">
+        <div className="w-[60%] max-[600px]:hidden max-[600px]:w-full m-auto flex items-center justify-end max-[600px]:justify-center">
           <div
             onClick={openeditform}
-            className="flex gap-2 cursor-pointer mb-2 px-5"
+            className="flex gap-2 cursor-pointer mb-2 max-[600px]:mb-0 max-[600px]:py-3 max-[600px]:border-2 px-5"
           >
             <RiPencilLine />
             Edit Profile
@@ -77,9 +77,9 @@ export default function Profile() {
         </div>
       </div>
       <div className=" flex mb-[15vh] justify-center items-center  w-full  ">
-        <div className=" w-[60%] max-[600px]:w-full h-full   border-2 rounded-xl  border-[#0000000c] px-10 py-5 ">
-          <div className=" w-full flex justify-between pb-5 ">
-            <div className="">
+        <div className=" w-[60%] max-[600px]:w-full h-full max-[600px]:border-0 border-2 rounded-xl  border-[#0000000c] px-10 py-5 ">
+          <div className=" w-full flex justify-between flex-col-reverse pb-5">
+            <div className="max-[600px]:mt-10">
               <h1 className=" capitalize flex gap-[2vh] text-4xl font-medium   text-[black]  ">
                 {user.name}
               </h1>
@@ -90,9 +90,12 @@ export default function Profile() {
                 {user.contact ? (
                   user.contact
                 ) : (
-                  <div 
-            onClick={openeditform}
-            className="text-[#008BDC] cursor-pointer">+add contact</div>
+                  <div
+                    onClick={openeditform}
+                    className="text-[#008BDC] cursor-pointer"
+                  >
+                    +add contact
+                  </div>
                 )}
               </h1>
               <h1 className="text-lg  text-[#070707b9] font-medium capitalize">
@@ -100,8 +103,16 @@ export default function Profile() {
                   ? `${user.city}, ${user.state} ${user.country}`.toLowerCase()
                   : "India"}
               </h1>
+
+              <div
+                onClick={openeditform}
+                className="flex gap-2 min-[600px]:hidden w-1/2 cursor-pointer mb-2 max-[600px]:mb-0 max-[600px]:py-3 max-[600px]:border-2 px-5"
+              >
+                <RiPencilLine />
+                Edit Profile
+              </div>
             </div>
-            <div className="  h-full flex flex-col items-center justify-between">
+            <div className="h-full flex flex-col items-center justify-between">
               <div className=" w-[15vh] h-[15vh] border-2 overflow-hidden rounded-full shrink-0   ">
                 <img
                   className="w-full h-full object-cover "
@@ -126,9 +137,12 @@ export default function Profile() {
                 {user.bio ? (
                   user.bio
                 ) : (
-                  <div 
-            onClick={openeditform}
-            className="text-[#008BDC] cursor-pointer">+add bio</div>
+                  <div
+                    onClick={openeditform}
+                    className="text-[#008BDC] cursor-pointer"
+                  >
+                    +add bio
+                  </div>
                 )}
               </div>
             </div>
@@ -142,9 +156,12 @@ export default function Profile() {
                 {user.summary ? (
                   user.summary
                 ) : (
-                  <div 
-            onClick={openeditform}
-            className="text-[#008BDC] cursor-pointer">+add summary</div>
+                  <div
+                    onClick={openeditform}
+                    className="text-[#008BDC] cursor-pointer"
+                  >
+                    +add summary
+                  </div>
                 )}
               </div>
             </div>
@@ -162,87 +179,103 @@ export default function Profile() {
                     year: "numeric",
                   })
                 ) : (
-                  <div 
-            onClick={openeditform}
-            className="text-[#008BDC] cursor-pointer">+add DOB</div>
+                  <div
+                    onClick={openeditform}
+                    className="text-[#008BDC] cursor-pointer"
+                  >
+                    +add DOB
+                  </div>
                 )}
               </p>
             </div>
           </div>
           <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">
-            <div className="w-[30%]    text-[#1515159d] text-base font-medium ">
+            <div className="w-[30%] text-[#1515159d] text-base font-medium ">
               EDUCATION
             </div>
-            <div className="w-[60%] ">
-            <div className="flex flex-col">
-  {user.education && user.education.currentclass !== "" ? (
-    <>
-    <div className="flex w-full">
-      <div className="w-[80%]  capitalize mb-5">
-        <div className="text-[#151515d0] text-xl font-semibold">
-          {user?.education?.schoolname}
-        </div>
-        <div className="w-[40vh] justify-between flex gap-5">
-          <div className="text-[#151515d0] text-base font-medium">
-            <b> class : </b>
-            {user?.education?.currentclass?.replace(" Class", "")}
-          </div>
-          <div className="text-[#151515d0] w-[50%] text-base font-medium">
-            <b> score : </b>
-            {user?.education?.percentage}%
-          </div>
-        </div>
-        <div className="w-[40vh] justify-between flex gap-5">
-          <div className="text-[#151515d0] text-base font-medium">
-            <b> Board : </b>
-            {user?.education?.educationBoard}
-          </div>
-          <div className="text-[#151515d0] w-[50%] text-base font-medium">
-            <b> year : </b>
-            {user?.education?.passingyear}
-          </div>
-        </div>
-      </div>
-      <div className=" center   ">
-        <button  onClick={openEducation} className="text-sm center py-1 px-4 border-2 rounded-full"> <RiPencilLine className="scale-75"/> Edit</button>
-      </div>
-    </div>
-      {user.education && user.education.class10schoolname !== "" ? (
-        <div className="w-[80%] capitalize mb-5">
-          <div className="text-[#151515d0] text-xl font-semibold">
-            {user?.education?.class10schoolname}
-          </div>
-          <div className="w-[40vh] justify-between flex gap-5">
-            <div className="text-[#151515d0] text-base font-medium">
-              <b> class : </b>
-              10th
-            </div>
-            <div className="text-[#151515d0] w-[50%] text-base font-medium">
-              <b> score : </b>
-              {user?.education?.class10percentage}%
-            </div>
-          </div>
-          <div className="w-[40vh] justify-between flex gap-5">
-            <div className="text-[#151515d0] text-base font-medium">
-              <b> Board : </b>
-              {user?.education?.class10educationBoard}
-            </div>
-            <div className="text-[#151515d0] w-[50%] text-base font-medium">
-              <b> year : </b>
-              {user?.education?.class10passingyear}
-            </div>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
-    </>
-  ) : (
-    <button onClick={openEducation} className="text-[#008BDC]  w-fit font-medium">
-      + Add Education
-    </button>
-  )}
-</div>
+            <div className="w-[60%] max-[600px]:w-[70%]">
+              <div className="flex flex-col">
+                {user.education && user.education.currentclass !== "" ? (
+                  <>
+                    <div className="flex max-[600px]:block w-full">
+                      <div className="w-[80%] max-[600px]:w-full capitalize mb-5">
+                        <div className="text-[#151515d0] text-xl font-semibold">
+                          {user?.education?.schoolname}
+                        </div>
+                        <div className="w-[40vh] justify-between flex max-[600px]:w-full">
+                          <div className="text-[#151515d0] text-base font-medium">
+                            <b> class : </b>
+                            {user?.education?.currentclass?.replace(
+                              " Class",
+                              ""
+                            )}
+                          </div>
+                          <div className="text-[#151515d0] w-[50%] text-base font-medium">
+                            <b> score : </b>
+                            {user?.education?.percentage}%
+                          </div>
+                        </div>
+                        <div className="w-[40vh] justify-between max-[600px]:w-full flex gap-5">
+                          <div className="text-[#151515d0] text-base font-medium">
+                            <b> Board : </b>
+                            {user?.education?.educationBoard}
+                          </div>
+                          <div className="text-[#151515d0] w-[50%] text-base font-medium">
+                            <b> year : </b>
+                            {user?.education?.passingyear}
+                          </div>
+                        </div>
+                      </div>
+                      <div className=" center   ">
+                        <button
+                          onClick={openEducation}
+                          className="text-sm center py-1 px-4 border-2 rounded-full"
+                        >
+                          {" "}
+                          <RiPencilLine className="scale-75" /> Edit
+                        </button>
+                      </div>
+                    </div>
+                    {user.education &&
+                    user.education.class10schoolname !== "" ? (
+                      <div className="w-[80%] capitalize mb-5">
+                        <div className="text-[#151515d0] text-xl font-semibold">
+                          {user?.education?.class10schoolname}
+                        </div>
+                        <div className="w-[40vh] justify-between flex gap-5">
+                          <div className="text-[#151515d0] text-base font-medium">
+                            <b> class : </b>
+                            10th
+                          </div>
+                          <div className="text-[#151515d0] w-[50%] text-base font-medium">
+                            <b> score : </b>
+                            {user?.education?.class10percentage}%
+                          </div>
+                        </div>
+                        <div className="w-[40vh] justify-between flex gap-5">
+                          <div className="text-[#151515d0] text-base font-medium">
+                            <b> Board : </b>
+                            {user?.education?.class10educationBoard}
+                          </div>
+                          <div className="text-[#151515d0] w-[50%] text-base font-medium">
+                            <b> year : </b>
+                            {user?.education?.class10passingyear}
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </>
+                ) : (
+                  <button
+                    onClick={openEducation}
+                    className="text-[#008BDC]  w-fit font-medium"
+                  >
+                    + Add Education
+                  </button>
+                )}
+              </div>
             </div>
           </div>
           <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">

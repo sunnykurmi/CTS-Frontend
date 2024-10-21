@@ -8,6 +8,7 @@ import {
   RiWindow2Line,
 } from "@remixicon/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function LeftSlide({ selectedComponent, setSelectedComponent,closeSidebar }) {
   const getButtonClass = (component) => {
@@ -56,34 +57,59 @@ export default function LeftSlide({ selectedComponent, setSelectedComponent,clos
             <div className="w-[50%] h-[2px] bg-[#393e4675]"></div>
           </div>
           <div className="w-full h-[8vh] flex items-center justify-center">
-            <button
+            <a
               className={getButtonClass("Resources")}
-              onClick={() => {setSelectedComponent("Resources"); closeSidebar();}}
+              // onClick={() => {setSelectedComponent("Resources"); closeSidebar();}}
+              href="https://nas.io/Cross-The-Skylimits/products"
             >
               <RiBookLine />
               <p>Resource</p>
-            </button>
+            </a>
           </div>
           <div className="w-full h-[8vh] flex items-center justify-center">
-            <button
+            <a
               className={getButtonClass("Events")}
-              onClick={() =>{ setSelectedComponent("Events"); closeSidebar();}}
+              // onClick={() =>{ setSelectedComponent("Events"); closeSidebar();}}
+              href="https://nas.io/Cross-The-Skylimits/events"
             >
               <RiWindow2Line />
               <p>Events</p>
-            </button>
+            </a>
           </div>
           <div className="w-full h-[8vh] flex items-center justify-center">
-            <button
+            <a
               className={getButtonClass("Community")}
-              onClick={() => {setSelectedComponent("Community"); closeSidebar();}}
+              // onClick={() => {setSelectedComponent("Community"); closeSidebar();}}
+              href="https://wa.me/9174491318"
             >
               <RiTeamLine />
               <p>Community</p>
-            </button>
+            </a>
+          </div>
+
+          <div className="w-full h-[8vh] flex items-center justify-center">
+            <Link
+              className={getButtonClass("Community")}
+              // onClick={() => {setSelectedComponent("Community"); closeSidebar();}}
+              to={"/portfolio"}
+            >
+              <RiTeamLine />
+              <p>Portfolio</p>
+            </Link>
+          </div>
+
+          <div className="w-full h-[8vh] flex items-center justify-center">
+            <Link
+              className={getButtonClass("Community")}
+              // onClick={() => {setSelectedComponent("Community"); closeSidebar();}}
+              to={"/services"}
+            >
+              <RiTeamLine />
+              <p>Exclusive Services</p>
+            </Link>
           </div>
         </div>
-        <div className="flex flex-col gap-2">
+        {/* <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2 w-full justify-center px-6">
             <div className="w-[50%] h-[2px] bg-[#393e4675]"></div>
             <p className="text-[#393e4675] font-semibold text-xs">OTHERS</p>
@@ -107,7 +133,7 @@ export default function LeftSlide({ selectedComponent, setSelectedComponent,clos
               <p>Contact Us</p>
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
