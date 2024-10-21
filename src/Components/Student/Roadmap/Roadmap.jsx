@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 export default function Roadmap() {
   return (
     <div>
-      <div className="w-full flex gap-5 items-center justify-center flex-col h-[89vh] p-20 ">
-        <div className="w-[70%] h-[80vh]  flex  flex-col items-center justify-center">
+      <div className="w-full flex gap-5 items-center justify-center flex-col h-[89vh] p-20 max-[600px]:p-5">
+        <div className="w-[70%] max-[600px]:h-1/2 max-[600px]:w-full h-[80vh] flex flex-col items-center justify-center">
           <img className="w-full scale-125" src="/Images/IMG_7138.GIF" alt="" />
         </div>
         <div className="w-full flex items-center justify-center z-[9]">

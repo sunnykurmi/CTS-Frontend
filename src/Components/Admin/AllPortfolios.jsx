@@ -21,7 +21,7 @@ export default function AllPortfolios() {
     purchased: "",
     description: "",
     video: null,
-    videoUrl: "", // Add videoUrl to store the current video URL
+    videoUrl: "",
   });
   const [loading, setLoading] = useState(false);
   const [editPortfolioId, setEditPortfolioId] = useState(null);
@@ -37,7 +37,6 @@ export default function AllPortfolios() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if all fields except video are filled
     for (const key in formData) {
       if (key !== "video" && key !== "videoUrl" && !formData[key]) {
         alert("All fields except video are required.");
@@ -52,7 +51,6 @@ export default function AllPortfolios() {
       }
     }
 
-    // Append the existing video URL if no new video is selected
     if (!formData.video) {
       data.append("videoUrl", formData.videoUrl);
     }
@@ -68,7 +66,6 @@ export default function AllPortfolios() {
         alert("Portfolio created successfully!");
         setOpenAddPortfolio(false);
       }
-      // Refresh the portfolio list
       const response = await dispatch(AllPortfolio());
       setPortfolios(response);
     } catch (error) {
@@ -85,8 +82,8 @@ export default function AllPortfolios() {
       price: portfolio.price,
       purchased: portfolio.purchased,
       description: portfolio.description,
-      video: null, // Video file cannot be pre-filled
-      videoUrl: portfolio.video.url, // Set the current video URL
+      video: null,
+      videoUrl: portfolio.video.url,
     });
     setEditPortfolioId(portfolio._id);
     setOpenEditPortfolio(true);
@@ -104,7 +101,6 @@ export default function AllPortfolios() {
     fetchData();
   }, [dispatch]);
 
-  // Add this function inside the AllPortfolios component
   const handleDeleteClick = async (id) => {
     const confirmed = window.confirm(
       "Are you sure you want to delete this portfolio?"
@@ -114,7 +110,6 @@ export default function AllPortfolios() {
         await dispatch(deleteportfolio(id));
         alert("Portfolio deleted successfully!");
         window.location.reload();
-        // Refresh the portfolio list
         const response = await dispatch(AllPortfolio());
         setPortfolios(response);
       } catch (error) {
@@ -122,6 +117,7 @@ export default function AllPortfolios() {
       }
     }
   };
+
   if (!Portfolios) {
     return <Loader />;
   }
@@ -286,7 +282,7 @@ export default function AllPortfolios() {
               purchased: "",
               description: "",
               video: null,
-              videoUrl: "", // Reset videoUrl when adding a new portfolio
+              videoUrl: "",
             });
             setEditPortfolioId(null);
             setOpenAddPortfolio(true);
@@ -296,83 +292,95 @@ export default function AllPortfolios() {
           +Add Portfolio
         </button>
       </div>
-      <div className="w-full h-[80vh] flex flex-col gap-2 px-5 py-10 pb-20 overflow-y-scroll capitalize">
+      <div className="w-full h-[80vh] px-5 pb-10 overflow-hidden capitalize">
         {Portfolios.length === 0 ? (
           <p>No portfolio present</p>
         ) : (
-          Portfolios.slice()
-            .reverse()
-            .map((portfolio, index) => (
-              <div
-                key={index}
-                className="w-full border-2 shrink-0 h-[10vh] flex items-center justify-evenly "
-              >
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-600">S.No</p>
-                  <p className="font-medium text-sm">{index + 1}</p>
-                </div>
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-600">Name</p>
-                  <p className="font-medium text-sm">{portfolio.name}</p>
-                </div>
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-600">
+          <div className="overflow-y-auto h-full pb-10">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-100 sticky top-0">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    S.No
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Name
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Purchased
-                  </p>
-                  <p className="font-medium text-sm">{portfolio.purchased}</p>
-                </div>
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-600">Price</p>
-                  <p className="font-medium text-sm">{portfolio.price}</p>
-                </div>
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-600">
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Price
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Video Link
-                  </p>
-                  <a
-                    className="text-blue-600 font-semibold"
-                    href={`${portfolio.video.url}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Link
-                  </a>
-                </div>
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-600">
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Demo Link
-                  </p>
-                  <a
-                    className="text-blue-600 font-semibold"
-                    href={
-                      portfolio.livelink.startsWith("http")
-                        ? portfolio.livelink
-                        : `http://${portfolio.livelink}`
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Link
-                  </a>
-                </div>
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <button
-                    onClick={() => handleEditClick(portfolio)}
-                    className="px-6 py-2 rounded-lg bg-blue-500 text-white font-semibold"
-                  >
-                    Edit
-                  </button>
-                </div>
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <button
-                    onClick={() => handleDeleteClick(portfolio._id)}
-                    className="px-4 py-2 rounded-lg bg-red-500 text-white font-semibold"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            ))
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {Portfolios.slice().reverse().map((portfolio, index) => (
+                  <tr key={index}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      {index + 1}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      {portfolio.name}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      {portfolio.purchased}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      {portfolio.price}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      <a
+                        className="text-blue-600 font-semibold"
+                        href={`${portfolio.video.url}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Link
+                      </a>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      <a
+                        className="text-blue-600 font-semibold"
+                        href={
+                          portfolio.livelink.startsWith("http")
+                            ? portfolio.livelink
+                            : `http://${portfolio.livelink}`
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Link
+                      </a>
+                    </td>
+                    <td className="px-6 py-4 flex text-sm font-medium">
+                      <button
+                        className="py-2 px-4 bg-blue-500 text-white font-bold rounded-lg flex items-center justify-center"
+                        onClick={() => handleEditClick(portfolio)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="py-2 px-4 bg-red-500 text-white font-bold rounded-lg flex items-center justify-center ml-4"
+                        onClick={() => handleDeleteClick(portfolio._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

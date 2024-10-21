@@ -172,7 +172,7 @@ function AddEducation(props) {
   return (
     <div>
       <div className="z-10 flex items-center justify-center fixed h-screen w-full bg-black/30 overflow-hidden">
-        <div className="w-[50%] py-10 bg-white pt-5 rounded-lg">
+        <div className="w-[50%] max-[600px]:w-[100%] py-10 bg-white pt-5 rounded-lg">
           <RiCloseLine
             size={30}
             className="ml-auto mr-5 cursor-pointer   "
@@ -182,7 +182,7 @@ function AddEducation(props) {
           <div className="w-full flex items-center justify-center">
             <p className="text-2xl font-medium">Add Education</p>
           </div>
-          <div className="w-full mt-5 flex items-center justify-between px-16">
+          <div className="w-full mt-5 flex items-center justify-between px-16 max-[600px]:px-5">
             <div className="flex w-[45%] flex-col">
               <p className="text-lg font-medium">Class</p>
               <div
@@ -227,7 +227,7 @@ function AddEducation(props) {
               />
             </div>
           </div>
-          <div className="w-full mt-5 flex items-center justify-between px-16">
+          <div className="w-full mt-5 flex items-center justify-between px-16 max-[600px]:px-5">
             <div className="flex w-[45%] flex-col">
               <p className="text-lg font-medium">Education Board</p>
               <div
@@ -274,7 +274,7 @@ function AddEducation(props) {
               />
             </div>
           </div>
-          <div className="w-full mt-5 flex items-center justify-between px-16">
+          <div className="w-full mt-5 flex items-center justify-between px-16 max-[600px]:px-5">
             <div className="w-[45%] h-full">
               <p className="text-lg font-medium">Year of Passing</p>
               <input

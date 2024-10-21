@@ -53,59 +53,71 @@ function AllInternships() {
         <p>All Internships Details</p>
       </div>{" "}
       <br />
-      <div className="w-full h-[80vh] flex flex-col gap-2 px-5 py-10 overflow-y-scroll capitalize">
+      <div className="w-full h-[80vh] px-5 pb-10 overflow-hidden capitalize">
         {allinternships.length === 0 ? (
           <p>No Internships present</p>
         ) : (
-          allinternships
-            .slice()
-            .reverse()
-            .map((intern, index) => (
-              <div
-                key={index}
-                className="w-full border-2 shrink-0 h-[10vh] flex items-center justify-evenly "
-              >
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-500">S.No</p>
-                  <p className="font-medium text-sm">{index + 1}</p>
-                </div>
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-500">Name</p>
-                  <p className="font-medium text-sm">{intern.name}</p>
-                </div>
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-500">Email</p>
-                  <p className="font-medium text-sm">{intern.email}</p>
-                </div>
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-500">Mode</p>
-                  <p className="font-medium text-sm">{intern.mode}</p>
-                </div>
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <p className="text-xs font-semibold text-gray-500">Applied at</p>
-                  <p className="font-medium text-sm">
-                    {" "}
-                    {formatDateToIST(intern.createdAt)}
-                  </p>
-                </div>
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <button
-                    className="py-2 px-4 bg-blue-500 text-white font-bold rounded-lg flex items-center justify-center"
-                    onClick={() => handleMoreDetailsClick(intern._id)}
-                  >
-                    More Details
-                  </button>
-                </div>
-                <div className="h-full w-[20%] flex flex-col items-center justify-center">
-                  <button
-                    className="py-2 px-4 bg-blue-500 text-white font-bold rounded-lg flex items-center justify-center"
-                    onClick={() => handleSendMailClick(intern.email)}
-                  >
-                    Send Mail
-                  </button>
-                </div>
-              </div>
-            ))
+          <div className="overflow-y-auto h-full pb-10">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-100 sticky top-0">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    S.No
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Name
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Email
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Mode
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Applied at
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {allinternships.slice().reverse().map((intern, index) => (
+                  <tr key={index}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      {index + 1}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      {intern.name}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      {intern.email}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      {intern.mode}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      {formatDateToIST(intern.createdAt)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap flex text-sm font-medium">
+                      <button
+                        className="py-2 px-4 bg-blue-500 text-white font-bold rounded-lg flex items-center justify-center"
+                        onClick={() => handleMoreDetailsClick(intern._id)}
+                      >
+                        More Details
+                      </button>
+                      <button
+                        className="py-2 px-4 bg-blue-500 text-white font-bold rounded-lg flex items-center justify-center ml-2"
+                        onClick={() => handleSendMailClick(intern.email)}
+                      >
+                        Send Mail
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
       {internpopup && (

@@ -69,7 +69,7 @@ export default function Profile() {
         <div className="w-[60%] max-[600px]:hidden max-[600px]:w-full m-auto flex items-center justify-end max-[600px]:justify-center">
           <div
             onClick={openeditform}
-            className="flex gap-2 cursor-pointer mb-2 max-[600px]:mb-0 max-[600px]:py-3 max-[600px]:border-2 px-5"
+            className="flex gap-2 cursor-pointer  mb-2 max-[600px]:mb-0 max-[600px]:py-3 max-[600px]:border-2 px-5"
           >
             <RiPencilLine />
             Edit Profile
@@ -106,7 +106,7 @@ export default function Profile() {
 
               <div
                 onClick={openeditform}
-                className="flex gap-2 min-[600px]:hidden w-1/2 cursor-pointer mb-2 max-[600px]:mb-0 max-[600px]:py-3 max-[600px]:border-2 px-5"
+                className="flex gap-2 min-[600px]:hidden max-[400px]:w-[60%] shrink-0 w-1/2 cursor-pointer mb-2 max-[600px]:mb-0 max-[600px]:py-3 max-[600px]:border-2 px-5"
               >
                 <RiPencilLine />
                 Edit Profile
@@ -133,13 +133,13 @@ export default function Profile() {
               BIO
             </div>
             <div className="w-[60%] ">
-              <div className="text-[#151515d0] w-[90%] text-base font-medium capitalize">
+              <div className="text-[#151515d0] w-[90%] text-base font-medium capitalize max-[600px]:ml-5">
                 {user.bio ? (
-                  user.bio
+                  user.bio 
                 ) : (
                   <div
                     onClick={openeditform}
-                    className="text-[#008BDC] cursor-pointer"
+                    className="text-[#008BDC] cursor-pointer max-[600px]:ml-5"
                   >
                     +add bio
                   </div>
@@ -158,7 +158,7 @@ export default function Profile() {
                 ) : (
                   <div
                     onClick={openeditform}
-                    className="text-[#008BDC] cursor-pointer"
+                    className="text-[#008BDC] cursor-pointer max-[600px]:ml-5"
                   >
                     +add summary
                   </div>
@@ -170,7 +170,7 @@ export default function Profile() {
             <div className="w-[30%]    text-[#1515159d] text-base font-medium ">
               Date Of Birth
             </div>
-            <div className="w-[60%] ">
+            <div className="w-[60%]">
               <p className="text-[#151515d0] w-[90%] text-base font-medium capitalize">
                 {user.dateofbirth ? (
                   new Date(user.dateofbirth).toLocaleDateString("en-GB", {
@@ -181,7 +181,7 @@ export default function Profile() {
                 ) : (
                   <div
                     onClick={openeditform}
-                    className="text-[#008BDC] cursor-pointer"
+                    className="text-[#008BDC] cursor-pointer max-[600px]:ml-5"
                   >
                     +add DOB
                   </div>
@@ -189,11 +189,11 @@ export default function Profile() {
               </p>
             </div>
           </div>
-          <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">
+          <div className=" flex max-[600px]:flex-col max-[600px]:gap-5 border-t-2 border-[#0000000c] py-[4vh]  w-full">
             <div className="w-[30%] text-[#1515159d] text-base font-medium ">
               EDUCATION
             </div>
-            <div className="w-[60%] max-[600px]:w-[70%]">
+            <div className="w-[60%] max-[600px]:w-full">
               <div className="flex flex-col">
                 {user.education && user.education.currentclass !== "" ? (
                   <>
@@ -226,7 +226,7 @@ export default function Profile() {
                           </div>
                         </div>
                       </div>
-                      <div className=" center   ">
+                      <div>
                         <button
                           onClick={openEducation}
                           className="text-sm center py-1 px-4 border-2 rounded-full"

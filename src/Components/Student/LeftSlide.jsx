@@ -1,9 +1,11 @@
 import {
   RiBookLine,
   RiHome2Line,
+  RiPassValidLine,
   RiPhoneLine,
   RiRoadMapLine,
   RiSettings5Line,
+  RiSpyFill,
   RiTeamLine,
   RiWindow2Line,
 } from "@remixicon/react";
@@ -93,7 +95,7 @@ export default function LeftSlide({ selectedComponent, setSelectedComponent,clos
               // onClick={() => {setSelectedComponent("Community"); closeSidebar();}}
               to={"/portfolio"}
             >
-              <RiTeamLine />
+              <RiPassValidLine />
               <p>Portfolio</p>
             </Link>
           </div>
@@ -104,8 +106,8 @@ export default function LeftSlide({ selectedComponent, setSelectedComponent,clos
               // onClick={() => {setSelectedComponent("Community"); closeSidebar();}}
               to={"/services"}
             >
-              <RiTeamLine />
-              <p>Exclusive Services</p>
+              <RiSpyFill />
+              <p className="whitespace-nowrap max-[393px]:whitespace-normal min-[600px]:whitespace-normal">Exclusive Services</p>
             </Link>
           </div>
         </div>

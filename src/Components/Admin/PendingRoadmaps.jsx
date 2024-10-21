@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getpendingroadmap, uploadroadmap } from "../../store/Actions/adminAction";
-import { Link } from "react-router-dom";
 import { RiCloseLine } from "@remixicon/react";
-import axios from "axios";
 
 function PendingRoadmaps() {
   const dispatch = useDispatch();
@@ -58,12 +56,13 @@ function PendingRoadmaps() {
   const handleUploadClick = (roadmap) => {
     setSelectedRoadmap(roadmap);
     setFormData({
-        id: roadmap._id,
+      id: roadmap._id,
       name: roadmap.roadmapcreater,
       email: roadmap.email,
       file: null,
     });
   };
+
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
     setFormData((prevData) => ({
@@ -168,60 +167,69 @@ function PendingRoadmaps() {
         </div>
       )}
       <div className="w-full text-2xl pt-5 font-medium uppercase flex items-center justify-center">
-        <p>All Pending Roadmaps </p>
+        <p>All Pending Roadmaps</p>
       </div>{" "}
       <br />
-      <div className="w-full h-[80vh]  overflow-y-scroll  flex flex-col gap-2 px-5  py-10 capitalize  ">
-      {pendingroadmap.length === 0 ? (
+      <div className="w-full h-[80vh] px-5 pb-10 overflow-hidden capitalize">
+        {pendingroadmap.length === 0 ? (
           <p>No pending roadmaps present</p>
         ) : (
-        pendingroadmap.slice()
-        .reverse().map((roadmap, index) => (
-          <div
-            key={index}
-            className="w-full border-2 h-[10vh] flex items-center shrink-0  justify-evenly "
-          >
-            <div className="h-full w-[5%] flex flex-col items-center justify-center">
-              <p className="text-xs font-semibold text-gray-600">S.No</p>
-              <p className="font-medium text-sm">{index + 1}</p>
-            </div>
-            <div className="h-full w-[20%] flex flex-col items-center justify-center">
-              <p className="text-xs font-semibold text-gray-600">Name</p>
-              <p className="font-medium text-sm">{roadmap.roadmapcreater}</p>
-            </div>
-            <div className="h-full w-[10%] flex flex-col items-center justify-center">
-              <p className="text-xs font-semibold text-gray-600">Created at</p>
-              <p className="font-medium text-sm">
-                {" "}
-                {formatDateToIST(roadmap.createdAt)}
-              </p>
-            </div>
-            <div className="h-full w-[20%] flex flex-col items-center justify-center">
-              <p className="text-xs font-semibold text-gray-600">Email</p>
-              <p className="font-medium text-sm normal-case">
-                {" "}
-                {roadmap.email}
-              </p>
-            </div>
-
-            <div className="h-full w-[10%] flex flex-col items-center justify-center">
-              <button
-                className="py-2 px-4 bg-blue-500 text-white font-bold rounded-lg flex items-center justify-center"
-                onClick={() => downloadFile(roadmap.path)}
-              >
-                Download 
-              </button>
-            </div>
-            <div className="h-full w-[10%] flex flex-col items-center justify-center">
-              <button
-                className="py-2 px-4 bg-green-500 text-white font-bold rounded-lg flex items-center justify-center"
-                onClick={() => handleUploadClick(roadmap)}
-              >
-                Upload 
-              </button>
-            </div>
+          <div className="overflow-y-auto h-full pb-10">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-100 sticky top-0">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    S.No
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Name
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Created at
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Email
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {pendingroadmap.slice().reverse().map((roadmap, index) => (
+                  <tr key={index}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      {index + 1}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      {roadmap.roadmapcreater}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      {formatDateToIST(roadmap.createdAt)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      {roadmap.email}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap flex text-sm font-medium">
+                      <button
+                        className="py-2 px-4 bg-blue-500 text-white font-bold rounded-lg flex items-center justify-center"
+                        onClick={() => downloadFile(roadmap.path)}
+                      >
+                        Download
+                      </button>
+                      <button
+                        className="py-2 px-4 bg-green-500 text-white font-bold rounded-lg flex items-center justify-center ml-4"
+                        onClick={() => handleUploadClick(roadmap)}
+                      >
+                        Upload
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        )))}
+        )}
       </div>
     </div>
   );

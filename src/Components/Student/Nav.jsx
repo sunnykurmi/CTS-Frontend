@@ -39,7 +39,7 @@ export default function Nav() {
 
   return (
     <div>
-      <div className="w-full h-20 border-b-2 flex items-center justify-between p-3 px-5 ">
+      <div className="w-full h-20 border-b-2 flex items-center justify-between p-3 px-5 bg-white">
         <Link to="/">
         <img className="w-[40%] cursor-pointer" src="/Images/CTS   Logo.png" alt="" />
         </Link>
