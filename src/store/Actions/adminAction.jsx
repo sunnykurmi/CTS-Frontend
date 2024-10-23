@@ -105,3 +105,54 @@ export const deleteportfolio = (id ) => async (dispatch, getState) => {
     throw error; // Throw error to handle it in the component
   }
 };
+
+
+////////////////////////////////////////exam exam /////////////////////////////////////
+
+
+export const getallexams = () => async (dispatch, getState) => {
+  try {
+    dispatch(setLoading(true)); // Set loading to true
+    const response = await axios.get("/api/v1/user/exam-prep/exams");
+    dispatch(setLoading(false)); // Reset loading on success
+    return response.data.exams; // Return the data
+  } catch (error) {
+    dispatch(setLoading(false)); // Reset loading on error
+    throw error; // Throw error to handle it in the component
+  }
+};
+
+export const addexam = (formdata) => async (dispatch, getState) => {
+  try {
+    dispatch(setLoading(true)); // Set loading to true
+    const response = await axios.post(`/api/v1/admin/create-exam`,formdata);
+    dispatch(setLoading(false))
+    return response.data; // Return the data
+  } catch (error) {
+    dispatch(setLoading(false)); // Reset loading on error
+    throw error; // Throw error to handle it in the component
+  }
+};
+
+export const editexam = (id , formdata) => async (dispatch, getState) => {
+  try {
+    dispatch(setLoading(true)); // Set loading to true
+    const response = await axios.post(`/api/v1/admin/update-exam/${id}`,formdata);
+    dispatch(setLoading(false))
+    return response.data; // Return the data
+  } catch (error) {
+    dispatch(setLoading(false)); // Reset loading on error
+    throw error; // Throw error to handle it in the component
+  }
+};
+export const deleteexam = (id ) => async (dispatch, getState) => {
+  try {
+    dispatch(setLoading(true)); // Set loading to true
+    const response = await axios.post(`/api/v1/admin/delete-exam/${id}`);
+    dispatch(setLoading(false))
+    return response.data; // Return the data
+  } catch (error) {
+    dispatch(setLoading(false)); // Reset loading on error
+    throw error; // Throw error to handle it in the component
+  }
+};

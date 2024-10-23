@@ -53,3 +53,21 @@ export const cssProfilePaymentSuccess = (id, user) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const SATExamPayment = (formData) => async (dispatch) => {
+  try {
+    const order = await axios.post(`/api/v1/services/submit-examprep`,formData);
+    return order.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const SATExamPaymentSuccess = (id, user) => async (dispatch) => {
+  try {
+    const order = await axios.post(`/api/v1/services/payment-success-cssprofile/${id}`, user);
+    return order.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

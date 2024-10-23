@@ -10,11 +10,12 @@ import PendingRoadmaps from "./PendingRoadmaps";
 import AllInternships from "./AllInternships";
 import AllPortfolios from "./AllPortfolios";
 import { RiArrowRightLine, RiCloseLine } from "@remixicon/react";
+import AllExams from './AllExams';
 
 export default function AdminHome() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
-  const [selectedComponent, setSelectedComponent] = useState("AllPortfolios");
+  const [selectedComponent, setSelectedComponent] = useState("AllExams");
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
   useEffect(() => {
@@ -51,6 +52,7 @@ export default function AdminHome() {
             {selectedComponent === "PendingRoadmaps" && <PendingRoadmaps />}
             {selectedComponent === "AllInternships" && <AllInternships />}
             {selectedComponent === "AllPortfolios" && <AllPortfolios />}
+            {selectedComponent === "AllExams" && <AllExams />}
           </div>
         </div>
       </div>
@@ -94,6 +96,8 @@ export default function AdminHome() {
             {selectedComponent === "PendingRoadmaps" && <PendingRoadmaps />}
             {selectedComponent === "AllInternships" && <AllInternships />}
             {selectedComponent === "AllPortfolios" && <AllPortfolios />}
+            {selectedComponent === "AllExams" && <AllExams />}
+
           </div>
         </div>
       </div>

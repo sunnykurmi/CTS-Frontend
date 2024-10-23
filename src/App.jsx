@@ -28,6 +28,8 @@ import CommonSuccess from "./Components/Home/ExclusiveServices/Common App/Common
 import AdminProtectedRoute from "./utils/AdminProtectedRoute";
 import CssHome from "./Components/Home/ExclusiveServices/CSS Profile/CssHome";
 import CssSuccess from "./Components/Home/ExclusiveServices/CSS Profile/CssSuccess";
+import ExamHome from "./Components/Home/ExclusiveServices/Expert Classes/ExamHome";
+import SATHome from "./Components/Home/ExclusiveServices/Expert Classes/SATHome";
 
 export default function App() {
   const GoogleAuthWrapper = ({ isLogin }) => {
@@ -62,8 +64,7 @@ export default function App() {
         <Route
           path="/admin"
           element={
-            <AdminProtectedRoute
-            >
+            <AdminProtectedRoute>
               <AdminHome />
             </AdminProtectedRoute>
           }
@@ -85,8 +86,6 @@ export default function App() {
           }
         />
 
-
-
         <Route path="/portfolio" element={<PortfolioHome />} />
         <Route path="/portfolio/:id" element={<ViewPortfolio />} />
         <Route
@@ -94,16 +93,33 @@ export default function App() {
           element={<PaymentSuccess />}
         />
 
-
         <Route path="/services" element={<ServicesHome />} />
         <Route path="/services/essay-editing" element={<EssayHome />} />
-        <Route path="/services/essay-editing/paymentsuccess/:id" element={<EssaySuccess />} />
+        <Route
+          path="/services/essay-editing/paymentsuccess/:id"
+          element={<EssaySuccess />}
+        />
 
         <Route path="/services/common-app-review" element={<CommonHome />} />
-        <Route path="/services/common-app-review/paymentsuccess/:id" element={<CommonSuccess />} />
+        <Route
+          path="/services/common-app-review/paymentsuccess/:id"
+          element={<CommonSuccess />}
+        />
 
         <Route path="/services/css-profile" element={<CssHome />} />
-        <Route path="/services/css-profile-review/paymentsuccess/:id" element={<CssSuccess />} />
+        <Route
+          path="/services/css-profile-review/paymentsuccess/:id"
+          element={<CssSuccess />}
+        />
+
+
+        <Route path="/services/exam-prepration" element={<ExamHome />} />
+
+        <Route path="/services/sat-prepration" element={<SATHome />} />
+        <Route
+          path="/services/exam-prep/paymentsuccess/:id"
+          element={<CssSuccess />}
+        />
       </Routes>
     </div>
   );

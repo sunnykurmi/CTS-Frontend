@@ -66,6 +66,17 @@ export default function AdminLeftSlide({ selectedComponent, setSelectedComponent
               <p>All Portfolios</p>
             </button>
           </div>
+          <div className="w-full h-[8vh] flex items-center justify-center">
+            <button
+              className={getButtonClass("AllExams")}
+              onClick={() => {
+                setSelectedComponent("AllExams");
+                closeSidebar();
+              }}
+            >
+              <p>All Exams</p>
+            </button>
+          </div>
         </div>
       </div>
     </div>
