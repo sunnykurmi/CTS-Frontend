@@ -48,7 +48,7 @@ export default function EssayPayments() {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {AllPayments.slice()
+          { AllPayments&& AllPayments.slice()
             .reverse()
             .map((payment, index) => (
               <tr key={index}>
