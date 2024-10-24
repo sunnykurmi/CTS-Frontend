@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { asynccurrentUser } from "../../../../store/Actions/userActions";
-import { cssProfilePaymentSuccess } from "../../../../store/Actions/servicesAction";
+import { ExamPaymentSuccess } from "../../../../store/Actions/servicesAction";
 
-function CssSuccess () {
+function ExamSuccess () {
     const [countdown, setCountdown] = useState(10);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function CssSuccess () {
 
     useEffect(() => {
         if (user && id) {
-          dispatch(cssProfilePaymentSuccess(id, user));
+          dispatch(ExamPaymentSuccess(id, user));
         }
       }, [user, id, dispatch]);
       
@@ -36,6 +36,7 @@ function CssSuccess () {
 
     return () => clearInterval(timer);
   }, [navigate]);
+
   return (
     <div>
       <div className="center h-screen w-full flex-col text-center ">
@@ -60,7 +61,7 @@ function CssSuccess () {
             rel="noopener noreferrer"
             className="center"
           >
-            <button className="px-4 py-2 w-[40%] border-2 shadow-lg rounded-lg font-semibold text-black center gap-3">
+            <button className="px-4 py-2 shrink-0 w-full border-2 shadow-lg rounded-lg font-semibold text-black center gap-3">
               {" "}
               <img
                 className="w-[4vh]"
@@ -79,4 +80,4 @@ function CssSuccess () {
   );
 }
 
-export default CssSuccess
+export default ExamSuccess

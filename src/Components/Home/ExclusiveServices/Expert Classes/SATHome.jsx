@@ -24,12 +24,14 @@ const SATHome = () => {
   const [userInput, setUserInput] = useState({
     name: "",
     contact: "",
-    score: 0,
+    score: "",
     email: "",
     exam_type: "",
     userid: "",
-    amount: 0,
+    amount: "",
   });
+
+  
 
   useEffect(() => {
     if (filterexam[0]) {

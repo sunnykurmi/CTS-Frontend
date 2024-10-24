@@ -37,7 +37,7 @@ function PaymentSuccess() {
   return (
     <div>
       <div className="center h-screen w-full flex-col text-center ">
-        <div className="center p-5 flex-col gap-3 shadow-xl w-[30vw]">
+        <div className="center p-5 flex-col gap-3 shadow-xl w-[30vw] max-[600px]:w-[90%]">
           <div className="redirecting-container w-full h-fit  text-end">
           <p className="text-sm">Redirecting to Home in {countdown} </p>
           </div>
@@ -61,7 +61,7 @@ function PaymentSuccess() {
             <button className="px-4 py-2 w-[40%] border-2 shadow-lg rounded-lg font-semibold text-black center gap-3">
               {" "}
               <img
-                className="w-[15%]"
+                className="w-[4vh]"
                 src="https://mailmeteor.com/logos/assets/PNG/Gmail_Logo_512px.png"
                 alt=""
               />{" "}

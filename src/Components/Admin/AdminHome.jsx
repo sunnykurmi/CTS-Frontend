@@ -11,11 +11,20 @@ import AllInternships from "./AllInternships";
 import AllPortfolios from "./AllPortfolios";
 import { RiArrowRightLine, RiCloseLine } from "@remixicon/react";
 import AllExams from './AllExams';
+import AllPaymentsHome from "./Payments/AllPaymentsHome";
 
 export default function AdminHome() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
-  const [selectedComponent, setSelectedComponent] = useState("AllExams");
+
+  const [selectedComponent, setSelectedComponent] = useState(() => {
+    return localStorage.getItem("selectedComponent") || "AllStudents";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("selectedComponent", selectedComponent);
+  }, [selectedComponent]);
+
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
   useEffect(() => {
@@ -53,6 +62,7 @@ export default function AdminHome() {
             {selectedComponent === "AllInternships" && <AllInternships />}
             {selectedComponent === "AllPortfolios" && <AllPortfolios />}
             {selectedComponent === "AllExams" && <AllExams />}
+            {selectedComponent === "AllPayments" && <AllPaymentsHome />}
           </div>
         </div>
       </div>
@@ -97,6 +107,7 @@ export default function AdminHome() {
             {selectedComponent === "AllInternships" && <AllInternships />}
             {selectedComponent === "AllPortfolios" && <AllPortfolios />}
             {selectedComponent === "AllExams" && <AllExams />}
+            {selectedComponent === "AllPayments" && <AllPaymentsHome />}
 
           </div>
         </div>

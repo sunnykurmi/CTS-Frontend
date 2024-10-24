@@ -30,6 +30,7 @@ import CssHome from "./Components/Home/ExclusiveServices/CSS Profile/CssHome";
 import CssSuccess from "./Components/Home/ExclusiveServices/CSS Profile/CssSuccess";
 import ExamHome from "./Components/Home/ExclusiveServices/Expert Classes/ExamHome";
 import SATHome from "./Components/Home/ExclusiveServices/Expert Classes/SATHome";
+import ExamSuccess from "./Components/Home/ExclusiveServices/Expert Classes/ExamSuccess";
 
 export default function App() {
   const GoogleAuthWrapper = ({ isLogin }) => {
@@ -118,7 +119,7 @@ export default function App() {
         <Route path="/services/sat-prepration" element={<SATHome />} />
         <Route
           path="/services/exam-prep/paymentsuccess/:id"
-          element={<CssSuccess />}
+          element={<ExamSuccess />}
         />
       </Routes>
     </div>

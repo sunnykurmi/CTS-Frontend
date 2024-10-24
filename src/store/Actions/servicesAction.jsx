@@ -63,9 +63,9 @@ export const SATExamPayment = (formData) => async (dispatch) => {
   }
 };
 
-export const SATExamPaymentSuccess = (id, user) => async (dispatch) => {
+export const ExamPaymentSuccess = (id, user) => async (dispatch) => {
   try {
-    const order = await axios.post(`/api/v1/services/payment-success-cssprofile/${id}`, user);
+    const order = await axios.post(`/api/v1/services/payment-success-examprep/${id}`, user);
     return order.data;
   } catch (error) {
     console.log(error);
