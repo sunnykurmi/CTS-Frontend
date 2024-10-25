@@ -88,7 +88,7 @@ export default function Home() {
           <span className="ml-5">Diwali Offer: 20% off on all courses! 🎉</span>
         </div>
         <div className="ml-4 font-semibold text-lg w-64 text-[#F58612]">
-          {Time left: ${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s}
+        {`Time left: ${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
         </div>
       </div>
       <HomeNav />
