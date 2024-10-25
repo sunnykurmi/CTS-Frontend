@@ -213,7 +213,7 @@ export default function AllExams() {
           +Add Exams
         </button> */}
       </div>
-      <div className="w-full h-[80vh] px-5 pb-10 overflow-hidden capitalize">
+      <div className="w-full h-[80vh] px-5 pb-10 overflow-hidden capitalize font-medium">
         {exams.length === 0 ? (
           <p>No portfolio present</p>
         ) : (

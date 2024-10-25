@@ -54,7 +54,7 @@ export const cssProfilePaymentSuccess = (id, user) => async (dispatch) => {
   }
 };
 
-export const SATExamPayment = (formData) => async (dispatch) => {
+export const ExamPayment = (formData) => async (dispatch) => {
   try {
     const order = await axios.post(`/api/v1/services/submit-examprep`,formData);
     return order.data;

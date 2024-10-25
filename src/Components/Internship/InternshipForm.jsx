@@ -1,12 +1,16 @@
 import { RiArrowDownSLine } from "@remixicon/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SubmitInternship } from "../../store/Actions/internshipAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import HomeNav from "../Home/HomeNav";
+import Nav from "../Student/Nav";
+import { asynccurrentUser } from "../../store/Actions/userActions";
 
 export default function InternshipForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isAuth = useSelector((state) => state.user.isAuth);
   const [loading, setLoading] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState(null);
   const [userInput, setUserInput] = useState({
@@ -166,8 +170,18 @@ export default function InternshipForm() {
     }
   };
 
+  useEffect(() => {
+    dispatch(asynccurrentUser());
+  }, [dispatch])
+  
+
   return (
     <div>
+          {!isAuth ? (
+      <HomeNav />
+    ) : (
+      <Nav />
+    )}
       <div className="w-full center p-5 overflow-x-hidden flex-col max-[600px]:p-0 ">
         <div className="flex max-[600px]:flex-col">
 

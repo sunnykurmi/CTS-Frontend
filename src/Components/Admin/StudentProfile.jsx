@@ -17,7 +17,7 @@ export default function StudentProfile() {
       const fetchData = async () => {
         try {
           const response = await dispatch(getallusers());
-          setallstudents(response.users);
+          setallstudents(response);
         } catch (error) {
           console.error("Failed to fetch students:", error);
         }

@@ -21,6 +21,7 @@
     "primereact": "^10.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-headroom": "^3.2.1",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.22.0",
     "react-step-progress-bar": "^1.0.3",

@@ -60,7 +60,7 @@ function CssSuccess () {
             rel="noopener noreferrer"
             className="center"
           >
-            <button className="px-4 py-2 w-[40%] border-2 shadow-lg rounded-lg font-semibold text-black center gap-3">
+            <button className="px-4 py-2 w-full border-2 shadow-lg rounded-lg font-semibold text-black center gap-3">
               {" "}
               <img
                 className="w-[4vh]"

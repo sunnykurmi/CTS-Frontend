@@ -30,7 +30,7 @@ function AllRoadmaps() {
     return date.toLocaleDateString("en-GB", options);
   };
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden font-medium">
       <div className="w-full text-2xl pt-5 font-medium uppercase flex items-center justify-center">
         <p>All Roadmaps Details</p>
       </div>{" "}

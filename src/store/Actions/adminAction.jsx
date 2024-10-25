@@ -165,12 +165,48 @@ export const deleteexam = (id) => async (dispatch, getState) => {
 
 ///////////////////////////////Payment routes //////////////////////////////////////
 
-export const getallessaypayments = () => async (dispatch, getState) => {
+export const getallportfoliopayments = () => async (dispatch, getState) => {
   try {
     dispatch(setLoading(true)); // Set loading to true
     const response = await axios.post("/api/v1/admin/allportfolio_pay");
     dispatch(setLoading(false)); // Reset loading on success
     return response.data.Portfoliopay; // Return the data
+  } catch (error) {
+    dispatch(setLoading(false)); // Reset loading on error
+    throw error; // Throw error to handle it in the component
+  }
+};
+
+export const getallessaypayments = () => async (dispatch, getState) => {
+  try {
+    dispatch(setLoading(true)); // Set loading to true
+    const response = await axios.post("/api/v1/admin/allessay_pay");
+    dispatch(setLoading(false)); // Reset loading on success
+    return response.data.essaypay; // Return the data
+  } catch (error) {
+    dispatch(setLoading(false)); // Reset loading on error
+    throw error; // Throw error to handle it in the component
+  }
+};
+
+export const getallcsspayments = () => async (dispatch, getState) => {
+  try {
+    dispatch(setLoading(true)); // Set loading to true
+    const response = await axios.post("/api/v1/admin/allcssprofile_pay");
+    dispatch(setLoading(false)); // Reset loading on success
+    return response.data.cssprofile; // Return the data
+  } catch (error) {
+    dispatch(setLoading(false)); // Reset loading on error
+    throw error; // Throw error to handle it in the component
+  }
+};
+
+export const getallcommonapppayments = () => async (dispatch, getState) => {
+  try {
+    dispatch(setLoading(true)); // Set loading to true
+    const response = await axios.post("/api/v1/admin/allcommonapp_pay");
+    dispatch(setLoading(false)); // Reset loading on success
+    return response.data.commonapp; // Return the data
   } catch (error) {
     dispatch(setLoading(false)); // Reset loading on error
     throw error; // Throw error to handle it in the component

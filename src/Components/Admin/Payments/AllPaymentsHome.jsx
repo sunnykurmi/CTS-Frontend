@@ -38,6 +38,11 @@ const AllPaymentsHome = () => {
           <p>CSS Profile</p>
         </button>
       </div>
+      <div className={getButtonClass("CommonApp")}>
+        <button onClick={() => handleButtonClick("CommonApp")}>
+          <p>Common App</p>
+        </button>
+      </div>
       <div className={getButtonClass("ExamPrep")}>
         <button onClick={() => handleButtonClick("ExamPrep")}>
           <p>Exam Prep</p>

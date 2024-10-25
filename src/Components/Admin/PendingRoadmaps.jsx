@@ -91,7 +91,7 @@ function PendingRoadmaps() {
   };
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden font-medium">
       {selectedRoadmap && (
         <div className="w-full h-screen bg-[#64646476] fixed top-0 left-0 z-[9] flex items-center justify-center">
           <div className="w-[40%] py-10 bg-white border-2 z-[99] flex flex-col gap-5 items-center text-center justify-center">

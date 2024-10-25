@@ -18,7 +18,7 @@ function AbroadHome() {
       </div>
       <HomeNav />
       <div className="w-full flex items-center justify-center">
-        <img src="/Images/abroad.png" alt="" />
+        <img className="w-[30%]" src="/Images/abroad.png" alt="" />
       </div>
       <div className="w-full flex items-center justify-center mt-5">
         <div className="w-60 h-10 rounded-full flex items-center justify-center font-semibold border-2 border-dashed text-[#000000bd] border-black">

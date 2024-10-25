@@ -29,6 +29,37 @@ export default function Home() {
   const [studentsJoined, setStudentsJoined] = useState(0);
   const [studentsImpacting, setStudentsImpacting] = useState(0);
   const [countries, setCountries] = useState(0);
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    // Calculate time left for Diwali
+    const diwaliDate = new Date("October 31, 2024 00:00:00").getTime();
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = diwaliDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+
+      if (distance < 0) {
+        clearInterval(interval);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const incrementValue = (target, setValue) => {
@@ -52,10 +83,13 @@ export default function Home() {
 
   return (
     <div id="home">
-      <div className="w-full h-14 flex items-center justify-center  bg-[#FCEEC5] max-[600px]:hidden">
-        <p className="font-semibold text-lg text-[#F58612] ">
-          Lets Join Us To Cross The Sky Limits 🏆
-        </p>
+      <div className="w-full h-14 flex items-center justify-center bg-[#FCEEC5] max-[600px]:hidden">
+        <div className="font-semibold text-lg text-[#F58612] whitespace-nowrap">
+          <span className="ml-5">Diwali Offer: 20% off on all courses! 🎉</span>
+        </div>
+        <div className="ml-4 font-semibold text-lg w-64 text-[#F58612]">
+          {Time left: ${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s}
+        </div>
       </div>
       <HomeNav />
       <div className="w-full flex items-center flex-col justify-evenly">
@@ -183,7 +217,7 @@ export default function Home() {
             <p>Feature Walkthrough</p>
           </div>
         </div>
-        <div className="w-[80%] relative flex pt-10 gap-8 text-5xl font-bold text-[#0000003c] flex-col max-[600px]:text-2xl max-[600px]:gap-2 max-[600px]:text-[#000000c1] ">
+        <div className="w-[80%] relative flex pt-10 gap-8 text-5xl font-bold text-[#0000003c] flex-col max-[600px]:text-2xl max-[600px]:gap-2 max-[600px]:text-[#000000c1] z-0">
           <p className="hover:text-[#000000d0] z-[9] ">Personalised Roadmap</p>
           <p className="hover:text-[#000000d0] z-[9] ">Community Support</p>
           <p className="hover:text-[#000000d0] z-[9] ">Exclusive Resources </p>

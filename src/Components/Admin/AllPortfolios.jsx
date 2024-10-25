@@ -271,7 +271,7 @@ export default function AllPortfolios() {
           </div>
         </div>
       )}
-      <div className="w-full flex items-center justify-between p-10">
+      <div className="w-full flex items-center justify-between p-10 font-medium">
         <p className="text-2xl font-medium">All Portfolios </p>
         <button
           onClick={() => {
@@ -292,11 +292,11 @@ export default function AllPortfolios() {
           +Add Portfolio
         </button>
       </div>
-      <div className="w-full h-[80vh] px-5 pb-10 overflow-hidden capitalize">
+      <div className="w-full h-[80vh] px-5 pb-10 overflow-hidden capitalize font-medium">
         {Portfolios.length === 0 ? (
           <p>No portfolio present</p>
         ) : (
-          <div className="overflow-y-auto h-full pb-10">
+          <div className="overflow-y-auto h-full pb-10 font-medium">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-100 sticky top-0">
                 <tr>

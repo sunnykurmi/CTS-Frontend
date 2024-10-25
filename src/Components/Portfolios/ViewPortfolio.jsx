@@ -99,7 +99,7 @@ export default function ViewPortfolio() {
         <div className="w-44 absolute left-0 h-full flex items-center justify-center text-base top-14    ">
           <Link
             className=" h-12 gap-3 rounded-full  bg-[#F58612] text-white flex items-center justify-center p-2 font-bold"
-            to={`/portfolio`}
+            to={-1}
           >
             <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
               <RiArrowLeftSLine className=" text-[#0000009b]" />{" "}

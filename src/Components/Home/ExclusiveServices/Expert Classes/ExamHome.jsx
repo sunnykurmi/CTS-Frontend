@@ -22,7 +22,7 @@ const ExamHome = () => {
       description:
         "Turn your essay into a powerful story! Our Ivy League experts will edit and enhance your writing to make it stand out. Submit your essay for a professional review and get one step closer to your dream college. Enroll now for a polished, compelling essay!",
       image: "/Images/Essay-editing.webp",
-      link: "/services/sat-prepration",
+      link: "/services/exam-prepration/sat-prepration",
       button: "Book Now",
     },
     {
@@ -30,7 +30,7 @@ const ExamHome = () => {
       description:
         "Perfect your Common App with expert review! 80% of students make mistakes—don’t be one of them. Our team will polish your activities and ensure every section shines. Enroll now to submit an error-free, standout application!",
       image: "/Images/common-app-review.jpg",
-      link: "",
+      link: "/services/exam-prepration/ielts-prepration",
       button: "Book Now",
     },
     // {
@@ -44,7 +44,7 @@ const ExamHome = () => {
       description:
         "Your CSS Profile could be the key to unlocking valuable financial aid! Don’t let mistakes or overlooked sections cost you. Our CSS Profile Review program ensures your submission is accurate and maximizes your chances for aid. Let us help you secure the support you deserve—schedule your review today!",
       image: "/Images/css-profile-helper.jpg",
-      link: "",
+      link: "/services/exam-prepration/toefl-prepration",
       button: "Book Now",
     },
     {
@@ -52,7 +52,7 @@ const ExamHome = () => {
       description:
         "Get ready to ace your exams with expert-led SAT, TOEFL, IELTS, and Duolingo English Test (DET) classes! Whether you’re aiming for top scores or need a boost in your test prep, we’ve got you covered. Join our prep classes now and give yourself the best chance at success!",
       image: "/Images/sat-exam.png",
-      link: "",
+      link: "/services/exam-prepration/det-prepration",
       button: "Book Now",
     },
   ];

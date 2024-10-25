@@ -31,6 +31,9 @@ import CssSuccess from "./Components/Home/ExclusiveServices/CSS Profile/CssSucce
 import ExamHome from "./Components/Home/ExclusiveServices/Expert Classes/ExamHome";
 import SATHome from "./Components/Home/ExclusiveServices/Expert Classes/SATHome";
 import ExamSuccess from "./Components/Home/ExclusiveServices/Expert Classes/ExamSuccess";
+import IELTSHome from "./Components/Home/ExclusiveServices/Expert Classes/IELTSHome";
+import TOEFLHome from "./Components/Home/ExclusiveServices/Expert Classes/TOEFLHome";
+import DETHome from "./Components/Home/ExclusiveServices/Expert Classes/DETHome";
 
 export default function App() {
   const GoogleAuthWrapper = ({ isLogin }) => {
@@ -113,14 +116,18 @@ export default function App() {
           element={<CssSuccess />}
         />
 
-
         <Route path="/services/exam-prepration" element={<ExamHome />} />
 
-        <Route path="/services/sat-prepration" element={<SATHome />} />
+        <Route path="/services/exam-prepration/sat-prepration" element={<SATHome />} />
         <Route
           path="/services/exam-prep/paymentsuccess/:id"
           element={<ExamSuccess />}
         />
+
+        <Route path="/services/exam-prepration/ielts-prepration" element={<IELTSHome />} />
+
+        <Route path="/services/exam-prepration/toefl-prepration" element={<TOEFLHome />} />
+        <Route path="/services/exam-prepration/det-prepration" element={<DETHome />} />
       </Routes>
     </div>
   );

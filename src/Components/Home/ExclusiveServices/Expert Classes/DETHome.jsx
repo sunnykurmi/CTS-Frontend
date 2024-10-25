@@ -5,9 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { getallexams } from "../../../../store/Actions/adminAction";
 import { ExamPayment } from "../../../../store/Actions/servicesAction";
 
-const SATHome = () => {
+const DETHome = () => {
   const key = import.meta.env.VITE_RAZORPAY_KEY;
-  const examname = "SAT";
+  const examname = "DET";
   const [exams, setExams] = useState([]);
 
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const SATHome = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCheckboxEnabled, setIsCheckboxEnabled] = useState(false);
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
-  const [hasTakenSAT, setHasTakenSAT] = useState(false);
+  const [hasTakenDET, setHasTakenDET] = useState(false);
 
   const filterexam = exams.filter((exam) => exam.examname === examname);
 
@@ -51,8 +51,8 @@ const SATHome = () => {
     }));
   };
 
-  const handleSATChange = (value) => {
-    setHasTakenSAT(value === "yes");
+  const handleDETChange = (value) => {
+    setHasTakenDET(value === "yes");
   };
 
   useEffect(() => {
@@ -66,25 +66,25 @@ const SATHome = () => {
 
   useEffect(() => {
     const { name, contact, score, email } = userInput;
-    if (name && contact && email && (!hasTakenSAT || (hasTakenSAT && score))) {
+    if (name && contact && email && (!hasTakenDET || (hasTakenDET && score))) {
       setIsCheckboxEnabled(true);
     } else {
       setIsCheckboxEnabled(false);
       setIsCheckboxChecked(false);
     }
-  }, [userInput, hasTakenSAT]);
+  }, [userInput, hasTakenDET]);
 
   const checkLoginHandler = () => {
     if (!isAuth) {
       window.alert("Please login first");
-      navigate("/login", { state: { from: `/services/sat-prepration` } });
+      navigate("/login", { state: { from: `/services/DET-prepration` } });
       return;
     }
   };
 
   const handleCheckboxClick = (event) => {
     const { name, contact, score, email } = userInput;
-    if (!isCheckboxEnabled || (hasTakenSAT && !score)) {
+    if (!isCheckboxEnabled || (hasTakenDET && !score)) {
       event.preventDefault();
       alert("Please fill in all required fields before checking the box.");
     } else {
@@ -115,7 +115,7 @@ const SATHome = () => {
           amount: userInput.amount * 100,
           currency: "INR",
           name: "Cross The Skylimits",
-          description: "Payment for SAT Expert Classes",
+          description: "Payment for DET Expert Classes",
           image: "https://crosstheskylimits.online/Images/CTS%20%20%20Logo.png",
           order_id: order.id,
           callback_url: `${
@@ -179,7 +179,7 @@ const SATHome = () => {
 
       <div className="w-[70vw] h-fit m-auto mt-10 shadow-lg rounded-xl p-5 border-2 max-[456px]:w-full max-[456px]:border-none max-[456px]:rounded-none max-[456px]:shadow-none max-[456px]:mt-1 sm:p-5">
         <h1 className="text-4xl mt-7 ml-10 max-[600px]:ml-2 text-center max-[600px]:text-3xl">
-          SAT Expert Classes
+          DET Expert Classes
         </h1>
         <p className="w-[60%] shadow-lg max-[600px]:w-full overflow-hidden mt-5 m-auto text-zinc-500 ">
           <iframe
@@ -206,7 +206,7 @@ const SATHome = () => {
       <div className="w-[70vw] m-auto h-fit p-5 flex flex-col justify-center mt-10 ">
         <h1 className="text-4xl font-bold text-center">Get Started</h1>
         <p className="text-xl text-center mt-5 max-[600px]:text-lg max-[600px]:w-full max-[600px]:px-5">
-          Enroll in SAT Expert Classes and get started with your SAT exam
+          Enroll in DET Expert Classes and get started with your DET exam
           preparation.
         </p>
         <h2 className="text-3xl font-bold mt-5">
@@ -228,12 +228,12 @@ const SATHome = () => {
            Book
           </button>
         </div>
-      {isAuth ? (
+      {/* {isAuth ? ( */}
         <div className="steps-mom w-full overflow-hidden h-fit p-20 px-48 max-[600px]:p-0">
           <div className="step1-wrapper max-[600px]:w-full ">
             <h1 className="text-2xl font-semibold">STEP-1:</h1>
             <p className="ml-2">
-              Fill the form below to enroll in SAT Expert Classes and get
+              Fill the form below to enroll in DET Expert Classes and get
               started
             </p>
 
@@ -279,38 +279,38 @@ const SATHome = () => {
 
                 <div className="">
                   <h2 className="font-medium">
-                    Have you taken the SAT exam before?
+                    Have you taken the DET exam before?
                   </h2>
                   <div className="flex gap-5">
                     <button
                       className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${
-                        hasTakenSAT
+                        hasTakenDET
                           ? "bg-[#F58612] text-white"
                           : "border-[#F58612]"
                       }`}
-                      onClick={() => handleSATChange("yes")}
+                      onClick={() => handleDETChange("yes")}
                     >
                       YES
                     </button>
                     <button
                       className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${
-                        !hasTakenSAT
+                        !hasTakenDET
                           ? "bg-[#F58612] text-white"
                           : "border-[#F58612]"
                       }`}
-                      onClick={() => handleSATChange("no")}
+                      onClick={() => handleDETChange("no")}
                     >
                       NO
                     </button>
                   </div>
                 </div>
 
-                {hasTakenSAT && (
+                {hasTakenDET && (
                   <div className="mt-5">
-                    <h2 className="font-medium">Enter your SAT exam marks</h2>
+                    <h2 className="font-medium">Enter your DET exam marks</h2>
                     <input
                       className="field rounded-md"
-                      placeholder="Enter your SAT marks"
+                      placeholder="Enter your DET marks"
                       onChange={handleChange("score")}
                       type="number"
                       name="score"
@@ -347,7 +347,7 @@ const SATHome = () => {
           <div className="step3-wrapper mt-10">
             <h1 className="text-2xl font-semibold">STEP-3:</h1>
             <p className="ml-2">
-              Complete your payment of ₹2999 to access premium services and
+              Complete your payment of ₹5999 to access premium services and
               unlock exclusive features. Click the button to proceed.
             </p>
             <div className="center">
@@ -368,11 +368,11 @@ const SATHome = () => {
             </div>
           </div>
         </div>
-      ) : (
+      {/* ) : (
         ""
-      )}
+      )} */}
     </div>
   );
 };
 
-export default SATHome;
+export default DETHome
