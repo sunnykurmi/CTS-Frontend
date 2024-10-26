@@ -10,15 +10,21 @@ import {
   RiTrophyFill,
   RiUserStarFill,
 } from "@remixicon/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Navigation, Autoplay } from "swiper";
 
 import React from "react";
-import "./Home.css";
 import { Link } from "react-router-dom";
 import { asynccurrentUser } from "../../store/Actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import HomeNav from "./HomeNav";
 import HomeFooter from "./HomeFooter";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 export default function Home() {
   // const dispatch = useDispatch();
 
@@ -81,21 +87,40 @@ export default function Home() {
     incrementValue(110, setCountries);
   }, []);
 
+  const slides = [];
+
+  for (let i = 0; i <= 3; i++) {
+    slides.push(
+      <SwiperSlide className="center" key={`slide-${i}`}>
+        <img
+          className="w-[80%]  rounded-md h-full object-cover"
+          src={`/Images/swiper universities/img${i + 1}.jpeg`}
+          alt=""
+        />
+      </SwiperSlide>
+    );
+  }
+
   return (
     <div id="home">
       <div className="w-full h-14 flex items-center justify-center bg-[#FCEEC5] max-[600px]:hidden">
-        <div className="font-semibold text-lg text-[#F58612] whitespace-nowrap">
-          <span className="ml-5">Diwali Offer: 20% off on all courses! 🎉</span>
+        <img className="w-12 mr-8" src="/Images/deepak.gif" alt="" />
+        <div className="font-semibold text-xl text-[#F58612] whitespace-nowrap">
+          <span className="ml-5">Diwali Offer: 20% off on all courses!</span>
         </div>
         <div className="ml-4 font-semibold text-lg w-64 text-[#F58612]">
-        {`Time left: ${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
+          {`Time left: ${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
         </div>
+        <img className="w-12" src="/Images/deepak.gif" alt="" />
       </div>
       <HomeNav />
       <div className="w-full flex items-center flex-col justify-evenly">
+        <div className="w-full h-[90vh]">
+          <img className="w-full h-full object-contain" src="/Images/home png.PNG" alt="" />
+        </div>
         <div className="w-[60%]  h-40 flex items-center justify-center  text-center max-[600px]:w-[80%] max-[600px]:h-24">
-          <p className="  font-bold text-6xl max-[600px]:text-2xl  ">
-            Start Your Journey By Creating Your Roadmap
+          <p className="  font-bold text-5xl max-[600px]:text-2xl capitalize  ">
+            Want to get into your dream university?
           </p>
         </div>
         <div className="w-[30%]   flex items-center justify-center  text-center text-[#00000089] max-[600px]:w-[90%]">
@@ -196,12 +221,36 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="w-full flex items-center justify-center mt-10">
-          <img
-            className="w-[50%] max-[600px]:w-[90%] "
-            src="/Images/Careersgif.gif"
-            alt=""
-          />
+        <div className="w-full h-[60vh] flex items-center justify-center mt-10">
+          <div className="slides relative h-full w-full ">
+            <Swiper
+              className="w-full h-full object-cover"
+              // install Swiper modules
+              modules={[Navigation, Autoplay]}
+              spaceBetween={50}
+              loop={true}
+              autoplay={{
+                delay: 1200,
+                disableOnInteraction: false,
+              }}
+              slidesPerView={1}
+              navigation={{
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+                clickable: true,
+              }}
+            >
+              {slides}
+            </Swiper>
+            <div className="slider-controler absolute h-full   top-0 w-full  ">
+              <div className="swiper-button-prev slider-arrow  p-8 rounded-full  scale-[.8] text-[#F58612] font-extrabold btn btn-gradient-border btn-glow   ">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+              </div>
+              <div className="swiper-button-next slider-arrow  p-8 rounded-full scale-[.8] text-[#F58612] font-extrabold btn btn-gradient-border btn-glow  ">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className="w-full pt-20 pb-20 flex flex-col items-center justify-center">

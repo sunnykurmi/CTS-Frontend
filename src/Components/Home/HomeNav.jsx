@@ -22,7 +22,7 @@ const HomeNav = () => {
     <>
       <Headroom>
         <div className="w-full h-fit py-5 flex items-center justify-center max-[600px]:h-16 bg-white z-[99999] max-[600px]:bg-[#FEF6EE]">
-          <div className="w-fit bg-[#FEF6EE]  h-24 rounded-full flex items-center justify-evenly max-[600px]:w-full max-[600px]:rounded-none max-[600px]:pr-2 max-[600px]:h-fit max-[600px]:justify-between max-[600px]:px-5">
+          <div className="w-fit bg-[#fff0e1]  h-24 rounded-full flex items-center justify-evenly max-[600px]:w-full max-[600px]:rounded-none max-[600px]:pr-2 max-[600px]:h-fit max-[600px]:justify-between max-[600px]:px-5">
             <Link className=" w-[15%] center" to="/">
               <img
                 className="w-full max-[600px]:w-[30%]"
@@ -30,25 +30,23 @@ const HomeNav = () => {
                 alt=""
               />
             </Link>
-            <div className="w-fit uppercase gap-5 whitespace-nowrap h-full flex items-center justify-evenly font-bold text-[#393E46] max-[600px]:text-xs max-[600px]:w-fit max-[600px]:gap-2 max-[600px]:hidden">
+            <div className="w-[50vw] uppercase  whitespace-nowrap h-full flex items-center justify-center gap-8 font-bold text-[#393E46] max-[600px]:text-xs max-[600px]:w-fit max-[600px]:gap-2 max-[600px]:hidden">
               <a className="hover-link" href="/">
                 HOME
               </a>
               <Link className="hover-link" to="/portfolio">
-                IVY Accelerator
+                ivy acclerator
               </Link>
               <Link className="hover-link" to="/apply-internship-form">
-                INTERNSHIP
+                exclusive
               </Link>
               <Link className="hover-link" to="/services">
-                SERVICES
+                community
               </Link>
-              <Link className="hover-link" to="/abroadstudy">
-                CTS ABROAD
+              <Link className="hover-link" to="/services">
+                about us
               </Link>
-              <a className="hover-link" href="#footer">
-                ABOUT
-              </a>
+             
             </div>
             {isAuth ? (
               <div className="w-fit h-full flex items-center justify-evenly max-[600px]:hidden">
