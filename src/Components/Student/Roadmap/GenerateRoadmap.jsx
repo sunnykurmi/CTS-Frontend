@@ -435,7 +435,7 @@ export default function GenerateRoadmap() {
       if (calendar && calendar.schedulingButton) {
         calendar.schedulingButton.load({
           url: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0G8fTaMy33MET908cjrTeJgCSrKH7xSG2jDbBfo_iMlJE8ELSInzJUjzUVdqEC8ELbgUIBgoFS?gv=true",
-          color: "#F58612",
+          color: "#008BDC",
           label: "Book an appointment",
           target: buttonRef.current,
         });
@@ -524,7 +524,7 @@ export default function GenerateRoadmap() {
                     {activitiesarray.map((activity) => (
                       <div
                         key={activity}
-                        className="w-fit py-1 min-w-20 flex items-center justify-center font-semibold border-[#F58612] rounded-full px-2 border-2 hover:bg-[#F58612] hover:text-white cursor-pointer"
+                        className="w-fit py-1 min-w-20 flex items-center justify-center font-semibold border-[#008BDC] rounded-full px-2 border-2 hover:bg-[#008BDC] hover:text-white cursor-pointer"
                         onClick={() => handleOptionClickActivity(activity)}
                       >
                         <p>{activity}</p>
@@ -607,7 +607,7 @@ export default function GenerateRoadmap() {
         <div className="w-full h-20  relative  flex items-center justify-center  ">
           <div className="w-44 absolute left-0 h-full flex items-center justify-center">
             <Link
-              className=" h-12 gap-3 rounded-full  bg-[#F58612] text-white flex items-center justify-center p-2 font-bold"
+              className=" h-12 gap-3 rounded-full  bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
               to={-1}
             >
               <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
@@ -674,8 +674,8 @@ export default function GenerateRoadmap() {
                   <button
                     className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                       userInput.gender === "Male"
-                        ? "bg-[#F58612] text-white"
-                        : "border-[#F58612]"
+                        ? "bg-[#008BDC] text-white"
+                        : "border-[#008BDC]"
                     }`}
                     onClick={handleGenderChange("Male")}
                   >
@@ -684,8 +684,8 @@ export default function GenerateRoadmap() {
                   <button
                     className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                       userInput.gender === "Female"
-                        ? "bg-[#F58612] text-white"
-                        : "border-[#F58612]"
+                        ? "bg-[#008BDC] text-white"
+                        : "border-[#008BDC]"
                     }`}
                     onClick={handleGenderChange("Female")}
                   >
@@ -699,7 +699,7 @@ export default function GenerateRoadmap() {
                 <p className="text-lg font-medium">Class</p>
                 <div
                   onClick={toggleDropdown}
-                  className=" cursor-pointer relative w-full field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]"
+                  className=" cursor-pointer relative w-full field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]"
                 >
                   <input
                     type="text"
@@ -714,13 +714,13 @@ export default function GenerateRoadmap() {
                     autoComplete="off"
                     id=""
                   />
-                  <RiArrowDownSLine className=" text-[#F58612]" />
+                  <RiArrowDownSLine className=" text-[#008BDC]" />
                   {dropdownOpen && (
                     <div className="absolute w-full  shadow-lg border-2 border-b-0 top-[105%] z-[99] bg-white ">
                       {classes.map((cls) => (
                         <div
                           key={cls}
-                          className="w-full  h-10 flex border-r-2 border-b-2 text-center items-center justify-center font-semibold  hover:bg-[#F58612] hover:text-white"
+                          className="w-full  h-10 flex border-r-2 border-b-2 text-center items-center justify-center font-semibold  hover:bg-[#008BDC] hover:text-white"
                           onClick={() => handleOptionClick(cls)}
                         >
                           <p>{cls}</p>
@@ -734,7 +734,7 @@ export default function GenerateRoadmap() {
                 <p className="text-lg font-medium">Education Board</p>
                 <div
                   onClick={toggleDropdown2}
-                  className=" cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]"
+                  className=" cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]"
                 >
                   <input
                     type="text"
@@ -749,13 +749,13 @@ export default function GenerateRoadmap() {
                     autoComplete="off"
                     id=""
                   />
-                  <RiArrowDownSLine className=" text-[#F58612]" />
+                  <RiArrowDownSLine className=" text-[#008BDC]" />
                   {dropdownOpen2 && (
                     <div className="absolute shadow-lg top-[105%] z-[99] border-2 border-b-0  w-full   bg-white  h-fit">
                       {boards.map((cls) => (
                         <div
                           key={cls}
-                          className=" flex h-10 items-center  justify-center font-semibold border-b-2  hover:bg-[#F58612] hover:text-white"
+                          className=" flex h-10 items-center  justify-center font-semibold border-b-2  hover:bg-[#008BDC] hover:text-white"
                           onClick={() => handleOptionClick2(cls)}
                         >
                           <p>{cls}</p>
@@ -773,7 +773,7 @@ export default function GenerateRoadmap() {
                   <p className="text-base font-medium">
                     10<sup>th</sup> percentage/Marks
                   </p>
-                  <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                  <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                     <input
                       type="text"
                       placeholder="Enter Marks"
@@ -833,7 +833,7 @@ export default function GenerateRoadmap() {
                   <p className="text-base font-medium">
                     11<sup>th</sup> Percentage/Marks
                   </p>
-                  <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                  <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                     <input
                       type="text"
                       placeholder="Enter Marks"
@@ -898,7 +898,7 @@ export default function GenerateRoadmap() {
                     onClick={toggleDropdown3}
                     onMouseLeave={handleMouseLeave}
                     onMouseEnter={handleMouseEnter}
-                    className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]"
+                    className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]"
                   >
                     <input
                       type="text"
@@ -911,13 +911,13 @@ export default function GenerateRoadmap() {
                       onChange={handleInputChange3}
                       id=""
                     />
-                    <RiArrowDownSLine className=" text-[#F58612]" />
+                    <RiArrowDownSLine className=" text-[#008BDC]" />
                     {dropdownOpen3 && (
                       <div className="absolute w-full border-2 border-b-0 shadow-lg top-[105%] z-[90]  bg-white ">
                         {streams.map((cls) => (
                           <div
                             key={cls}
-                            className="w-full h-10 flex  items-center border-b-2 justify-center bg-white font-semibold  hover:bg-[#F58612] hover:text-white"
+                            className="w-full h-10 flex  items-center border-b-2 justify-center bg-white font-semibold  hover:bg-[#008BDC] hover:text-white"
                             onClick={() => handleOptionClick3(cls)}
                           >
                             <p>{cls}</p>
@@ -936,8 +936,8 @@ export default function GenerateRoadmap() {
                   <button
                     className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                       userInput.abroadStudy === "YES"
-                        ? "bg-[#F58612] text-white"
-                        : "border-[#F58612]"
+                        ? "bg-[#008BDC] text-white"
+                        : "border-[#008BDC]"
                     }`}
                     onClick={() =>
                       handleChange("abroadStudy")({ target: { value: "YES" } })
@@ -948,8 +948,8 @@ export default function GenerateRoadmap() {
                   <button
                     className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                       userInput.abroadStudy === "NO"
-                        ? "bg-[#F58612] text-white"
-                        : "border-[#F58612]"
+                        ? "bg-[#008BDC] text-white"
+                        : "border-[#008BDC]"
                     }`}
                     onClick={() => {
                       handleChange("abroadStudy")({ target: { value: "NO" } });
@@ -979,8 +979,8 @@ export default function GenerateRoadmap() {
                     <button
                       className={`w-fit h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                         userInput.aboutsatexam === "Already Taken"
-                          ? "bg-[#F58612] text-white"
-                          : "border-[#F58612]"
+                          ? "bg-[#008BDC] text-white"
+                          : "border-[#008BDC]"
                       }`}
                       onClick={() =>
                         handleChange("aboutsatexam")({
@@ -993,8 +993,8 @@ export default function GenerateRoadmap() {
                     <button
                       className={`w-fit h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                         userInput.aboutsatexam === "Will Take"
-                          ? "bg-[#F58612] text-white"
-                          : "border-[#F58612]"
+                          ? "bg-[#008BDC] text-white"
+                          : "border-[#008BDC]"
                       }`}
                       onClick={() =>
                         handleChange("aboutsatexam")({
@@ -1007,8 +1007,8 @@ export default function GenerateRoadmap() {
                     <button
                       className={`w-fit h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                         userInput.aboutsatexam === "Optional"
-                          ? "bg-[#F58612] text-white"
-                          : "border-[#F58612]"
+                          ? "bg-[#008BDC] text-white"
+                          : "border-[#008BDC]"
                       }`}
                       onClick={() =>
                         handleChange("aboutsatexam")({
@@ -1024,7 +1024,7 @@ export default function GenerateRoadmap() {
               {userInput.aboutsatexam === "Already Taken" && (
                 <div className="w-[45%] flex flex-col justify-between items-start">
                   <p className="text-lg font-medium ">Enter Your SAT Score</p>
-                  <div className="cursor-pointer field relative field  border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                  <div className="cursor-pointer field relative field  border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                     <input
                       type="text"
                       placeholder="Enter your SAT Score"
@@ -1081,8 +1081,8 @@ export default function GenerateRoadmap() {
                     <button
                       className={`w-28 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                         userInput.englishtest === "DET"
-                          ? "bg-[#F58612] text-white"
-                          : "border-[#F58612]"
+                          ? "bg-[#008BDC] text-white"
+                          : "border-[#008BDC]"
                       }`}
                       onClick={() =>
                         handleChange("englishtest")({
@@ -1095,8 +1095,8 @@ export default function GenerateRoadmap() {
                     <button
                       className={`w-28 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                         userInput.englishtest === "IELTS"
-                          ? "bg-[#F58612] text-white"
-                          : "border-[#F58612]"
+                          ? "bg-[#008BDC] text-white"
+                          : "border-[#008BDC]"
                       }`}
                       onClick={() =>
                         handleChange("englishtest")({
@@ -1109,8 +1109,8 @@ export default function GenerateRoadmap() {
                     <button
                       className={`w-28 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                         userInput.englishtest === "TOEFL"
-                          ? "bg-[#F58612] text-white"
-                          : "border-[#F58612]"
+                          ? "bg-[#008BDC] text-white"
+                          : "border-[#008BDC]"
                       }`}
                       onClick={() =>
                         handleChange("englishtest")({
@@ -1123,8 +1123,8 @@ export default function GenerateRoadmap() {
                     <button
                       className={`w-28 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                         userInput.englishtest === "Not Sure"
-                          ? "bg-[#F58612] text-white"
-                          : "border-[#F58612]"
+                          ? "bg-[#008BDC] text-white"
+                          : "border-[#008BDC]"
                       }`}
                       onClick={() =>
                         handleChange("englishtest")({
@@ -1140,7 +1140,7 @@ export default function GenerateRoadmap() {
               {userInput.abroadStudy === "YES" && (
                 <div className="w-[45%] flex flex-col justify-between items-start">
                   <p className="text-lg font-medium">Country Preferance ?</p>
-                  <div className=" cursor-pointer relative field  border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                  <div className=" cursor-pointer relative field  border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                     <input
                       type="text"
                       readOnly
@@ -1152,7 +1152,7 @@ export default function GenerateRoadmap() {
                       onClick={toggleDropdownCity}
                       id=""
                     />
-                    <RiArrowDownSLine className=" text-[#F58612]" />
+                    <RiArrowDownSLine className=" text-[#008BDC]" />
                     {dropdownOpenCity && (
                       <div
                         className="absolute top-[103%] z-[9] p-5 w-[30vw] gap-2 flex flex-wrap shadow-lg bg-white  h-fit"
@@ -1162,7 +1162,7 @@ export default function GenerateRoadmap() {
                         {citiesarray.map((activity) => (
                           <div
                             key={activity}
-                            className="w-fit py-1 min-w-20 flex items-center justify-center font-semibold border-[#F58612] rounded-full px-2 border-2 hover:bg-[#F58612] hover:text-white cursor-pointer"
+                            className="w-fit py-1 min-w-20 flex items-center justify-center font-semibold border-[#008BDC] rounded-full px-2 border-2 hover:bg-[#008BDC] hover:text-white cursor-pointer"
                             onClick={() => handleOptionClickCity(activity)}
                           >
                             <p>{activity}</p>
@@ -1180,7 +1180,7 @@ export default function GenerateRoadmap() {
                   <p className="text-lg font-medium">
                     Enter Dream University .{" "}
                   </p>
-                  <div className=" cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                  <div className=" cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                     <input
                       type="text"
                       placeholder="MIT , Harvard , etc."
@@ -1199,7 +1199,7 @@ export default function GenerateRoadmap() {
                 <p className="font-medium">
                   Are You Preparing For Any Entrance Exam ?
                 </p>
-                <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                   <input
                     type="text"
                     placeholder="If yes then name of the exam"
@@ -1215,7 +1215,7 @@ export default function GenerateRoadmap() {
                 <p className="font-medium">
                   Which Is The Most Challenging Subject For You ?
                 </p>
-                <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                   <input
                     type="text"
                     placeholder="Maths/Science/English"
@@ -1233,7 +1233,7 @@ export default function GenerateRoadmap() {
                 <p className="font-medium">
                   What Is Your Short-term Academic Goal ?
                 </p>
-                <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                   <input
                     type="text"
                     placeholder="e.g. Score 90% in 10th Board Exam "
@@ -1247,7 +1247,7 @@ export default function GenerateRoadmap() {
               </div>
               <div className="w-[45%] flex flex-col justify-between items-start ">
                 <p className="font-medium">What Is Your Long-term Goal ?</p>
-                <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                   <input
                     type="text"
                     placeholder="e.g Study in IIT , Study in USA , etc."
@@ -1269,7 +1269,7 @@ export default function GenerateRoadmap() {
               <div className="w-[45%]">
                 <div
                   onClick={toggleDropdownFuture}
-                  className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]"
+                  className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]"
                 >
                   <input
                     type="text"
@@ -1281,7 +1281,7 @@ export default function GenerateRoadmap() {
                     onChange={handleInputChangeFuture}
                     id=""
                   />
-                  <RiArrowDownSLine className=" text-[#F58612]" />
+                  <RiArrowDownSLine className=" text-[#008BDC]" />
                   {dropdownOpenFuture && (
                     <div
                       className="absolute right-3 p-5 shadow-lg top-[103%] z-[9] w-[50vw] max-[600px]:w-[80vw] gap-2 flex flex-wrap bg-white  h-fit"
@@ -1291,7 +1291,7 @@ export default function GenerateRoadmap() {
                       {Futurearray.map((Future) => (
                         <div
                           key={Future}
-                          className="w-fit py-1 min-w-20 flex items-center justify-center font-semibold border-[#F58612] rounded-full px-2 border-2 hover:bg-[#F58612] hover:text-white cursor-pointer"
+                          className="w-fit py-1 min-w-20 flex items-center justify-center font-semibold border-[#008BDC] rounded-full px-2 border-2 hover:bg-[#008BDC] hover:text-white cursor-pointer"
                           onClick={() => handleOptionClickFuture(Future)}
                         >
                           <p>{Future}</p>
@@ -1317,7 +1317,7 @@ export default function GenerateRoadmap() {
                     className=" field min-h-12 outline-none resize-none h-fit scroller  rounded-xl"
                     rows={inputValueInterest ? 3 : 1} // Increase height when filled
                   />
-                  <RiArrowDownSLine className=" absolute right-2 cursor-pointer text-[#F58612]" />
+                  <RiArrowDownSLine className=" absolute right-2 cursor-pointer text-[#008BDC]" />
 
                   {dropdownOpenInterest && (
                     <div
@@ -1332,7 +1332,7 @@ export default function GenerateRoadmap() {
                         .map((interest) => (
                           <div
                             key={interest}
-                            className="w-fit py-1 min-w-20 flex items-center justify-center font-semibold border-[#F58612] rounded-full px-2 border-2 hover:bg-[#F58612] hover:text-white cursor-pointer"
+                            className="w-fit py-1 min-w-20 flex items-center justify-center font-semibold border-[#008BDC] rounded-full px-2 border-2 hover:bg-[#008BDC] hover:text-white cursor-pointer"
                             onClick={() => handleOptionClickInterest(interest)}
                           >
                             <p>{interest}</p>
@@ -1346,7 +1346,7 @@ export default function GenerateRoadmap() {
             <div className="w-full flex flex-col items-center">
               <div className="flex items-center w-full">
                 <p className="font-medium">List All The Skills You Have</p>
-                <div className="ml-4 cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                <div className="ml-4 cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                   <input
                     type="text"
                     placeholder="e.g Designing, coding,languages ,etc."
@@ -1358,7 +1358,7 @@ export default function GenerateRoadmap() {
                   />
                   <div
                     onClick={handleSubmit4}
-                    className=" bg-[#F58612] h-10 shrink-0 rounded-lg flex items-center font-bold text-white justify-center px-4"
+                    className=" bg-[#008BDC] h-10 shrink-0 rounded-lg flex items-center font-bold text-white justify-center px-4"
                   >
                     Submit
                   </div>
@@ -1368,7 +1368,7 @@ export default function GenerateRoadmap() {
                 {submittedValues2.map((value, index) => (
                   <div
                     key={index}
-                    className="rounded-full max-[600px]:w-full scale-90 w-fit pl-4 min-w-20 px-1 py-1 text-white bg-[#F58612] flex items-center justify-between gap-2 mt-1"
+                    className="rounded-full max-[600px]:w-full scale-90 w-fit pl-4 min-w-20 px-1 py-1 text-white bg-[#008BDC] flex items-center justify-between gap-2 mt-1"
                   >
                     <p>{value}</p>
                     <div
@@ -1391,7 +1391,7 @@ export default function GenerateRoadmap() {
                 </p>
                 <div
                   onClick={handleShowForm}
-                  className="  pr-5 rounded-full w-fit  min-w-20 px-1 py-1 text-white bg-[#F58612] flex items-center justify-between gap-2 "
+                  className="  pr-5 rounded-full w-fit  min-w-20 px-1 py-1 text-white bg-[#008BDC] flex items-center justify-between gap-2 "
                 >
                   <div className="p-1 cursor-pointer bg-white text-black flex items-center justify-center rounded-full">
                     <RiAddLine />
@@ -1432,7 +1432,7 @@ export default function GenerateRoadmap() {
                       <p>Type of Activity</p>
                     </div>
                     <div className="text-lg w-[45%]">
-                      <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                      <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                         <input
                           type="text"
                           placeholder="Work With NGO, Hackathon, Competition"
@@ -1454,7 +1454,7 @@ export default function GenerateRoadmap() {
                       <p>Position / Role</p>
                     </div>
                     <div className="text-lg w-[45%]">
-                      <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                      <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                         <input
                           type="text"
                           placeholder="Founder, Leader, Volunteer, Participant, etc."
@@ -1476,7 +1476,7 @@ export default function GenerateRoadmap() {
                       <p>Organization/Company Name</p>
                     </div>
                     <div className="text-lg w-[45%]">
-                      <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                      <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                         <input
                           type="text"
                           placeholder="Bal Utsav, eVidyaloka, Care India, IIT Delhi"
@@ -1498,7 +1498,7 @@ export default function GenerateRoadmap() {
                       <p>Activity Description</p>
                     </div>
                     <div className="text-lg w-[45%] ">
-                      <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                      <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                         <input
                           type="text"
                           placeholder="Activity Description"
@@ -1532,8 +1532,8 @@ export default function GenerateRoadmap() {
                     key={option}
                     className={`w-24 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                       userInput.familyincome === option
-                        ? "bg-[#F58612] text-white"
-                        : "border-[#F58612]"
+                        ? "bg-[#008BDC] text-white"
+                        : "border-[#008BDC]"
                     }`}
                     onClick={() =>
                       handleChange("familyincome")({
@@ -1554,8 +1554,8 @@ export default function GenerateRoadmap() {
                     key={option}
                     className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                       userInput.caste === option
-                        ? "bg-[#F58612] text-white"
-                        : "border-[#F58612]"
+                        ? "bg-[#008BDC] text-white"
+                        : "border-[#008BDC]"
                     }`}
                     onClick={() =>
                       handleChange("caste")({ target: { value: option } })
@@ -1574,8 +1574,8 @@ export default function GenerateRoadmap() {
                 <button
                   className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                     userInput.physicaldisabilities === "YES"
-                      ? "bg-[#F58612] text-white"
-                      : "border-[#F58612]"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
                   }`}
                   onClick={() =>
                     handleChange("physicaldisabilities")({
@@ -1588,8 +1588,8 @@ export default function GenerateRoadmap() {
                 <button
                   className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                     userInput.physicaldisabilities === "NO"
-                      ? "bg-[#F58612] text-white"
-                      : "border-[#F58612]"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
                   }`}
                   onClick={() =>
                     handleChange("physicaldisabilities")({
@@ -1606,7 +1606,7 @@ export default function GenerateRoadmap() {
                 <p className="font-medium">
                   Please Specify disabilities <sub>(optional)</sub>
                 </p>
-                <div className="cursor-pointer relative w-[45%] h-14 border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]">
+                <div className="cursor-pointer relative w-[45%] h-14 border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                   <input
                     type="text"
                     placeholder="Specify like Blindness, Deafness, etc"
@@ -1619,7 +1619,7 @@ export default function GenerateRoadmap() {
               </div>
             )}
             <button
-              className="px-4 py-2 bg-[#F58612] rounded-lg text-white font-medium"
+              className="px-4 py-2 bg-[#008BDC] rounded-lg text-white font-medium"
               onClick={handlesubmit}
             >
               Submit Details

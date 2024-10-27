@@ -137,9 +137,16 @@ function IVYHome() {
               on your email inbox where you will receive results and 1-1 session
               scheduling link—your future awaits.
             </p>
+            <a
+            href="https://www.gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="center"
+          >
             <button className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
               Check Your Mail Here
             </button>
+          </a>
           </div>
           <div className="ivyleft w-[45%] h-fit overflow-hidden">
             <img
@@ -244,10 +251,10 @@ function IVYHome() {
       </div>
 
       <div className="quote w-full h-screen bg-[url('/Images/ivy/bg-university.png')] bg-contain bg-no-repeat bg-center center flex-col">
-        <h1 className="text-2xl text-center text-black font-medium">
+        <h1 className="text-3xl mt-2 text-center text-black font-medium">
           The Secret to Your Success Awaits!
         </h1>
-        <h2 className="text-sm w-1/2 leading-5 text-center text-black mt-1 font-normal">
+        <h2 className="text-sm w-1/2 leading-5 p-5 text-center text-black mt-1 font-normal">
           This is the one and only program of its kind, crafted over 5 years
           with innovative, exclusive tools you won’t find anywhere else. While
           we can’t reveal all 15 powerful steps here—reserved solely for
@@ -257,7 +264,7 @@ function IVYHome() {
           wait—apply today and step into the future you’ve been working for!
         </h2>
         <Link to={"/ivy-form"}>
-          <button className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
+          <button className="text-[#008BDC] px-6 py-2 text-lg font-medium rounded-full border-[#008BDC] border-2 mt-5">
             Apply Now
           </button>
         </Link>
@@ -265,7 +272,7 @@ function IVYHome() {
 
       {isPopupVisible && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-5 rounded-lg shadow-lg text-center center flex-col w-[50vh] h-[50vh]">
+          <div className="bg-white p-5 rounded-lg shadow-lg text-center center flex-col w-[50vh] h-[30vh]">
             <h2 className="text-2xl font-bold mb-4">Not Enrolled</h2>
             <p className="mb-4">
               You are not enrolled in the IVY Accelerator Program. Please enroll

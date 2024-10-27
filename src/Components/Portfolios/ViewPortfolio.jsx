@@ -98,7 +98,7 @@ export default function ViewPortfolio() {
       <div className="relative center ">
         <div className="w-44 absolute left-0 h-full flex items-center justify-center text-base top-14    ">
           <Link
-            className=" h-12 gap-3 rounded-full  bg-[#F58612] text-white flex items-center justify-center p-2 font-bold"
+            className=" h-12 gap-3 rounded-full  bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
             to={-1}
           >
             <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
@@ -148,7 +148,7 @@ export default function ViewPortfolio() {
           <button
             onClick={checkoutHandler}
             disabled={isLoading}
-            className="bg-[#F58612] rounded-md text-white p-5 px-10 font-semibold mt-5 text-xl"
+            className="bg-[#008BDC] rounded-md text-white p-5 px-10 font-semibold mt-5 text-xl"
           >
             {isLoading ? (
               <div className="center gap-3">

@@ -1,10 +1,11 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { googleAuth } from "../../store/Actions/googleAction";
 
 export default function Googlelogin() {
   const dispatch = useDispatch();
+  const {  loading } = useSelector((state) => state.user);
   const googleresponse = async (response) => {
     try {
       if (response["code"]) {
@@ -22,6 +23,13 @@ export default function Googlelogin() {
     flow: "auth-code",
   });
   return (
+    <>
+    {loading ? (
+      <div className="flex items-center">
+        <div className="loader mr-2"></div>
+        <p className="font-semibold text-lg">Loading...</p>
+      </div>
+    ) : (
     <div onClick={googleLogin} className="flex items-center justify-center">
       <img
         className="w-[12%]"
@@ -30,5 +38,8 @@ export default function Googlelogin() {
       />
       <p className="font-semibold text-lg">Login with Google</p>
     </div>
+  )}
+    </>
+
   );
 }

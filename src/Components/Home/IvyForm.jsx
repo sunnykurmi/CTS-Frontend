@@ -9,13 +9,13 @@ import {
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { sendivyform } from "../../store/Actions/userActions";
 
 export default function IvyForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const buttonRef = useRef(null);
+  const [loading, setLoading] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false); // Add state for form submission
-  const [showConfirmation, setShowConfirmation] = useState(false);
   const [userInput, setUserInput] = useState({
     // first step
     fullname: "",
@@ -409,11 +409,18 @@ export default function IvyForm() {
       .every(([, value]) => value.trim() !== "");
   };
 
-  const handlesubmit = (e) => {
+  const handlesubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      setFormSubmitted(true);
-      dispatch(CreateRoadmap(userInput));
+      setLoading(true);
+      try {
+        await dispatch(sendivyform(userInput));
+        setFormSubmitted(true);
+      } catch (error) {
+        console.error('Form submission failed:', error);
+      } finally {
+        setLoading(false);
+      }
     } else {
       toast.error("❌Fill All The Details❌", {
         position: "top-center",
@@ -428,22 +435,6 @@ export default function IvyForm() {
     }
   };
 
-  useEffect(() => {
-    if (formSubmitted === true) {
-      console.log("Form submitted, loading calendar button...");
-      if (calendar && calendar.schedulingButton) {
-        calendar.schedulingButton.load({
-          url: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0G8fTaMy33MET908cjrTeJgCSrKH7xSG2jDbBfo_iMlJE8ELSInzJUjzUVdqEC8ELbgUIBgoFS?gv=true",
-          color: "#008BDC",
-          label: "Book an appointment",
-          target: buttonRef.current,
-        });
-        console.log("Calendar button loaded.");
-      } else {
-        console.error("Calendar scheduling button script not loaded.");
-      }
-    }
-  }, [formSubmitted, navigate]);
 
   const handleShowForm = () => {
     setShowForm(true);
@@ -452,42 +443,48 @@ export default function IvyForm() {
     setShowForm(false);
   };
 
-  const handleCloseAlert = () => {
-    setShowConfirmation(true);
-  };
-
   const handleConfirmClose = () => {
     setFormSubmitted(false);
-    setShowConfirmation(false);
-    navigate("/home");
-  };
-
-  const handleCancelClose = () => {
-    setShowConfirmation(false);
+    navigate("/");
   };
 
   return (
     <div className="h-screen overflow-hidden">
       {formSubmitted === true && (
         <div className="w-full h-screen bg-[#64646476] fixed top-0 left-0 z-[9] flex items-center justify-center">
-          <div className="w-[30%] h-[40vh] bg-white border-2 z-[99] flex flex-col gap-5 items-center text-center justify-center">
-            <div className="w-full flex items-end justify-end p-1 px-2">
-              <button onClick={handleCloseAlert}>
-                <RiCloseLine className="text-red-600" />
+          <div className="w-[30%] h-[40vh] bg-white border-2 z-[99] flex flex-col gap-5 items-center text-center justify-evenly">
+            <div className="w-full flex items-end justify-end  p-1 px-2">
+              <button onClick={handleConfirmClose}>
+                <RiCloseLine className="text-[#008BDC] scale-150" />
               </button>
             </div>
-            <p className="text-xl font-semibold">
-              Book 1-1 Live Session with Krishna MIT
-            </p>
-            <p>Click the below button to Book Appointment</p>
-            <div ref={buttonRef}></div>
-            <p className="text-red-600 text-sm font-semibold">
-              Note: It is compulsary to attend the session otherwise your
-              roadmap creation process will be neglected{" "}
-            </p>
+
+
+            <h2 className="text-xl font-bold">Application Submitted!</h2>
+          <p className="mt-2 w-[80%] text-justify ">
+            Thank you for submitting your application. We will send you the results within 12 hours. It is a prestigious program with a 16% acceptance rate. <br /> Please be patient.
+          </p>
+
+            <a
+            href="https://www.gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="center"
+          >
+            <button className="px-4 py-2 mb-5 w-full border-2 shadow-lg rounded-lg font-semibold text-black center gap-3">
+              {" "}
+              <img
+                className="w-[4vh]"
+                src="https://mailmeteor.com/logos/assets/PNG/Gmail_Logo_512px.png"
+                alt=""
+              />{" "}
+              Open Gmail
+            </button>
+          </a>
+            
           </div>
         </div>
-      )}
+      )} 
       {showForm === true && (
         <div className="w-full flex h-screen z-[9999] fixed top-0 items-center justify-center bg-[#dedede89]">
           <div className="w-fit h-fit mt-5 flex flex-col items-center justify-center">
@@ -578,29 +575,6 @@ export default function IvyForm() {
           </div>
         </div>
       )}
-      {showConfirmation && (
-        <div className="w-full h-screen bg-[#64646476] fixed top-0 left-0 z-[10] flex items-center justify-center">
-          <div className="w-[30%] h-[20vh] bg-white border-2 z-[100] flex flex-col gap-5 items-center text-center justify-center">
-            <p className="text-xl font-semibold">
-              Are you sure you want to close?
-            </p>
-            <div className="flex gap-4">
-              <button
-                className="bg-red-500 text-white px-4 py-2 rounded"
-                onClick={handleConfirmClose}
-              >
-                Yes
-              </button>
-              <button
-                className="bg-gray-500 text-white px-4 py-2 rounded"
-                onClick={handleCancelClose}
-              >
-                No
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
       <div className="overflow-y-scroll h-screen pb-32">
         <div className="w-full h-20  relative  flex items-center justify-center  ">
           <div className="w-44 absolute left-0 h-full flex items-center justify-center">
@@ -617,7 +591,7 @@ export default function IvyForm() {
         </div>
         <div className="w-full flex flex-col items-center justify-start ">
           <div className="w-[60%] pb-10 h-full flex gap-5 flex-col items-center max-[600px]:w-[90%] ">
-            <p className="upper text-3xl font-semibold">Roadmap Form</p>
+            <p className="upper text-3xl font-semibold capitalize">IVY Accelerator registration  Form</p>
             <div className="w-full flex items-center justify-between">
               <div className="input-field w-[45%]">
                 <p className="font-medium text-lg">Name</p>
@@ -633,7 +607,8 @@ export default function IvyForm() {
               <div className="input-field w-[45%]">
                 <p className="font-medium text-lg">Contact</p>
                 <input
-                  type="date"
+                  type="number"
+                  placeholder="Enter your contact number"
                   name="contact"
                   onChange={handleChange("contact")}
                   value={userInput.contact}
@@ -1627,12 +1602,26 @@ export default function IvyForm() {
                 </div>
               </div>
             )}
-            <button
-              className="px-4 py-2 bg-[#008BDC] rounded-lg text-white font-medium"
-              onClick={handlesubmit}
-            >
-              Submit Details
-            </button>
+
+<button
+              
+                onClick={handlesubmit}
+                className="px-4 py-2 bg-[#008BDC] rounded-lg text-white font-medium"
+                >
+                {loading ? (
+                  <div className="center gap-3">
+                    <div className="loader"></div>
+                    Please Wait...
+                  </div>
+                ) : (
+               "   Submit Details"
+                )}
+              </button>
+
+
+
+
+          
           </div>
         </div>
       </div>

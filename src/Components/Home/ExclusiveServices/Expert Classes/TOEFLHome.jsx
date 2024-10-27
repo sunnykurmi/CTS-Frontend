@@ -31,8 +31,6 @@ const TOEFLHome = () => {
     amount: "",
   });
 
-  
-
   useEffect(() => {
     if (filterexam[0]) {
       setUserInput((prevInput) => ({
@@ -66,7 +64,12 @@ const TOEFLHome = () => {
 
   useEffect(() => {
     const { name, contact, score, email } = userInput;
-    if (name && contact && email && (!hasTakenTOEFL || (hasTakenTOEFL && score))) {
+    if (
+      name &&
+      contact &&
+      email &&
+      (!hasTakenTOEFL || (hasTakenTOEFL && score))
+    ) {
       setIsCheckboxEnabled(true);
     } else {
       setIsCheckboxEnabled(false);
@@ -165,7 +168,7 @@ const TOEFLHome = () => {
       <div className="w-full h-fit">
         <div className="w-44 absolute left-0 flex items-center justify-center text-base">
           <Link
-            className="h-12 gap-3 rounded-full bg-[#F58612] text-white flex items-center justify-center p-2 font-bold"
+            className="h-12 gap-3 rounded-full bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
             to={-1}
           >
             <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
@@ -193,13 +196,16 @@ const TOEFLHome = () => {
           ></iframe>
         </p>
         <ul className="list-disc list-inside text-md text-gray-800 mt-10 ml-15 px-20 text-xl text-center max-[600px]:px-5 max-[600px]:text-lg max-[600px]:text-start max-[600px]:leading-6">
-          “Make Your Common App Error-Free and Stand Out! According to the
-          survey, 80% of students making mistakes—some small, some serious—don’t
-          let yours hold you back. Enroll in our Common App Review Service to
-          have your profile thoroughly analyzed by experts. We’ll help you
-          polish your activities, perfect each section, and boost your chances
-          of admission. Ready to submit your strongest application? Let’s get
-          started today!”
+          “The TOEFL (Test of English as a Foreign Language) is a critical
+          assessment for students planning to study in English-speaking
+          institutions. Our TOEFL preparation program is designed to enhance
+          your abilities in Reading, Listening, Speaking, and Writing, focusing
+          on the academic English skills tested in the exam. With structured
+          lessons, interactive exercises, and expert feedback, we provide a
+          supportive environment to help you build confidence and fluency. By
+          simulating real exam conditions, our program aims to improve your
+          accuracy and timing, ensuring that you achieve a competitive score for
+          entry into top institutions worldwide.”
         </ul>
       </div>
 
@@ -221,153 +227,153 @@ const TOEFLHome = () => {
         </h2>
       </div>
       <div className="w-full center">
-          <button
-            onClick={checkLoginHandler}
-            className="bg-[#F58612] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
-          >
-           Book
-          </button>
-        </div>
+        <button
+          onClick={checkLoginHandler}
+          className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
+        >
+          Book
+        </button>
+      </div>
       {/* {isAuth ? ( */}
-        <div className="steps-mom w-full overflow-hidden h-fit p-20 px-48 max-[600px]:p-0">
-          <div className="step1-wrapper max-[600px]:w-full ">
-            <h1 className="text-2xl font-semibold">STEP-1:</h1>
-            <p className="ml-2">
-              Fill the form below to enroll in TOEFL Expert Classes and get
-              started
-            </p>
+      <div className="steps-mom w-full overflow-hidden h-fit p-20 px-48 max-[600px]:p-0">
+        <div className="step1-wrapper max-[600px]:w-full ">
+          <h1 className="text-2xl font-semibold">STEP-1:</h1>
+          <p className="ml-2">
+            Fill the form below to enroll in TOEFL Expert Classes and get
+            started
+          </p>
 
-            <div className="flex items-center justify-between w-full p-10 px-20 max-[600px]:px-10 max-[600px]:flex-col max-[1180px]:px-10">
-              <div className="flex flex-col gap-5 w-80">
-                <div className="">
-                  <h2 className="font-medium">Your Full Name</h2>
-                  <input
-                    onChange={handleChange("name")}
-                    placeholder="Enter your Name"
-                    type="text"
-                    name="name"
-                    id=""
-                    className="field rounded-md"
-                    value={userInput.name}
-                  />
-                </div>
-                <div className="">
-                  <h2 className="font-medium">Your Email Address</h2>
-                  <input
-                    onChange={handleChange("email")}
-                    placeholder="Enter your Email"
-                    type="text"
-                    name="email"
-                    id=""
-                    className="field rounded-md"
-                    value={userInput.email}
-                  />
-                </div>
-
-                <div className="">
-                  <h2 className="font-medium">WhatsApp No.</h2>
-                  <input
-                    className="field rounded-md"
-                    placeholder="Enter your Number"
-                    onChange={handleChange("contact")}
-                    type="number"
-                    name="contact"
-                    id=""
-                    value={userInput.contact}
-                  />
-                </div>
-
-                <div className="">
-                  <h2 className="font-medium">
-                    Have you taken the TOEFL exam before?
-                  </h2>
-                  <div className="flex gap-5">
-                    <button
-                      className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${
-                        hasTakenTOEFL
-                          ? "bg-[#F58612] text-white"
-                          : "border-[#F58612]"
-                      }`}
-                      onClick={() => handleTOEFLChange("yes")}
-                    >
-                      YES
-                    </button>
-                    <button
-                      className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${
-                        !hasTakenTOEFL
-                          ? "bg-[#F58612] text-white"
-                          : "border-[#F58612]"
-                      }`}
-                      onClick={() => handleTOEFLChange("no")}
-                    >
-                      NO
-                    </button>
-                  </div>
-                </div>
-
-                {hasTakenTOEFL && (
-                  <div className="mt-5">
-                    <h2 className="font-medium">Enter your TOEFL exam marks</h2>
-                    <input
-                      className="field rounded-md"
-                      placeholder="Enter your TOEFL marks"
-                      onChange={handleChange("score")}
-                      type="number"
-                      name="score"
-                      id=""
-                      value={userInput.score}
-                    />
-                  </div>
-                )}
+          <div className="flex items-center justify-between w-full p-10 px-20 max-[600px]:px-10 max-[600px]:flex-col max-[1180px]:px-10">
+            <div className="flex flex-col gap-5 w-80">
+              <div className="">
+                <h2 className="font-medium">Your Full Name</h2>
+                <input
+                  onChange={handleChange("name")}
+                  placeholder="Enter your Name"
+                  type="text"
+                  name="name"
+                  id=""
+                  className="field rounded-md"
+                  value={userInput.name}
+                />
               </div>
-            </div>
-          </div>
+              <div className="">
+                <h2 className="font-medium">Your Email Address</h2>
+                <input
+                  onChange={handleChange("email")}
+                  placeholder="Enter your Email"
+                  type="text"
+                  name="email"
+                  id=""
+                  className="field rounded-md"
+                  value={userInput.email}
+                />
+              </div>
 
-          <div className="step2-wrapper max-[600px]:w-[95%]">
-            <h1 className="text-2xl font-semibold">STEP-2:</h1>
-            <p className="w-1/2 max-[1180px]:w-full ml-2">
-              By checking this box, you agree to share your details securely. We
-              prioritize your privacy and use advanced encryption to protect
-              your data at all times.
-            </p>
-            <p className="px-20 pt-8 items-center flex text-xl max-[600px]:text-lg max-[600px]:px-0">
-              <input
-                type="checkbox"
-                disabled={!isCheckboxEnabled}
-                className="mr-2 custom-checkbox max-[600px]:w-20 max-[600px]:h-10"
-                onClick={handleCheckboxClick}
-                checked={isCheckboxChecked}
-                onChange={() => {}}
-              />
-              I confirm that the information provided is accurate, and I agree
-              to the terms and conditions.
-            </p>
-          </div>
+              <div className="">
+                <h2 className="font-medium">WhatsApp No.</h2>
+                <input
+                  className="field rounded-md"
+                  placeholder="Enter your Number"
+                  onChange={handleChange("contact")}
+                  type="number"
+                  name="contact"
+                  id=""
+                  value={userInput.contact}
+                />
+              </div>
 
-          <div className="step3-wrapper mt-10">
-            <h1 className="text-2xl font-semibold">STEP-3:</h1>
-            <p className="ml-2">
-              Complete your payment of ₹5999 to access premium services and
-              unlock exclusive features. Click the button to proceed.
-            </p>
-            <div className="center">
-              <button
-                disabled={isLoading || !isCheckboxChecked}
-                onClick={submitHandler}
-                className="bg-[#F58612] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
-              >
-                {isLoading ? (
-                  <div className="center gap-3">
-                    <div className="loader"></div>
-                    Please Wait...
-                  </div>
-                ) : (
-                  ` Pay ₹${userInput.amount}`
-                )}
-              </button>
+              <div className="">
+                <h2 className="font-medium">
+                  Have you taken the TOEFL exam before?
+                </h2>
+                <div className="flex gap-5">
+                  <button
+                    className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${
+                      hasTakenTOEFL
+                        ? "bg-[#008BDC] text-white"
+                        : "border-[#008BDC]"
+                    }`}
+                    onClick={() => handleTOEFLChange("yes")}
+                  >
+                    YES
+                  </button>
+                  <button
+                    className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${
+                      !hasTakenTOEFL
+                        ? "bg-[#008BDC] text-white"
+                        : "border-[#008BDC]"
+                    }`}
+                    onClick={() => handleTOEFLChange("no")}
+                  >
+                    NO
+                  </button>
+                </div>
+              </div>
+
+              {hasTakenTOEFL && (
+                <div className="mt-5">
+                  <h2 className="font-medium">Enter your TOEFL exam marks</h2>
+                  <input
+                    className="field rounded-md"
+                    placeholder="Enter your TOEFL marks"
+                    onChange={handleChange("score")}
+                    type="number"
+                    name="score"
+                    id=""
+                    value={userInput.score}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
+
+        <div className="step2-wrapper max-[600px]:w-[95%]">
+          <h1 className="text-2xl font-semibold">STEP-2:</h1>
+          <p className="w-1/2 max-[1180px]:w-full ml-2">
+            By checking this box, you agree to share your details securely. We
+            prioritize your privacy and use advanced encryption to protect your
+            data at all times.
+          </p>
+          <p className="px-20 pt-8 items-center flex text-xl max-[600px]:text-lg max-[600px]:px-0">
+            <input
+              type="checkbox"
+              disabled={!isCheckboxEnabled}
+              className="mr-2 custom-checkbox max-[600px]:w-20 max-[600px]:h-10"
+              onClick={handleCheckboxClick}
+              checked={isCheckboxChecked}
+              onChange={() => {}}
+            />
+            I confirm that the information provided is accurate, and I agree to
+            the terms and conditions.
+          </p>
+        </div>
+
+        <div className="step3-wrapper mt-10">
+          <h1 className="text-2xl font-semibold">STEP-3:</h1>
+          <p className="ml-2">
+            Complete your payment of ₹5999 to access premium services and unlock
+            exclusive features. Click the button to proceed.
+          </p>
+          <div className="center">
+            <button
+              disabled={isLoading || !isCheckboxChecked}
+              onClick={submitHandler}
+              className="bg-[#008BDC] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
+            >
+              {isLoading ? (
+                <div className="center gap-3">
+                  <div className="loader"></div>
+                  Please Wait...
+                </div>
+              ) : (
+                ` Pay ₹${userInput.amount}`
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
       {/* ) : (
         ""
       )} */}
@@ -375,4 +381,4 @@ const TOEFLHome = () => {
   );
 };
 
-export default TOEFLHome
+export default TOEFLHome;

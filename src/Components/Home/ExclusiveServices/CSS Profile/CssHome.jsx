@@ -24,8 +24,6 @@ const CssHome = () => {
     amount: "2999",
   });
 
-  
-
   const handleChange = (name) => (event) => {
     const value = event.target.value;
     setUserInput((prevInput) => ({
@@ -145,8 +143,8 @@ const CssHome = () => {
       <div className="w-full h-fit">
         <div className="w-44 absolute left-0 flex items-center justify-center text-base">
           <Link
-            className="h-12 gap-3 rounded-full bg-[#F58612] text-white flex items-center justify-center p-2 font-bold"
-            to={`/services`}
+            className="h-12 gap-3 rounded-full bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
+            to={-1}
           >
             <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
               <RiArrowLeftSLine className="text-[#0000009b]" />
@@ -164,8 +162,8 @@ const CssHome = () => {
         <p className="w-[60%] shadow-lg max-[600px]:w-full overflow-hidden mt-5 m-auto text-zinc-500 ">
           <iframe
             className="w-full h-[50vh] max-[600px]:h-[30vh] rounded-lg"
-            src="https://www.youtube.com/embed/j0akw0Jc6RM"
-            title="Review your common ￼App"
+            src="https://www.youtube.com/embed/P5RyUoJ1joc"
+            title="CSS Profile Support"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
@@ -184,7 +182,7 @@ const CssHome = () => {
         <div className="w-full center">
           <button
             onClick={checkLoginHandler}
-            className="bg-[#F58612] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
+            className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
           >
             Review CSS-Profile Now
           </button>
@@ -237,8 +235,8 @@ const CssHome = () => {
                   <button
                     className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${
                       userInput.meeting === "YES"
-                        ? "bg-[#F58612] text-white"
-                        : "border-[#F58612]"
+                        ? "bg-[#008BDC] text-white"
+                        : "border-[#008BDC]"
                     }`}
                     onClick={handleMeetingChange("YES")}
                   >
@@ -247,8 +245,8 @@ const CssHome = () => {
                   <button
                     className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${
                       userInput.meeting === "NO"
-                        ? "bg-[#F58612] text-white"
-                        : "border-[#F58612]"
+                        ? "bg-[#008BDC] text-white"
+                        : "border-[#008BDC]"
                     }`}
                     onClick={handleMeetingChange("NO")}
                   >
@@ -290,7 +288,7 @@ const CssHome = () => {
               <button
                 disabled={isLoading || !isCheckboxChecked}
                 onClick={submitHandler}
-                className="bg-[#F58612] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
+                className="bg-[#008BDC] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
               >
                 {isLoading ? (
                   <div className="center gap-3">

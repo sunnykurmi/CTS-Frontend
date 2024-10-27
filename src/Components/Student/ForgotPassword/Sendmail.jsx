@@ -38,7 +38,7 @@ function Sendmail() {
               name="email"
               id=""
             />
-            <button className="rounded-full px-6 py-2 text-white bg-[#F58612] mt-5">
+            <button className="rounded-full px-6 py-2 text-white bg-[#008BDC] mt-5">
               {loading ? (
                 <div className="flex items-center">
                   <div className="loader mr-2"></div>

@@ -152,8 +152,8 @@ export default function EditProfileForm(props) {
                   type="button"
                   className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                     formData.gender === "Male"
-                      ? "bg-[#F58612] text-white"
-                      : "border-[#F58612]"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
                   }`}
                   onClick={() => setFormData({ ...formData, gender: "Male" })}
                 >
@@ -163,8 +163,8 @@ export default function EditProfileForm(props) {
                   type="button"
                   className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                     formData.gender === "Female"
-                      ? "bg-[#F58612] text-white"
-                      : "border-[#F58612]"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
                   }`}
                   onClick={() => setFormData({ ...formData, gender: "Female" })}
                 >
@@ -202,7 +202,7 @@ export default function EditProfileForm(props) {
             <div className="w-full flex mt-10 items-center justify-center">
               <button
                 type="submit"
-                className=" text-xl py-2 px-4 font-semibold rounded-2xl text-white bg-[#F58612] "
+                className=" text-xl py-2 px-4 font-semibold rounded-2xl text-white bg-[#008BDC] "
                 disabled={loading}
               >
                 {loading ? "Loading..." : "Update Profile"}{" "}

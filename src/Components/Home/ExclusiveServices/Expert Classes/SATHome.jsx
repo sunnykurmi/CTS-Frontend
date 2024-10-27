@@ -31,8 +31,6 @@ const SATHome = () => {
     amount: "",
   });
 
-  
-
   useEffect(() => {
     if (filterexam[0]) {
       setUserInput((prevInput) => ({
@@ -165,7 +163,7 @@ const SATHome = () => {
       <div className="w-full h-fit">
         <div className="w-44 absolute left-0 flex items-center justify-center text-base">
           <Link
-            className="h-12 gap-3 rounded-full bg-[#F58612] text-white flex items-center justify-center p-2 font-bold"
+            className="h-12 gap-3 rounded-full bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
             to={-1}
           >
             <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
@@ -193,13 +191,15 @@ const SATHome = () => {
           ></iframe>
         </p>
         <ul className="list-disc list-inside text-md text-gray-800 mt-10 ml-15 px-20 text-xl text-center max-[600px]:px-5 max-[600px]:text-lg max-[600px]:text-start max-[600px]:leading-6">
-          “Make Your Common App Error-Free and Stand Out! According to the
-          survey, 80% of students making mistakes—some small, some serious—don’t
-          let yours hold you back. Enroll in our Common App Review Service to
-          have your profile thoroughly analyzed by experts. We’ll help you
-          polish your activities, perfect each section, and boost your chances
-          of admission. Ready to submit your strongest application? Let’s get
-          started today!”
+          “The SAT is a crucial step for students aspiring to attend
+          universities in the United States and other countries. Our SAT
+          preparation program covers all sections, including Math,
+          Evidence-Based Reading, and Writing, providing targeted strategies to
+          tackle challenging questions. With practice tests, customized study
+          plans, and expert insights, we ensure students approach the exam with
+          confidence and the skills they need to succeed. Designed to maximize
+          scores and reduce test-day anxiety, our program aims to help students
+          showcase their full academic potential.”
         </ul>
       </div>
 
@@ -221,13 +221,13 @@ const SATHome = () => {
         </h2>
       </div>
       <div className="w-full center">
-          <button
-            onClick={checkLoginHandler}
-            className="bg-[#F58612] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
-          >
-           Book
-          </button>
-        </div>
+        <button
+          onClick={checkLoginHandler}
+          className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
+        >
+          Book
+        </button>
+      </div>
       {isAuth ? (
         <div className="steps-mom w-full overflow-hidden h-fit p-20 px-48 max-[600px]:p-0">
           <div className="step1-wrapper max-[600px]:w-full ">
@@ -285,8 +285,8 @@ const SATHome = () => {
                     <button
                       className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${
                         hasTakenSAT
-                          ? "bg-[#F58612] text-white"
-                          : "border-[#F58612]"
+                          ? "bg-[#008BDC] text-white"
+                          : "border-[#008BDC]"
                       }`}
                       onClick={() => handleSATChange("yes")}
                     >
@@ -295,8 +295,8 @@ const SATHome = () => {
                     <button
                       className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${
                         !hasTakenSAT
-                          ? "bg-[#F58612] text-white"
-                          : "border-[#F58612]"
+                          ? "bg-[#008BDC] text-white"
+                          : "border-[#008BDC]"
                       }`}
                       onClick={() => handleSATChange("no")}
                     >
@@ -354,7 +354,7 @@ const SATHome = () => {
               <button
                 disabled={isLoading || !isCheckboxChecked}
                 onClick={submitHandler}
-                className="bg-[#F58612] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
+                className="bg-[#008BDC] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
               >
                 {isLoading ? (
                   <div className="center gap-3">

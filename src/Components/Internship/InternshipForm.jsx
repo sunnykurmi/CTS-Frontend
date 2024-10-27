@@ -272,7 +272,7 @@ export default function InternshipForm() {
                 <p className="text-lg font-medium">Class</p>
                 <div
                   onClick={toggleDropdown}
-                  className="cursor-pointer relative w-full field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]"
+                  className="cursor-pointer relative w-full field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]"
                 >
                   <input
                     type="text"
@@ -286,13 +286,13 @@ export default function InternshipForm() {
                     name="class"
                     autoComplete="off"
                   />
-                  <RiArrowDownSLine className="text-[#F58612]" />
+                  <RiArrowDownSLine className="text-[#008BDC]" />
                   {dropdownOpen && (
                     <div className="absolute w-full shadow-lg border-2 border-b-0 top-[105%] z-[99] bg-white">
                       {classes.map((cls) => (
                         <div
                           key={cls}
-                          className="w-full h-10 flex border-r-2 border-b-2 text-center items-center justify-center font-semibold hover:bg-[#F58612] hover:text-white"
+                          className="w-full h-10 flex border-r-2 border-b-2 text-center items-center justify-center font-semibold hover:bg-[#008BDC] hover:text-white"
                           onClick={() => handleOptionClick(cls)}
                         >
                           <p>{cls}</p>
@@ -306,7 +306,7 @@ export default function InternshipForm() {
                 <p className="text-lg font-medium">Education Board</p>
                 <div
                   onClick={toggleDropdown2}
-                  className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#F58612]"
+                  className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]"
                 >
                   <input
                     type="text"
@@ -320,13 +320,13 @@ export default function InternshipForm() {
                     name="board"
                     autoComplete="off"
                   />
-                  <RiArrowDownSLine className="text-[#F58612]" />
+                  <RiArrowDownSLine className="text-[#008BDC]" />
                   {dropdownOpen2 && (
                     <div className="absolute shadow-lg top-[105%] z-[99] border-2 border-b-0 w-full bg-white h-fit">
                       {boards.map((cls) => (
                         <div
                           key={cls}
-                          className="flex h-10 items-center justify-center font-semibold border-b-2 hover:bg-[#F58612] hover:text-white"
+                          className="flex h-10 items-center justify-center font-semibold border-b-2 hover:bg-[#008BDC] hover:text-white"
                           onClick={() => handleOptionClick2(cls)}
                         >
                           <p>{cls}</p>
@@ -362,7 +362,7 @@ export default function InternshipForm() {
                     className="field min-h-12 outline-none resize-none h-fit scroller rounded-xl"
                     rows={inputValueInterest ? 3 : 1} // Increase height when filled
                   />
-                  <RiArrowDownSLine className="absolute right-2 cursor-pointer text-[#F58612]" />
+                  <RiArrowDownSLine className="absolute right-2 cursor-pointer text-[#008BDC]" />
                   {dropdownOpenInterest && (
                     <div
                       className="absolute right-0 p-5 shadow-lg top-[103%] z-[9] w-[50vw] gap-2 flex flex-wrap bg-white h-fit max-[600px]:w-[100vw] max-[600px]:right-0 max-[600px]:p-0 max-[600px]:scale-75"
@@ -376,7 +376,7 @@ export default function InternshipForm() {
                         .map((interest) => (
                           <div
                             key={interest}
-                            className="w-fit py-1 min-w-20 flex items-center justify-center font-semibold border-[#F58612] rounded-full px-2 border-2 hover:bg-[#F58612] hover:text-white cursor-pointer"
+                            className="w-fit py-1 min-w-20 flex items-center justify-center font-semibold border-[#008BDC] rounded-full px-2 border-2 hover:bg-[#008BDC] hover:text-white cursor-pointer"
                             onClick={() => handleOptionClickInterest(interest)}
                           >
                             <p>{interest}</p>
@@ -393,8 +393,8 @@ export default function InternshipForm() {
                 <button
                   className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                     userInput.mode === "Online"
-                      ? "bg-[#F58612] text-white"
-                      : "border-[#F58612]"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
                   }`}
                   onClick={handleModeChange("Online")}
                 >
@@ -403,8 +403,8 @@ export default function InternshipForm() {
                 <button
                   className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
                     userInput.mode === "Offline"
-                      ? "bg-[#F58612] text-white"
-                      : "border-[#F58612]"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
                   }`}
                   onClick={handleModeChange("Offline")}
                 >
@@ -451,7 +451,7 @@ export default function InternshipForm() {
             <div className="w-full center mt-5">
               <button
             type="submit" disabled={loading}
-                className="bg-[#F58612] text-white font-semibold py-2 px-4 rounded-lg"
+                className="bg-[#008BDC] text-white font-semibold py-2 px-4 rounded-lg"
               >
          {loading ? "Submitting..." : "Submit"}
               </button>

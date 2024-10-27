@@ -143,8 +143,8 @@ const CommonHome = () => {
       <div className="w-full h-fit">
         <div className="w-44 absolute left-0 flex items-center justify-center text-base">
           <Link
-            className="h-12 gap-3 rounded-full bg-[#F58612] text-white flex items-center justify-center p-2 font-bold"
-            to={`/services`}
+            className="h-12 gap-3 rounded-full bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
+            to={-1}
           >
             <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
               <RiArrowLeftSLine className="text-[#0000009b]" />
@@ -182,7 +182,7 @@ const CommonHome = () => {
         <div className="w-full center">
           <button
             onClick={checkLoginHandler}
-            className="bg-[#F58612] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
+            className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
           >
             Review Your App Now
           </button>
@@ -240,8 +240,8 @@ const CommonHome = () => {
                   <button
                     className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${
                       userInput.meeting === "YES"
-                        ? "bg-[#F58612] text-white"
-                        : "border-[#F58612]"
+                        ? "bg-[#008BDC] text-white"
+                        : "border-[#008BDC]"
                     }`}
                     onClick={handleMeetingChange("YES")}
                   >
@@ -250,8 +250,8 @@ const CommonHome = () => {
                   <button
                     className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${
                       userInput.meeting === "NO"
-                        ? "bg-[#F58612] text-white"
-                        : "border-[#F58612]"
+                        ? "bg-[#008BDC] text-white"
+                        : "border-[#008BDC]"
                     }`}
                     onClick={handleMeetingChange("NO")}
                   >
@@ -293,7 +293,7 @@ const CommonHome = () => {
               <button
                 disabled={isLoading || !isCheckboxChecked}
                 onClick={submitHandler}
-                className="bg-[#F58612] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
+                className="bg-[#008BDC] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
               >
                 {isLoading ? (
                   <div className="center gap-3">

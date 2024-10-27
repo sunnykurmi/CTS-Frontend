@@ -326,7 +326,7 @@ function AddEducation(props) {
           </div>
           {(educationform.currentclass === "11th Class" ||
             educationform.currentclass === "12th Class") && (
-            <div className="w-full mt-5 flex items-center justify-between px-16">
+            <div className="w-full mt-5 flex items-center justify-between px-16 max-[600px]:px-5 ">
               <div className="flex w-[45%] flex-col">
                 <p className="text-lg font-medium">
                   Class 10<sup className="font-medium">th</sup> Education Board
@@ -380,7 +380,7 @@ function AddEducation(props) {
           )}
           {(educationform.currentclass === "11th Class" ||
             educationform.currentclass === "12th Class") && (
-            <div className="w-full mt-5 flex items-center justify-between px-16">
+            <div className="w-full mt-5 flex items-center justify-between px-16 max-[600px]:px-5">
               <div className="w-[45%] h-full">
                 <p className="text-lg font-medium">
                   Class 10<sup className="font-medium">th</sup> Percentage

@@ -105,10 +105,10 @@ export default function Home() {
     <div id="home">
       <div className="w-full h-14 flex items-center justify-center darkcolor max-[600px]:hidden">
         <img className="w-12 mr-8" src="/Images/deepak.gif" alt="" />
-        <div className="font-semibold text-xl text-[#20373f] whitespace-nowrap">
+        <div className="font-semibold text-xl text-zinc-50 whitespace-nowrap">
           <span className="ml-5">Diwali Offer: 20% off on all courses!</span>
         </div>
-        <div className="ml-4 font-semibold text-lg w-64 text-[#20373f]">
+        <div className="ml-4 font-semibold text-lg w-64 text-zinc-50">
           {`Time left: ${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
         </div>
         <img className="w-12" src="/Images/deepak.gif" alt="" />
@@ -132,9 +132,11 @@ export default function Home() {
             first-of-its-kind program crafted with insights from Ivy League
             students.
           </p>
-          <button className=" mt-10 w-32 h-14 rounded-lg bg-[#008BDC] text-white font-bold">
-                    Exploreivy                                         
-                  </button>
+          <Link to={"/ivy"}>
+            <button className=" mt-10 w-32 h-14 rounded-lg bg-[#008BDC] text-white font-bold uppercase">
+              Explore ivy
+            </button>
+          </Link>
         </div>
         <img
           className="  h-full object-contain absolute right-[-0vh] "
@@ -183,8 +185,6 @@ export default function Home() {
             </div>
           </div>
         </div> */}
-
-     
     </div>
   );
 }

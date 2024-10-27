@@ -54,7 +54,9 @@ export default function Login() {
       <div className="w-full h-[100vh] p-10 flex max-[600px]:flex-col max-[600px]:p-2">
         <div className="w-[70%] h-full flex flex-col items-center border-r-2 border-r-[#00000033] max-[600px]:w-full max-[600px]:border-0 max-[600px]:h-fit">
           <div className="w-full h-[20%] max-[600px]:h-fit ">
+            <Link to={"/"}>
             <img className="w-[30%] max-[600px]:w-[40%]" src="/Images/CTS   Logo.png" alt="" />
+            </Link>
           </div>
           <div className="w-full flex items-center justify-center h-[80%] max-[600px]:hidden ">
             <img
@@ -159,11 +161,7 @@ export default function Login() {
               </div>
             </div>
             <div className=" cursor-pointer  w-[90%] h-14 flex items-center justify-center overflow-hidden p-2  rounded-full border-2   bg-[white]">
-              {/* <img
-                className="w-[12%]"
-                src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
-                alt=""
-              /> */}
+             
               <p className="font-semibold text-lg">
                 <Link to="/signup">Create new Account</Link>
               </p>

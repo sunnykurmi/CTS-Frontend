@@ -76,7 +76,7 @@ const ServicesHome = () => {
               </div>
               <button
                 onClick={() => NavigateHandler(service.link)}
-                className="bg-[#ff9728] w-1/2 text-white max-[456px]:text-xl px-4 py-2 rounded-md mt-4"
+                className="bg-[#008BDC] w-1/2 text-white max-[456px]:text-xl px-4 py-2 rounded-md mt-4"
               >
                 {service.button}
               </button>

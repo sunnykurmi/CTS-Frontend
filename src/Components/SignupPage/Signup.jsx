@@ -65,7 +65,10 @@ export default function Signup() {
       <div className="w-full h-[100vh] p-10 flex max-[600px]:flex-col max-[600px]:p-2">
         <div className="w-[70%] h-full flex flex-col items-center border-r-2 border-r-[#00000033] max-[600px]:w-full max-[600px]:border-0 max-[600px]:h-fit ">
           <div className="w-full h-[20%] max-[600px]:h-fit  ">
+          <Link to={"/"}>
+
             <img className="w-[30%] max-[600px]:w-[40%]" src="/Images/CTS   Logo.png" alt="" />
+            </Link>
           </div>
           <div className="w-full flex items-center justify-center h-[80%] max-[600px]:hidden ">
             <img

@@ -52,7 +52,7 @@ export default function Profile() {
       <div className="w-full pt-10">
         <div className="w-44 max-[600px]:hidden  left-0 h-full flex items-center justify-center">
           <Link
-            className=" h-12 gap-3 rounded-full  bg-[#F58612] text-white flex items-center justify-center p-2 font-bold"
+            className=" h-12 gap-3 rounded-full  bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
             to={-1}
           >
             <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
@@ -135,7 +135,7 @@ export default function Profile() {
             <div className="w-[60%] ">
               <div className="text-[#151515d0] w-[90%] text-base font-medium capitalize max-[600px]:ml-5">
                 {user.bio ? (
-                  user.bio 
+                  user.bio
                 ) : (
                   <div
                     onClick={openeditform}
@@ -148,11 +148,11 @@ export default function Profile() {
             </div>
           </div>
           <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">
-            <div className="w-[30%]    text-[#1515159d] text-base font-medium ">
+            <div className="w-[30%] text-[#1515159d] text-base font-medium ">
               SUMMARY
             </div>
             <div className="w-[60%] ">
-              <div className="text-[#151515d0] w-[90%] text-base font-medium capitalize">
+              <div className="text-[#151515d0] w-[90%] text-base font-medium capitalize max-[600px]:ml-5">
                 {user.summary ? (
                   user.summary
                 ) : (
@@ -171,7 +171,7 @@ export default function Profile() {
               Date Of Birth
             </div>
             <div className="w-[60%]">
-              <p className="text-[#151515d0] w-[90%] text-base font-medium capitalize">
+              <p className="text-[#151515d0] w-[90%] text-base font-medium capitalize max-[600px]:ml-5">
                 {user.dateofbirth ? (
                   new Date(user.dateofbirth).toLocaleDateString("en-GB", {
                     day: "numeric",
@@ -226,23 +226,16 @@ export default function Profile() {
                           </div>
                         </div>
                       </div>
-                      <div>
-                        <button
-                          onClick={openEducation}
-                          className="text-sm center py-1 px-4 border-2 rounded-full"
-                        >
-                          {" "}
-                          <RiPencilLine className="scale-75" /> Edit
-                        </button>
-                      </div>
                     </div>
+
                     {user.education &&
                     user.education.class10schoolname !== "" ? (
-                      <div className="w-[80%] capitalize mb-5">
-                        <div className="text-[#151515d0] text-xl font-semibold">
+                      <div className="flex max-[600px]:block w-full">
+                      <div className="w-[80%] capitalize mb-5 max-[600px]:w-full">
+                        <div className="text-[#151515d0] text-xl font-semibold max-[600px]:mb-1">
                           {user?.education?.class10schoolname}
                         </div>
-                        <div className="w-[40vh] justify-between flex gap-5">
+                        <div className="w-[40vh] justify-between flex gap-5 max-[600px]:w-full">
                           <div className="text-[#151515d0] text-base font-medium">
                             <b> class : </b>
                             10th
@@ -252,7 +245,7 @@ export default function Profile() {
                             {user?.education?.class10percentage}%
                           </div>
                         </div>
-                        <div className="w-[40vh] justify-between flex gap-5">
+                        <div className="w-[40vh] justify-between flex gap-5 max-[600px]:w-full">
                           <div className="text-[#151515d0] text-base font-medium">
                             <b> Board : </b>
                             {user?.education?.class10educationBoard}
@@ -263,9 +256,19 @@ export default function Profile() {
                           </div>
                         </div>
                       </div>
+                    </div>
                     ) : (
                       ""
                     )}
+                    <div>
+                      <button
+                        onClick={openEducation}
+                        className="text-sm center py-1 px-4 border-2 rounded-full"
+                      >
+                        {" "}
+                        <RiPencilLine className="scale-75" /> Edit
+                      </button>
+                    </div>
                   </>
                 ) : (
                   <button

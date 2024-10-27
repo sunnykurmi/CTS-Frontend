@@ -82,6 +82,22 @@ export const sendmail = (email, navigate) => async (dispatch) => {
   }
 };
 
+
+
+export const sendivyform = (formData) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    await axios.post("/api/v1/user/submit-ivy-form", formData);
+    dispatch(setLoading(false));
+  } catch (error) {
+    dispatch(signinerror(error.response.data.message));
+    dispatch(setLoading(false));
+  }
+};
+
+
+
+
 export const forgotpassword = (data, navigate) => async (dispatch) => {
   try {
     dispatch(setLoading(true));

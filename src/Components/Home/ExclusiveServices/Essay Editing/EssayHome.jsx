@@ -221,8 +221,8 @@ const EssayHome = () => {
       <div className="w-full h-fit">
         <div className="w-44 absolute left-0 flex items-center justify-center text-base">
           <Link
-            className="h-12 gap-3 rounded-full bg-[#F58612] text-white flex items-center justify-center p-2 font-bold"
-            to={`/services`}
+            className="h-12 gap-3 rounded-full bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
+            to={-1}
           >
             <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
               <RiArrowLeftSLine className="text-[#0000009b]" />
@@ -282,7 +282,7 @@ const EssayHome = () => {
         <div className="w-full center">
           <button
             onClick={checkLoginHandler}
-            className="bg-[#F58612] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
+            className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
           >
             Edit Your Essay Now
           </button>
@@ -299,7 +299,7 @@ const EssayHome = () => {
               <div className="relative inline-block w-full text-left mt-4">
                 <button
                   type="button"
-                  className="w-full flex items-center justify-between px-4 py-2 text-xl font-semibold text-white bg-[#F58612] rounded-md"
+                  className="w-full flex items-center justify-between px-4 py-2 text-xl font-semibold text-white bg-[#008BDC] rounded-md"
                   onClick={toggleDropdown}
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
@@ -331,7 +331,7 @@ const EssayHome = () => {
               </div>
 
               <div
-                className={`choose-file w-40 bg-[#F58612] p-3 mt-3 center rounded-md cursor-pointer text-xl text-white font-medium gap-2 ${
+                className={`choose-file w-40 bg-[#008BDC] p-3 mt-3 center rounded-md cursor-pointer text-xl text-white font-medium gap-2 ${
                   isFileInputDisabled ? "opacity-50 cursor-not-allowed" : ""
                 }`}
                 onClick={handleChooseFileClick}
@@ -374,7 +374,7 @@ const EssayHome = () => {
                 value={userInput.instructions}
                 onChange={handleInstructionsChange}
                 maxLength={500}
-                className="w-full mt-2 h-40 p-4 border-2 rounded-md focus:outline-none focus:ring-orange-400 focus:border-[#F58612]"
+                className="w-full mt-2 h-40 p-4 border-2 rounded-md focus:outline-none focus:ring-orange-400 focus:border-[#008BDC]"
               ></textarea>
             </div>
 
@@ -396,7 +396,7 @@ const EssayHome = () => {
                   // maxLength={5000}
                   onChange={handleTextareaChange}
                   disabled={isTextareaDisabled}
-                  className={`w-full h-64 p-4 border-2 rounded-md focus:outline-none focus:ring-orange-400 focus:border-[#F58612] ${
+                  className={`w-full h-64 p-4 border-2 rounded-md focus:outline-none focus:ring-orange-400 focus:border-[#008BDC] ${
                     isTextareaDisabled ? "opacity-50" : ""
                   }`}
                 ></textarea>
@@ -407,7 +407,7 @@ const EssayHome = () => {
             <button
               disabled={isLoading}
               onClick={submithandler}
-              className="bg-[#F58612] text-xl font-medium p-5 text-white py-2 rounded-md"
+              className="bg-[#008BDC] text-xl font-medium p-5 text-white py-2 rounded-md"
             >
               {isLoading ? (
                 <div className="center gap-3">
