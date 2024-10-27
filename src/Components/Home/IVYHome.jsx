@@ -1,609 +1,283 @@
-import React from "react";
-import HomeNav from "./HomeNav";
-import HomeFooter from "./HomeFooter";
+import React, { useEffect, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
+import { RiArrowLeftSLine } from "@remixicon/react";
 
+gsap.registerPlugin(ScrollTrigger);
 
 function IVYHome() {
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  useEffect(() => {
+    gsap.to(".straightLine", {
+      scrollTrigger: {
+        trigger: ".ivySteps",
+        start: "top center",
+        end: "bottom center",
+        scrub: 1,
+      },
+      height: "85%",
+      ease: "expoScale(1,2,none)",
+    });
+  }, []);
+
+  const togglePopup = () => {
+    setIsPopupVisible(!isPopupVisible);
+  };
+
   return (
-    // <div id="home">
-    //   <div className="w-full h-14 max-[600px]:h-6 flex items-center justify-center  bg-[#FCEEC5]">
-    //     <p className="font-semibold text-lg text-[#F58612] ">
-    //       Lets Join Us To Cross The Sky Limits 🏆
-    //     </p>
-    //   </div>
-    //   <HomeNav />
+    <div className="w-full h-fit">
+      <div className="w-44 absolute left-0 flex items-center justify-center text-base mt-3">
+        <Link
+          className="h-12 gap-3 rounded-full z-[99] bg-[#004AAD] text-white flex items-center justify-center p-2 font-bold"
+          to={/services}
+        >
+          <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
+            <RiArrowLeftSLine className="text-[#0000009b]" />
+          </div>
+          <button className="mr-2">Go Back</button>
+        </Link>
+      </div>
+      <div className="ivyheader w-full h-32 flex pl-32">
+        <div className="ivy-heading w-[30%] h-full relative">
+          <img
+            className="size-32 absolute top-1/2 left-[80%] -translate-x-1/2 -translate-y-1/2"
+            src="/Images/ivy/leaf.gif"
+            alt=""
+          />
+          <img src="/Images/ivy/6.png" className="h-48 m-auto" alt="" />
+          <img
+            className="size-32 absolute top-1/2 left-[20%] scale-x-[-1] -translate-x-1/2 -translate-y-1/2"
+            src="/Images/ivy/leaf.gif"
+            alt=""
+          />
+        </div>
+        <div className="universitylist w-[70%] h-full">
+          <img
+            src="/Images/ivy/nav univesities.png"
+            className="w-full h-32 object-contain scale-[.9] mt-5"
+            alt=""
+          />
+        </div>
+      </div>
+      <div className="ivy-acceptance center flex-col mt-24">
+        <h1 className="text-4xl Rubik font-bold">Acceptance Rate : 16%</h1>
+        <p className="text-lg Rubik font-[500] w-[55%] text-center leading-6 mt-5">
+          Note: We focus on quality, not quantity. With an acceptance rate of
+          just 16%, IV Accelerator is an elite program designed for those who
+          truly stand out. This is your chance to join the select few on the
+          fast track to top universities—don’t let this opportunity slip by!
+          Apply now and secure your spot before it’s too late!
+        </p>
+        <button className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5">
+          Apply Now
+        </button>
+      </div>
+      <div className="ivyhero w-full h-fit p-5">
+        <h2 className="text-zinc-400 text-xl font-medium text-start ml-48">
+          Offerings
+        </h2>
+        <div className="flex flex-col items-center mt-2">
+          <h1 className="text-5xl tracking-tighter font-semibold text-center Rubik">
+            Ivy Accelerator Program: Boost Your{" "}
+            <span className="text-[#004AAD]">Chances by 600%</span>
+          </h1>
+          <p className="text-2xl font-normal Rubik text-center w-1/2 mt-3">
+            The only program that has every tool, guide, and insider support you
+            need to unlock your future! Here’s how we’ll get you to the top:
+          </p>
+        </div>
+      </div>
+      <div className="ivySteps w-full p-5 px-32 h-fit Rubik relative overflow-hidden">
+        <div className="straightLine w-[5px] h-0 bg-blue-500 z-[9] block absolute top-1 left-1/2 after:content-[''] after:absolute after:top-full after:left-[-140%] after:border-l-[10px] after:border-r-[10px] after:border-t-[20px] after:border-t-blue-500 after:border-l-transparent after:border-r-transparent"></div>
+        <div className="dotted w-[5px] h-[80%] border-l-4 border-blue-300 border-dotted block absolute top-1 left-1/2"></div>
+        <div className="ivystep-1 flex justify-between items-center bg-[#f5fafeae]">
+          <div className="ivyleft w-[45%] h-fit overflow-hidden">
+            <img
+              className="w-full h-[40vh] object-contain scale-[1.2]"
+              src="/Images/ivy/gif1.gif"
+              alt=""
+            />
+          </div>
+          <div className="ivyright w-[45%] h-fit center flex-col">
+            <h2 className="text-xl text-[#004AAD] mb-5 font-medium">
+              Step 1: Apply FREE & Join the Elite!
+            </h2>
+            <h1 className="text-3xl text-center font-semibold">
+              Apply now and join the {"world's"} #1 profile-building program!
+            </h1>
+            <p className="text-center mt-3 text-zinc-600 text-lg leading-5">
+              Don’t let anything hold you back! Apply for free today and begin
+              the journey with the best. Financial aid or background won’t
+              impact your application. Just bring your ambition, and we’ll
+              handle the rest.{" "}
+            </p>
+            <button
+              className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5"
+            >
+              Apply Now
+            </button>
+          </div>
+        </div>
+        <div className="ivystep-1 flex justify-between mt-20 items-center bg-white">
+          <div className="ivyright w-[45%] h-fit center flex-col">
+            <h2 className="text-xl text-[#004AAD] mb-5 font-medium">
+              Step 2: 1-1 Meeting
+            </h2>
+            <h1 className="text-3xl text-center font-semibold">
+              Meet Krishna MIT One-on-One – Your Road to Success Starts Here{" "}
+            </h1>
+            <p className="text-center mt-3 text-zinc-600 text-lg leading-5">
+              Selected students get an exclusive, one-on-one session with
+              Krishna MIT, the mastermind behind countless admissions successes.
+              This session will be your launchpad! Once you apply, keep an eye
+              on your email inbox where you will receive results and 1-1 session
+              scheduling link—your future awaits.
+            </p>
+            <button
+              className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5"
+            >
+              Check Your Mail Here
+            </button>
+          </div>
+          <div className="ivyleft w-[45%] h-fit overflow-hidden">
+            <img
+              className="w-full h-[40vh] object-contain scale-[1.2]"
+              src="/Images/ivy/gif2.gif"
+              alt=""
+            />
+          </div>
+        </div>
+        <div className="ivystep-1 flex justify-between mt-20 items-center bg-[#f5fafeae]">
+          <div className="ivyleft w-[45%] h-fit overflow-hidden">
+            <img
+              className="w-full h-[40vh] object-contain scale-[1.2]"
+              src="/Images/ivy/gif3.gif"
+              alt=""
+            />
+          </div>
+          <div className="ivyright w-[45%] h-fit center flex-col">
+            <h2 className="text-xl text-[#004AAD] mb-5 font-medium">
+              Step 3: Vardaan Roadmap
+            </h2>
+            <h1 className="text-3xl text-center font-semibold">
+              Your Vardaan Roadmap – Monthly Goals to Secure Your Spot
+            </h1>
+            <p className="text-center mt-3 text-zinc-600 text-lg leading-5">
+              DWith Krishna MIT as your guide, He will build a tailored “Vardaan
+              Roadmap”—a monthly action plan with powerful tasks, goals, and
+              blueprints that ensure you’re on the right path. If you’re in the
+              Ivy Accelerator, download your exclusive roadmap and get started!
+            </p>
+            <button
+              onClick={togglePopup}
+              className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5"
+            >
+              Download Your Roadmap
+            </button>
+          </div>
+        </div>
+        <div className="ivystep-1 flex justify-between mt-20 items-center bg-white">
+          <div className="ivyright w-[45%] h-fit center flex-col">
+            <h2 className="text-xl text-[#004AAD] mb-5 font-medium">
+              Step 4: ECs Booster
+            </h2>
+            <h1 className="text-3xl text-center font-semibold">
+              Extracurricular Booster – Stand Out, Shine Bright
+            </h1>
+            <p className="text-center mt-3 text-zinc-600 text-lg leading-5">
+              DGet ready for an EC transformation! Our powerhouse team of
+              designers, researchers, marketers, and more will supercharge your
+              extracurricular profile with unmatched quality. Plus, we’re
+              teaming up with top startups, investors, and university students
+              to make sure you leave an unforgettable mark.
+            </p>
+            <button
+              onClick={togglePopup}
+              className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5"
+            >
+              Check your ECs Progress
+            </button>
+          </div>
+          <div className="ivyleft w-[45%] h-fit overflow-hidden">
+            <img
+              className="w-full h-[40vh] object-contain scale-[1.2]"
+              src="/Images/ivy/gif4.gif"
+              alt=""
+            />
+          </div>
+        </div>
+        <div className="ivystep-1 flex justify-between mt-20 items-center relative bg-[#f5fafeae]">
+          <div className="ivyleft w-[45%] h-fit overflow-hidden blur-md">
+            <img
+              className="w-full h-[40vh] object-contain scale-[1.2]"
+              src="/Images/ivy/gif4.gif"
+              alt=""
+            />
+          </div>
+          <div className="ivyright w-[45%] h-fit center flex-col blur-md">
+            <h2 className="text-xl text-[#004AAD] mb-5 font-medium">
+              Step 4: Only For IVY Accelerator Enrolled Students
+            </h2>
+            <h1 className="text-3xl text-center font-semibold">
+              Nothing here please enrll in the IVY Accelerator Program
+            </h1>
+            <p className="text-center mt-3 text-zinc-600 text-lg leading-5">
+              this is only for the students who are enrolled in the IVY
+              Accelerator Program. If you are not enrolled in the program please
+              apply for the program to get access to this feature.
+            </p>
+            <button
+              onClick={togglePopup}
+              className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5"
+            >
+              Apply Now
+            </button>
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <h1 className="text-2xl font-bold text-[#004AAD] text-center">
+              Only for Ivy Accelerator Enrolled Students
+            </h1>
+          </div>
+        </div>
+      </div>
 
-    //   <div className="w-full flex items-center justify-center text-4xl mb-10 max-[600px]:mt-5 max-[600px]:mb-0 max-[600px]:text-xl max-[600px]:text-center">
-    //     <p>🚀 The {"World's"} Premier College Application Program! 🌐✨</p>
-    //   </div>
-    //   <div className="w-full flex flex-col items-center justify-center">
-    //     <div className="w-[70%] shadow-xl rounded-lg py-10 max-[600px]:w-full max-[600px]:rounded-none max-[600px]:shadow-none max-[600px]:py-2">
-    //       <div className="w-full flex flex-col text-xl px-10 items-center justify-center max-[600px]:px-2">
-    //         <p className="text-2xl mt-5 mb-10 max-[600px]:mt-2 max-[600px]:mb-5 max-[600px]:text-xl">
-    //           🎓 Services That Redefine Success:
-    //         </p>
-    //         <p>
-    //           <span className="font-semibold">1. Expert-Led SAT Classes:</span>{" "}
-    //           Master the SAT with guidance from seasoned instructors, propelling
-    //           you towards a score of 1550+.
-    //           <br />
-    //           <span className="font-semibold">
-    //             2. Comprehensive Language Classes:
-    //           </span>{" "}
-    //           Excel in language proficiency exams (IELTS/TOEFL/DET) with
-    //           tailored instruction.
-    //           <br />
-    //           <span className="font-semibold">3. AP Exams Mastery:</span> Ace AP
-    //           exams with expert guidance, securing a competitive edge in your
-    //           application.
-    //           <br />
-    //           <span className="font-semibold">
-    //             4. Personalized Roadmap:
-    //           </span>{" "}
-    //           Navigate the college application journey with a bespoke , tailored
-    //           to your strengths and aspirations.
-    //           <br />
-    //           <span className="font-semibold">
-    //             5. Dynamic Portfolio Website:
-    //           </span>{" "}
-    //           Showcase your achievements with a cutting-edge most creative
-    //           online portfolio that captures the essence of your uniqueness.
-    //           <br />
-    //           <span className="font-semibold">
-    //             6. Exclusive Extracurricular Opportunities:
-    //           </span>{" "}
-    //           Access unique special ECs to enrich your profile and stand out to
-    //           admissions committees.
-    //           <br />
-    //           <span className="font-semibold">7. SAT Fee Waiver:</span> Lighten
-    //           the financial load of standardized testing with our support.
-    //           <br />
-    //           <span className="font-semibold">
-    //             8. Elite Essay Editing:
-    //           </span>{" "}
-    //           Refine your narrative with input from MIT, Ivy League, and top
-    //           university students.
-    //           <br />
-    //           <span className="font-semibold">9. Common App Review:</span>{" "}
-    //           Ensure a flawless presentation of your achievements in the Common
-    //           Application.
-    //           <br />
-    //           <span className="font-semibold">10. Document Support:</span>{" "}
-    //           Receive guidance and assistance in preparing all necessary
-    //           documents for a seamless application process.
-    //           <br />
-    //           <span className="font-semibold">
-    //             11. Financial Aid Assistance:
-    //           </span>{" "}
-    //           Navigate the CSS Profile and financial aid application process
-    //           with expert support.
-    //           <br />
-    //           <span className="font-semibold">
-    //             12. End-to-End Support:
-    //           </span>{" "}
-    //           From i-20 to VISA assistance, departure flight guidance to arrival
-    //           support – {"we've"} got you covered.
-    //           <br />
-    //           <span className="font-semibold">
-    //             13. Post-Arrival Support:
-    //           </span>{" "}
-    //           Assistance with part-time jobs, Social Security Number (SSN)
-    //           application, and more after arriving in the USA.
-    //           <br />
-    //           <span className="font-semibold">
-    //             14. One-on-One Sessions:
-    //           </span>{" "}
-    //           Personalized consultations to address your unique needs and
-    //           concerns.
-    //           <br />
-    //           <span className="font-semibold">
-    //             15. Exclusive Event Access:
-    //           </span>{" "}
-    //           Free passes to CTS events and a dedicated summer program counselor
-    //           for a holistic experience.
-    //           <br />
-    //           <span className="font-semibold">
-    //             16. Free Content Access:
-    //           </span>{" "}
-    //           Unlock all paid content for a comprehensive and enriching
-    //           preparation experience.
-    //           <br />
-    //           <span className="font-semibold">17. Monthly Meetings:</span>{" "}
-    //           Connect with students from your dream university for valuable
-    //           insights and guidance.
-    //           <br />
-    //           <span className="font-semibold">
-    //             18. Universities Lists:
-    //           </span>{" "}
-    //           Expert guidance to navigate the intricate web of university
-    //           choices and make informed decisions.
-    //         </p>
-    //       </div>
-    //     </div>
-    //     {/* <div className="w-[90%] font-medium  my-10 flex justify-evenly">
-    //       <div className=" w-[30%] rounded-3xl shadow-2xl p-5">
-    //         <div className="w-full flex flex-col items-start">
-    //           <p className="text-2xl font-medium">Basic</p>
-    //           <p className="opacity-40">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, nobis!</p>
-    //         </div>
-    //         <p className="text-4xl font-medium my-2">599Rs</p>
-    //         <div className="w-full flex items-start flex-col gap-2 ">
-    //             <p className="opacity-40 text-lg">What is included?</p>
-    //           <div className="text-base">
-    //             <p>✔️ Expert-Led SAT Classes</p>
-    //           </div>
+      <div className="quote w-full h-screen bg-[url('/Images/ivy/bg-university.png')] bg-contain bg-no-repeat bg-center center flex-col">
+        <h1 className="text-2xl text-center text-black font-medium">
+          The Secret to Your Success Awaits!
+        </h1>
+        <h2 className="text-sm w-1/2 leading-5 text-center text-black mt-1 font-normal">
+          This is the one and only program of its kind, crafted over 5 years
+          with innovative, exclusive tools you won’t find anywhere else. While
+          we can’t reveal all 15 powerful steps here—reserved solely for
+          students who join—we assure you, they’re the key to making your dream
+          university a reality. Our unique structure and competitive edge are
+          highly guarded, but you can unlock everything by applying now. Don’t
+          wait—apply today and step into the future you’ve been working for!
+        </h2>
+        <button className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5">
+          Apply Now
+        </button>
+      </div>
 
-    //           <div className="text-base">
-    //             <p>✔️ Comprehensive Language Classes</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ AP Exams Mastery</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ Personalized Roadmap</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ Dynamic Portfolio Website</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ Exclusive Extracurricular Opportunities</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ SAT Fee Waiver</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Elite Essay Editing</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Common App Review</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Document Support</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Financial Aid Assistance</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ End-to-End Support</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Post-Arrival Support</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ One-on-One Sessions</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30 ">
-    //             <p>❌ Exclusive Event Access</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30 ">
-    //             <p>❌ Free Content Access</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30 ">
-    //             <p>❌ Monthly Meetings</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30 ">
-    //             <p>❌ Universities Lists</p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className=" w-[30%] rounded-3xl shadow-2xl p-5">
-    //         <div className="w-full flex flex-col items-start">
-    //           <p className="text-2xl font-medium">Basic</p>
-    //           <p className="opacity-40">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, nobis!</p>
-    //         </div>
-    //         <p className="text-4xl font-medium my-2">599Rs</p>
-    //         <div className="w-full flex items-start flex-col gap-2 ">
-    //             <p className="opacity-40 text-lg">What is included?</p>
-    //           <div className="text-base">
-    //             <p>✔️ Expert-Led SAT Classes</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ Comprehensive Language Classes</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ AP Exams Mastery</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ Personalized Roadmap</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ Dynamic Portfolio Website</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ Exclusive Extracurricular Opportunities</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ SAT Fee Waiver</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Elite Essay Editing</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Common App Review</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Document Support</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Financial Aid Assistance</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ End-to-End Support</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Post-Arrival Support</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ One-on-One Sessions</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30 ">
-    //             <p>❌ Exclusive Event Access</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30 ">
-    //             <p>❌ Free Content Access</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30 ">
-    //             <p>❌ Monthly Meetings</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30 ">
-    //             <p>❌ Universities Lists</p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className=" w-[30%] rounded-3xl shadow-2xl p-5">
-    //         <div className="w-full flex flex-col items-start">
-    //           <p className="text-2xl font-medium">Basic</p>
-    //           <p className="opacity-40">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, nobis!</p>
-    //         </div>
-    //         <p className="text-4xl font-medium my-2">599Rs</p>
-    //         <div className="w-full flex items-start flex-col gap-2 ">
-    //             <p className="opacity-40 text-lg">What is included?</p>
-    //           <div className="text-base">
-    //             <p>✔️ Expert-Led SAT Classes</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ Comprehensive Language Classes</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ AP Exams Mastery</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ Personalized Roadmap</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ Dynamic Portfolio Website</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ Exclusive Extracurricular Opportunities</p>
-    //           </div>
-
-    //           <div className="text-base">
-    //             <p>✔️ SAT Fee Waiver</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Elite Essay Editing</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Common App Review</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Document Support</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Financial Aid Assistance</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ End-to-End Support</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ Post-Arrival Support</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30">
-    //             <p>❌ One-on-One Sessions</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30 ">
-    //             <p>❌ Exclusive Event Access</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30 ">
-    //             <p>❌ Free Content Access</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30 ">
-    //             <p>❌ Monthly Meetings</p>
-    //           </div>
-
-    //           <div className="text-base  opacity-30 ">
-    //             <p>❌ Universities Lists</p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div> */}
-    //     <div className=" mt-10 w-full flex items-center justify-center text-3xl max-[600px]:text-2xl">
-    //       <p>Types of Ivy Accelerator Course</p>
-    //     </div>
-    //     <div className="w-[90%] font-medium  my-10 flex justify-evenly max-[600px]:w-full max-[600px]:text-[2vw]">
-    //       <div className=" hover:border-blue-300 hover:border-2 hover:scale-105 transition-all duration-500 hover:bg-[#b2e3ff43]  w-[30%]  shadow-2xl max-[600px]:shadow-none rounded-2xl gap-2 flex items-center text-center justify-between pt-2 flex-col">
-    //         <div className="w-full px-2 flex items-center justify-center">
-    //           <img
-    //             className="w-full rounded-lg h-fit object-cover"
-    //             src="/Images/plan2.JPG"
-    //             alt=""
-    //           />
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Expert-Led SAT Classes
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           IELTS/TOEFL/DET Classes
-    //         </div>
-    //         <div className="  w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           <p className="opacity-20">AP Exams Classes</p>
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Monthly Roadmap
-    //         </div>
-    //         <div className=" w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           <p className="opacity-20">Portfolio Website</p>
-    //         </div>
-    //         <div className="  w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           <p className="opacity-20">Exclusive Extracurriculars</p>
-    //         </div>
-    //         <div className=" w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           <p className="opacity-20">SAT Fee Waiver</p>
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Essay Writing Mastery
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Essay Editing By team members
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Common App Review
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Document Support
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           <p className="opacity-20 ">Roadmap Tracking</p>
-    //         </div>
-    //         <div className="  w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           <p className="opacity-20">Research Paper</p>
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           CSS Profile/Financial Aid
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           i-20, VISA Support, Departure Flight
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           <p className="opacity-20 ">
-    //             Support After Arriving In USA, <br /> Part Time Jobs Support,
-    //             SSN
-    //           </p>
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           1-1 Instant Meeting
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Exclusive Event Access
-    //         </div>
-    //         <div className="  w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           <p className="opacity-20">Summer Program Counselor</p>
-    //         </div>
-    //         <div className="w-full flex  h-14 max-[600px]:h-6 border-b-2 pb-2 items-center justify-center">
-    //           University List - 15
-    //         </div>
-    //         <div className="w-full h-24 max-[600px]:h-14 scale-75 p-5 flex items-center justify-center max-[600px]:p-0  ">
-    //           <div className="w-full  text-white font-medium h-full bg-blue-500 rounded-lg flex flex-col items-center justify-center text-center">
-    //             <p className="text-xs">Starting at </p>{" "}
-    //             <p className="text-2xl max-[600px]:text-base">Rs.65k</p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className=" hover:border-yellow-400 hover:border-2 hover:scale-105 transition-all duration-500 hover:bg-[#ffe59c33]  w-[30%]  pt-2  shadow-2xl max-[600px]:shadow-none rounded-2xl gap-2 flex items-center text-center justify-between flex-col">
-    //         <div className="w-full flex items-center px-2 justify-center">
-    //           <img
-    //             className="w-full  h-fit rounded-lg object-cover"
-    //             src="/Images/plan1.JPG"
-    //             alt=""
-    //           />
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Expert-Led SAT Classes
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           IELTS/TOEFL/DET Classes
-    //         </div>
-    //         <div className="  w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           <p className="opacity-20">AP Exams Classes</p>
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Weekly Roadmap
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Portfolio Website
-    //         </div>
-    //         <div className="opacity-20 w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           <p>Exclusive Extracurriculars</p>
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           1 SAT Fee Waiver
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Essay Writing Mastery
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Essay Editing By Top uni Students
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Common App Review
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Document Support
-    //         </div>
-    //         <div className="opacity-20 w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           <p>Roadmap Tracking</p>
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           1 Research Paper
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           CSS Profile/Financial Aid
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           i-20, VISA Support, Departure Flight
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Support After Arriving In USA, <br /> Part Time Jobs Support, SSN
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           1-1 Instant Meeting
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Exclusive Event Access
-    //         </div>
-    //         <div className="  w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           <p className="opacity-20">Summer Program Counselor</p>
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           University List - 20
-    //         </div>
-    //         <div className="w-full h-24 max-[600px]:h-14 scale-75 p-5 flex items-center justify-center max-[600px]:p-0  ">
-    //           <div className="w-full  text-white font-medium h-full bg-blue-500 rounded-lg flex flex-col items-center justify-center text-center">
-    //             <p className="text-xs">Starting at </p>{" "}
-    //             <p className="text-2xl max-[600px]:text-base">Rs.1.2Lac</p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className=" hover:border-gray-400 hover:border-2 hover:scale-105 transition-all duration-500 hover:bg-[#bcf2ff4b]  w-[30%]  pt-2  shadow-2xl max-[600px]:shadow-none rounded-2xl gap-2 flex items-center text-center justify-between flex-col">
-    //         <div className="w-full flex px-2 items-center justify-center">
-    //           <img
-    //             className="w-full h-fit rounded-lg object-cover"
-    //             src="/Images/plan3.JPG"
-    //             alt=""
-    //           />
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Expert-Led SAT Classes
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           IELTS/TOEFL/DET Classes
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           AP Exams Classes
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Weekly Roadmap
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Portfolio Website
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Exclusive Extracurriculars
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           3 SAT Fee Waiver
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Essay Writing Mastery
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Essay Editing By MIT <br /> & Ivy Students
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Common App Review
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Document Support
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Roadmap Tracking
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           2 Research Paper
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           CSS Profile/Financial Aid
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           i-20, VISA Support, Departure Flight
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Support After Arriving In USA, <br /> Part Time Jobs Support, SSN
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           1-1 Instant Meeting
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Exclusive Event Access
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           Summer Program Counselor
-    //         </div>
-    //         <div className="w-full flex border-b-2 h-14 max-[600px]:h-6 pb-2 items-center justify-center">
-    //           University List - 25
-    //         </div>
-    //         <div className="w-full h-24 max-[600px]:h-14 scale-75 p-5 flex items-center justify-center max-[600px]:p-0  ">
-    //           <div className="w-full  text-white font-medium h-full bg-blue-500 rounded-lg flex flex-col items-center justify-center text-center">
-    //             <p className="text-xs">Starting at </p>{" "}
-    //             <p className="text-2xl max-[600px]:text-base">Rs.2.2Lac</p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-
-    //   <HomeFooter />
-    // </div>
-    <div className="w-full h-[100vh] bg-[#aaa3a3]">
-      <img src="/Images/ivy/leaf.gif" alt="" />
+      {isPopupVisible && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-5 rounded-lg shadow-lg text-center center flex-col w-[50vh] h-[50vh]">
+            <h2 className="text-2xl font-bold mb-4">Not Enrolled</h2>
+            <p className="mb-4">
+              You are not enrolled in the IVY Accelerator Program. Please enroll
+              to access this feature.
+            </p>
+            <button
+              onClick={togglePopup}
+              className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -10,15 +10,21 @@ import {
   RiTrophyFill,
   RiUserStarFill,
 } from "@remixicon/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Navigation, Autoplay } from "swiper";
 
 import React from "react";
-import "./Home.css";
 import { Link } from "react-router-dom";
 import { asynccurrentUser } from "../../store/Actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import HomeNav from "./HomeNav";
 import HomeFooter from "./HomeFooter";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 export default function Home() {
   // const dispatch = useDispatch();
 
@@ -81,133 +87,63 @@ export default function Home() {
     incrementValue(110, setCountries);
   }, []);
 
+  const slides = [];
+
+  for (let i = 0; i <= 3; i++) {
+    slides.push(
+      <SwiperSlide className="center" key={`slide-${i}`}>
+        <img
+          className="w-[80%]  rounded-md h-full object-cover"
+          src={`/Images/swiper universities/img${i + 1}.jpeg`}
+          alt=""
+        />
+      </SwiperSlide>
+    );
+  }
+
   return (
     <div id="home">
-      <div className="w-full h-14 flex items-center justify-center bg-[#FCEEC5] max-[600px]:hidden">
+      <div className="w-full h-14 flex items-center justify-center darkcolor max-[600px]:hidden">
         <img className="w-12 mr-8" src="/Images/deepak.gif" alt="" />
-        <div className="font-semibold text-xl text-[#F58612] whitespace-nowrap">
+        <div className="font-semibold text-xl text-[#20373f] whitespace-nowrap">
           <span className="ml-5">Diwali Offer: 20% off on all courses!</span>
         </div>
-        <div className="ml-4 font-semibold text-lg w-64 text-[#F58612]">
-        {`Time left: ${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
+        <div className="ml-4 font-semibold text-lg w-64 text-[#20373f]">
+          {`Time left: ${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
         </div>
         <img className="w-12" src="/Images/deepak.gif" alt="" />
+      </div>
+      <div className="w-full flex items-center justify-center fixed z-[9]">
+        <HomeNav />
+      </div>
+      <div className="w-full h-[100vh] relative flex items-center justify-center overflow-hidden">
+        <div className="w-[70%] h-full absolute top-10 pt-44 overflow-hidden left-0 pl-36">
+          <p className="text-6xl font-bold tracking-tight  capitalize">
+            Want to get into your <br />
+            dream university <span className="text-[#4353cd]">?</span>
+          </p>
 
-      </div>
-      <HomeNav />
-      <div className="w-full flex items-center flex-col justify-evenly">
-        <div className="w-[60%]  h-40 flex items-center justify-center  text-center max-[600px]:w-[80%] max-[600px]:h-24">
-          <p className="  font-bold text-6xl max-[600px]:text-2xl  ">
-            Start Your Journey By Creating Your Roadmap
+          <p className="font-medium text-2xl mt-5">
+            Ivy Accelerator: Your 600% Acceptance Boost
           </p>
-        </div>
-        <div className="w-[30%]   flex items-center justify-center  text-center text-[#00000089] max-[600px]:w-[90%]">
-          <p className="  font-medium text-xl max-[600px]:text-lg">
-            All you need is the plan, the road map, and the courage to press on
-            to your destination.
+
+          <p className="text-xl font-normal w-[60%] opacity-70 leading-[1.5vw] text-justify mt-1">
+            For five years, Ivy Accelerator has been the most innovative,
+            first-of-its-kind program crafted with insights from Ivy League
+            students.
           </p>
+          <button className=" mt-10 w-32 h-14 rounded-lg bg-[#30c8ff] text-white font-bold">
+                    Exploreivy                                         
+                  </button>
         </div>
-        <div className="w-full h-20 flex items-center justify-center pt-5">
-          <div
-            className=" h-12 gap-5 rounded-full pl-5 bg-[#F58612] text-white flex items-center justify-between p-2 font-bold max-[600px]:scale-75"
-            href=""
-          >
-            <button className="">
-              <Link to="/signup">Start Your Journey</Link>{" "}
-            </button>
-            <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
-              {" "}
-              <RiArrowRightSLine className=" text-[#0000009b]" />{" "}
-            </div>
-          </div>
-        </div>
-        <div className="w-full flex items-center gap-24 justify-center mt-5 max-[600px]:mt-2 max-[600px]:gap-0">
-          <div className="bg-[#FEF6EE] text-[#946800] flex items-center justify-center flex-col rounded-full w-60 py-4 max-[600px]:py-2 ">
-            <p className="font-extrabold text-3xl max-[600px]:text-lg ">
-              {studentsJoined.toLocaleString()}+
-            </p>
-            <p className="font-medium max-[600px]:text-xs">Students Joined</p>
-          </div>
-          <div className="bg-[#FEF6EE] text-[#946800] flex items-center justify-center flex-col rounded-full w-60 py-4 max-[600px]:py-2 ">
-            <p className="font-extrabold text-3xl max-[600px]:text-lg ">
-              {studentsImpacting.toLocaleString()}+
-            </p>
-            <p className="font-medium max-[600px]:text-xs">
-              Students Impacting
-            </p>
-          </div>
-          <div className="bg-[#FEF6EE] text-[#946800] flex items-center justify-center flex-col rounded-full w-60 py-4 max-[600px]:py-2 ">
-            <p className="font-extrabold text-3xl max-[600px]:text-lg ">
-              {countries}+
-            </p>
-            <p className="font-medium max-[600px]:text-xs">Countries</p>
-          </div>
-        </div>
-        <div className="  flex font-bold items-center justify-center flex-col gap-2 pt-10  w-full max-[600px]:whitespace-nowrap max-[600px]:scale-[.6] max-[600px]:pt-0 ">
-          <div className="flex items-center justify-center gap-5">
-            <div className="flex border-2 w-fit px-2 py-1.5 gap-3 rounded-full items-center justify-center">
-              <div className="h-7 w-7 text-white rounded-full opacity-70 flex items-center justify-center bg-[#00C2FF]">
-                <RiPresentationFill className="scale-75" />
-              </div>
-              <p>Super Mentors</p>
-            </div>
-            <div className="flex border-2 w-fit px-2 py-1.5 gap-3 rounded-full items-center justify-center">
-              <div className="h-7 w-7 text-white rounded-full opacity-70 flex items-center justify-center bg-[#00FF29]">
-                <RiCalendarEventFill className="scale-75" />
-              </div>
-              <p>Events</p>
-            </div>
-            <div className="flex border-2 w-fit px-2 py-1.5 gap-3 rounded-full items-center justify-center">
-              <div className="h-7 w-7 text-white rounded-full opacity-70 flex items-center justify-center bg-[#FF0000]">
-                <RiCommunityFill className="scale-75" />
-              </div>
-              <p>Community Help</p>
-            </div>
-          </div>
-          <div className="flex items-center justify-center gap-5">
-            <div className="flex border-2 w-fit px-2 py-1.5 gap-3 rounded-full items-center justify-center">
-              <div className="h-7 w-7 text-white rounded-full opacity-70 flex items-center justify-center bg-[#4E2500]">
-                <RiTrophyFill className="scale-75" />
-              </div>
-              <p>Challenges</p>
-            </div>
-            <div className="flex border-2 w-fit px-2 py-1.5 gap-3 rounded-full items-center justify-center">
-              <div className="h-7 w-7 text-white rounded-full opacity-70 flex items-center justify-center bg-[#4200FF]">
-                <RiRoadMapFill className="scale-75" />
-              </div>
-              <p>Personalized Roadmaps</p>
-            </div>
-            <div className="flex border-2 w-fit px-2 py-1.5 gap-3 rounded-full items-center justify-center">
-              <div className="h-7 w-7 text-white rounded-full opacity-70 flex items-center justify-center bg-[#00C2FF]">
-                <RiUserStarFill className="scale-75" />
-              </div>
-              <p>One to One Guidance</p>
-            </div>
-          </div>
-          <div className="flex items-center justify-center gap-5">
-            <div className="flex border-2 w-fit px-2 py-1.5 gap-3 rounded-full items-center justify-center">
-              <div className="h-7 w-7 text-white rounded-full opacity-70 flex items-center justify-center bg-[#FF0000]">
-                <RiBookOpenFill className="scale-75" />
-              </div>
-              <p>Unique Resources</p>
-            </div>
-            <div className="flex border-2 w-fit px-2 py-1.5 gap-3 rounded-full items-center justify-center">
-              <div className="h-7 w-7 text-white rounded-full opacity-70 flex items-center justify-center bg-[#4E2500]">
-                <RiGraduationCapFill className="scale-75" />
-              </div>
-              <p>ECs Opportunities</p>
-            </div>
-          </div>
-        </div>
-        <div className="w-full flex items-center justify-center mt-10">
-          <img
-            className="w-[50%] max-[600px]:w-[90%] "
-            src="/Images/Careersgif.gif"
-            alt=""
-          />
-        </div>
+        <img
+          className="  h-full object-contain absolute right-[-0vh] "
+          src="/Images/home/Accelerator.png"
+          alt=""
+        />
       </div>
-      <div className="w-full pt-20 pb-20 flex flex-col items-center justify-center">
+
+      {/* <div className="w-full pt-20 pb-20 flex flex-col items-center justify-center">
         <div className="w-[80%] flex flex-col max-[600px]:text-2xl">
           <p className="text-5xl font-bold max-[600px]:text-3xl">Everything</p>
           <p className="text-5xl font-bold text-[#00000082] max-[600px]:text-3xl">
@@ -244,7 +180,7 @@ export default function Home() {
           />
         </div>
       </div>
-      <HomeFooter />
+      <HomeFooter /> */}
     </div>
   );
 }
