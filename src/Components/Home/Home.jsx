@@ -94,7 +94,7 @@ export default function Home() {
       <SwiperSlide className="center" key={`slide-${i}`}>
         <img
           className="w-[80%]  rounded-md h-full object-cover"
-          src={`/Images/swiper universities/img${i + 1}.jpeg`}
+          src={`/Images/home/swiper universities/img${i + 1}.jpeg`}
           alt=""
         />
       </SwiperSlide>
@@ -120,7 +120,7 @@ export default function Home() {
         <div className="w-[70%] h-full absolute top-10 pt-44 overflow-hidden left-0 pl-36">
           <p className="text-6xl font-bold tracking-tight  capitalize">
             Want to get into your <br />
-            dream university <span className="text-[#4353cd]">?</span>
+            dream university <span className="text-[#008BDC]">?</span>
           </p>
 
           <p className="font-medium text-2xl mt-5">
@@ -132,7 +132,7 @@ export default function Home() {
             first-of-its-kind program crafted with insights from Ivy League
             students.
           </p>
-          <button className=" mt-10 w-32 h-14 rounded-lg bg-[#30c8ff] text-white font-bold">
+          <button className=" mt-10 w-32 h-14 rounded-lg bg-[#008BDC] text-white font-bold">
                     Exploreivy                                         
                   </button>
         </div>
@@ -143,44 +143,46 @@ export default function Home() {
         />
       </div>
 
-      {/* <div className="w-full pt-20 pb-20 flex flex-col items-center justify-center">
-        <div className="w-[80%] flex flex-col max-[600px]:text-2xl">
-          <p className="text-5xl font-bold max-[600px]:text-3xl">Everything</p>
-          <p className="text-5xl font-bold text-[#00000082] max-[600px]:text-3xl">
-            A Student Needs
-          </p>
-        </div>
-        <div className="w-[80%] pt-4  max-[600px]:w-full">
-          <div className=" flex items-center w-fit justify-center bg-black text-white rounded-full px-8 py-4 max-[600px]:scale-75">
-            <RiArrowRightSFill />
-            <p>Feature Walkthrough</p>
+      {/* <div className="w-full h-[60vh] flex flex-col items-center justify-center mt-10">
+        <div className="w-full center mb-5  flex flex-col">
+          <p className="text-6xl font-semibold">
+            Study Abroad
+            </p> 
+            <p className="text-2xl font-medium">In the best universities </p>
+            </div>
+        
+          <div className="slides relative h-full w-full ">
+            <Swiper
+              className="w-full h-full object-cover"
+              // install Swiper modules
+              modules={[Navigation, Autoplay]}
+              spaceBetween={50}
+              loop={true}
+              autoplay={{
+                delay: 1200,
+                disableOnInteraction: false,
+              }}
+              slidesPerView={1}
+              navigation={{
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+                clickable: true,
+              }}
+            >
+              {slides}
+            </Swiper>
+            <div className="slider-controler absolute h-full   top-0 w-full  ">
+              <div className="swiper-button-prev slider-arrow  p-8 rounded-full  scale-[.8] text-[#008BDC] font-extrabold btn btn-gradient-border btn-glow   ">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+              </div>
+              <div className="swiper-button-next slider-arrow  p-8 rounded-full scale-[.8] text-[#008BDC] font-extrabold btn btn-gradient-border btn-glow  ">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="w-[80%] relative flex pt-10 gap-8 text-5xl font-bold text-[#0000003c] flex-col max-[600px]:text-2xl max-[600px]:gap-2 max-[600px]:text-[#000000c1] z-0">
-          <p className="hover:text-[#000000d0] z-[9] ">Personalised Roadmap</p>
-          <p className="hover:text-[#000000d0] z-[9] ">Community Support</p>
-          <p className="hover:text-[#000000d0] z-[9] ">Exclusive Resources </p>
-          <p className="hover:text-[#000000d0] z-[9] ">1-1 Guidance</p>
-          <p className="hover:text-[#000000d0] z-[9] ">
-            Exclusive Opportunities
-          </p>
-          <p className="hover:text-[#000000d0] z-[9] ">Events</p>
-          <p className="hover:text-[#000000d0] z-[9] ">Master Storytelling</p>
-          <p className="hover:text-[#000000d0] z-[9] ">
-            Networking Opportunity
-          </p>
-          <p className="hover:text-[#000000d0] z-[9] ">Exam Preparation</p>
-          <p className="hover:text-[#000000d0] z-[9] ">
-            Competitions and Challenges
-          </p>
-          <img
-            className="absolute scale-110 right-0 top-[20%] max-[600px]:hidden"
-            src="https://cdn.pixabay.com/animation/2022/11/15/11/35/11-35-07-140_512.gif"
-            alt=""
-          />
-        </div>
-      </div>
-      <HomeFooter /> */}
+        </div> */}
+
+     
     </div>
   );
 }

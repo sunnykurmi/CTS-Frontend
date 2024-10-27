@@ -34,6 +34,7 @@ import ExamSuccess from "./Components/Home/ExclusiveServices/Expert Classes/Exam
 import IELTSHome from "./Components/Home/ExclusiveServices/Expert Classes/IELTSHome";
 import TOEFLHome from "./Components/Home/ExclusiveServices/Expert Classes/TOEFLHome";
 import DETHome from "./Components/Home/ExclusiveServices/Expert Classes/DETHome";
+import IvyForm from "./Components/Home/IvyForm";
 
 export default function App() {
   const GoogleAuthWrapper = ({ isLogin }) => {
@@ -49,6 +50,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<StudentHome />} />
         <Route path="/ivy" element={<IVYHome />} />
+        <Route path="/ivy-form" element={<IvyForm />} />
         <Route path="/*" element={<ErrorPage />} />
         <Route path="/Signup" element={<GoogleAuthWrapper isLogin={false} />} />
         <Route path="/login" element={<GoogleAuthWrapper isLogin={true} />} />

@@ -30,8 +30,8 @@ function IVYHome() {
     <div className="w-full h-fit">
       <div className="w-44 absolute left-0 flex items-center justify-center text-base mt-3">
         <Link
-          className="h-12 gap-3 rounded-full z-[99] bg-[#004AAD] text-white flex items-center justify-center p-2 font-bold"
-          to={-1}
+          className="h-12 gap-3 rounded-full z-[99] bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
+          to={"/"}
         >
           <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
             <RiArrowLeftSLine className="text-[#0000009b]" />
@@ -56,7 +56,7 @@ function IVYHome() {
         <div className="universitylist w-[70%] h-full">
           <img
             src="/Images/ivy/nav univesities.png"
-            className="w-full h-32 object-contain scale-[.9] mt-5"
+            className="w-full h-32 object-cover mt-5"
             alt=""
           />
         </div>
@@ -70,9 +70,11 @@ function IVYHome() {
           fast track to top universities—don’t let this opportunity slip by!
           Apply now and secure your spot before it’s too late!
         </p>
-        <button className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5">
-          Apply Now
-        </button>
+        <Link to={"/ivy-form"}>
+          <button className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
+            Apply Now
+          </button>
+        </Link>
       </div>
       <div className="ivyhero w-full h-fit p-5">
         <h2 className="text-zinc-400 text-xl font-medium text-start ml-48">
@@ -81,7 +83,7 @@ function IVYHome() {
         <div className="flex flex-col items-center mt-2">
           <h1 className="text-5xl tracking-tighter font-semibold text-center Rubik">
             Ivy Accelerator Program: Boost Your{" "}
-            <span className="text-[#004AAD]">Chances by 600%</span>
+            <span className="text-[#008BDC]">Chances by 600%</span>
           </h1>
           <p className="text-2xl font-normal Rubik text-center w-1/2 mt-3">
             The only program that has every tool, guide, and insider support you
@@ -101,7 +103,7 @@ function IVYHome() {
             />
           </div>
           <div className="ivyright w-[45%] h-fit center flex-col">
-            <h2 className="text-xl text-[#004AAD] mb-5 font-medium">
+            <h2 className="text-xl text-[#008BDC] mb-5 font-medium">
               Step 1: Apply FREE & Join the Elite!
             </h2>
             <h1 className="text-3xl text-center font-semibold">
@@ -113,16 +115,16 @@ function IVYHome() {
               impact your application. Just bring your ambition, and we’ll
               handle the rest.{" "}
             </p>
-            <button
-              className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5"
-            >
-              Apply Now
-            </button>
+            <Link to={"/ivy-form"}>
+              <button className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
+                Apply Now
+              </button>
+            </Link>
           </div>
         </div>
         <div className="ivystep-1 flex justify-between mt-20 items-center bg-white">
           <div className="ivyright w-[45%] h-fit center flex-col">
-            <h2 className="text-xl text-[#004AAD] mb-5 font-medium">
+            <h2 className="text-xl text-[#008BDC] mb-5 font-medium">
               Step 2: 1-1 Meeting
             </h2>
             <h1 className="text-3xl text-center font-semibold">
@@ -135,9 +137,7 @@ function IVYHome() {
               on your email inbox where you will receive results and 1-1 session
               scheduling link—your future awaits.
             </p>
-            <button
-              className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5"
-            >
+            <button className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
               Check Your Mail Here
             </button>
           </div>
@@ -158,7 +158,7 @@ function IVYHome() {
             />
           </div>
           <div className="ivyright w-[45%] h-fit center flex-col">
-            <h2 className="text-xl text-[#004AAD] mb-5 font-medium">
+            <h2 className="text-xl text-[#008BDC] mb-5 font-medium">
               Step 3: Vardaan Roadmap
             </h2>
             <h1 className="text-3xl text-center font-semibold">
@@ -172,7 +172,7 @@ function IVYHome() {
             </p>
             <button
               onClick={togglePopup}
-              className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5"
+              className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5"
             >
               Download Your Roadmap
             </button>
@@ -180,7 +180,7 @@ function IVYHome() {
         </div>
         <div className="ivystep-1 flex justify-between mt-20 items-center bg-white">
           <div className="ivyright w-[45%] h-fit center flex-col">
-            <h2 className="text-xl text-[#004AAD] mb-5 font-medium">
+            <h2 className="text-xl text-[#008BDC] mb-5 font-medium">
               Step 4: ECs Booster
             </h2>
             <h1 className="text-3xl text-center font-semibold">
@@ -195,7 +195,7 @@ function IVYHome() {
             </p>
             <button
               onClick={togglePopup}
-              className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5"
+              className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5"
             >
               Check your ECs Progress
             </button>
@@ -217,7 +217,7 @@ function IVYHome() {
             />
           </div>
           <div className="ivyright w-[45%] h-fit center flex-col blur-md">
-            <h2 className="text-xl text-[#004AAD] mb-5 font-medium">
+            <h2 className="text-xl text-[#008BDC] mb-5 font-medium">
               Step 4: Only For IVY Accelerator Enrolled Students
             </h2>
             <h1 className="text-3xl text-center font-semibold">
@@ -230,13 +230,13 @@ function IVYHome() {
             </p>
             <button
               onClick={togglePopup}
-              className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5"
+              className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5"
             >
               Apply Now
             </button>
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <h1 className="text-2xl font-bold text-[#004AAD] text-center">
+            <h1 className="text-2xl font-bold text-[#008BDC] text-center">
               Only for Ivy Accelerator Enrolled Students
             </h1>
           </div>
@@ -256,9 +256,11 @@ function IVYHome() {
           highly guarded, but you can unlock everything by applying now. Don’t
           wait—apply today and step into the future you’ve been working for!
         </h2>
-        <button className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2 mt-5">
-          Apply Now
-        </button>
+        <Link to={"/ivy-form"}>
+          <button className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
+            Apply Now
+          </button>
+        </Link>
       </div>
 
       {isPopupVisible && (
@@ -271,7 +273,7 @@ function IVYHome() {
             </p>
             <button
               onClick={togglePopup}
-              className="text-[#004AAD] px-10 py-2 text-xl font-medium rounded-full border-[#004AAD] border-2"
+              className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2"
             >
               Close
             </button>
