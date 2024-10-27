@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { asynccurrentUser } from "./../../store/Actions/userActions";
+import Headroom from "react-headroom";
 
 const HomeNav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,7 +17,6 @@ const HomeNav = () => {
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
-    
   };
 
   useEffect(() => {
@@ -39,6 +39,7 @@ const HomeNav = () => {
 
   return (
     <>
+    <Headroom>
       <div className="w-full h-fit py-5 flex items-center justify-center max-[600px]:h-16 z-[99999] max-[600px]:bg-[#FEF6EE]">
         <div className="w-fit lightcolor h-24 rounded-full flex items-center justify-evenly max-[600px]:w-full max-[600px]:rounded-none max-[600px]:pr-2 max-[600px]:h-fit max-[600px]:justify-between max-[600px]:px-5">
           <Link className="w-[15%] max-[600px]:w-[30%] center" to="/">
@@ -162,6 +163,8 @@ const HomeNav = () => {
           </div>
         </div>
       </div>
+
+    </Headroom>
 
       <div
         className={`w-full h-fit pb-10 bg-white fixed top-0 left-0 z-[99] min-[600px]:hidden transition-transform duration-500 ${
