@@ -31,7 +31,7 @@ function IVYHome() {
       <div className="w-44 absolute left-0 flex items-center justify-center text-base mt-3">
         <Link
           className="h-12 gap-3 rounded-full z-[99] bg-[#004AAD] text-white flex items-center justify-center p-2 font-bold"
-          to={/services}
+          to={-1}
         >
           <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
             <RiArrowLeftSLine className="text-[#0000009b]" />
