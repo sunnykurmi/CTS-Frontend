@@ -145,7 +145,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="w-full h-[100vh] bg-red-200"></div>
+      {/* <div className="w-full h-[100vh] bg-red-200"></div> */}
 
       {/* <div className="w-full h-[60vh] flex flex-col items-center justify-center mt-10">
         <div className="w-full center mb-5  flex flex-col">
