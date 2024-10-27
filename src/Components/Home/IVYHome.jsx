@@ -39,7 +39,7 @@ function IVYHome() {
           <button className="mr-2">Go Back</button>
         </Link>
       </div>
-      <div className="ivyheader w-full h-32 flex pl-32">
+      <div className="ivyheader w-full h-32 flex pl-32 max-[600px]:pl-0">
         <div className="ivy-heading w-[30%] h-full relative">
           <img
             className="size-32 absolute top-1/2 left-[80%] -translate-x-1/2 -translate-y-1/2"
@@ -62,8 +62,8 @@ function IVYHome() {
         </div>
       </div>
       <div className="ivy-acceptance center flex-col mt-24">
-        <h1 className="text-4xl Rubik font-bold">Acceptance Rate : 16%</h1>
-        <p className="text-lg Rubik font-[500] w-[55%] text-center leading-6 mt-5">
+        <h1 className="text-4xl Rubik font-bold max-[600px]:text-3xl">Acceptance Rate : 16%</h1>
+        <p className="text-lg Rubik font-[500] w-[55%] text-center leading-6 mt-5 max-[600px]:w-full">
           Note: We focus on quality, not quantity. With an acceptance rate of
           just 16%, IV Accelerator is an elite program designed for those who
           truly stand out. This is your chance to join the select few on the
@@ -77,32 +77,32 @@ function IVYHome() {
         </Link>
       </div>
       <div className="ivyhero w-full h-fit p-5">
-        <h2 className="text-zinc-400 text-xl font-medium text-start ml-48">
+        <h2 className="text-zinc-400 text-xl font-medium text-start ml-48 max-[600px]:ml-0">
           Offerings
         </h2>
         <div className="flex flex-col items-center mt-2">
-          <h1 className="text-5xl tracking-tighter font-semibold text-center Rubik">
+          <h1 className="text-5xl tracking-tighter font-semibold text-center Rubik max-[600px]:text-3xl">
             Ivy Accelerator Program: Boost Your{" "}
             <span className="text-[#008BDC]">Chances by 600%</span>
           </h1>
-          <p className="text-2xl font-normal Rubik text-center w-1/2 mt-3">
+          <p className="text-2xl font-normal Rubik text-center w-1/2 mt-3 max-[600px]:text-xl max-[600px]:w-full">
             The only program that has every tool, guide, and insider support you
             need to unlock your future! Here’s how we’ll get you to the top:
           </p>
         </div>
       </div>
-      <div className="ivySteps w-full p-5 px-32 h-fit Rubik relative overflow-hidden">
-        <div className="straightLine w-[5px] h-0 bg-blue-500 z-[9] block absolute top-1 left-1/2 after:content-[''] after:absolute after:top-full after:left-[-140%] after:border-l-[10px] after:border-r-[10px] after:border-t-[20px] after:border-t-blue-500 after:border-l-transparent after:border-r-transparent"></div>
-        <div className="dotted w-[5px] h-[80%] border-l-4 border-blue-300 border-dotted block absolute top-1 left-1/2"></div>
-        <div className="ivystep-1 flex justify-between items-center bg-[#f5fafeae]">
-          <div className="ivyleft w-[45%] h-fit overflow-hidden">
+      <div className="ivySteps w-full p-5 px-32 h-fit Rubik relative overflow-hidden max-[600px]:px-5">
+        <div className="straightLine w-[5px] h-0 bg-blue-500 z-[9] block absolute top-1 left-1/2 after:content-[''] after:absolute after:top-full after:left-[-140%] after:border-l-[10px] after:border-r-[10px] after:border-t-[20px] after:border-t-blue-500 after:border-l-transparent after:border-r-transparent max-[600px]:left-2"></div>
+        <div className="dotted w-[5px] h-[80%] border-l-4 border-blue-300 border-dotted block absolute top-1 left-1/2 max-[600px]:left-2"></div>
+        <div className="ivystep-1 flex justify-between items-center bg-[#f5fafeae] max-[600px]:flex-col max-[600px]:w-full">
+          <div className="ivyleft w-[45%] h-fit overflow-hidden max-[600px]:w-full">
             <img
               className="w-full h-[40vh] object-contain scale-[1.2]"
               src="/Images/ivy/gif1.gif"
               alt=""
             />
           </div>
-          <div className="ivyright w-[45%] h-fit center flex-col">
+          <div className="ivyright w-[45%] h-fit center flex-col max-[600px]:w-full ">
             <h2 className="text-xl text-[#008BDC] mb-5 font-medium">
               Step 1: Apply FREE & Join the Elite!
             </h2>
@@ -122,8 +122,8 @@ function IVYHome() {
             </Link>
           </div>
         </div>
-        <div className="ivystep-1 flex justify-between mt-20 items-center bg-white">
-          <div className="ivyright w-[45%] h-fit center flex-col">
+        <div className="ivystep-1 flex justify-between mt-20 items-center bg-white max-[600px]:flex-col-reverse">
+          <div className="ivyright w-[45%] h-fit center flex-col max-[600px]:w-full">
             <h2 className="text-xl text-[#008BDC] mb-5 font-medium">
               Step 2: 1-1 Meeting
             </h2>
@@ -148,7 +148,7 @@ function IVYHome() {
             </button>
           </a>
           </div>
-          <div className="ivyleft w-[45%] h-fit overflow-hidden">
+          <div className="ivyleft w-[45%] h-fit overflow-hidden max-[600px]:w-full">
             <img
               className="w-full h-[40vh] object-contain scale-[1.2]"
               src="/Images/ivy/gif2.gif"
@@ -156,15 +156,15 @@ function IVYHome() {
             />
           </div>
         </div>
-        <div className="ivystep-1 flex justify-between mt-20 items-center bg-[#f5fafeae]">
-          <div className="ivyleft w-[45%] h-fit overflow-hidden">
+        <div className="ivystep-1 flex justify-between mt-20 items-center bg-[#f5fafeae] max-[600px]:flex-col">
+          <div className="ivyleft w-[45%] h-fit overflow-hidden max-[600px]:w-full">
             <img
               className="w-full h-[40vh] object-contain scale-[1.2]"
               src="/Images/ivy/gif3.gif"
               alt=""
             />
           </div>
-          <div className="ivyright w-[45%] h-fit center flex-col">
+          <div className="ivyright w-[45%] h-fit center flex-col max-[600px]:w-full">
             <h2 className="text-xl text-[#008BDC] mb-5 font-medium">
               Step 3: Vardaan Roadmap
             </h2>
@@ -185,8 +185,8 @@ function IVYHome() {
             </button>
           </div>
         </div>
-        <div className="ivystep-1 flex justify-between mt-20 items-center bg-white">
-          <div className="ivyright w-[45%] h-fit center flex-col">
+        <div className="ivystep-1 flex justify-between mt-20 items-center bg-white max-[600px]:flex-col-reverse">
+          <div className="ivyright w-[45%] h-fit center flex-col max-[600px]:w-full">
             <h2 className="text-xl text-[#008BDC] mb-5 font-medium">
               Step 4: ECs Booster
             </h2>
@@ -207,7 +207,7 @@ function IVYHome() {
               Check your ECs Progress
             </button>
           </div>
-          <div className="ivyleft w-[45%] h-fit overflow-hidden">
+          <div className="ivyleft w-[45%] h-fit overflow-hidden max-[600px]:w-full">
             <img
               className="w-full h-[40vh] object-contain scale-[1.2]"
               src="/Images/ivy/gif4.gif"
@@ -216,14 +216,14 @@ function IVYHome() {
           </div>
         </div>
         <div className="ivystep-1 flex justify-between mt-20 items-center relative bg-[#f5fafeae]">
-          <div className="ivyleft w-[45%] h-fit overflow-hidden blur-md">
+          <div className="ivyleft w-[45%] h-fit overflow-hidden blur-md max-[600px]:w-full">
             <img
               className="w-full h-[40vh] object-contain scale-[1.2]"
               src="/Images/ivy/gif4.gif"
               alt=""
             />
           </div>
-          <div className="ivyright w-[45%] h-fit center flex-col blur-md">
+          <div className="ivyright w-[45%] h-fit center flex-col blur-md max-[600px]:hidden">
             <h2 className="text-xl text-[#008BDC] mb-5 font-medium">
               Step 4: Only For IVY Accelerator Enrolled Students
             </h2>
@@ -250,11 +250,11 @@ function IVYHome() {
         </div>
       </div>
 
-      <div className="quote w-full h-screen bg-[url('/Images/ivy/bg-university.png')] bg-contain bg-no-repeat bg-center center flex-col">
-        <h1 className="text-3xl mt-2 text-center text-black font-medium">
+      <div className="quote w-full h-screen max-[600px]:h-[50vh] bg-[url('/Images/ivy/bg-university.png')] bg-contain bg-no-repeat bg-center center flex-col">
+        <h1 className="text-3xl mt-2 text-center text-black font-medium max-[600px]:text-xl">
           The Secret to Your Success Awaits!
         </h1>
-        <h2 className="text-sm w-1/2 leading-5 p-5 text-center text-black mt-1 font-normal">
+        <h2 className="text-sm w-1/2 leading-5 p-5 text-center text-black mt-1 font-normal max-[600px]:w-full max-[600px]:text-xs">
           This is the one and only program of its kind, crafted over 5 years
           with innovative, exclusive tools you won’t find anywhere else. While
           we can’t reveal all 15 powerful steps here—reserved solely for
@@ -264,7 +264,7 @@ function IVYHome() {
           wait—apply today and step into the future you’ve been working for!
         </h2>
         <Link to={"/ivy-form"}>
-          <button className="text-[#008BDC] px-6 py-2 text-lg font-medium rounded-full border-[#008BDC] border-2 mt-5">
+          <button className="text-[#008BDC] px-6 py-2 text-lg font-medium rounded-full border-[#008BDC] border-2 mt-5 max-[600px]:scale-75">
             Apply Now
           </button>
         </Link>

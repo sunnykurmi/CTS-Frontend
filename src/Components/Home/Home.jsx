@@ -117,17 +117,17 @@ export default function Home() {
         <HomeNav />
       </div>
       <div className="w-full h-[100vh] relative flex items-center justify-center overflow-hidden">
-        <div className="w-[70%] h-full absolute top-10 pt-44 overflow-hidden left-0 pl-36">
-          <p className="text-6xl font-bold tracking-tight  capitalize">
+        <div className="w-[70%] h-full absolute top-10 pt-44 overflow-hidden left-0 pl-36 max-[600px]:w-full max-[600px]:pl-5 max-[600px]:top-0 max-[600px]:pt-32 max-[600px]:">
+          <p className="text-6xl font-bold tracking-tight  capitalize max-[600px]:text-4xl">
             Want to get into your <br />
             dream university <span className="text-[#008BDC]">?</span>
           </p>
 
-          <p className="font-medium text-2xl mt-5">
+          <p className="font-medium text-2xl mt-5 max-[600px]:text-xl">
             Ivy Accelerator: Your 600% Acceptance Boost
           </p>
 
-          <p className="text-xl font-normal w-[60%] opacity-70 leading-[1.5vw] text-justify mt-1">
+          <p className="text-xl font-normal w-[60%] opacity-70  text-justify mt-1 max-[600px]:w-[90%] ">
             For five years, Ivy Accelerator has been the most innovative,
             first-of-its-kind program crafted with insights from Ivy League
             students.
@@ -139,7 +139,7 @@ export default function Home() {
           </Link>
         </div>
         <img
-          className="  h-full object-contain absolute right-[-0vh] "
+          className="  h-full object-contain absolute right-[-0vh] max-[600px]:hidden"
           src="/Images/home/Accelerator.png"
           alt=""
         />

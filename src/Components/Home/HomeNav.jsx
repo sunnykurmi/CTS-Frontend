@@ -40,7 +40,7 @@ const HomeNav = () => {
   return (
     <>
       <Headroom>
-        <div className="w-full h-fit py-5 flex items-center justify-center max-[600px]:h-16 z-[99999] max-[600px]:bg-[#FEF6EE]">
+        <div className="w-full h-fit py-5 flex items-center justify-center max-[600px]:h-16 z-[99999] max-[600px]:bg-[#e7f9ff]">
           <div className="w-fit bg-[#e7f9ff] h-24 rounded-full flex items-center justify-evenly max-[600px]:w-full max-[600px]:rounded-none max-[600px]:pr-2 max-[600px]:h-fit max-[600px]:justify-between max-[600px]:px-5">
             <Link className="w-[15%] max-[600px]:w-[30%] center" to="/">
               <img
