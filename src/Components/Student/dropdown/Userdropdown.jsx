@@ -74,10 +74,10 @@ export default function Userdropdown() {
               </Link>
             ) : null
           )}
-          <div className="flex hover:bg-zinc-300 p-2 rounded-md w-full cursor-pointer gap-2 items-center justify-start w-ful l">
+          {/* <div className="flex hover:bg-zinc-300 p-2 rounded-md w-full cursor-pointer gap-2 items-center justify-start w-ful l">
             <RiKeyLine className="w-5 h-5" />
             <p>Change Password</p>
-          </div>
+          </div> */}
           <div
             onClick={handleLogout}
             className="flex p-2 rounded-md hover:bg-zinc-300 w-full cursor-pointer gap-2 items-center justify-start w-ful l"

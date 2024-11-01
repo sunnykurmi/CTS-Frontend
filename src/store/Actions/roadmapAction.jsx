@@ -3,14 +3,21 @@ import { createroadmap, setLoading } from "../Reducers/roadmapSlice";
 
 export const CreateRoadmap = (formData) => async (dispatch) => {
   try {
-    dispatch(setLoading(true)); // Set loading to true before API call
-    const response = await axios.post("/api/v1/roadmap", formData);
+    dispatch(setLoading(true));
+    
+    const token = localStorage.getItem('token');
+    const response = await axios.post("/api/v1/roadmap", formData, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
     if (response.data.success) {
       dispatch(createroadmap(response.data));
     }
-    console.log(response);
+    dispatch(setLoading(false));
   } catch (error) {
-    console.log(error);
-    dispatch(setLoading(false)); // Set loading to false in case of error
+    console.error('Roadmap creation error:', error);
+    dispatch(setLoading(false));
   }
 };

@@ -2,7 +2,8 @@ import { RiCloseLine } from "@remixicon/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addeducation,
+  addEducation,
+  
   asynccurrentUser,
 } from "../../../store/Actions/userActions";
 import Loader from "../../Loader/Loader";
@@ -157,7 +158,7 @@ function AddEducation(props) {
       return;
     }
     setLoading(true);
-    await dispatch(addeducation(educationform, user._id));
+    await dispatch(addEducation(educationform, user._id));
     setLoading(false);
     window.location.reload();
   };

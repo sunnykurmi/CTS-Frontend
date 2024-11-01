@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+// googleAction.jsx
 import axios from "../../utils/axios";
 import {
   saveUser,
@@ -7,17 +7,26 @@ import {
   signinerror,
   setLoading,
 } from "../Reducers/userSlice";
-import Cookies from "js-cookie";
 import { asynccurrentUser } from "./userActions";
 
-
-export const googleAuth = (code)=> async (dispatch)=>{
-    try {
-      dispatch(setLoading(true));
-      await axios.get(`/api/v1/auth/google?code=${code}`);
-      dispatch(asynccurrentUser());
-    } catch (error) {
-      dispatch(signinerror(error.response.data.message));
-      dispatch(setLoading(false));
+export const googleAuth = (code) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const { data } = await axios.get(`/api/v1/auth/google?code=${code}`);
+    
+    // Store token from Google auth
+    if (data.token) {
+      localStorage.setItem("token", data.token);
+      
+      // Get user data with token
+      await dispatch(asynccurrentUser());
+    } else {
+      throw new Error("No token received from Google auth");
     }
+    
+    dispatch(setLoading(false));
+  } catch (error) {
+    dispatch(signinerror(error.response?.data?.message || "Google authentication failed"));
+    dispatch(setLoading(false));
   }
+};

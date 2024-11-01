@@ -12,7 +12,16 @@ import Cookies from "js-cookie";
 export const asynccurrentUser = () => async (dispatch, getState) => {
   try {
     dispatch(setLoading(true));
-    const { data } = await axios.post("/api/v1/user/user");
+    const token = localStorage.getItem("token");
+    const { data } = await axios.post(
+      "/api/v1/user/user",
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     dispatch(saveUser(data.user));
   } catch (error) {
     dispatch(setLoading(false));
@@ -22,50 +31,67 @@ export const asynccurrentUser = () => async (dispatch, getState) => {
 export const asyncsignup = (user) => async (dispatch, getState) => {
   try {
     dispatch(setLoading(true));
-    await axios.post("/api/v1/user/signup", user);
-    dispatch(asynccurrentUser());
+    const { data } = await axios.post("/api/v1/user/signup", user);
+    localStorage.setItem("token", data.token);
+    dispatch(saveUser(data.user));
   } catch (error) {
-    dispatch(signuperror(error.response.data.message));
     dispatch(setLoading(false));
+    dispatch(signuperror(error.response.data.message));
   }
 };
 
-export const asyncsignin = (user) => async (dispatch, getState) => {
+export const asyncsignin = (credentials) => async (dispatch, getState) => {
   try {
     dispatch(setLoading(true));
-    await axios.post("/api/v1/user/signin", user);
-    dispatch(asynccurrentUser());
+    const { data } = await axios.post("/api/v1/user/signin", credentials);
+    localStorage.setItem("token", data.token);
+    dispatch(saveUser(data.user));
   } catch (error) {
-    console.log(error);
-    dispatch(signinerror(error.response.data.message));
     dispatch(setLoading(false));
+    dispatch(signinerror(error.response.data.message));
   }
 };
 
 export const asyncremoveUser = () => async (dispatch, getState) => {
   try {
     dispatch(setLoading(true));
+
     await axios.post("/api/v1/user/signout");
-    Cookies.remove("jwtToken");
+
+    localStorage.removeItem("token");
+
     dispatch(removeUser());
+    dispatch(setLoading(false));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Update Avatar
+export const avatar = (formData, id) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const token = localStorage.getItem("token");
+    await axios.post(`/api/v1/user/avatar/${id}`, formData, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    dispatch(asynccurrentUser());
   } catch (error) {
     dispatch(setLoading(false));
   }
 };
 
-export const avatar = (formData, id) => async (dispatch) => {
-  try {
-    await axios.post(`/api/v1/user/avatar/${id}`, formData);
-  } catch (error) {
-    // Handle error
-  }
-};
-
+// Edit Profile
 export const editprofile = (formData, id) => async (dispatch) => {
   try {
-    await axios.post(`/api/v1/user/edituser/${id}`, formData);
+    dispatch(setLoading(true));
+    const token = localStorage.getItem("token");
+    await axios.post(`/api/v1/user/edituser/${id}`, formData, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    dispatch(asynccurrentUser());
   } catch (error) {
-    // Handle error
+    dispatch(setLoading(false));
   }
 };
 
@@ -82,8 +108,6 @@ export const sendmail = (email, navigate) => async (dispatch) => {
   }
 };
 
-
-
 export const sendivyform = (formData) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
@@ -96,14 +120,11 @@ export const sendivyform = (formData) => async (dispatch) => {
   }
 };
 
-
-
-
 export const forgotpassword = (data, navigate) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const {id , password} = data;
-    await axios.post(`/api/v1/user/forget-link/${id}`,{password});
+    const { id, password } = data;
+    await axios.post(`/api/v1/user/forget-link/${id}`, { password });
     dispatch(setLoading(false));
     alert("Password Changed successfully");
     navigate("/login");
@@ -113,12 +134,57 @@ export const forgotpassword = (data, navigate) => async (dispatch) => {
   }
 };
 
-
-export const addeducation = (formData, id) => async (dispatch) => {
+// Reset Password
+export const resetPassword = (formData, id) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    await axios.post(`/api/v1/user/edituser/${id}/education`, formData);
+    const token = localStorage.getItem("token");
+    await axios.post(`/api/v1/user/resetpassword/${id}`, formData, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     dispatch(setLoading(false));
+  } catch (error) {
+    dispatch(setLoading(false));
+  }
+};
+
+// Add Education
+export const addEducation = (formData, id) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const token = localStorage.getItem("token");
+    await axios.post(`/api/v1/user/edituser/${id}/education`, formData, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    dispatch(asynccurrentUser());
+  } catch (error) {
+    dispatch(setLoading(false));
+  }
+};
+
+// Add Achievement
+export const addAchievement = (formData, id) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const token = localStorage.getItem("token");
+    await axios.post(`/api/v1/user/edituser/${id}/achievement`, formData, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    dispatch(asynccurrentUser());
+  } catch (error) {
+    dispatch(setLoading(false));
+  }
+};
+
+// Update Social Media
+export const updateSocialMedia = (formData, id) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const token = localStorage.getItem("token");
+    await axios.post(`/api/v1/user/edituser/${id}/socialmedia`, formData, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    dispatch(asynccurrentUser());
   } catch (error) {
     dispatch(setLoading(false));
   }
