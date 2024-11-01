@@ -622,7 +622,7 @@ export default function GenerateRoadmap() {
             <p className="upper text-3xl font-semibold">Roadmap Form</p>
             <div className="w-full flex items-center justify-between">
               <div className="input-field w-[45%]">
-                <p className="font-medium text-lg">Name</p>
+                <p className="font-medium text-medium">Name</p>
                 <input
                   type="text"
                   placeholder="Enter your full name"
@@ -633,7 +633,7 @@ export default function GenerateRoadmap() {
                 />
               </div>
               <div className="input-field w-[45%]">
-                <p className="font-medium text-lg">Date Of Birth</p>
+                <p className="font-medium text-medium">Date Of Birth</p>
                 <input
                   type="date"
                   name="dateofbirth"
@@ -645,7 +645,7 @@ export default function GenerateRoadmap() {
             </div>
             <div className="w-full flex items-center justify-between">
               <div className="input-field w-[45%]">
-                <p className="font-medium text-lg">State</p>
+                <p className="font-medium text-medium">State</p>
                 <input
                   type="text"
                   placeholder="Maharashtra/Karnataka/Gujrat"
@@ -656,7 +656,7 @@ export default function GenerateRoadmap() {
                 />
               </div>
               <div className="input-field w-[45%]">
-                <p className="font-medium text-lg">City</p>
+                <p className="font-medium text-medium">City</p>
                 <input
                   type="text"
                   placeholder="Bangalore/Mumbai/Delhi"
@@ -669,7 +669,7 @@ export default function GenerateRoadmap() {
             </div>
             <div className="w-full flex items-center justify-between">
               <div className=" flex items-center justify-between input-field w-[45%]">
-                <p className="font-medium text-lg">Gender:</p>
+                <p className="font-medium text-medium">Gender:</p>
                 <div className="relative w-fit font-semibold gap-10 h-12 flex items-center justify-end max-[600px]:ml-10">
                   <button
                     className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
@@ -696,7 +696,7 @@ export default function GenerateRoadmap() {
             </div>
             <div className="w-full flex items-center justify-between">
               <div className="flex w-[45%]  flex-col ">
-                <p className="text-lg font-medium">Class</p>
+                <p className="text-medium font-medium">Class</p>
                 <div
                   onClick={toggleDropdown}
                   className=" cursor-pointer relative w-full field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]"
@@ -731,7 +731,7 @@ export default function GenerateRoadmap() {
                 </div>
               </div>
               <div className="flex w-[45%]   flex-col ">
-                <p className="text-lg font-medium">Education Board</p>
+                <p className="text-medium font-medium">Education Board</p>
                 <div
                   onClick={toggleDropdown2}
                   className=" cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]"
@@ -929,7 +929,7 @@ export default function GenerateRoadmap() {
                 </div>
               )}
               <div className="w-[45%] max-[600px]:w-full flex  justify-start items-start">
-                <p className="text-lg font-medium">
+                <p className="text-medium font-medium">
                   Do You Want To Study Abroad?
                 </p>
                 <div className="relative  w-fit font-semibold gap-10 h-12 flex items-center justify-end ">
@@ -974,7 +974,7 @@ export default function GenerateRoadmap() {
             <div className="w-full flex items-center justify-between ">
               {userInput.abroadStudy === "YES" && (
                 <div className="w-[45%] flex flex-col justify-between items-start ">
-                  <p className="text-lg font-medium bg-red-300">What About SAT Exam?</p>
+                  <p className="text-medium font-medium ">What About SAT Exam?</p>
                   <div className="relative w-full  font-semibold  h-12 flex items-center  justify-start gap-10 ">
                     <button
                       className={`w-fit h-full border-2 rounded-lg px-2 flex items-center justify-center ${
@@ -1023,7 +1023,7 @@ export default function GenerateRoadmap() {
               )}
               {userInput.aboutsatexam === "Already Taken" && (
                 <div className="w-[45%] flex flex-col justify-between items-start">
-                  <p className="text-lg font-medium ">Enter Your SAT Score</p>
+                  <p className="text-medium font-medium ">Enter Your SAT Score</p>
                   <div className="cursor-pointer field relative field  border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                     <input
                       type="text"
@@ -1074,7 +1074,7 @@ export default function GenerateRoadmap() {
             <div className="w-full flex items-center justify-between">
               {userInput.abroadStudy === "YES" && (
                 <div className="w-[45%] flex flex-col justify-between items-start">
-                  <p className="text-lg font-medium">
+                  <p className="text-medium font-medium">
                     English Proficiency test you will choose
                   </p>
                   <div className="relative   font-semibold gap-2 w-full h-12 flex items-center ">
@@ -1139,7 +1139,7 @@ export default function GenerateRoadmap() {
               )}
               {userInput.abroadStudy === "YES" && (
                 <div className="w-[45%] flex flex-col justify-between items-start">
-                  <p className="text-lg font-medium">Country Preferance ?</p>
+                  <p className="text-medium font-medium">Country Preferance ?</p>
                   <div className=" cursor-pointer relative field  border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                     <input
                       type="text"
@@ -1177,7 +1177,7 @@ export default function GenerateRoadmap() {
             <div className="w-full flex items-center justify-between">
               {userInput.abroadStudy === "YES" && (
                 <div className="w-[45%] flex flex-col justify-between items-start">
-                  <p className="text-lg font-medium">
+                  <p className="text-medium font-medium">
                     Enter Dream University .{" "}
                   </p>
                   <div className=" cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
@@ -1386,7 +1386,7 @@ export default function GenerateRoadmap() {
                 <p className="font-medium"> Activities You Have Done:</p>
               </div>
               <div className="w-[45%] flex max-[600px]:flex-col  items-center justify-between">
-                <p className="text-lg font-medium">
+                <p className="text-medium font-medium">
                   {userInput.activities.length - 1} Activities added
                 </p>
                 <div
@@ -1428,10 +1428,10 @@ export default function GenerateRoadmap() {
                   </button>
                   <p className="font-medium text-2xl mb-2">Activity {index}</p>
                   <div className="w-full flex mb-5 h-12 items-center justify-between">
-                    <div className="text-lg w-[45%] font-medium">
+                    <div className="text-medium w-[45%] font-medium">
                       <p>Type of Activity</p>
                     </div>
-                    <div className="text-lg w-[45%]">
+                    <div className="text-medium w-[45%]">
                       <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                         <input
                           type="text"
@@ -1450,10 +1450,10 @@ export default function GenerateRoadmap() {
                     </div>
                   </div>
                   <div className="w-full mb-5 h-12 flex items-center justify-between">
-                    <div className="text-lg w-[45%] font-medium">
+                    <div className="text-medium w-[45%] font-medium">
                       <p>Position / Role</p>
                     </div>
-                    <div className="text-lg w-[45%]">
+                    <div className="text-medium w-[45%]">
                       <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                         <input
                           type="text"
@@ -1472,10 +1472,10 @@ export default function GenerateRoadmap() {
                     </div>
                   </div>
                   <div className="w-full mb-5 h-12 flex items-center justify-between">
-                    <div className="text-lg w-[45%] font-medium">
+                    <div className="text-medium w-[45%] font-medium">
                       <p>Organization/Company Name</p>
                     </div>
-                    <div className="text-lg w-[45%]">
+                    <div className="text-medium w-[45%]">
                       <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                         <input
                           type="text"
@@ -1494,10 +1494,10 @@ export default function GenerateRoadmap() {
                     </div>
                   </div>
                   <div className="w-full mb-5 h-12 flex items-center justify-between">
-                    <div className="text-lg w-[45%] font-medium">
+                    <div className="text-medium w-[45%] font-medium">
                       <p>Activity Description</p>
                     </div>
-                    <div className="text-lg w-[45%] ">
+                    <div className="text-medium w-[45%] ">
                       <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                         <input
                           type="text"

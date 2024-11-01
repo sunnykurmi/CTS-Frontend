@@ -90,6 +90,7 @@ export const sendivyform = (formData) => async (dispatch) => {
     await axios.post("/api/v1/user/submit-ivy-form", formData);
     dispatch(setLoading(false));
   } catch (error) {
+    console.log(error);
     dispatch(signinerror(error.response.data.message));
     dispatch(setLoading(false));
   }

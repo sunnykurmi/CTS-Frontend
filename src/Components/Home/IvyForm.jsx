@@ -19,10 +19,9 @@ export default function IvyForm() {
   const [userInput, setUserInput] = useState({
     // first step
     fullname: "",
+    contact: "",
     gender: "",
     email: "",
-    contact: "",
-    state: "",
     city: "",
     // second step
     class: "",
@@ -30,16 +29,12 @@ export default function IvyForm() {
     tenthMarks: "",
     eleventhMarks: "",
     stream: "",
-    abroadStudy: "",
     entranceExam: "",
-    dreamuniversity: "",
     aboutsatexam: "",
-    satScore: "",
-    englishtest: "",
     countrypreferance: "",
-    challengingSubject: "",
-    shortTermGoal: "",
-    longTermGoal: "",
+    satScore: "",
+    dreamuniversity: "",
+    englishtest: "",
     // third step
     interestField: "",
     skills: "",
@@ -54,7 +49,7 @@ export default function IvyForm() {
     ],
     // last step
     familyincome: "",
-    caste: "",
+
     physicaldisabilities: "",
     physicaldisabilitiestype: "",
   });
@@ -126,40 +121,7 @@ export default function IvyForm() {
     handleChange("stream")(e);
   };
 
-  const [dropdownOpenCity, setDropdownOpenCity] = useState(false);
 
-  const citiesarray = [
-    "USA",
-    "UK",
-    "Canada",
-    "Australia",
-    "Germany",
-    "France",
-    "Singapore",
-    "New Zealand",
-    "Ireland",
-    "Netherlands",
-    "Sweden",
-    "Italy",
-    "Switzerland",
-    "Spain",
-    "South Korea",
-    "Japan",
-    "China",
-  ];
-  const toggleDropdownCity = () => {
-    setDropdownOpenCity(!dropdownOpenCity);
-  };
-
-  const handleOptionClickCity = (value) => {
-    setDropdownOpenCity(false);
-    handleChange("countrypreferance")({ target: { value } });
-  };
-
-  const handleInputChangeCity = (e) => {
-    setDropdownOpenCity(true);
-    handleChange("countrypreferance")(e);
-  };
 
   const [dropdownOpenFuture, setDropdownOpenFuture] = useState(false);
 
@@ -281,6 +243,50 @@ export default function IvyForm() {
     handleChange("skills")({ target: { value: newValues.join(",") } });
   };
 
+
+  
+  const [dropdownOpenCity, setDropdownOpenCity] = useState(false);
+
+  const citiesarray = [
+    "USA",
+    "UK",
+    "Canada",
+    "Australia",
+    "Germany",
+    "France",
+    "Singapore",
+    "New Zealand",
+    "Ireland",
+    "Netherlands",
+    "Sweden",
+    "Italy",
+    "Switzerland",
+    "Spain",
+    "South Korea",
+    "Japan",
+    "China",
+  ];
+  const toggleDropdownCity = () => {
+    setDropdownOpenCity(!dropdownOpenCity);
+  };
+
+  const handleOptionClickCity = (value) => {
+    setDropdownOpenCity(false);
+    handleChange("countrypreferance")({ target: { value } });
+  };
+
+  const handleInputChangeCity = (e) => {
+    setDropdownOpenCity(true);
+    handleChange("countrypreferance")(e);
+  };
+
+
+
+
+
+
+
+
   const [dropdownOpenActivity, setDropdownOpenActivity] = useState(false);
   const [activityType, setActivityType] = useState("");
   const [workingProfile, setWorkingProfile] = useState("");
@@ -376,7 +382,6 @@ export default function IvyForm() {
       setDropdownOpenActivity(false);
       setDropdownOpenInterest(false);
       setDropdownOpenFuture(false);
-      dropdownOpenCity(false);
       setDropdownOpen2(false);
       setDropdownOpen3(false);
     }, 1000);
@@ -396,11 +401,6 @@ export default function IvyForm() {
       "eleventhMarks",
       "stream",
       "physicaldisabilitiestype",
-      "dreamuniversity",
-      "satScore",
-      "aboutsatexam",
-      "countrypreferance",
-      "englishtest",
       "activities",
       "skills",
     ];
@@ -452,7 +452,7 @@ export default function IvyForm() {
     <div className="h-screen overflow-hidden">
       {formSubmitted === true && (
         <div className="w-full h-screen bg-[#64646476] fixed top-0 left-0 z-[9] flex items-center justify-center">
-          <div className="w-[30%] h-[40vh] bg-white border-2 z-[99] flex flex-col gap-5 items-center text-center justify-evenly">
+          <div className="w-[30%]  bg-white border-2 z-[99] flex flex-col gap-5 items-center text-center justify-evenly max-[600px]:w-full">
             <div className="w-full flex items-end justify-end  p-1 px-2">
               <button onClick={handleConfirmClose}>
                 <RiCloseLine className="text-[#008BDC] scale-150" />
@@ -484,7 +484,7 @@ export default function IvyForm() {
             
           </div>
         </div>
-      )} 
+      )}  
       {showForm === true && (
         <div className="w-full flex h-screen z-[9999] fixed top-0 items-center justify-center bg-[#dedede89]">
           <div className="w-fit h-fit mt-5 flex flex-col items-center justify-center">
@@ -592,9 +592,9 @@ export default function IvyForm() {
         <div className="w-full flex flex-col items-center justify-start ">
           <div className="w-[60%] pb-10 h-full flex gap-5 flex-col items-center max-[600px]:w-[90%] ">
             <p className="upper text-3xl font-semibold capitalize">IVY Accelerator registration  Form</p>
-            <div className="w-full flex items-center justify-between">
-              <div className="input-field w-[45%]">
-                <p className="font-medium text-lg">Name</p>
+            <div className="w-full flex items-center justify-between max-[600px]:flex-col">
+              <div className="input-field w-[45%]  max-[600px]:w-full">
+                <p className="font-medium text-medium">Name</p>
                 <input
                   type="text"
                   placeholder="Enter your full name"
@@ -604,8 +604,8 @@ export default function IvyForm() {
                   className="field rounded-xl"
                 />
               </div>
-              <div className="input-field w-[45%]">
-                <p className="font-medium text-lg">Contact</p>
+              <div className="input-field w-[45%]  max-[600px]:w-full">
+                <p className="font-medium text-medium">Contact</p>
                 <input
                   type="number"
                   placeholder="Enter your contact number"
@@ -616,20 +616,10 @@ export default function IvyForm() {
                 />
               </div>
             </div>
-            <div className="w-full flex items-center justify-between">
-              <div className="input-field w-[45%]">
-                <p className="font-medium text-lg">State</p>
-                <input
-                  type="text"
-                  placeholder="Maharashtra/Karnataka/Gujrat"
-                  name="state"
-                  onChange={handleChange("state")}
-                  value={userInput.state}
-                  className="field rounded-xl"
-                />
-              </div>
-              <div className="input-field w-[45%]">
-                <p className="font-medium text-lg">City</p>
+            <div className="w-full flex items-center justify-between max-[600px]:flex-col">
+             
+              <div className="input-field w-[45%]  max-[600px]:w-full">
+                <p className="font-medium text-medium">City</p>
                 <input
                   type="text"
                   placeholder="Bangalore/Mumbai/Delhi"
@@ -639,10 +629,22 @@ export default function IvyForm() {
                   className="field rounded-xl"
                 />
               </div>
+
+              <div className="input-field w-[45%]  max-[600px]:w-full">
+                <p className="font-medium text-medium">Email</p>
+                <input
+                  type="email"
+                  placeholder="Enter your full name"
+                  name="email"
+                  onChange={handleChange("email")}
+                  value={userInput.email}
+                  className="field rounded-xl"
+                />
+              </div>
             </div>
-            <div className="w-full flex items-center justify-between">
-              <div className=" flex items-center justify-between input-field w-[45%]">
-                <p className="font-medium text-lg">Gender:</p>
+            <div className="w-full flex items-center justify-between max-[600px]:flex-col">
+              <div className=" flex items-center justify-between input-field w-[45%]  max-[600px]:w-full">
+                <p className="font-medium text-medium">Gender:</p>
                 <div className="relative w-fit font-semibold gap-10 h-12 flex items-center justify-end max-[600px]:ml-10">
                   <button
                     className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
@@ -666,21 +668,11 @@ export default function IvyForm() {
                   </button>
                 </div>
               </div>
-              <div className="input-field w-[45%]">
-                <p className="font-medium text-lg">Email</p>
-                <input
-                  type="email"
-                  placeholder="Enter your full name"
-                  name="email"
-                  onChange={handleChange("email")}
-                  value={userInput.email}
-                  className="field rounded-xl"
-                />
-              </div>
+          
             </div>
-            <div className="w-full flex items-center justify-between">
-              <div className="flex w-[45%]  flex-col ">
-                <p className="text-lg font-medium">Class</p>
+            <div className="w-full flex items-center justify-between max-[600px]:flex-col">
+              <div className="flex w-[45%]  max-[600px]:w-full  flex-col ">
+                <p className="text-medium font-medium">Class</p>
                 <div
                   onClick={toggleDropdown}
                   className=" cursor-pointer relative w-full field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]"
@@ -714,8 +706,8 @@ export default function IvyForm() {
                   )}
                 </div>
               </div>
-              <div className="flex w-[45%]   flex-col ">
-                <p className="text-lg font-medium">Education Board</p>
+              <div className="flex w-[45%]  max-[600px]:w-full   flex-col ">
+                <p className="text-medium font-medium">Education Board</p>
                 <div
                   onClick={toggleDropdown2}
                   className=" cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]"
@@ -750,10 +742,10 @@ export default function IvyForm() {
                 </div>
               </div>
             </div>
-            <div className="w-full flex items-center justify-between">
+            <div className="w-full flex items-center justify-between max-[600px]:flex-col">
               {(userInput.class === "11th Class" ||
                 userInput.class === "12th Class") && (
-                <div className="flex w-[45%] flex-col">
+                <div className="flex w-[45%]  max-[600px]:w-full flex-col">
                   <p className="text-base font-medium">
                     10<sup>th</sup> percentage/Marks
                   </p>
@@ -813,7 +805,7 @@ export default function IvyForm() {
                 </div>
               )}
               {userInput.class === "12th Class" && (
-                <div className="flex w-[45%] flex-col">
+                <div className="flex w-[45%]  max-[600px]:w-full max-[600px]:mt-5 flex-col">
                   <p className="text-base font-medium">
                     11<sup>th</sup> Percentage/Marks
                   </p>
@@ -873,10 +865,10 @@ export default function IvyForm() {
                 </div>
               )}
             </div>
-            <div className="w-full flex items-center justify-between">
+            <div className="w-full flex items-center justify-between max-[600px]:flex-col">
               {(userInput.class === "11th Class" ||
                 userInput.class === "12th Class") && (
-                <div className="flex w-[45%]  flex-col">
+                <div className="flex w-[45%]  max-[600px]:w-full  flex-col">
                   <p className="text-base font-medium">Stream</p>
                   <div
                     onClick={toggleDropdown3}
@@ -912,53 +904,13 @@ export default function IvyForm() {
                   </div>
                 </div>
               )}
-              <div className="w-[45%] max-[600px]:w-full flex  justify-start items-start">
-                <p className="text-lg font-medium">
-                  Do You Want To Study Abroad?
-                </p>
-                <div className="relative  w-fit font-semibold gap-10 h-12 flex items-center justify-end ">
-                  <button
-                    className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                      userInput.abroadStudy === "YES"
-                        ? "bg-[#008BDC] text-white"
-                        : "border-[#008BDC]"
-                    }`}
-                    onClick={() =>
-                      handleChange("abroadStudy")({ target: { value: "YES" } })
-                    }
-                  >
-                    YES
-                  </button>
-                  <button
-                    className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                      userInput.abroadStudy === "NO"
-                        ? "bg-[#008BDC] text-white"
-                        : "border-[#008BDC]"
-                    }`}
-                    onClick={() => {
-                      handleChange("abroadStudy")({ target: { value: "NO" } });
-                      handleChange("aboutsatexam")({ target: { value: "" } });
-                      handleChange("satScore")({ target: { value: "" } });
-                      handleChange("englishtest")({ target: { value: "" } });
-                      handleChange("countrypreferance")({
-                        target: { value: "" },
-                      });
-                      handleChange("dreamuniversity")({
-                        target: { value: "" },
-                      });
-                    }}
-                  >
-                    NO
-                  </button>
-                </div>
-              </div>
+          
             </div>
 
-
             <div className="w-full flex items-center justify-between ">
-              {userInput.abroadStudy === "YES" && (
+         
                 <div className="w-[45%] flex flex-col justify-between items-start ">
-                  <p className="text-lg font-medium mb-4">What About SAT Exam?</p>
+                  <p className="text-medium font-medium ">What About SAT Exam?</p>
                   <div className="relative w-full  font-semibold  h-12 flex items-center  justify-start gap-10 ">
                     <button
                       className={`w-fit h-full border-2 rounded-lg px-2 flex items-center justify-center ${
@@ -1004,10 +956,10 @@ export default function IvyForm() {
                     </button>
                   </div>
                 </div>
-              )}
+       
               {userInput.aboutsatexam === "Already Taken" && (
                 <div className="w-[45%] flex flex-col justify-between items-start">
-                  <p className="text-lg font-medium ">Enter Your SAT Score</p>
+                  <p className="text-medium font-medium ">Enter Your SAT Score</p>
                   <div className="cursor-pointer field relative field  border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                     <input
                       type="text"
@@ -1055,10 +1007,11 @@ export default function IvyForm() {
                 </div>
               )}
             </div>
+              
             <div className="w-full flex items-center justify-between">
-              {userInput.abroadStudy === "YES" && (
+     
                 <div className="w-[45%] flex flex-col justify-between items-start">
-                  <p className="text-lg font-medium">
+                  <p className="text-medium font-medium">
                     English Proficiency test you will choose
                   </p>
                   <div className="relative   font-semibold gap-2 w-full h-12 flex items-center ">
@@ -1120,10 +1073,10 @@ export default function IvyForm() {
                     </button>
                   </div>
                 </div>
-              )}
-              {userInput.abroadStudy === "YES" && (
+          
+         
                 <div className="w-[45%] flex flex-col justify-between items-start">
-                  <p className="text-lg font-medium">Country Preferance ?</p>
+                  <p className="text-medium font-medium">Country Preferance ?</p>
                   <div className=" cursor-pointer relative field  border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                     <input
                       type="text"
@@ -1136,7 +1089,9 @@ export default function IvyForm() {
                       onClick={toggleDropdownCity}
                       id=""
                     />
-                    <RiArrowDownSLine className=" text-[#008BDC]" />
+                    <RiArrowDownSLine 
+                      onClick={toggleDropdownCity}
+                      className=" text-[#008BDC]" />
                     {dropdownOpenCity && (
                       <div
                         className="absolute top-[103%] z-[9] p-5 w-[30vw] gap-2 flex flex-wrap shadow-lg bg-white  h-fit"
@@ -1156,12 +1111,13 @@ export default function IvyForm() {
                     )}
                   </div>
                 </div>
-              )}
+           
             </div>
+
             <div className="w-full flex items-center justify-between">
-              {userInput.abroadStudy === "YES" && (
+          
                 <div className="w-[45%] flex flex-col justify-between items-start">
-                  <p className="text-lg font-medium">
+                  <p className="text-medium font-medium">
                     Enter Dream University .{" "}
                   </p>
                   <div className=" cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
@@ -1176,10 +1132,8 @@ export default function IvyForm() {
                     />
                   </div>
                 </div>
-              )}
-            </div>
-            <div className="w-full flex items-center justify-between">
-              <div className="w-[45%] flex flex-col justify-between items-start ">
+
+                <div className="w-[45%] flex flex-col justify-between items-start ">
                 <p className="font-medium">
                   Are You Preparing For Any Entrance Exam ?
                 </p>
@@ -1195,62 +1149,20 @@ export default function IvyForm() {
                   />
                 </div>
               </div>
-              <div className="w-[45%] flex flex-col justify-between items-start ">
-                <p className="font-medium">
-                  Which Is The Most Challenging Subject For You ?
-                </p>
-                <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
-                  <input
-                    type="text"
-                    placeholder="Maths/Science/English"
-                    className="w-full h-full outline-none"
-                    name="challengingSubject"
-                    value={userInput.challengingSubject}
-                    onChange={handleChange("challengingSubject")}
-                    id=""
-                  />
-                </div>
-              </div>
+
+
+
             </div>
-            <div className="w-full flex items-center justify-between">
-              <div className="w-[45%] flex flex-col justify-between items-start ">
-                <p className="font-medium">
-                  What Is Your Short-term Academic Goal ?
-                </p>
-                <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
-                  <input
-                    type="text"
-                    placeholder="e.g. Score 90% in 10th Board Exam "
-                    className="w-full h-full outline-none"
-                    name="shortTermGoal"
-                    value={userInput.shortTermGoal}
-                    onChange={handleChange("shortTermGoal")}
-                    id=""
-                  />
-                </div>
-              </div>
-              <div className="w-[45%] flex flex-col justify-between items-start ">
-                <p className="font-medium">What Is Your Long-term Goal ?</p>
-                <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
-                  <input
-                    type="text"
-                    placeholder="e.g Study in IIT , Study in USA , etc."
-                    className="w-full h-full outline-none"
-                    name="longTermGoal"
-                    value={userInput.longTermGoal}
-                    onChange={handleChange("longTermGoal")}
-                    id=""
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="w-full flex justify-between items-center">
-              <div className="w-[45%]">
+
+
+            
+            <div className="w-full flex justify-between items-center max-[600px]:flex-col">
+              <div className="w-[45%]  max-[600px]:w-full">
                 <p className="font-medium">
                   What Do You Want To Become In Future ?
                 </p>
               </div>
-              <div className="w-[45%]">
+              <div className="w-[45%]  max-[600px]:w-full">
                 <div
                   onClick={toggleDropdownFuture}
                   className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]"
@@ -1286,12 +1198,12 @@ export default function IvyForm() {
                 </div>
               </div>
             </div>
-            <div className="w-full flex justify-between items-center ">
-              <div className="h-full w-[45%] max-[600px]:w-[35%] pt-3">
+            <div className="w-full flex justify-between items-center max-[600px]:flex-col ">
+              <div className="h-full w-[45%]  max-[600px]:w-full  pt-3">
                 <p className="font-medium">Field Of Interest</p>
               </div>
 
-              <div className="w-[45%] max-[600px]:w-[60%] flex flex-wrap justify-end gap-2">
+              <div className="w-[45%]  max-[600px]:w-full  flex flex-wrap justify-end gap-2">
                 <div className="w-full relative flex items-center justify-center ">
                   <textarea
                     placeholder="Select Field Of Interest"
@@ -1327,9 +1239,9 @@ export default function IvyForm() {
                 </div>
               </div>
             </div>
-            <div className="w-full flex flex-col items-center">
-              <div className="flex items-center w-full">
-                <p className="font-medium">List All The Skills You Have</p>
+            <div className="w-full flex flex-col items-center ">
+              <div className="flex items-center w-full max-[600px]:flex-col">
+                <p className="font-medium max-[600px]:text-start max-[600px]:w-full">List All The Skills You Have</p>
                 <div className="ml-4 cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                   <input
                     type="text"
@@ -1366,11 +1278,11 @@ export default function IvyForm() {
               </div>
             </div>
             <div className="w-full flex justify-between items-center">
-              <div className=" h-full w-[45%]   pt-3 ">
+              <div className=" h-full w-[45%]  max-[600px]:w-full   pt-3 ">
                 <p className="font-medium"> Activities You Have Done:</p>
               </div>
-              <div className="w-[45%] flex max-[600px]:flex-col  items-center justify-between">
-                <p className="text-lg font-medium">
+              <div className="w-[45%]  max-[600px]:w-full flex max-[600px]:flex-col  items-center justify-between">
+                <p className="text-medium font-medium">
                   {userInput.activities.length - 1} Activities added
                 </p>
                 <div
@@ -1412,10 +1324,10 @@ export default function IvyForm() {
                   </button>
                   <p className="font-medium text-2xl mb-2">Activity {index}</p>
                   <div className="w-full flex mb-5 h-12 items-center justify-between">
-                    <div className="text-lg w-[45%] font-medium">
+                    <div className="text-medium w-[45%]  max-[600px]:w-full font-medium">
                       <p>Type of Activity</p>
                     </div>
-                    <div className="text-lg w-[45%]">
+                    <div className="text-medium w-[45%]  max-[600px]:w-full">
                       <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                         <input
                           type="text"
@@ -1434,10 +1346,10 @@ export default function IvyForm() {
                     </div>
                   </div>
                   <div className="w-full mb-5 h-12 flex items-center justify-between">
-                    <div className="text-lg w-[45%] font-medium">
+                    <div className="text-medium w-[45%]  max-[600px]:w-full font-medium">
                       <p>Position / Role</p>
                     </div>
-                    <div className="text-lg w-[45%]">
+                    <div className="text-medium w-[45%]  max-[600px]:w-full">
                       <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                         <input
                           type="text"
@@ -1456,10 +1368,10 @@ export default function IvyForm() {
                     </div>
                   </div>
                   <div className="w-full mb-5 h-12 flex items-center justify-between">
-                    <div className="text-lg w-[45%] font-medium">
+                    <div className="text-medium w-[45%]  max-[600px]:w-full font-medium">
                       <p>Organization/Company Name</p>
                     </div>
-                    <div className="text-lg w-[45%]">
+                    <div className="text-medium w-[45%]  max-[600px]:w-full">
                       <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                         <input
                           type="text"
@@ -1478,10 +1390,10 @@ export default function IvyForm() {
                     </div>
                   </div>
                   <div className="w-full mb-5 h-12 flex items-center justify-between">
-                    <div className="text-lg w-[45%] font-medium">
+                    <div className="text-medium w-[45%]  max-[600px]:w-full font-medium">
                       <p>Activity Description</p>
                     </div>
-                    <div className="text-lg w-[45%] ">
+                    <div className="text-medium w-[45%]  max-[600px]:w-full ">
                       <div className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                         <input
                           type="text"
@@ -1503,9 +1415,9 @@ export default function IvyForm() {
                 </div>
               );
             })}
-            <div className="w-full h-[13vh] flex justify-between min-[600px]:items-center">
+            <div className="w-full h-[13vh] flex justify-between min-[600px]:items-center max-[600px]:flex-col">
               <p className="font-medium">Family Income:</p>
-              <div className=" relative w-auto font-semibold gap-2 h-12 grid grid-cols-4 max-[600px]:grid-cols-2">
+              <div className=" relative w-auto font-semibold gap-2 h-12 grid grid-cols-4 max-[600px]:scale-75 max-[600px]:w-full max-[600px]:gap-20">
                 {[
                   "Less than 1 Lac",
                   "1-5 Lac",
@@ -1530,33 +1442,14 @@ export default function IvyForm() {
                 ))}
               </div>
             </div>
-            <div className="w-full max-[600px]:h-[15vh] flex justify-between min-[600px]:items-center">
-              <p className="font-medium">Caste Category</p>
-              <div className="relative w-[45%] font-semibold gap-2 h-12 grid grid-cols-5 max-[600px]:grid-cols-2 ">
-                {["OBC", "SC", "ST", "GEN", "OTHER"].map((option) => (
-                  <button
-                    key={option}
-                    className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                      userInput.caste === option
-                        ? "bg-[#008BDC] text-white"
-                        : "border-[#008BDC]"
-                    }`}
-                    onClick={() =>
-                      handleChange("caste")({ target: { value: option } })
-                    }
-                  >
-                    {option}
-                  </button>
-                ))}
-              </div>
-            </div>
+     
             <div className="w-full flex justify-between items-center">
               <p className="font-medium">
                 Do you have any physical disabilities?
               </p>
-              <div className="relative w-[45%] font-semibold gap-6 h-12 flex items-center ">
+              <div className="relative w-[45%]  max-[600px]:w-full font-semibold gap-6 h-12 flex items-center ">
                 <button
-                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
+                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center max-[600px]:scale-75 justify-center ${
                     userInput.physicaldisabilities === "YES"
                       ? "bg-[#008BDC] text-white"
                       : "border-[#008BDC]"
@@ -1570,7 +1463,7 @@ export default function IvyForm() {
                   YES
                 </button>
                 <button
-                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
+                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center max-[600px]:scale-75 justify-center ${
                     userInput.physicaldisabilities === "NO"
                       ? "bg-[#008BDC] text-white"
                       : "border-[#008BDC]"
@@ -1590,7 +1483,7 @@ export default function IvyForm() {
                 <p className="font-medium">
                   Please Specify disabilities <sub>(optional)</sub>
                 </p>
-                <div className="cursor-pointer relative w-[45%] h-14 border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
+                <div className="cursor-pointer relative w-[45%]  max-[600px]:w-full h-14 border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                   <input
                     type="text"
                     placeholder="Specify like Blindness, Deafness, etc"

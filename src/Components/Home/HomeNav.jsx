@@ -192,6 +192,12 @@ const HomeNav = () => {
           <Link className="hover-link" to="/ivy">
             ivy acclerator
           </Link>
+          <Link className="hover-link" to="/portfolio">
+            Portfolio
+          </Link>
+          <Link className="hover-link" to="/portfolio">
+            Internship
+          </Link>
           <Link to={"/services"}>Services</Link>
           <a className="hover-link" href="#about">
             about us
