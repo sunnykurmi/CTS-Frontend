@@ -28,24 +28,24 @@ export default function Home() {
 
   const feedbackData = [
     {
-      img: "/public/Images/home/testimonials/IMG_8405.JPG",
+      img: "/Images/home/testimonials/IMG_8405.JPG",
       name: "Rumman Jan",
       university: "Cornell University ' 28",
     },
     {
-      img: "/public/Images/home/testimonials/IMG_8407.JPG",
+      img: "/Images/home/testimonials/IMG_8407.JPG",
 
       name: "Prashant Kafle",
       university: "Lehigh University ' 28",
     },
     {
-      img: "/public/Images/home/testimonials/IMG_8406.JPG",
+      img: "/Images/home/testimonials/IMG_8406.JPG",
 
       name: "Mohnish Sao",
       university: "MSU ' 27",
     },
     {
-      img: "/public/Images/home/testimonials/IMG_8408.JPG",
+      img: "/Images/home/testimonials/IMG_8408.JPG",
 
       name: "Aviral Gupta",
       university: "USF ' 28",
