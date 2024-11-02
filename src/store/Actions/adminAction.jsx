@@ -1,4 +1,5 @@
 import axios from "../../utils/axios";
+import { getBearerToken } from "../../utils/auth";
 import {
   saveUser,
   removeUser,
@@ -7,210 +8,277 @@ import {
   setLoading,
 } from "../Reducers/userSlice";
 
-export const getallusers = () => async (dispatch, getState) => {
+export const getallusers = () => async (dispatch) => {
   try {
-    dispatch(setLoading(true)); // Set loading to true
-    const response = await axios.post("/api/v1/admin/getallusers");
-    dispatch(setLoading(false)); // Reset loading on success
-    return response.data.users; // Return the data
-  } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
-  }
-};
-
-export const getallroadmaps = () => async (dispatch, getState) => {
-  try {
-    dispatch(setLoading(true)); // Set loading to true
-    const response = await axios.post("/api/v1/admin/updatedroadmap");
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      "/api/v1/admin/getallusers", 
+      {}, 
+      getBearerToken()
+    );
     dispatch(setLoading(false));
-    return response.data; // Return the data
+    return response.data.users;
   } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
-  }
-};
-
-export const getpendingroadmap = () => async (dispatch, getState) => {
-  try {
-    dispatch(setLoading(true)); // Set loading to true
-    const response = await axios.post("/api/v1/admin/pendingroadmap");
     dispatch(setLoading(false));
-    return response.data; // Return the data
-  } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
+    throw error;
   }
 };
 
-export const uploadroadmap = (formdata) => async (dispatch, getState) => {
+export const getallroadmaps = () => async (dispatch) => {
   try {
-    dispatch(setLoading(true)); // Set loading to true
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      "/api/v1/admin/updatedroadmap",
+      {},
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data.roadmaps;
+  } catch (error) {
+    dispatch(setLoading(false));
+    throw error;
+  }
+};
+
+export const getpendingroadmap = () => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      "/api/v1/admin/pendingroadmap",
+      {},
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data;
+  } catch (error) {
+    dispatch(setLoading(false));
+    throw error;
+  }
+};
+
+export const uploadroadmap = (formdata) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
     const response = await axios.post(
       `/api/v1/admin/upload-update-roadmap/`,
-      formdata
+      formdata,
+      getBearerToken()
     );
     dispatch(setLoading(false));
-    return response.data; // Return the data
+    return response.data;
   } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
-  }
-};
-
-export const getallinternships = () => async (dispatch, getState) => {
-  try {
-    dispatch(setLoading(true)); // Set loading to true
-    const response = await axios.post("/api/v1/admin/allinternship");
     dispatch(setLoading(false));
-    return response.data; // Return the data
-  } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
+    throw error;
   }
 };
 
-export const uploadportfolio = (formdata) => async (dispatch, getState) => {
+export const getallinternships = () => async (dispatch) => {
   try {
-    dispatch(setLoading(true)); // Set loading to true
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      "/api/v1/admin/allinternship",
+      {},
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data;
+  } catch (error) {
+    dispatch(setLoading(false));
+    throw error;
+  }
+};
+
+export const uploadportfolio = (formdata) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
     const response = await axios.post(
       `/api/v1/admin/createportfolio`,
-      formdata
+      formdata,
+      getBearerToken()
     );
     dispatch(setLoading(false));
-    return response.data; // Return the data
+    return response.data;
   } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
+    dispatch(setLoading(false));
+    throw error;
   }
 };
 
-export const editportfolio = (id, formdata) => async (dispatch, getState) => {
+export const editportfolio = (id, formdata) => async (dispatch) => {
   try {
-    dispatch(setLoading(true)); // Set loading to true
+    dispatch(setLoading(true));
     const response = await axios.post(
       `/api/v1/admin/updateportfolio/${id}`,
-      formdata
+      formdata,
+      getBearerToken()
     );
     dispatch(setLoading(false));
-    return response.data; // Return the data
+    return response.data;
   } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
+    dispatch(setLoading(false));
+    throw error;
   }
 };
-export const deleteportfolio = (id) => async (dispatch, getState) => {
+
+export const deleteportfolio = (id) => async (dispatch) => {
   try {
-    dispatch(setLoading(true)); // Set loading to true
-    const response = await axios.post(`/api/v1/admin/deleteportfolio/${id}`);
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      `/api/v1/admin/deleteportfolio/${id}`,
+      {},
+      getBearerToken()
+    );
     dispatch(setLoading(false));
-    return response.data; // Return the data
+    return response.data;
   } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
+    dispatch(setLoading(false));
+    throw error;
   }
 };
 
 ////////////////////////////////////////exam exam /////////////////////////////////////
 
-export const getallexams = () => async (dispatch, getState) => {
+export const getallexams = () => async (dispatch) => {
   try {
-    dispatch(setLoading(true)); // Set loading to true
-    const response = await axios.get("/api/v1/user/exam-prep/exams");
-    dispatch(setLoading(false)); // Reset loading on success
-    return response.data.exams; // Return the data
-  } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
-  }
-};
-
-export const addexam = (formdata) => async (dispatch, getState) => {
-  try {
-    dispatch(setLoading(true)); // Set loading to true
-    const response = await axios.post(`/api/v1/admin/create-exam`, formdata);
-    dispatch(setLoading(false));
-    return response.data; // Return the data
-  } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
-  }
-};
-
-export const editexam = (id, formdata) => async (dispatch, getState) => {
-  try {
-    dispatch(setLoading(true)); // Set loading to true
-    const response = await axios.post(
-      `/api/v1/admin/update-exam/${id}`,
-      formdata
+    dispatch(setLoading(true));
+    const response = await axios.get(
+      "/api/v1/user/exam-prep/exams",
+      getBearerToken()
     );
     dispatch(setLoading(false));
-    return response.data; // Return the data
+    return response.data.exams;
   } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
-  }
-};
-export const deleteexam = (id) => async (dispatch, getState) => {
-  try {
-    dispatch(setLoading(true)); // Set loading to true
-    const response = await axios.post(`/api/v1/admin/delete-exam/${id}`);
     dispatch(setLoading(false));
-    return response.data; // Return the data
+    throw error;
+  }
+};
+
+export const addexam = (formdata) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      `/api/v1/admin/create-exam`,
+      formdata,
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data;
   } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
+    dispatch(setLoading(false));
+    throw error;
+  }
+};
+
+export const editexam = (id, formdata) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      `/api/v1/admin/update-exam/${id}`,
+      formdata,
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data;
+  } catch (error) {
+    dispatch(setLoading(false));
+    throw error;
+  }
+};
+
+export const deleteexam = (id) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      `/api/v1/admin/delete-exam/${id}`,
+      {},
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data;
+  } catch (error) {
+    dispatch(setLoading(false));
+    throw error;
   }
 };
 
 ///////////////////////////////Payment routes //////////////////////////////////////
 
-export const getallportfoliopayments = () => async (dispatch, getState) => {
+export const getallportfoliopayments = () => async (dispatch) => {
   try {
-    dispatch(setLoading(true)); // Set loading to true
-    const response = await axios.post("/api/v1/admin/allportfolio_pay");
-    dispatch(setLoading(false)); // Reset loading on success
-    return response.data.Portfoliopay; // Return the data
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      "/api/v1/admin/allportfolio_pay",
+      {},
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data.Portfoliopay;
   } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
+    dispatch(setLoading(false));
+    throw error;
   }
 };
 
-export const getallessaypayments = () => async (dispatch, getState) => {
+export const getallessaypayments = () => async (dispatch) => {
   try {
-    dispatch(setLoading(true)); // Set loading to true
-    const response = await axios.post("/api/v1/admin/allessay_pay");
-    dispatch(setLoading(false)); // Reset loading on success
-    return response.data.essaypay; // Return the data
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      "/api/v1/admin/allessay_pay",
+      {},
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data.essaypay;
   } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
+    dispatch(setLoading(false));
+    throw error;
   }
 };
 
-export const getallcsspayments = () => async (dispatch, getState) => {
+export const getallcsspayments = () => async (dispatch) => {
   try {
-    dispatch(setLoading(true)); // Set loading to true
-    const response = await axios.post("/api/v1/admin/allcssprofile_pay");
-    dispatch(setLoading(false)); // Reset loading on success
-    return response.data.cssprofile; // Return the data
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      "/api/v1/admin/allcssprofile_pay",
+      {},
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data.cssprofile;
   } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
+    dispatch(setLoading(false));
+    throw error;
   }
 };
 
-export const getallcommonapppayments = () => async (dispatch, getState) => {
+export const getallcommonapppayments = () => async (dispatch) => {
   try {
-    dispatch(setLoading(true)); // Set loading to true
-    const response = await axios.post("/api/v1/admin/allcommonapp_pay");
-    dispatch(setLoading(false)); // Reset loading on success
-    return response.data.commonapp; // Return the data
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      "/api/v1/admin/allcommonapp_pay",
+      {},
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data.commonapp;
   } catch (error) {
-    dispatch(setLoading(false)); // Reset loading on error
-    throw error; // Throw error to handle it in the component
+    dispatch(setLoading(false));
+    throw error;
   }
 };
 
-///////////////////////////////Payment routes //////////////////////////////////////
+export const getallexampreppayments = () => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      "/api/v1/admin/allexamprep_pay",
+      {},
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data.commonapp;
+  } catch (error) {
+    dispatch(setLoading(false));
+    throw error;
+  }
+};

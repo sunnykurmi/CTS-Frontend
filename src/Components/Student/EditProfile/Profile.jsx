@@ -8,6 +8,7 @@ import EditAvatar from "./EditAvatar";
 import EditProfileForm from "./EditProfileForm";
 import Loader from "../../Loader/Loader";
 import AddEducation from "./AddEducation";
+import AddSocial from "./AddSocial";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export default function Profile() {
   const [ShowAvatar, setShowAvatar] = useState(false);
   const [ShowForm, setShowForm] = useState(false);
   const [ShowEducation, setShowEducation] = useState(false);
+  const [ShowSocialMedia, setShowSocialMedia] = useState(false);
 
   useEffect(() => {
     dispatch(asynccurrentUser());
@@ -40,6 +42,13 @@ export default function Profile() {
     setShowEducation(false);
   };
 
+  const openSocialMedia = () => {
+    setShowSocialMedia(true);
+  };
+  const closeSocialMedia = () => {
+    setShowSocialMedia(false);
+  };
+
   if (!user) {
     return <Loader />;
   }
@@ -48,6 +57,7 @@ export default function Profile() {
       {ShowAvatar && <EditAvatar onClose={closeaddavatar} />}
       {ShowForm && <EditProfileForm onClose={closeeditform} />}
       {ShowEducation && <AddEducation onClose={closeEducation} />}
+      {ShowSocialMedia && <AddSocial onClose={closeSocialMedia} />}
       <Nav />
       <div className="w-full pt-10">
         <div className="w-44 max-[600px]:hidden  left-0 h-full flex items-center justify-center">
@@ -231,32 +241,32 @@ export default function Profile() {
                     {user.education &&
                     user.education.class10schoolname !== "" ? (
                       <div className="flex max-[600px]:block w-full">
-                      <div className="w-[80%] capitalize mb-5 max-[600px]:w-full">
-                        <div className="text-[#151515d0] text-xl font-semibold max-[600px]:mb-1">
-                          {user?.education?.class10schoolname}
-                        </div>
-                        <div className="w-[40vh] justify-between flex gap-5 max-[600px]:w-full">
-                          <div className="text-[#151515d0] text-base font-medium">
-                            <b> class : </b>
-                            10th
+                        <div className="w-[80%] capitalize mb-5 max-[600px]:w-full">
+                          <div className="text-[#151515d0] text-xl font-semibold max-[600px]:mb-1">
+                            {user?.education?.class10schoolname}
                           </div>
-                          <div className="text-[#151515d0] w-[50%] text-base font-medium">
-                            <b> score : </b>
-                            {user?.education?.class10percentage}%
+                          <div className="w-[40vh] justify-between flex gap-5 max-[600px]:w-full">
+                            <div className="text-[#151515d0] text-base font-medium">
+                              <b> class : </b>
+                              10th
+                            </div>
+                            <div className="text-[#151515d0] w-[50%] text-base font-medium">
+                              <b> score : </b>
+                              {user?.education?.class10percentage}%
+                            </div>
                           </div>
-                        </div>
-                        <div className="w-[40vh] justify-between flex gap-5 max-[600px]:w-full">
-                          <div className="text-[#151515d0] text-base font-medium">
-                            <b> Board : </b>
-                            {user?.education?.class10educationBoard}
-                          </div>
-                          <div className="text-[#151515d0] w-[50%] text-base font-medium">
-                            <b> year : </b>
-                            {user?.education?.class10passingyear}
+                          <div className="w-[40vh] justify-between flex gap-5 max-[600px]:w-full">
+                            <div className="text-[#151515d0] text-base font-medium">
+                              <b> Board : </b>
+                              {user?.education?.class10educationBoard}
+                            </div>
+                            <div className="text-[#151515d0] w-[50%] text-base font-medium">
+                              <b> year : </b>
+                              {user?.education?.class10passingyear}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
                     ) : (
                       ""
                     )}
@@ -283,58 +293,133 @@ export default function Profile() {
           </div>
           <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">
             <div className="w-[30%]    text-[#1515159d] text-base font-medium ">
-              ACHIEVEMENTS
-            </div>
-            <div className="w-[60%] ">
-              <div className="flex">
-                -
-                {/* <div className=" w-[80%] capitalize  mb-5">
-                  <div className="text-[#151515d0] text-xl font-semibold ">
-                    National level quiz competition
-                  </div>
-                  <div className="text-[#151515d0] text-base font-medium">
-                    I have achieved Gold medal in national level quiz
-                    competition
-                  </div>
-                </div> */}
-              </div>
-            </div>
-          </div>
-          <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">
-            <div className="w-[30%]    text-[#1515159d] text-base font-medium ">
               SOCIAL MEDIA
             </div>
-            <div className="w-[60%] ">
+            <div className="w-[60%]">
               <div className="flex">
-                -
-                {/* <div className=" w-[80%] capitalize  mb-5">
-                  <div className=" flex gap-2 items-center   text-xl font-semibold ">
-                    <div className="w-8 h-8 ">
-                      <img
-                        src="https://cdn.iconscout.com/icon/free/png-256/free-gmail-logo-icon-download-in-svg-png-gif-file-formats--mail-email-logos-icons-2416660.png?f=webp"
-                        alt=""
-                      />
+                <div className=" w-[80%] capitalize  mb-5">
+                  {user.socialmedia && user.socialmedia !== "" ? (
+                    <div className="">
+                      <div className=" flex gap-4 items-center   text-xl font-semibold ">
+                        {user.socialmedia.gmail !== "" ? (
+                          <div className="w-8 h-8">
+                            <a
+                              href={`mailto:${user.socialmedia.gmail}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <img
+                                src="https://cdn.iconscout.com/icon/free/png-256/free-gmail-logo-icon-download-in-svg-png-gif-file-formats--mail-email-logos-icons-2416660.png?f=webp"
+                                alt="Gmail"
+                              />
+                            </a>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        {user.socialmedia.youtube !== "" ? (
+                          <div className="w-8 h-8 ">
+                            <a
+                              href={user.socialmedia.youtube}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <img
+                                src="https://cdn-icons-png.flaticon.com/256/1384/1384060.png"
+                                alt=""
+                              />
+                            </a>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        {user.socialmedia.linkedin !== "" ? (
+                          <div className="w-8 h-8 ">
+                            <a
+                              href={user.socialmedia.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <img
+                                src="https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk4Mi1kNS0xMF8xLnBuZw.png"
+                                alt=""
+                              />
+                            </a>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        {user.socialmedia.instagram !== "" ? (
+                          <div className="w-7 h-7 ">
+                            <a
+                              href={user.socialmedia.instagram}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
+                                alt=""
+                              />
+                            </a>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+
+                        {user.socialmedia.facebook !== "" ? (
+                          <div className="w-7 h-7 ">
+                            <a
+                              href={user.socialmedia.facebook}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <img
+                                src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+                                alt=""
+                              />
+                            </a>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        {user.socialmedia.twitter !== "" ? (
+                          <div className="w-7 h-7 ">
+                            <a
+                              href={user.socialmedia.twitter}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+
+                            <img
+                              src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png"
+                              alt=""
+                            />
+                            </a>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+
+                      <div>
+                        <button
+                          onClick={openSocialMedia}
+                          className="text-sm center mt-3 py-1 px-4 border-2 rounded-full"
+                        >
+                          {" "}
+                          <RiPencilLine className="scale-75" /> Edit
+                        </button>
+                      </div>
                     </div>
-                    <div className="w-6 h-6 ">
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
-                        alt=""
-                      />
+                  ) : (
+                    <div
+                      onClick={openSocialMedia}
+                      className="text-[#008BDC] cursor-pointer w-fit font-medium"
+                    >
+                      +add social media
                     </div>
-                    <div className="w-6 h-6 ">
-                      <img
-                        src="https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk4Mi1kNS0xMF8xLnBuZw.png"
-                        alt=""
-                      />
-                    </div>
-                    <div className="w-7 h-7 ">
-                      <img
-                        src="https://cdn-icons-png.flaticon.com/256/1384/1384060.png"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div> */}
+                  )}
+                </div>
               </div>
             </div>
           </div>

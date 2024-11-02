@@ -80,7 +80,7 @@ const TOEFLHome = () => {
   const checkLoginHandler = () => {
     if (!isAuth) {
       window.alert("Please login first");
-      navigate("/login", { state: { from: `/services/TOEFL-prepration` } });
+      navigate("/login", { state: { from: `/services/exam-prepration/TOEFL-prepration` } });
       return;
     }
   };

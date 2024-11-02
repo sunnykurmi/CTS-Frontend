@@ -75,7 +75,7 @@ const DETHome = () => {
   const checkLoginHandler = () => {
     if (!isAuth) {
       window.alert("Please login first");
-      navigate("/login", { state: { from: `/services/DET-prepration` } });
+      navigate("/login", { state: { from: `/services/exam-prepration/DET-prepration` } });
       return;
     }
   };

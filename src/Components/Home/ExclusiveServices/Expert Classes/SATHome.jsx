@@ -75,7 +75,7 @@ const SATHome = () => {
   const checkLoginHandler = () => {
     if (!isAuth) {
       window.alert("Please login first");
-      navigate("/login", { state: { from: `/services/sat-prepration` } });
+      navigate("/login", { state: { from: `/services/exam-prepration/sat-prepration` } });
       return;
     }
   };

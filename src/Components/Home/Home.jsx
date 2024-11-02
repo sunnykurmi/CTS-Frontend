@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   RiArrowRightSFill,
   RiArrowRightSLine,
@@ -15,104 +16,83 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper";
-
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { asynccurrentUser } from "../../store/Actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 import HomeNav from "./HomeNav";
 import HomeFooter from "./HomeFooter";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Home() {
-  // const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   dispatch(asynccurrentUser());
-  // }, [dispatch]);
+  const feedbackData = [
+    {
+      img: "/public/Images/home/testimonials/IMG_8405.JPG",
+      name: "Rumman Jan",
+      university: "Cornell University ' 28",
+    },
+    {
+      img: "/public/Images/home/testimonials/IMG_8407.JPG",
 
-  const [studentsJoined, setStudentsJoined] = useState(0);
-  const [studentsImpacting, setStudentsImpacting] = useState(0);
-  const [countries, setCountries] = useState(0);
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+      name: "Prashant Kafle",
+      university: "Lehigh University ' 28",
+    },
+    {
+      img: "/public/Images/home/testimonials/IMG_8406.JPG",
 
-  useEffect(() => {
-    // Calculate time left for Diwali
-    const diwaliDate = new Date("October 31, 2024 00:00:00").getTime();
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = diwaliDate - now;
+      name: "Mohnish Sao",
+      university: "MSU ' 27",
+    },
+    {
+      img: "/public/Images/home/testimonials/IMG_8408.JPG",
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      name: "Aviral Gupta",
+      university: "USF ' 28",
+    },
+  ];
 
-      setTimeLeft({ days, hours, minutes, seconds });
+  const NavigateHandler = (link) => {
+    navigate(link);
+  };
 
-      if (distance < 0) {
-        clearInterval(interval);
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const incrementValue = (target, setValue) => {
-      let current = 0;
-      const increment = target / 100; // Adjust the speed of the countdown
-      const interval = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-          clearInterval(interval);
-          setValue(target);
-        } else {
-          setValue(Math.ceil(current));
-        }
-      }, 20); // Adjust the speed of the countdown
-    };
-
-    incrementValue(50000, setStudentsJoined);
-    incrementValue(1000000, setStudentsImpacting);
-    incrementValue(110, setCountries);
-  }, []);
-
-  const slides = [];
-
-  for (let i = 0; i <= 3; i++) {
-    slides.push(
-      <SwiperSlide className="center" key={`slide-${i}`}>
-        <img
-          className="w-[80%]  rounded-md h-full object-cover"
-          src={`/Images/home/swiper universities/img${i + 1}.jpeg`}
-          alt=""
-        />
-      </SwiperSlide>
-    );
-  }
+  const services = [
+    {
+      title: "Essay Editing",
+      description:
+        "Turn your essay into a powerful story! Our Ivy League experts will edit and enhance your writing to make it stand out. Submit your essay for a professional review and get one step closer to your dream college. Enroll now for a polished, compelling essay!",
+      image: "/Images/Essay-editing.webp",
+      link: "/services/essay-editing",
+      button: "Book Now",
+    },
+    {
+      title: "Common App Review",
+      description:
+        "Perfect your Common App with expert review! 80% of students make mistakes—don’t be one of them. Our team will polish your activities and ensure every section shines. Enroll now to submit an error-free, standout application!",
+      image: "/Images/common-app-review.jpg",
+      link: "/services/common-app-review",
+      button: "Book Now",
+    },
+    {
+      title: "CSS Profile Help",
+      description:
+        "Your CSS Profile could be the key to unlocking valuable financial aid! Don’t let mistakes or overlooked sections cost you. Our CSS Profile Review program ensures your submission is accurate and maximizes your chances for aid. Let us help you secure the support you deserve—schedule your review today!",
+      image: "/Images/css-profile-helper.jpg",
+      link: "/services/css-profile",
+      button: "Book Now",
+    },
+    {
+      title: "Exam Prepration",
+      description:
+        "Get ready to ace your exams with expert-led SAT, TOEFL, IELTS, and Duolingo English Test (DET) classes! Whether you’re aiming for top scores or need a boost in your test prep, we’ve got you covered. Join our prep classes now and give yourself the best chance at success!",
+      image: "/Images/sat-exam.png",
+      link: "/services/exam-prepration",
+      button: "Book Now",
+    },
+  ];
 
   return (
-    <div id="home">
-      <div className="w-full h-14 flex items-center justify-center darkcolor max-[600px]:hidden">
-        <img className="w-12 mr-8" src="/Images/deepak.gif" alt="" />
-        <div className="font-semibold text-xl text-zinc-50 whitespace-nowrap">
-          <span className="ml-5">Diwali Offer: 20% off on all courses!</span>
-        </div>
-        <div className="ml-4 font-semibold text-lg w-64 text-zinc-50">
-          {`Time left: ${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
-        </div>
-        <img className="w-12" src="/Images/deepak.gif" alt="" />
-      </div>
+    <div id="home" className="bg-[#F5FAFE]">
       <div className="w-full flex items-center justify-center fixed z-[9]">
         <HomeNav />
       </div>
@@ -145,46 +125,168 @@ export default function Home() {
         />
       </div>
 
-      {/* <div className="w-full h-[100vh] bg-red-200"></div> */}
+      <div className="w-full h-[80vh] p-20 max-[600px]:p-5 max-[600px]:h-[60vh]">
+        <h2 className="text-zinc-600 uppercase">1000+ Success Stories</h2>
+        <div>
+          <h1 className="text-4xl font-medium Rubik mt-1">
+            Who Crossed <span className="text-[#36C2F3]">The Skylimits</span>
+          </h1>
+        </div>
 
-      {/* <div className="w-full h-[60vh] flex flex-col items-center justify-center mt-10">
-        <div className="w-full center mb-5  flex flex-col">
-          <p className="text-6xl font-semibold">
-            Study Abroad
-            </p> 
-            <p className="text-2xl font-medium">In the best universities </p>
-            </div>
-        
-          <div className="slides relative h-full w-full ">
-            <Swiper
-              className="w-full h-full object-cover"
-              // install Swiper modules
-              modules={[Navigation, Autoplay]}
-              spaceBetween={50}
-              loop={true}
-              autoplay={{
-                delay: 1200,
-                disableOnInteraction: false,
-              }}
-              slidesPerView={1}
-              navigation={{
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-                clickable: true,
-              }}
+        <div className="slides relative h-full w-full  max-[600px]:hidden ">
+          <Swiper
+            className="w-full h-full object-cover"
+            // install Swiper modules
+            modules={[Navigation, Autoplay]}
+            spaceBetween={50}
+            loop={true}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
+            slidesPerView={3}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+              clickable: true,
+            }}
+          >
+            {feedbackData.map((feedback, index) => (
+              <SwiperSlide className="center" key={`slide-${index}`}>
+              
+              <div
+                key={index}
+                className="feedback-card w-[55vh] h-[50vh] shadow-lg  rounded-md overflow-hidden"
+              >
+                <div className="feedback-card-img w-full h-[70%]">
+                  <img
+                    className="w-full h-full  object-contain"
+                    src={feedback.img}
+                    alt={feedback.name}
+                  />
+                </div>
+                <div className="feedback-card-content w-full h-[30%]  px-5 flex items-center gap-5">
+                  <div className="w-[20%]">
+                    <div className="size-16 rounded-full  overflow-hidden">
+                      <img
+                        className="size-full object-cover"
+                        src={feedback.img}
+                        alt={feedback.name}
+                      />
+                    </div>
+                  </div>
+                  <p className="text-lg font-normal">
+                    <span className="font-bold">{feedback.name}</span> <br />
+                    <span className="text-sm capitalize">
+                    studying at {feedback.university}
+
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </SwiperSlide>
+            ))}
+          </Swiper>
+          
+        </div>
+
+        <div className="slides relative h-full w-full  min-[600px]:hidden ">
+          <Swiper
+            className="w-full h-full object-cover"
+            // install Swiper modules
+            modules={[Navigation, Autoplay]}
+            spaceBetween={50}
+            loop={true}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
+            slidesPerView={1}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+              clickable: true,
+            }}
+          >
+            {feedbackData.map((feedback, index) => (
+              <SwiperSlide className="center" key={`slide-${index}`}>
+              
+              <div
+                key={index}
+                className="feedback-card w-full h-[50vh] shadow-lg  rounded-md overflow-hidden"
+              >
+                <div className="feedback-card-img w-full h-[70%]">
+                  <img
+                    className="w-full h-full  object-contain"
+                    src={feedback.img}
+                    alt={feedback.name}
+                  />
+                </div>
+                <div className="feedback-card-content w-full h-[30%]  px-5 flex items-center gap-5">
+                  <div className="w-[20%]">
+                    <div className="size-16 rounded-full  overflow-hidden">
+                      <img
+                        className="size-full object-cover"
+                        src={feedback.img}
+                        alt={feedback.name}
+                      />
+                    </div>
+                  </div>
+                  <p className="text-lg font-normal">
+                    <span className="font-bold">{feedback.name}</span> <br />
+                    <span className="text-sm capitalize">
+                    studying at {feedback.university}
+
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </SwiperSlide>
+            ))}
+          </Swiper>
+          
+        </div>
+      </div>
+
+      <div className="w-full h-fit px-20 max-[600px]:px-5 max-[600px]:mt-28">
+        <h1 className="text-5xl font-medium Rubik mt-1">
+          Our <span className="text-[#36C2F3]">Services</span>
+        </h1>
+        <div className="w-full h-fit p-10 pl-36 pr-36 grid grid-cols-3 gap-10 place-items-center max-[456px]:grid max-[456px]:grid-cols-1 max-[1180px]:pl-10 max-[1180px]:pr-10">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="w-[45vh] h-[65vh] max-[456px]:h-fit max-[456px]:w-[90vw] shadow-lg rounded-md border-2 max-[456px]:p-5 p-1 flex flex-col justify-between"
             >
-              {slides}
-            </Swiper>
-            <div className="slider-controler absolute h-full   top-0 w-full  ">
-              <div className="swiper-button-prev slider-arrow  p-8 rounded-full  scale-[.8] text-[#008BDC] font-extrabold btn btn-gradient-border btn-glow   ">
-                <ion-icon name="arrow-back-outline"></ion-icon>
-              </div>
-              <div className="swiper-button-next slider-arrow  p-8 rounded-full scale-[.8] text-[#008BDC] font-extrabold btn btn-gradient-border btn-glow  ">
-                <ion-icon name="arrow-forward-outline"></ion-icon>
+              <img
+                src={service.image}
+                alt={service.title}
+                className="w-full h-1/2 object-contain rounded-t-md"
+              />
+              <div className="p-4 flex h-1/2 flex-col">
+                <div className="">
+                  <h2 className="text-xl max-[456px]:text-2xl font-bold">
+                    {service.title}
+                  </h2>
+                </div>
+                <div className="h-[50%] overflow-auto scrollernone mt-2">
+                  <p className="text-sm leading-4 text-zinc-500">
+                    {service.description}
+                  </p>
+                </div>
+                <button
+                  onClick={() => NavigateHandler(service.link)}
+                  className="bg-[#008BDC] w-1/2 text-white max-[456px]:text-xl px-4 py-2 rounded-md mt-4"
+                >
+                  {service.button}
+                </button>
               </div>
             </div>
-          </div>
-        </div> */}
+          ))}
+        </div>
+      </div>
+
+      <HomeFooter />
     </div>
   );
 }

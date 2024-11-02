@@ -80,7 +80,7 @@ const IELTSHome = () => {
   const checkLoginHandler = () => {
     if (!isAuth) {
       window.alert("Please login first");
-      navigate("/login", { state: { from: `/services/IELTS-prepration` } });
+      navigate("/login", { state: { from: `/services/exam-prepration/IELTS-prepration` } });
       return;
     }
   };

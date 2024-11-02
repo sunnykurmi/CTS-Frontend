@@ -197,16 +197,16 @@ function AddEducation(props) {
                   value={educationform.currentclass}
                   onChange={handleInputChange}
                   placeholder="Select Class"
-                  className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
+                  className="w-full h-10 pl-3 outline-none border-2 border-[#008BDC] rounded-lg"
                   name="currentclass"
                   autoComplete="off"
                 />
                 {dropdownOpen && (
-                  <div className="absolute w-full shadow-lg border-2 border-b-0 top-[105%] z-[99] bg-white">
+                  <div className="absolute w-full shadow-lg border-2 border-[#008BDC] border-b-0 top-[105%] z-[99] bg-white">
                     {classes.map((cls) => (
                       <div
                         key={cls}
-                        className="w-full h-10 flex border-r-2 border-b-2 text-center items-center justify-center font-semibold hover:bg-[#F58612] hover:text-white"
+                        className="w-full h-10 flex border-r-2 border-b-2 text-center items-center justify-center font-semibold hover:bg-[#008BDC] hover:text-white"
                         onClick={() => handleOptionClick(cls)}
                       >
                         <p>{cls}</p>
@@ -219,7 +219,7 @@ function AddEducation(props) {
             <div className="w-[45%] h-full">
               <p className="text-lg font-medium">School Name</p>
               <input
-                className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
+                className="w-full h-10 pl-3 outline-none border-2 border-[#008BDC] rounded-lg"
                 type="text"
                 placeholder="Enter School Name"
                 value={educationform.schoolname}
@@ -242,18 +242,18 @@ function AddEducation(props) {
                   value={educationform.educationBoard}
                   onChange={handleInputChange2}
                   placeholder="Select Board"
-                  className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
+                  className="w-full h-10 pl-3 outline-none border-2 border-[#008BDC] rounded-lg"
                   name="educationBoard"
                   autoComplete="off"
                   readOnly
 
                 />
                 {dropdownOpen2 && (
-                  <div className="absolute shadow-lg top-[105%] z-[99] border-2 border-b-0 w-full bg-white h-fit">
+                  <div className="absolute shadow-lg top-[105%] z-[99] border-2 border-[#008BDC] border-b-0 w-full bg-white h-fit">
                     {boards.map((cls) => (
                       <div
                         key={cls}
-                        className="flex h-10 items-center justify-center font-semibold border-b-2 hover:bg-[#F58612] hover:text-white"
+                        className="flex h-10 items-center justify-center font-semibold border-b-2 hover:bg-[#008BDC] hover:text-white"
                         onClick={() => handleOptionClick2(cls)}
                       >
                         <p>{cls}</p>
@@ -266,7 +266,7 @@ function AddEducation(props) {
             <div className="w-[45%] h-full">
               <p className="text-lg font-medium">Percentage/score</p>
               <input
-                className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
+                className="w-full h-10 pl-3 outline-none border-2 border-[#008BDC] rounded-lg"
                 type="text"
                 name="percentage"
                 placeholder="Enter Percentage"
@@ -279,7 +279,7 @@ function AddEducation(props) {
             <div className="w-[45%] h-full">
               <p className="text-lg font-medium">Year of Passing</p>
               <input
-                className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
+                className="w-full h-10 pl-3 outline-none border-2 border-[#008BDC] rounded-lg"
                 type="text"
                 name="passingyear"
                 placeholder="Enter Year"
@@ -300,7 +300,7 @@ function AddEducation(props) {
                     onMouseLeave={handleMouseLeave}
                     onMouseEnter={handleMouseEnter}
                     placeholder="PCM/PCB/Commerce/Arts"
-                    className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
+                    className="w-full h-10 pl-3 outline-none border-2 border-[#008BDC] rounded-lg"
                     name="stream"
                     autoComplete="off"
                     readOnly
@@ -309,11 +309,11 @@ function AddEducation(props) {
                     id=""
                   />
                   {dropdownOpen3 && (
-                    <div className="absolute w-full border-2 border-b-0 shadow-lg top-[105%] z-[90]  bg-white ">
+                    <div className="absolute w-full border-2 border-[#008BDC] border-b-0 shadow-lg top-[105%] z-[90]  bg-white ">
                       {streams.map((cls) => (
                         <div
                           key={cls}
-                          className="w-full h-10 flex  items-center border-b-2 justify-center bg-white font-semibold  hover:bg-[#F58612] hover:text-white"
+                          className="w-full h-10 flex  items-center border-b-2 justify-center bg-white font-semibold  hover:bg-[#008BDC] hover:text-white"
                           onClick={() => handleOptionClick3(cls)}
                         >
                           <p>{cls}</p>
@@ -345,16 +345,16 @@ function AddEducation(props) {
                     placeholder="Select Board"
                     autoComplete="off"
                     readOnly
-                    className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
+                    className="w-full h-10 pl-3 outline-none border-2 border-[#008BDC] rounded-lg"
                     name="class10educationBoard"
            
                   />
                   {dropdownOpen4 && (
-                    <div className="absolute shadow-lg top-[105%] z-[99] border-2 border-b-0 w-full bg-white h-fit">
+                    <div className="absolute shadow-lg top-[105%] z-[99] border-2 border-[#008BDC] border-b-0 w-full bg-white h-fit">
                       {boards.map((cls) => (
                         <div
                           key={cls}
-                          className="flex h-10 items-center justify-center font-semibold border-b-2 hover:bg-[#F58612] hover:text-white"
+                          className="flex h-10 items-center justify-center font-semibold border-b-2 hover:bg-[#008BDC] hover:text-white"
                           onClick={() => handleOptionClick4(cls)}
                         >
                           <p>{cls}</p>
@@ -369,7 +369,7 @@ function AddEducation(props) {
                   Class 10<sup className="font-medium">th</sup> Year of Passing
                 </p>
                 <input
-                  className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
+                  className="w-full h-10 pl-3 outline-none border-2 border-[#008BDC] rounded-lg"
                   type="text"
                   name="class10passingyear"
                   placeholder="Enter Year"
@@ -387,7 +387,7 @@ function AddEducation(props) {
                   Class 10<sup className="font-medium">th</sup> Percentage
                 </p>
                 <input
-                  className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
+                  className="w-full h-10 pl-3 outline-none border-2 border-[#008BDC] rounded-lg"
                   type="text"
                   name="class10percentage"
                   placeholder="Enter class 10th Percentage"
@@ -400,7 +400,7 @@ function AddEducation(props) {
                   Class 10<sup className="font-medium">th</sup> School Name
                 </p>
                 <input
-                  className="w-full h-10 pl-3 outline-none border-2 rounded-lg"
+                  className="w-full h-10 pl-3 outline-none border-2 border-[#008BDC] rounded-lg"
                   type="text"
                   name="class10schoolname"
                   placeholder="Enter class 10th School name"

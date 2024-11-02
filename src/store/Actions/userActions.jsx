@@ -8,19 +8,15 @@ import {
   setLoading,
 } from "../Reducers/userSlice";
 import Cookies from "js-cookie";
+import { getBearerToken } from "../../utils/auth";
 
-export const asynccurrentUser = () => async (dispatch, getState) => {
+export const asynccurrentUser = () => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const token = localStorage.getItem("token");
     const { data } = await axios.post(
       "/api/v1/user/user",
       {},
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
+      getBearerToken()
     );
     dispatch(saveUser(data.user));
   } catch (error) {
@@ -28,7 +24,7 @@ export const asynccurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-export const asyncsignup = (user) => async (dispatch, getState) => {
+export const asyncsignup = (user) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
     const { data } = await axios.post("/api/v1/user/signup", user);
@@ -40,7 +36,7 @@ export const asyncsignup = (user) => async (dispatch, getState) => {
   }
 };
 
-export const asyncsignin = (credentials) => async (dispatch, getState) => {
+export const asyncsignin = (credentials) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
     const { data } = await axios.post("/api/v1/user/signin", credentials);
@@ -52,18 +48,16 @@ export const asyncsignin = (credentials) => async (dispatch, getState) => {
   }
 };
 
-export const asyncremoveUser = () => async (dispatch, getState) => {
+export const asyncremoveUser = () => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-
-    await axios.post("/api/v1/user/signout");
-
     localStorage.removeItem("token");
-
     dispatch(removeUser());
+    await axios.post("/api/v1/user/signout", {}, getBearerToken());
     dispatch(setLoading(false));
   } catch (error) {
     console.log(error);
+    dispatch(setLoading(false));
   }
 };
 
@@ -71,10 +65,7 @@ export const asyncremoveUser = () => async (dispatch, getState) => {
 export const avatar = (formData, id) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const token = localStorage.getItem("token");
-    await axios.post(`/api/v1/user/avatar/${id}`, formData, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    await axios.post(`/api/v1/user/avatar/${id}`, formData, getBearerToken());
     dispatch(asynccurrentUser());
   } catch (error) {
     dispatch(setLoading(false));
@@ -85,10 +76,7 @@ export const avatar = (formData, id) => async (dispatch) => {
 export const editprofile = (formData, id) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const token = localStorage.getItem("token");
-    await axios.post(`/api/v1/user/edituser/${id}`, formData, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    await axios.post(`/api/v1/user/edituser/${id}`, formData, getBearerToken());
     dispatch(asynccurrentUser());
   } catch (error) {
     dispatch(setLoading(false));
@@ -138,10 +126,7 @@ export const forgotpassword = (data, navigate) => async (dispatch) => {
 export const resetPassword = (formData, id) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const token = localStorage.getItem("token");
-    await axios.post(`/api/v1/user/resetpassword/${id}`, formData, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    await axios.post(`/api/v1/user/resetpassword/${id}`, formData, getBearerToken());
     dispatch(setLoading(false));
   } catch (error) {
     dispatch(setLoading(false));
@@ -152,10 +137,7 @@ export const resetPassword = (formData, id) => async (dispatch) => {
 export const addEducation = (formData, id) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const token = localStorage.getItem("token");
-    await axios.post(`/api/v1/user/edituser/${id}/education`, formData, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    await axios.post(`/api/v1/user/edituser/${id}/education`, formData, getBearerToken());
     dispatch(asynccurrentUser());
   } catch (error) {
     dispatch(setLoading(false));
@@ -166,10 +148,7 @@ export const addEducation = (formData, id) => async (dispatch) => {
 export const addAchievement = (formData, id) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const token = localStorage.getItem("token");
-    await axios.post(`/api/v1/user/edituser/${id}/achievement`, formData, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    await axios.post(`/api/v1/user/edituser/${id}/achievement`, formData, getBearerToken());
     dispatch(asynccurrentUser());
   } catch (error) {
     dispatch(setLoading(false));
@@ -180,10 +159,7 @@ export const addAchievement = (formData, id) => async (dispatch) => {
 export const updateSocialMedia = (formData, id) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const token = localStorage.getItem("token");
-    await axios.post(`/api/v1/user/edituser/${id}/socialmedia`, formData, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    await axios.post(`/api/v1/user/edituser/${id}/socialmedia`, formData, getBearerToken());
     dispatch(asynccurrentUser());
   } catch (error) {
     dispatch(setLoading(false));
