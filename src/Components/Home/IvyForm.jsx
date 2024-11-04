@@ -239,7 +239,7 @@ export default function IvyForm() {
   };
 
   const validateForm = () => {
-    const excludedFields = ["physicaldisabilitiestype"];
+    const excludedFields = ["physicaldisabilitiestype","skills"];
     return Object.entries(userInput)
       .filter(([key]) => !excludedFields.includes(key))
       .every(([, value]) => typeof value === "string" ? value.trim() !== "" : value !== null && value !== undefined);
@@ -322,7 +322,7 @@ export default function IvyForm() {
         <div className="w-full h-20  relative  flex items-center justify-center  ">
           <div className="w-44 absolute left-0 h-full flex items-center justify-center">
             <Link
-              className=" h-10 gap-3 rounded-full  bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
+              className=" h-12 gap-3 rounded-full  bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
               to={-1}
             >
               <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">

@@ -172,7 +172,7 @@ function IVYHome() {
               Your Vardaan Roadmap – Monthly Goals to Secure Your Spot
             </h1>
             <p className="text-center mt-3 text-zinc-600 text-lg leading-5">
-              DWith Krishna MIT as your guide, He will build a tailored “Vardaan
+              With Krishna MIT as your guide, He will build a tailored “Vardaan
               Roadmap”—a monthly action plan with powerful tasks, goals, and
               blueprints that ensure you’re on the right path. If you’re in the
               Ivy Accelerator, download your exclusive roadmap and get started!
@@ -194,7 +194,7 @@ function IVYHome() {
               Extracurricular Booster – Stand Out, Shine Bright
             </h1>
             <p className="text-center mt-3 text-zinc-600 text-lg leading-5">
-              DGet ready for an EC transformation! Our powerhouse team of
+              Get ready for an EC transformation! Our powerhouse team of
               designers, researchers, marketers, and more will supercharge your
               extracurricular profile with unmatched quality. Plus, we’re
               teaming up with top startups, investors, and university students
