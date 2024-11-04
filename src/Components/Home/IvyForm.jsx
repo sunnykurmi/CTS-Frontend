@@ -239,7 +239,7 @@ export default function IvyForm() {
   };
 
   const validateForm = () => {
-    const excludedFields = ["physicaldisabilitiestype","skills"];
+    const excludedFields = ["physicaldisabilitiestype","satScore"];
     return Object.entries(userInput)
       .filter(([key]) => !excludedFields.includes(key))
       .every(([, value]) => typeof value === "string" ? value.trim() !== "" : value !== null && value !== undefined);

@@ -12,6 +12,7 @@ import AllPortfolios from "./AllPortfolios";
 import { RiArrowRightLine, RiCloseLine } from "@remixicon/react";
 import AllExams from './AllExams';
 import AllPaymentsHome from "./Payments/AllPaymentsHome";
+import AllIVYForms from './AllIVYForms';
 
 export default function AdminHome() {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ export default function AdminHome() {
             {selectedComponent === "AllPortfolios" && <AllPortfolios />}
             {selectedComponent === "AllExams" && <AllExams />}
             {selectedComponent === "AllPayments" && <AllPaymentsHome />}
+            {selectedComponent === "AllIVYForms" && <AllIVYForms />}
           </div>
         </div>
       </div>
@@ -108,6 +110,8 @@ export default function AdminHome() {
             {selectedComponent === "AllPortfolios" && <AllPortfolios />}
             {selectedComponent === "AllExams" && <AllExams />}
             {selectedComponent === "AllPayments" && <AllPaymentsHome />}
+            {selectedComponent === "AllIVYForms" && <AllIVYForms />}
+
 
           </div>
         </div>

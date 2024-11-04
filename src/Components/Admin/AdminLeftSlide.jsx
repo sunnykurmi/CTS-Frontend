@@ -88,6 +88,17 @@ export default function AdminLeftSlide({ selectedComponent, setSelectedComponent
               <p>All Payments</p>
             </button>
           </div>
+          <div className="w-full h-[8vh] flex items-center justify-center">
+            <button
+              className={getButtonClass("AllIVYForms")}
+              onClick={() => {
+                setSelectedComponent("AllIVYForms");
+                closeSidebar();
+              }}
+            >
+              <p>All IVY Forms</p>
+            </button>
+          </div>
         </div>
       </div>
     </div>

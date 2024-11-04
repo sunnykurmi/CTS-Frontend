@@ -282,3 +282,40 @@ export const getallexampreppayments = () => async (dispatch) => {
     throw error;
   }
 };
+
+
+export const getallivyforms = () => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      "/api/v1/admin/getall_ivy_forms",
+      {},
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data.forms;
+  } catch (error) {
+    dispatch(setLoading(false));
+    throw error;
+  }
+};
+
+export const sendivymail = (formdata) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      "/api/v1/admin/send_ivy_form_mail",
+      formdata,
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data.forms;
+  } catch (error) {
+    dispatch(setLoading(false));
+    throw error;
+  }
+};
+
+
+
+
