@@ -14,6 +14,7 @@ import {
   asyncremoveUser,
 } from "../../../store/Actions/userActions";
 import { admins } from "../../../utils/Admins";
+import Loader from "../../Loader/Loader";
 
 export default function Userdropdown() {
   const { user } = useSelector((state) => state.user);
@@ -38,10 +39,7 @@ export default function Userdropdown() {
   return (
     <div>
       {isLoading ? (
-        <div className="fixed top-0 z-[9999] w-full h-[100vh] bg-[#b1b1b1d6] flex flex-col items-center justify-center">
-          <img className="w-[5%]" src="/Images/loading.webp" alt="Loading" />
-          <p className="text-2xl mt-5 font-semibold">Loading...</p>
-        </div>
+        <Loader />
       ) : (
         <div className=" text-xl fixed z-[999] right-2 py-2 px-2 border-2 flex items-start justify-center flex-col bg-white shadow-lg ">
           <Link to="/" className="hover:bg-zinc-300 w-full p-2 rounded-md">
