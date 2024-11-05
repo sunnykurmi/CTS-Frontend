@@ -10,7 +10,7 @@ const ServicesHome = () => {
       title: "Essay Editing",
       description:
         "Turn your essay into a powerful story! Our Ivy League experts will edit and enhance your writing to make it stand out. Submit your essay for a professional review and get one step closer to your dream college. Enroll now for a polished, compelling essay!",
-      image: "/Images/Essay-editing.webp",
+      image: "/Images/Essay-editing.png",
       link: "/services/essay-editing",
       button: "Book Now",
     },
@@ -18,7 +18,7 @@ const ServicesHome = () => {
       title: "Common App Review",
       description:
         "Perfect your Common App with expert review! 80% of students make mistakes—don’t be one of them. Our team will polish your activities and ensure every section shines. Enroll now to submit an error-free, standout application!",
-      image: "/Images/common-app-review.jpg",
+      image: "/Images/common-app-review.png",
       link: "/services/common-app-review",
       button: "Book Now",
     },
@@ -26,7 +26,7 @@ const ServicesHome = () => {
       title: "CSS Profile Help",
       description:
         "Your CSS Profile could be the key to unlocking valuable financial aid! Don’t let mistakes or overlooked sections cost you. Our CSS Profile Review program ensures your submission is accurate and maximizes your chances for aid. Let us help you secure the support you deserve—schedule your review today!",
-      image: "/Images/css-profile-helper.jpg",
+      image: "/Images/css-profile-helper.png",
       link: "/services/css-profile",
       button: "Book Now",
     },
@@ -45,7 +45,7 @@ const ServicesHome = () => {
   };
 
   return (
-    <div id="services">
+    <div id="services" className="bg-[#F5FAFE]">
       <HomeNav />
       <div className="w-full">
         <h1 className="text-4xl font-bold text-center max-[456px]:mt-5">

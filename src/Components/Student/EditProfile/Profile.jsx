@@ -297,11 +297,14 @@ export default function Profile() {
             </div>
             <div className="w-[60%]">
               <div className="flex">
-                <div className=" w-[80%] capitalize  mb-5">
-                  {user.socialmedia && user.socialmedia !== "" ? (
-                    <div className="">
-                      <div className=" flex gap-4 items-center   text-xl font-semibold ">
-                        {user.socialmedia.gmail !== "" ? (
+                <div className="w-[80%] capitalize mb-5">
+                  {user.socialmedia &&
+                  Object.values(user.socialmedia).some(
+                    (link) => link !== ""
+                  ) ? (
+                    <div>
+                      <div className="flex gap-4 items-center text-xl font-semibold">
+                        {user.socialmedia.gmail && (
                           <div className="w-8 h-8">
                             <a
                               href={`mailto:${user.socialmedia.gmail}`}
@@ -314,11 +317,9 @@ export default function Profile() {
                               />
                             </a>
                           </div>
-                        ) : (
-                          ""
                         )}
-                        {user.socialmedia.youtube !== "" ? (
-                          <div className="w-8 h-8 ">
+                        {user.socialmedia.youtube && (
+                          <div className="w-8 h-8">
                             <a
                               href={user.socialmedia.youtube}
                               target="_blank"
@@ -326,15 +327,13 @@ export default function Profile() {
                             >
                               <img
                                 src="https://cdn-icons-png.flaticon.com/256/1384/1384060.png"
-                                alt=""
+                                alt="YouTube"
                               />
                             </a>
                           </div>
-                        ) : (
-                          ""
                         )}
-                        {user.socialmedia.linkedin !== "" ? (
-                          <div className="w-8 h-8 ">
+                        {user.socialmedia.linkedin && (
+                          <div className="w-8 h-8">
                             <a
                               href={user.socialmedia.linkedin}
                               target="_blank"
@@ -342,15 +341,13 @@ export default function Profile() {
                             >
                               <img
                                 src="https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk4Mi1kNS0xMF8xLnBuZw.png"
-                                alt=""
+                                alt="LinkedIn"
                               />
                             </a>
                           </div>
-                        ) : (
-                          ""
                         )}
-                        {user.socialmedia.instagram !== "" ? (
-                          <div className="w-7 h-7 ">
+                        {user.socialmedia.instagram && (
+                          <div className="w-7 h-7">
                             <a
                               href={user.socialmedia.instagram}
                               target="_blank"
@@ -358,16 +355,13 @@ export default function Profile() {
                             >
                               <img
                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
-                                alt=""
+                                alt="Instagram"
                               />
                             </a>
                           </div>
-                        ) : (
-                          ""
                         )}
-
-                        {user.socialmedia.facebook !== "" ? (
-                          <div className="w-7 h-7 ">
+                        {user.socialmedia.facebook && (
+                          <div className="w-7 h-7">
                             <a
                               href={user.socialmedia.facebook}
                               target="_blank"
@@ -375,38 +369,31 @@ export default function Profile() {
                             >
                               <img
                                 src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
-                                alt=""
+                                alt="Facebook"
                               />
                             </a>
                           </div>
-                        ) : (
-                          ""
                         )}
-                        {user.socialmedia.twitter !== "" ? (
-                          <div className="w-7 h-7 ">
+                        {user.socialmedia.twitter && (
+                          <div className="w-7 h-7">
                             <a
                               href={user.socialmedia.twitter}
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-
-                            <img
-                              src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png"
-                              alt=""
-                            />
+                              <img
+                                src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png"
+                                alt="Twitter"
+                              />
                             </a>
                           </div>
-                        ) : (
-                          ""
                         )}
                       </div>
-
                       <div>
                         <button
                           onClick={openSocialMedia}
                           className="text-sm center mt-3 py-1 px-4 border-2 rounded-full"
                         >
-                          {" "}
                           <RiPencilLine className="scale-75" /> Edit
                         </button>
                       </div>

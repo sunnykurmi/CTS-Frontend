@@ -1,16 +1,4 @@
 import React, { useEffect, useState } from "react";
-import {
-  RiArrowRightSFill,
-  RiArrowRightSLine,
-  RiBookOpenFill,
-  RiCalendarEventFill,
-  RiCommunityFill,
-  RiGraduationCapFill,
-  RiPresentationFill,
-  RiRoadMapFill,
-  RiTrophyFill,
-  RiUserStarFill,
-} from "@remixicon/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -61,7 +49,7 @@ export default function Home() {
       title: "Essay Editing",
       description:
         "Turn your essay into a powerful story! Our Ivy League experts will edit and enhance your writing to make it stand out. Submit your essay for a professional review and get one step closer to your dream college. Enroll now for a polished, compelling essay!",
-      image: "/Images/Essay-editing.webp",
+      image: "/Images/Essay-editing.png",
       link: "/services/essay-editing",
       button: "Book Now",
     },
@@ -69,7 +57,7 @@ export default function Home() {
       title: "Common App Review",
       description:
         "Perfect your Common App with expert review! 80% of students make mistakes—don’t be one of them. Our team will polish your activities and ensure every section shines. Enroll now to submit an error-free, standout application!",
-      image: "/Images/common-app-review.jpg",
+      image: "/Images/common-app-review.png",
       link: "/services/common-app-review",
       button: "Book Now",
     },
@@ -77,7 +65,7 @@ export default function Home() {
       title: "CSS Profile Help",
       description:
         "Your CSS Profile could be the key to unlocking valuable financial aid! Don’t let mistakes or overlooked sections cost you. Our CSS Profile Review program ensures your submission is accurate and maximizes your chances for aid. Let us help you secure the support you deserve—schedule your review today!",
-      image: "/Images/css-profile-helper.jpg",
+      image: "/Images/css-profile-helper.png",
       link: "/services/css-profile",
       button: "Book Now",
     },
@@ -93,7 +81,7 @@ export default function Home() {
 
   return (
     <div id="home" className="bg-[#F5FAFE]">
-      <div className="w-full flex items-center justify-center fixed z-[9]">
+      <div className="w-full flex items-center justify-center fixed z-[9] max-[600px]:bg-[#E7F9FF]">
         <HomeNav />
       </div>
       <div className="w-full h-[100vh] relative flex items-center justify-center overflow-hidden">
@@ -156,7 +144,7 @@ export default function Home() {
               
               <div
                 key={index}
-                className="feedback-card w-[55vh] h-[50vh] shadow-lg  rounded-md overflow-hidden"
+                className="feedback-card w-[55vh] h-[50vh] shadow-lg  rounded-md overflow-hidden cursor-grab"
               >
                 <div className="feedback-card-img w-full h-[70%]">
                   <img
@@ -248,24 +236,28 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-fit px-20 max-[600px]:px-5 max-[600px]:mt-28">
-        <h1 className="text-5xl font-medium Rubik mt-1">
+      <div className="w-full h-fit px-20 max-[600px]:p-5 max-[600px]:mt-28">
+        <h1 className="text-5xl font-medium Rubik my-5">
           Our <span className="text-[#36C2F3]">Services</span>
         </h1>
-        <div className="w-full h-fit p-10 pl-36 pr-36 grid grid-cols-3 gap-10 place-items-center max-[456px]:grid max-[456px]:grid-cols-1 max-[1180px]:pl-10 max-[1180px]:pr-10">
+        <div className="w-full h-[70vh] flex justify-between items-center max-[600px]:grid max-[600px]:grid-cols-1 max-[600px]:h-fit max-[600px]:p-10 gap-10 place-items-center">
+
           {services.map((service, index) => (
             <div
               key={index}
-              className="w-[45vh] h-[65vh] max-[456px]:h-fit max-[456px]:w-[90vw] shadow-lg rounded-md border-2 max-[456px]:p-5 p-1 flex flex-col justify-between"
+              className="w-[24%] h-[65vh] max-[600px]:w-[85%] max-[600px]:h-[50vh] shadow-lg rounded-md border-2  flex flex-col justify-between"
             >
+              <div className="w-full h-[60%] p-5 rounded-t-md">
+
               <img
                 src={service.image}
                 alt={service.title}
-                className="w-full h-1/2 object-contain rounded-t-md"
+                className="w-full h-full object-cover "
               />
-              <div className="p-4 flex h-1/2 flex-col">
+              </div>
+              <div className="p-4 flex h-[40%] flex-col">
                 <div className="">
-                  <h2 className="text-xl max-[456px]:text-2xl font-bold">
+                  <h2 className="text-xl max-[600px]:text-2xl font-bold">
                     {service.title}
                   </h2>
                 </div>
@@ -276,13 +268,15 @@ export default function Home() {
                 </div>
                 <button
                   onClick={() => NavigateHandler(service.link)}
-                  className="bg-[#008BDC] w-1/2 text-white max-[456px]:text-xl px-4 py-2 rounded-md mt-4"
+                  className="bg-[#008BDC] w-1/2 text-white max-[600px]:text-xl px-4 py-2 rounded-md mt-4"
                 >
                   {service.button}
                 </button>
               </div>
             </div>
           ))}
+
+          
         </div>
       </div>
 

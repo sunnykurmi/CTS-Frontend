@@ -53,13 +53,13 @@ export default function PortfolioHome() {
     setMenuOpen(!menuOpen);
   };
   return (
-    <div>
+    <div className="bg-[#F5FAFE]">
     {!isAuth ? (
       <HomeNav />
     ) : (
       <Nav />
     )}
-      <div className="w-full center uppercase text-4xl mt-5 font-semibold">
+      <div className="w-full center uppercase text-4xl mt-5 font-semibold ">
         <p>Top Portfolios</p>
       </div>
       <div className="w-full grid grid-cols-2 pl-24 gap-5 mt-10 py-10 max-[600px]:mt-0 max-[600px]:grid-cols-1 max-[600px]:gap-5 max-[600px]:pl-0">

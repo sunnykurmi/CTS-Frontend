@@ -215,7 +215,7 @@ export default function AllExams() {
       </div>
       <div className="w-full h-[80vh] px-5 pb-10 overflow-hidden capitalize font-medium">
         {exams.length === 0 ? (
-          <p>No portfolio present</p>
+          <p>No Exams present</p>
         ) : (
           <div className="overflow-y-auto h-full pb-10">
             <table className="min-w-full divide-y divide-gray-200">

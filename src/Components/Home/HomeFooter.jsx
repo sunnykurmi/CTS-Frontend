@@ -13,7 +13,7 @@ const HomeFooter = () => {
             <div className="image-wrapper w-[300px] h-[100px]">
               <img
                 className="max-[600px]:w-[60%] max-[600px]:mt-6 "
-                src="https://www.crosstheskylimits.online/Images/CTS%20%20%20Logo.png"
+                src="Images/CTS Logo.png"
                 alt=""
               />
             </div>
@@ -194,7 +194,7 @@ const HomeFooter = () => {
                 <RiYoutubeFill />
               </a>
             </div>
-            <p className="text-zinc-300">
+            <p className="text-zinc-300 text-center">
               © 2024 Cross The Sky Limits. All rights reserved.
             </p>
           </div>

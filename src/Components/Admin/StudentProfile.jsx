@@ -1,34 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { RiArrowLeftSLine, } from "@remixicon/react";
+import { RiArrowLeftSLine } from "@remixicon/react";
 import Nav from "../Student/Nav";
 import { useDispatch } from "react-redux";
 import { getallusers } from "../../store/Actions/adminAction";
 import Loader from "../Loader/Loader";
 
 export default function StudentProfile() {
-    const  {id} = useParams();
- 
-    console.log(id);
-    const dispatch = useDispatch();
-    const [allstudents, setallstudents] = useState([]);
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await dispatch(getallusers());
-          setallstudents(response);
-        } catch (error) {
-          console.error("Failed to fetch students:", error);
-        }
-      };
-      fetchData();
-    }, [dispatch]);
-    const user = allstudents.find((student) => student._id === id);
+  const { id } = useParams();
 
-    if (!user) {
-      return <Loader />;
-    }
+  const dispatch = useDispatch();
+  const [allstudents, setallstudents] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await dispatch(getallusers());
+        setallstudents(response);
+      } catch (error) {
+        console.error("Failed to fetch students:", error);
+      }
+    };
+    fetchData();
+  }, [dispatch]);
+  const user = allstudents.find((student) => student._id === id);
+
+  if (!user) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -36,8 +35,8 @@ export default function StudentProfile() {
       <div className="w-full pt-10">
         <div className="w-44  left-0 h-full flex items-center justify-center">
           <Link
-            className=" h-12 gap-3 rounded-full  bg-[#F58612] text-white flex items-center justify-center p-2 font-bold"
-            to={-1}
+            className=" h-12 gap-3 rounded-full  bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
+            to={'/admin'}
           >
             <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
               <RiArrowLeftSLine className=" text-[#0000009b]" />{" "}
@@ -48,8 +47,8 @@ export default function StudentProfile() {
       </div>
       <div className=" uppercase flex justify-center items-center mb-5 text-[black] text-3xl  font-semibold w-full  ">
         Student Profile
-      </div> 
-      
+      </div>
+
       <div className=" flex mb-[15vh] justify-center items-center  w-full  ">
         <div className=" w-[60%] max-[600px]:w-full h-full   border-2 rounded-xl  border-[#0000000c] px-10 py-5 ">
           <div className=" w-full flex justify-between pb-5 ">
@@ -64,7 +63,9 @@ export default function StudentProfile() {
                 +91 {user.contact}
               </h1>
               <h1 className="text-lg  text-[#070707b9] font-medium capitalize">
-              {user.city ? `${user.city}, ${user.state} ${user.country}`.toLowerCase() : "India"}
+                {user.city
+                  ? `${user.city}, ${user.state} ${user.country}`.toLowerCase()
+                  : "India"}
               </h1>
             </div>
             <div className="  h-full flex flex-col items-center justify-between">
@@ -75,7 +76,6 @@ export default function StudentProfile() {
                   alt=""
                 />
               </div>
-         
             </div>
           </div>
           <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">
@@ -83,9 +83,9 @@ export default function StudentProfile() {
               BIO
             </div>
             <div className="w-[60%] ">
-            <div className="text-[#151515d0] w-[90%] text-base font-medium capitalize">
-  {user.bio ? user.bio : "-"}
-</div>
+              <div className="text-[#151515d0] w-[90%] text-base font-medium capitalize">
+                {user.bio ? user.bio : "-"}
+              </div>
             </div>
           </div>
           <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">
@@ -93,9 +93,9 @@ export default function StudentProfile() {
               SUMMARY
             </div>
             <div className="w-[60%] ">
-            <div className="text-[#151515d0] w-[90%] text-base font-medium capitalize">
-  {user.summary ? user.summary : "-"}
-</div>
+              <div className="text-[#151515d0] w-[90%] text-base font-medium capitalize">
+                {user.summary ? user.summary : "-"}
+              </div>
             </div>
           </div>
           <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">
@@ -103,13 +103,15 @@ export default function StudentProfile() {
               Date Of Birth
             </div>
             <div className="w-[60%] ">
-            <p className="text-[#151515d0] w-[90%] text-base font-medium capitalize">
-  {user.dateofbirth ? new Date(user.dateofbirth).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  }) : "-"}
-</p>
+              <p className="text-[#151515d0] w-[90%] text-base font-medium capitalize">
+                {user.dateofbirth
+                  ? new Date(user.dateofbirth).toLocaleDateString("en-GB", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })
+                  : "-"}
+              </p>
             </div>
           </div>
           <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">
@@ -117,36 +119,82 @@ export default function StudentProfile() {
               EDUCATION
             </div>
             <div className="w-[60%] ">
-              <div className="flex">
-                <div className=" w-[80%] capitalize  mb-5">
-                  <div className="text-[#151515d0] text-xl font-semibold ">
-                    sagar college bhopal
+              <div className="flex flex-col">
+                {user.education && user.education.currentclass !== "" ? (
+                  <>
+                    <div className="flex max-[600px]:block w-full">
+                      <div className="w-[80%] max-[600px]:w-full capitalize mb-5">
+                        <div className="text-[#151515d0] text-xl font-semibold">
+                          {user?.education?.schoolname}
+                        </div>
+                        <div className="w-[40vh] justify-between flex max-[600px]:w-full">
+                          <div className="text-[#151515d0] text-base font-medium">
+                            <b> class : </b>
+                            {user?.education?.currentclass?.replace(
+                              " Class",
+                              ""
+                            )}
+                          </div>
+                          <div className="text-[#151515d0] w-[50%] text-base font-medium">
+                            <b> score : </b>
+                            {user?.education?.percentage}%
+                          </div>
+                        </div>
+                        <div className="w-[40vh] justify-between max-[600px]:w-full flex gap-5">
+                          <div className="text-[#151515d0] text-base font-medium">
+                            <b> Board : </b>
+                            {user?.education?.educationBoard}
+                          </div>
+                          <div className="text-[#151515d0] w-[50%] text-base font-medium">
+                            <b> year : </b>
+                            {user?.education?.passingyear}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {user.education &&
+                    user.education.class10schoolname !== "" ? (
+                      <div className="flex max-[600px]:block w-full">
+                        <div className="w-[80%] capitalize mb-5 max-[600px]:w-full">
+                          <div className="text-[#151515d0] text-xl font-semibold max-[600px]:mb-1">
+                            {user?.education?.class10schoolname}
+                          </div>
+                          <div className="w-[40vh] justify-between flex gap-5 max-[600px]:w-full">
+                            <div className="text-[#151515d0] text-base font-medium">
+                              <b> class : </b>
+                              10th
+                            </div>
+                            <div className="text-[#151515d0] w-[50%] text-base font-medium">
+                              <b> score : </b>
+                              {user?.education?.class10percentage}%
+                            </div>
+                          </div>
+                          <div className="w-[40vh] justify-between flex gap-5 max-[600px]:w-full">
+                            <div className="text-[#151515d0] text-base font-medium">
+                              <b> Board : </b>
+                              {user?.education?.class10educationBoard}
+                            </div>
+                            <div className="text-[#151515d0] w-[50%] text-base font-medium">
+                              <b> year : </b>
+                              {user?.education?.class10passingyear}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </>
+                ) : (
+                  <div className="text-[#151515d0] text-base font-medium">
+                    No Education provided
                   </div>
-                  <div className=" w-[40vh]  justify-between  flex gap-5">
-                    <div className="text-[#151515d0] text-base font-medium ">
-                      <b> class : </b>
-                      10<sup className="font-medium normal-case">th</sup>
-                    </div>
-                    <div className="text-[#151515d0] w-[50%] text-base font-medium ">
-                      <b> score : </b>
-                      68%
-                    </div>
-                  </div>
-                  <div className="  w-[40vh] justify-between flex gap-5">
-                    <div className="text-[#151515d0] text-base font-medium ">
-                      <b> Board : </b>
-                      CBSE
-                    </div>
-                    <div className="text-[#151515d0] w-[50%] text-base font-medium ">
-                      <b> year : </b>
-                      2019-2020
-                    </div>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
-          <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">
+          {/* <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">
             <div className="w-[30%]    text-[#1515159d] text-base font-medium ">
               ACHIEVEMENTS
             </div>
@@ -163,40 +211,111 @@ export default function StudentProfile() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className=" flex border-t-2 border-[#0000000c] py-[4vh]  w-full  ">
             <div className="w-[30%]    text-[#1515159d] text-base font-medium ">
               SOCIAL MEDIA
             </div>
             <div className="w-[60%] ">
               <div className="flex">
-                <div className=" w-[80%] capitalize  mb-5">
-                  <div className=" flex gap-2 items-center   text-xl font-semibold ">
-                    <div className="w-8 h-8 ">
-                      <img
-                        src="https://cdn.iconscout.com/icon/free/png-256/free-gmail-logo-icon-download-in-svg-png-gif-file-formats--mail-email-logos-icons-2416660.png?f=webp"
-                        alt=""
-                      />
+                <div className="w-[80%] capitalize mb-5">
+                  {user.socialmedia &&
+                  Object.values(user.socialmedia).some(
+                    (link) => link !== ""
+                  ) ? (
+                    <div>
+                      <div className="flex gap-4 items-center text-xl font-semibold">
+                        {user.socialmedia.gmail && (
+                          <div className="w-8 h-8">
+                            <a
+                              href={`mailto:${user.socialmedia.gmail}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <img
+                                src="https://cdn.iconscout.com/icon/free/png-256/free-gmail-logo-icon-download-in-svg-png-gif-file-formats--mail-email-logos-icons-2416660.png?f=webp"
+                                alt="Gmail"
+                              />
+                            </a>
+                          </div>
+                        )}
+                        {user.socialmedia.youtube && (
+                          <div className="w-8 h-8">
+                            <a
+                              href={user.socialmedia.youtube}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <img
+                                src="https://cdn-icons-png.flaticon.com/256/1384/1384060.png"
+                                alt="YouTube"
+                              />
+                            </a>
+                          </div>
+                        )}
+                        {user.socialmedia.linkedin && (
+                          <div className="w-8 h-8">
+                            <a
+                              href={user.socialmedia.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <img
+                                src="https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk4Mi1kNS0xMF8xLnBuZw.png"
+                                alt="LinkedIn"
+                              />
+                            </a>
+                          </div>
+                        )}
+                        {user.socialmedia.instagram && (
+                          <div className="w-7 h-7">
+                            <a
+                              href={user.socialmedia.instagram}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
+                                alt="Instagram"
+                              />
+                            </a>
+                          </div>
+                        )}
+                        {user.socialmedia.facebook && (
+                          <div className="w-7 h-7">
+                            <a
+                              href={user.socialmedia.facebook}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <img
+                                src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+                                alt="Facebook"
+                              />
+                            </a>
+                          </div>
+                        )}
+                        {user.socialmedia.twitter && (
+                          <div className="w-7 h-7">
+                            <a
+                              href={user.socialmedia.twitter}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <img
+                                src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png"
+                                alt="Twitter"
+                              />
+                            </a>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                    <div className="w-6 h-6 ">
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
-                        alt=""
-                      />
+                  ) : (
+                    <div className="text-[#151515d0] text-base font-medium">
+                      No social media links provided
                     </div>
-                    <div className="w-6 h-6 ">
-                      <img
-                        src="https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk4Mi1kNS0xMF8xLnBuZw.png"
-                        alt=""
-                      />
-                    </div>
-                    <div className="w-7 h-7 ">
-                      <img
-                        src="https://cdn-icons-png.flaticon.com/256/1384/1384060.png"
-                        alt=""
-                      />
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>

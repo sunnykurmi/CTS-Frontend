@@ -20,7 +20,7 @@ const ExamHome = () => {
       title: "SAT",
       description:
         "Prepare thoroughly for the SAT with in-depth guidance across math, reading, and writing sections. Our expert-led program equips students with effective strategies and skills to boost scores and maximize college admission opportunities.",
-      image: "/Images/Essay-editing.webp",
+      image: "/Images/SAT_logo.svg",
       link: "/services/exam-prepration/sat-prepration",
       button: "Book Now",
     },
@@ -80,7 +80,7 @@ const ExamHome = () => {
   }, [dispatch]);
 
   return (
-    <div id="services">
+    <div id="services" className="bg-[#F5FAFE]">
       <HomeNav />
       <div className="w-full">
         <h1 className="text-4xl font-bold text-center max-[600px]:mt-5">

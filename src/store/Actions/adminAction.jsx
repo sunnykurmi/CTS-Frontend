@@ -276,7 +276,7 @@ export const getallexampreppayments = () => async (dispatch) => {
       getBearerToken()
     );
     dispatch(setLoading(false));
-    return response.data.commonapp;
+    return response.data.examprep;
   } catch (error) {
     dispatch(setLoading(false));
     throw error;
