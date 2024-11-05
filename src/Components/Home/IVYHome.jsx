@@ -1,13 +1,29 @@
 import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RiArrowLeftSLine } from "@remixicon/react";
+import { useSelector } from "react-redux";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function IVYHome() {
+  const navigate = useNavigate();
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const isAuth = useSelector((state) => state.user.isAuth);
+
+  const checkLoginHandler = () => {
+    if (!isAuth) {
+      window.alert("Please login first");
+      navigate("/login", { state: { from: `/ivy-form` } });
+      return;
+    }
+  };
+
+
+
+
+
 
   useEffect(() => {
     gsap.to(".straightLine", {
@@ -70,11 +86,12 @@ function IVYHome() {
           fast track to top universities—don’t let this opportunity slip by!
           Apply now and secure your spot before it’s too late!
         </p>
-        <Link to={"/ivy-form"}>
-          <button className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
+        
+          <button 
+          onClick={checkLoginHandler} className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
             Apply Now
           </button>
-        </Link>
+        
       </div>
       <div className="ivyhero w-full h-fit p-5">
         <h2 className="text-zinc-400 text-xl font-medium text-start ml-48 max-[600px]:ml-0">
@@ -115,11 +132,13 @@ function IVYHome() {
               impact your application. Just bring your ambition, and we’ll
               handle the rest.{" "}
             </p>
-            <Link to={"/ivy-form"}>
-              <button className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
+            
+              <button 
+              onClick={checkLoginHandler}
+               className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
                 Apply Now
               </button>
-            </Link>
+          
           </div>
         </div>
         <div className="ivystep-1 flex justify-between mt-20 items-center bg-white max-[600px]:flex-col-reverse">

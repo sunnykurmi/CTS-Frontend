@@ -117,3 +117,18 @@ html {
     margin-top: 3px;
     font-size: 1.5rem; /* Adjust size as needed */
   }
+  
+  @keyframes dropdown {
+    from {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .animate-dropdown {
+    animation: dropdown 0.3s ease-in-out forwards;
+  }

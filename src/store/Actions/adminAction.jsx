@@ -316,6 +316,22 @@ export const sendivymail = (formdata) => async (dispatch) => {
   }
 };
 
+export const removeivyapproval = (formdata) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const response = await axios.post(
+      "/api/v1/admin/remove_ivy_approval",
+      formdata,
+      getBearerToken()
+    );
+    dispatch(setLoading(false));
+    return response.data.forms;
+  } catch (error) {
+    dispatch(setLoading(false));
+    throw error;
+  }
+};
+
 
 
 

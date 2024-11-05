@@ -10,9 +10,16 @@ import {
   RiWindow2Line,
 } from "@remixicon/react";
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-export default function LeftSlide({ selectedComponent, setSelectedComponent,closeSidebar }) {
+export default function LeftSlide({
+  selectedComponent,
+  setSelectedComponent,
+  closeSidebar,
+}) {
+  const { user } = useSelector((state) => state.user);
+
   const getButtonClass = (component) => {
     return selectedComponent === component
       ? "flex gap-4 items-center justify-start pl-6 font-semibold h-[90%] w-[80%] border-2 border-[#2a2a2ab6] rounded-lg bg-[black] text-white"
@@ -41,16 +48,20 @@ export default function LeftSlide({ selectedComponent, setSelectedComponent,clos
               <p className="max-[600px]:">Dashboard</p>
             </button>
           </div>
-
-          <div className="w-full h-[8vh] flex items-center justify-center">
-            <button
-              className={getButtonClass("Roadmap")}
-              onClick={() => {setSelectedComponent("Roadmap"); closeSidebar();}}
-            >
-              <RiRoadMapLine />
-              <p>Roadmap</p>
-            </button>
-          </div>
+          {user && user.ivystudent === "yes" && (
+            <div className="w-full h-[8vh] flex items-center justify-center">
+              <button
+                className={getButtonClass("Roadmap")}
+                onClick={() => {
+                  setSelectedComponent("Roadmap");
+                  closeSidebar();
+                }}
+              >
+                <RiRoadMapLine />
+                <p>Roadmap</p>
+              </button>
+            </div>
+          )}
         </div>
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2 w-full justify-center px-6">
@@ -107,7 +118,9 @@ export default function LeftSlide({ selectedComponent, setSelectedComponent,clos
               to={"/services"}
             >
               <RiSpyFill />
-              <p className="whitespace-nowrap max-[393px]:whitespace-normal min-[600px]:whitespace-normal">Exclusive Services</p>
+              <p className="whitespace-nowrap max-[393px]:whitespace-normal min-[600px]:whitespace-normal">
+                Exclusive Services
+              </p>
             </Link>
           </div>
         </div>
