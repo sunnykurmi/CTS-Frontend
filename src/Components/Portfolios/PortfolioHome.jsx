@@ -94,7 +94,7 @@ export default function PortfolioHome() {
       </div>
       <div
         id="portfolio-videos"
-        className="w-full grid grid-cols-2 pl-24 gap-5 mt-10 py-10 max-[600px]:mt-0 max-[600px]:grid-cols-1 max-[600px]:gap-5 max-[600px]:pl-0"
+        className="w-full max-[600px]:hidden grid grid-cols-2 pl-24 gap-5 mt-10 py-10 max-[600px]:mt-0 max-[600px]:grid-cols-1 max-[600px]:gap-5 max-[600px]:pl-0"
       >
         {Portfolios.map((portfolio, i) => (
           <div
@@ -109,7 +109,6 @@ export default function PortfolioHome() {
                 muted
                 className="w-full h-full object-cover"
                 src={portfolio.video.url}
-                playsInline
               ></video>
             </Link>
 
@@ -157,6 +156,29 @@ export default function PortfolioHome() {
                 </a>
               </div>
             )}
+          </div>
+        ))}
+      </div>
+
+      <div
+        id="portfolio-videos"
+        className="w-full grid grid-cols-2 pl-24 gap-5 mt-10 py-10 max-[600px]:mt-0 max-[600px]:grid-cols-1 max-[600px]:gap-5 max-[600px]:pl-0"
+      >
+        {Portfolios.map((portfolio, i) => (
+          <div
+            key={i}
+            className="relative min-[600px]:hidden w-[40vw] h-[20vw] overflow-hidden border-2 rounded-xl  max-[600px]:w-[90%] max-[600px]:ml-[5%] max-[600px]:h-[60vw]"
+          >
+            <Link to={`/portfolio/${portfolio._id}`}>
+              <video
+                loop
+                muted
+                className="w-full h-full object-cover"
+                src={portfolio.video.url}
+              ></video>
+            </Link>
+
+          
           </div>
         ))}
       </div>

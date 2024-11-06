@@ -28,7 +28,7 @@ const ExamHome = () => {
       title: "IELTS",
       description:
         "Achieve a high IELTS score by strengthening your English listening, reading, writing, and speaking skills. Our structured training and expert tips provide the confidence and proficiency needed to meet international standards for study or immigration.",
-      image: "/Images/common-app-review.jpg",
+      image: "/Images/ielts.JPG",
       link: "/services/exam-prepration/ielts-prepration",
       button: "Book Now",
     },
@@ -42,7 +42,7 @@ const ExamHome = () => {
       title: "TOEFL",
       description:
         "Master the TOEFL exam through targeted training in English language skills essential for academic and professional success. Our program emphasizes fluency, comprehension, and test-specific strategies for excelling in English-speaking environments.",
-      image: "/Images/css-profile-helper.jpg",
+      image: "/Images/toelf.JPG",
       link: "/services/exam-prepration/toefl-prepration",
       button: "Book Now",
     },
@@ -50,7 +50,7 @@ const ExamHome = () => {
       title: "DET",
       description:
         "Prepare effectively for the Duolingo English Test (DET) with tailored language exercises. Our focused approach ensures proficiency in reading, listening, speaking, and writing, helping you achieve your desired score in a flexible, convenient test format.",
-      image: "/Images/sat-exam.png",
+      image: "/Images/det.JPG",
       link: "/services/exam-prepration/det-prepration",
       button: "Book Now",
     },
