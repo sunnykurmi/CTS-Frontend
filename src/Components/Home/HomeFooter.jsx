@@ -1,5 +1,6 @@
 import { RiInstagramFill, RiLinkedinBoxFill, RiWhatsappFill, RiYoutubeFill } from "@remixicon/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HomeFooter = () => {
   return (
@@ -22,148 +23,148 @@ const HomeFooter = () => {
                 <h2 className="text-white font-semibold mb-2">ROADMAP</h2>
                 <a
                   href="#home"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   Home
                 </a>
                 <a
                   href="/signup"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   Start for free
                 </a>
                 <a
                   href="/login"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   Login now
                 </a>
               </div>
               <div className="section">
                 <h2 className="text-white font-semibold mb-2">FEATURES</h2>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                <Link
+                  to={"/services"}
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
-                  WhatsApp Communities
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  Exclusive Services
+                </Link>
+                <Link
+                  to={"/services/essay-editing"}
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
-                  Challenges
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  Essay Editing
+                </Link>
+                <Link
+                  to={"/services/common-app-review"}
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
-                  Event Hosting
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  Common App Review
+                </Link>
+                <Link
+                  to={"/apply-internship-form"}
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   CTS Internships
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                </Link>
+                <Link
+                  to={"/services/css-profile"}
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
-                  SATisfactory
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  CSS Profile Help
+                </Link>
+                <Link
+                  to={"/services/exam-prepration/sat-prepration"}
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   DSAT Crash Course
-                </a>
+                </Link>
                 <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  href="#cts-graduate"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   CTS Graduate
                 </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                <Link
+                  to={"/portfolio"}
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   Personalized Portfolio
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                </Link>
+                <Link
+                  to={"/services/exam-prepration"}
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
-                  Interlango Plus
-                </a>
+                  Exam Prepration
+                </Link>
               </div>
               <div className="section">
                 <h2 className="text-white font-semibold mb-2">USE CASES</h2>
                 <a
                   href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   For UnderGrade Students
                 </a>
                 <a
                   href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   For High School Students
                 </a>
                 <a
                   href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   For Graduate Students
                 </a>
                 <a
                   href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   For Aspiring Parents
                 </a>
                 <a
                   href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   For Networking
                 </a>
                 <a
                   href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   Aspiring Communities
                 </a>
               </div>
               <div className="section">
                 <h2 className="text-white font-semibold mb-2">ORGANIZATION</h2>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                <Link
+                  to="/about-us"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   About Us
-                </a>
+                </Link>
                 <a
                   href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   Partner With Us
                 </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                <Link
+                  to={"/privacy-policy"}  
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
-                  Career
-                </a>
-                <a
-                  href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  Terms & Conditions
+                </Link>
+                <Link
+                  to="/privacy-policy"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
-                  Academy
-                </a>
+                  Privacy-policy
+                </Link>
                 <a
                   href="#"
-                  className="text-zinc-300 block ml-3 mb-1 hover:text-zinc-50"
+                  className="text-zinc-300 block ml-1 mb-1 hover:text-zinc-50"
                 >
                   Contact Us
                 </a>

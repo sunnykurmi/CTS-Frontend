@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { AllPortfolio } from "../../store/Actions/portfolioAction";
-import Nav from "../Student/Nav";
 import { asynccurrentUser } from "../../store/Actions/userActions";
 import Loader from "../Loader/Loader";
-import { RiCloseLine, RiMenuLine } from "@remixicon/react";
 import HomeNav from "../Home/HomeNav";
 
 export default function PortfolioHome() {
@@ -74,7 +72,7 @@ export default function PortfolioHome() {
             top Ivy Leagues, only we can offer. Get your portfolio now!!
           </div>
           <div className="mt-5">
-            <button className="p-3 px-4 text-white bg-[#31C8FD] rounded-lg font-medium uppercase">
+            <button className="p-3 px-4 text-white bg-[#008BDC] rounded-lg font-medium uppercase">
               <a href="#portfolio-videos">explore portfolio</a>
             </button>
           </div>
@@ -94,7 +92,7 @@ export default function PortfolioHome() {
       </div>
       <div
         id="portfolio-videos"
-        className="w-full max-[600px]:hidden grid grid-cols-2 pl-24 gap-5 mt-10 py-10 max-[600px]:mt-0 max-[600px]:grid-cols-1 max-[600px]:gap-5 max-[600px]:pl-0"
+        className="w-full grid grid-cols-2 pl-24 gap-5 mt-10 py-10 max-[600px]:mt-0 max-[600px]:grid-cols-1 max-[600px]:gap-5 max-[600px]:pl-0"
       >
         {Portfolios.map((portfolio, i) => (
           <div
@@ -109,6 +107,7 @@ export default function PortfolioHome() {
                 muted
                 className="w-full h-full object-cover"
                 src={portfolio.video.url}
+                playsInline
               ></video>
             </Link>
 
@@ -156,29 +155,6 @@ export default function PortfolioHome() {
                 </a>
               </div>
             )}
-          </div>
-        ))}
-      </div>
-
-      <div
-        id="portfolio-videos"
-        className="w-full grid grid-cols-2 pl-24 gap-5 mt-10 py-10 max-[600px]:mt-0 max-[600px]:grid-cols-1 max-[600px]:gap-5 max-[600px]:pl-0"
-      >
-        {Portfolios.map((portfolio, i) => (
-          <div
-            key={i}
-            className="relative min-[600px]:hidden w-[40vw] h-[20vw] overflow-hidden border-2 rounded-xl  max-[600px]:w-[90%] max-[600px]:ml-[5%] max-[600px]:h-[60vw]"
-          >
-            <Link to={`/portfolio/${portfolio._id}`}>
-              <video
-                loop
-                muted
-                className="w-full h-full object-cover"
-                src={portfolio.video.url}
-              ></video>
-            </Link>
-
-          
           </div>
         ))}
       </div>

@@ -146,9 +146,9 @@ const HomeNav = () => {
                   </div>
                 )}
               </div>
-              <a className="hover-link" href="#about">
+              <Link className="hover-link" to={'/about-us'}>
                 about us
-              </a>
+              </Link>
             </div>
             {isAuth ? (
               <div className="w-fit h-full flex items-center justify-evenly max-[600px]:hidden">
@@ -199,9 +199,9 @@ const HomeNav = () => {
             Internship
           </Link>
           <Link to={"/services"}>Services</Link>
-          <a className="hover-link" href="#about">
+          <Link className="hover-link" to={"/about-us"}>
             about us
-          </a>
+          </Link>
           <Link to="/login" className="">
             Login
           </Link>

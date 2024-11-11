@@ -81,16 +81,24 @@ function IVYHome() {
         <h1 className="text-4xl Rubik font-bold max-[600px]:text-3xl">Acceptance Rate : 16%</h1>
         <p className="text-lg Rubik font-[500] w-[55%] text-center leading-6 mt-5 max-[600px]:w-full">
           Note: We focus on quality, not quantity. With an acceptance rate of
-          just 16%, IV Accelerator is an elite program designed for those who
+          just 16%, IVY Accelerator is an elite program designed for those who
           truly stand out. This is your chance to join the select few on the
           fast track to top universities—don’t let this opportunity slip by!
           Apply now and secure your spot before it’s too late!
         </p>
-        
+        {isAuth ? (
+          <Link to={"/ivy-form"}>
+          <button  className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
+            Apply Now
+          </button>
+        </Link>
+        ):(
           <button 
           onClick={checkLoginHandler} className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
             Apply Now
           </button>
+          
+        )}
         
       </div>
       <div className="ivyhero w-full h-fit p-5">
@@ -132,12 +140,20 @@ function IVYHome() {
               impact your application. Just bring your ambition, and we’ll
               handle the rest.{" "}
             </p>
-            
-              <button 
-              onClick={checkLoginHandler}
-               className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
-                Apply Now
-              </button>
+            {isAuth ? (
+          <Link to={"/ivy-form"}>
+          <button  className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
+            Apply Now
+          </button>
+        </Link>
+        ):(
+          <button 
+          onClick={checkLoginHandler} className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
+            Apply Now
+          </button>
+          
+        )}
+              
           
           </div>
         </div>

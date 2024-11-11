@@ -113,7 +113,10 @@ export default function Home() {
         />
       </div>
 
-      <div className="w-full h-[80vh] p-20 max-[600px]:p-5 max-[600px]:h-[60vh]">
+      <div
+        id="cts-graduate"
+        className="w-full h-[80vh] p-20 max-[600px]:p-5 max-[600px]:h-[60vh]"
+      >
         <h2 className="text-zinc-600 uppercase">1000+ Success Stories</h2>
         <div>
           <h1 className="text-4xl font-medium Rubik mt-1">
@@ -141,41 +144,38 @@ export default function Home() {
           >
             {feedbackData.map((feedback, index) => (
               <SwiperSlide className="center" key={`slide-${index}`}>
-              
-              <div
-                key={index}
-                className="feedback-card w-[55vh] h-[50vh] shadow-lg  rounded-md overflow-hidden cursor-grab"
-              >
-                <div className="feedback-card-img w-full h-[70%]">
-                  <img
-                    className="w-full h-full  object-contain"
-                    src={feedback.img}
-                    alt={feedback.name}
-                  />
-                </div>
-                <div className="feedback-card-content w-full h-[30%]  px-5 flex items-center gap-5">
-                  <div className="w-[20%]">
-                    <div className="size-16 rounded-full  overflow-hidden">
-                      <img
-                        className="size-full object-cover"
-                        src={feedback.img}
-                        alt={feedback.name}
-                      />
-                    </div>
+                <div
+                  key={index}
+                  className="feedback-card w-[55vh] h-[50vh] shadow-lg  rounded-md overflow-hidden cursor-grab"
+                >
+                  <div className="feedback-card-img w-full h-[70%]">
+                    <img
+                      className="w-full h-full  object-contain"
+                      src={feedback.img}
+                      alt={feedback.name}
+                    />
                   </div>
-                  <p className="text-lg font-normal">
-                    <span className="font-bold">{feedback.name}</span> <br />
-                    <span className="text-sm capitalize">
-                    studying at {feedback.university}
-
-                    </span>
-                  </p>
+                  <div className="feedback-card-content w-full h-[30%]  px-5 flex items-center gap-5">
+                    <div className="w-[20%]">
+                      <div className="size-16 rounded-full  overflow-hidden">
+                        <img
+                          className="size-full object-cover"
+                          src={feedback.img}
+                          alt={feedback.name}
+                        />
+                      </div>
+                    </div>
+                    <p className="text-lg font-normal">
+                      <span className="font-bold">{feedback.name}</span> <br />
+                      <span className="text-sm capitalize">
+                        studying at {feedback.university}
+                      </span>
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
+              </SwiperSlide>
             ))}
           </Swiper>
-          
         </div>
 
         <div className="slides relative h-full w-full  min-[600px]:hidden ">
@@ -198,85 +198,78 @@ export default function Home() {
           >
             {feedbackData.map((feedback, index) => (
               <SwiperSlide className="center" key={`slide-${index}`}>
-              
-              <div
-                key={index}
-                className="feedback-card w-full h-[50vh] shadow-lg  rounded-md overflow-hidden"
-              >
-                <div className="feedback-card-img w-full h-[70%]">
-                  <img
-                    className="w-full h-full  object-contain"
-                    src={feedback.img}
-                    alt={feedback.name}
-                  />
-                </div>
-                <div className="feedback-card-content w-full h-[30%]  px-5 flex items-center gap-5">
-                  <div className="w-[20%]">
-                    <div className="size-16 rounded-full  overflow-hidden">
-                      <img
-                        className="size-full object-cover"
-                        src={feedback.img}
-                        alt={feedback.name}
-                      />
-                    </div>
+                <div
+                  key={index}
+                  className="feedback-card w-full h-[50vh] shadow-lg  rounded-md overflow-hidden"
+                >
+                  <div className="feedback-card-img w-full h-[70%]">
+                    <img
+                      className="w-full h-full  object-contain"
+                      src={feedback.img}
+                      alt={feedback.name}
+                    />
                   </div>
-                  <p className="text-lg font-normal">
-                    <span className="font-bold">{feedback.name}</span> <br />
-                    <span className="text-sm capitalize">
-                    studying at {feedback.university}
-
-                    </span>
-                  </p>
+                  <div className="feedback-card-content w-full h-[30%]  px-5 flex items-center gap-5">
+                    <div className="w-[20%]">
+                      <div className="size-16 rounded-full  overflow-hidden">
+                        <img
+                          className="size-full object-cover"
+                          src={feedback.img}
+                          alt={feedback.name}
+                        />
+                      </div>
+                    </div>
+                    <p className="text-lg font-normal">
+                      <span className="font-bold">{feedback.name}</span> <br />
+                      <span className="text-sm capitalize">
+                        studying at {feedback.university}
+                      </span>
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
+              </SwiperSlide>
             ))}
           </Swiper>
-          
         </div>
       </div>
 
-      <div className="w-full h-fit px-20 max-[600px]:p-5 max-[600px]:mt-28">
-        <h1 className="text-5xl font-medium Rubik my-5">
+      <div className="w-full h-fit px-20 max-[600px]:p-5 max-[600px]:mt-28 max-[600px]:px-0">
+        <h1 className="text-5xl font-medium Rubik my-5 max-[600px]:px-5">
           Our <span className="text-[#36C2F3]">Services</span>
         </h1>
-        <div className="w-full h-[70vh] flex justify-between items-center max-[600px]:grid max-[600px]:grid-cols-1 max-[600px]:h-fit max-[600px]:p-10 gap-10 place-items-center">
-
+        <div className="w-full h-[70vh] flex justify-between items-center max-[600px]:grid max-[600px]:grid-cols-1 max-[600px]:h-fit max-[600px]:p-5 gap-10 place-items-center">
           {services.map((service, index) => (
             <div
               key={index}
-              className="w-[24%] h-[65vh] max-[600px]:w-[85%] max-[600px]:h-[50vh] shadow-lg rounded-md border-2  flex flex-col justify-between"
+              className="w-[24%] h-[65vh] max-[600px]:w-full  shadow-lg rounded-md border-2  flex flex-col justify-between"
             >
-              <div className="w-full h-[60%] p-5 rounded-t-md">
-
-              <img
-                src={service.image}
-                alt={service.title}
-                className="w-full h-full object-cover "
-              />
+              <div className="w-full h-[60%] p-5 rounded-t-md max-[600px]:h-[40%]">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover max-[600px]:object-contain "
+                />
               </div>
-              <div className="p-4 flex h-[40%] flex-col">
+              <div className="p-4 flex h-[40%] flex-col max-[600px]:h-[70%]">
                 <div className="">
                   <h2 className="text-xl max-[600px]:text-2xl font-bold">
                     {service.title}
                   </h2>
                 </div>
-                <div className="h-[50%] overflow-auto scrollernone mt-2">
+                <div className="h-[50%] overflow-auto scrollernone mt-2 ">
                   <p className="text-sm leading-4 text-zinc-500">
                     {service.description}
                   </p>
                 </div>
                 <button
                   onClick={() => NavigateHandler(service.link)}
-                  className="bg-[#008BDC] w-1/2 text-white max-[600px]:text-xl px-4 py-2 rounded-md mt-4"
+                  className="bg-[#008BDC] w-1/2 text-white  max-[600px]:text-xl px-4 py-2 rounded-md mt-4"
                 >
                   {service.button}
                 </button>
               </div>
             </div>
           ))}
-
-          
         </div>
       </div>
 
