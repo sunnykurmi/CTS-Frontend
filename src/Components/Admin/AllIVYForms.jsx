@@ -13,6 +13,7 @@ import { ToastContainer } from "react-toastify";
 function AllIVYForms() {
   const dispatch = useDispatch();
   const [allforms, setallforms] = useState([]);
+  const reversedForms = [...allforms].reverse();
   const [loading, setLoading] = useState(true);
   const [loadingUsers, setLoadingUsers] = useState({});
 
@@ -24,7 +25,7 @@ function AllIVYForms() {
       setallforms(data);
       setLoading(false);
     });
-  }, [dispatch]);
+  }, []);
 
   const handleOpenPopup = (payment) => {
     setselectedUser(payment);
@@ -41,7 +42,11 @@ function AllIVYForms() {
     try {
       await dispatch(sendivymail(user));
       alert("Action completed successfully!");
-      window.location.reload();
+      // window.location.reload();
+      dispatch(getallivyforms()).then((data) => {
+        setallforms(data);
+        setLoading(false);
+      });
     } catch (error) {
       alert("An error occurred. Please try again.");
     } finally {
@@ -54,7 +59,11 @@ function AllIVYForms() {
     try {
       await dispatch(removeivyapproval(user));
       alert("Action completed successfully!");
-      window.location.reload();
+      // window.location.reload();
+      dispatch(getallivyforms()).then((data) => {
+        setallforms(data);
+        setLoading(false);
+      });
     } catch (error) {
       alert("An error occurred. Please try again.");
     } finally {
@@ -77,6 +86,9 @@ function AllIVYForms() {
                   #
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Date
+              </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Name
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -95,11 +107,23 @@ function AllIVYForms() {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {allforms.reverse().map((user, index) => (
+              {reversedForms.map((user, index) => (
                 <tr key={index}>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900">{index + 1}</div>
                   </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                            {user
+                              ? new Date(user.createdAt).toLocaleDateString(
+                                  "en-GB",
+                                  {
+                                    day: "numeric",
+                                    month: "short",
+                                    year: "numeric",
+                                  }
+                                )
+                              : "TBD"}
+                          </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900">{user.fullname}</div>
                   </td>
@@ -119,33 +143,38 @@ function AllIVYForms() {
                   </td>
 
                   <td>
-                    <div className="flex items-center gap-2 ">
+                    <div className="flex items-center gap-2 text-white ">
                       <div className="">
                         {user.response === "pending" ? (
                           <button
                             key={user._id}
                             onClick={() => handleApprove(user)}
-                            className="w-20 h-10 rounded-lg font-bold whitespace-nowrap text-sm bg-blue-400"
+                            className="w-20 h-10 rounded-lg font-bold whitespace-nowrap text-sm bg-blue-500"
                             disabled={loadingUsers[user._id]}
                           >
                             {loadingUsers[user._id] ? "Loading..." : "Approve"}
                           </button>
                         ) : (
-                          <button className="w-20 h-10 rounded-lg font-bold whitespace-nowrap text-sm bg-green-400">
+                          <button className="w-20 h-10 rounded-lg font-bold whitespace-nowrap text-sm bg-green-500">
                             Approved
                           </button>
                         )}
                       </div>
                       <div className="">
+                        {user.response === "pending" ? (
+                          ""
+                        ) : (
+
                         <button
                           key={user._id}
                           onClick={() => removeApprove(user)}
                           disabled={loadingUsers[user._id]}
-                          className="w-32 h-10 rounded-lg font-bold whitespace-nowrap text-sm bg-red-400"
+                          className="w-20 h-10 rounded-lg font-bold whitespace-nowrap text-sm bg-red-500"
                         >
-                          {loadingUsers[user._id] ? "Loading..." : "Remove Approval"}
+                          {loadingUsers[user._id] ? "Loading..." : "Remove"}
                           
                         </button>
+                        )}
                       </div>
                     </div>
                   </td>

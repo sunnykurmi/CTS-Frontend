@@ -37,6 +37,7 @@ import DETHome from "./Components/Home/ExclusiveServices/Expert Classes/DETHome"
 import IvyForm from "./Components/Home/IvyForm";
 import Policy from "./Components/Home/Policy";
 import About from "./Components/Home/About";
+import SATExam from "./Components/SAT Exam Test/SATExam";
 
 export default function App() {
   const GoogleAuthWrapper = ({ isLogin }) => {
@@ -132,8 +133,16 @@ export default function App() {
 
         <Route path="/services/exam-prepration/toefl-prepration" element={<TOEFLHome />} />
         <Route path="/services/exam-prepration/det-prepration" element={<DETHome />} />
+
+
         <Route path="/privacy-policy" element={<Policy />} />
         <Route path="/about-us" element={<About />} />
+
+{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
+{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
+        <Route path="/satexam" element={<SATExam />} />
+{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
+{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
       </Routes>
     </div>
   );

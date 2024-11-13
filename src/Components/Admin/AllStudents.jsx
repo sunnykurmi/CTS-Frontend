@@ -82,7 +82,7 @@ function AllStudents() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                       {student.name}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                    <td className="px-6 py-4 lowercase whitespace-nowrap text-sm text-gray-700">
                       {student.email}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">

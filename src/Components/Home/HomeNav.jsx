@@ -45,7 +45,7 @@ const HomeNav = () => {
             <Link className="w-[15%] max-[600px]:w-[30%] center" to="/">
               <img
                 className="w-full"
-                src="/Images/home/CTS   Logo.png"
+                src="/Images/home/CTSLogo.png"
                 alt=""
               />
             </Link>

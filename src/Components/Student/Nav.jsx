@@ -41,7 +41,7 @@ export default function Nav() {
     <div>
       <div className="w-full h-20 border-b-2 flex items-center justify-between p-3 px-5 bg-[#F5FAFE]">
         <Link to="/">
-        <img className="w-[40%] cursor-pointer" src="/Images/CTS   Logo.png" alt="" />
+        <img className="w-[40%] cursor-pointer" src="/Images/CTSLogo.png" alt="" />
         </Link>
         <div className="flex gap-2 items-center">
           <div className="w-12 h-12 rounded-full border-2 overflow-hidden">
