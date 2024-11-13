@@ -38,6 +38,7 @@ import IvyForm from "./Components/Home/IvyForm";
 import Policy from "./Components/Home/Policy";
 import About from "./Components/Home/About";
 import SATExam from "./Components/SAT Exam Test/SATExam";
+import SATForm from "./Components/SAT Exam Test/SATForm";
 
 export default function App() {
   const GoogleAuthWrapper = ({ isLogin }) => {
@@ -140,6 +141,7 @@ export default function App() {
 
 {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
 {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
+        <Route path="/satpractice" element={<SATForm />} />
         <Route path="/satexam" element={<SATExam />} />
 {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
 {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
