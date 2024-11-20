@@ -50,7 +50,7 @@ const ExamHome = () => {
       title: "DET",
       description:
         "Prepare effectively for the Duolingo English Test (DET) with tailored language exercises. Our focused approach ensures proficiency in reading, listening, speaking, and writing, helping you achieve your desired score in a flexible, convenient test format.",
-      image: "/public/Images/det.JPG",
+      image: "/Images/det.JPG",
       link: "/services/exam-prepration/det-prepration",
       button: "Book Now",
     },
