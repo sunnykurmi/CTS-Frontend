@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getallexams } from "../../../../store/Actions/adminAction";
 import { ExamPayment } from "../../../../store/Actions/servicesAction";
+import { asynccurrentUser } from "../../../../store/Actions/userActions";
 
 const TOEFLHome = () => {
   const key = import.meta.env.VITE_RAZORPAY_KEY;
@@ -61,6 +62,11 @@ const TOEFLHome = () => {
       }));
     }
   }, [user]);
+  
+  useEffect(() => {
+    dispatch( asynccurrentUser());
+  }, [])
+  
 
   useEffect(() => {
     const { name, contact, score, email } = userInput;

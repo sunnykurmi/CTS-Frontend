@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getallexams } from "../../../../store/Actions/adminAction";
 import { ExamPayment } from "../../../../store/Actions/servicesAction";
+import { asynccurrentUser } from "../../../../store/Actions/userActions";
 
 const SATHome = () => {
   const key = import.meta.env.VITE_RAZORPAY_KEY;
@@ -40,6 +41,11 @@ const SATHome = () => {
       }));
     }
   }, [exams]);
+
+  useEffect(() => {
+    dispatch( asynccurrentUser());
+  }, [])
+  
 
   const handleChange = (name) => (event) => {
     const value = event.target.value;

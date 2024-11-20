@@ -40,7 +40,7 @@ const HomeNav = () => {
   return (
     <>
       <Headroom>
-        <div className="w-full h-fit py-5 flex items-center justify-center max-[600px]:h-16 z-[99999] max-[600px]:bg-[#e7f9ff]">
+        <div className="w-full h-fit py-5 flex items-center justify-center max-[600px]:hidden max-[600px]:h-16 z-[99999] max-[600px]:bg-[#e7f9ff]">
           <div className="w-fit bg-[#e7f9ff] h-24 rounded-full flex items-center justify-evenly max-[600px]:w-full max-[600px]:rounded-none max-[600px]:pr-2 max-[600px]:h-fit max-[600px]:justify-between max-[600px]:px-5">
             <Link className="w-[15%] max-[600px]:w-[30%] center" to="/">
               <img
@@ -80,12 +80,6 @@ const HomeNav = () => {
                           to="/apply-internship-form"
                         >
                           Internship
-                        </Link>
-                        <Link
-                          className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                          to="/satpractice"
-                        >
-                          SAT Practice Test
                         </Link>
                       </div>
                     </div>
@@ -185,35 +179,65 @@ const HomeNav = () => {
         </div>
       </Headroom>
 
+
+      <div className="w-full h-fit py-5 flex items-center justify-center min-[600px]:hidden max-[600px]:h-16 z-[999] max-[600px]:bg-[#e7f9ff]">
+          <div className="w-fit bg-[#e7f9ff] h-24 rounded-full flex items-center justify-evenly max-[600px]:w-full max-[600px]:rounded-none max-[600px]:pr-2 max-[600px]:h-fit max-[600px]:justify-between max-[600px]:px-5">
+            <Link className="w-[15%] max-[600px]:w-[30%] center" to="/">
+              <img
+                className="w-full"
+                src="/Images/home/CTSLogo.png"
+                alt=""
+              />
+            </Link>
+           
+          
+            <div className="center flex-col min-[600px]:hidden">
+              <RiMenuLine onClick={toggleMenu} />
+            </div>
+          </div>
+        </div>
+
       <div
-        className={`w-full h-fit pb-10 bg-white fixed top-0 left-0 z-[99] min-[600px]:hidden transition-transform duration-500 ${
-          menuOpen ? "translate-y-0" : "-translate-y-full"
-        }`}
+        className={`w-full h-fit pb-10 fixed top-0 left-0 z-[9999] min-[600px]:hidden transition-transform duration-500 bg-white shadow-md rounded-md ${menuOpen ? "translate-y-0" : "-translate-y-full"
+          }`}
       >
-        <div className="w-full flex items-center justify-end p-5">
+        <div className="w-full flex items-center justify-between p-5">
+          <Link className="w-[15%] max-[600px]:w-[30%] center" to="/">
+            <img
+              className="w-full"
+              src="/Images/home/CTSLogo.png"
+              alt=""
+            />
+          </Link>
           <RiCloseLine className="scale-150" onClick={toggleMenu} />
         </div>
-        <div className="pr-5 flex-col uppercase text-2xl font-semibold center gap-3">
-          <a href="/">Home</a>
-          <Link className="hover-link" to="/ivy">
+        <div className="pl-10 flex-col uppercase text-xl font-semibold flex gap-4">
+          <a className="hover-link w-fit" href="/">Home</a>
+          <Link className="hover-link w-fit" to="/ivy">
             ivy acclerator
           </Link>
-          <Link className="hover-link" to="/portfolio">
+          <Link className="hover-link w-fit" to="/portfolio">
             Portfolio
           </Link>
-          <Link className="hover-link" to="/portfolio">
+          <Link className="hover-link w-fit" to="/portfolio">
             Internship
           </Link>
-          <Link to={"/services"}>Services</Link>
-          <Link className="hover-link" to={"/about-us"}>
+          <Link className="hover-link w-fit" to={"/services"}>Services</Link>
+          <Link className="hover-link w-fit" to={"/about-us"}>
             about us
           </Link>
-          <Link to="/login" className="">
-            Login
-          </Link>
-          <Link to="/signup" className="">
-            Register
-          </Link>
+          <div className="login-sigup flex gap-4">
+            <Link to="/login" className="text-[#008BDC] p-2 px-4 text-xl font-medium rounded-md border-[#008BDC] border-2">
+              <button>
+                LOG IN
+              </button>
+            </Link>
+            <Link to="/signup" className="">
+              <button className="bg-[#008BDC] text-white rounded-md p-2 px-4 font-medium uppercase border-[#008BDC] border-2">
+                Register
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

@@ -39,6 +39,9 @@ import Policy from "./Components/Home/Policy";
 import About from "./Components/Home/About";
 import SATExam from "./Components/SAT Exam Test/SATExam";
 import SATForm from "./Components/SAT Exam Test/SATForm";
+import SatPaymentSuccess from "./Components/SAT Exam Test/SatPaymentSuccess";
+import SatPractice from "./Components/SAT Exam Test/SatPractice";
+import CtsScholarship from './Components/Home/CtsScholarship';
 
 export default function App() {
   const GoogleAuthWrapper = ({ isLogin }) => {
@@ -141,10 +144,19 @@ export default function App() {
 
 {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
 {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
+
+        <Route path="/satpractice/sat-verification-form" element={<SatPractice />} />
         <Route path="/satpractice" element={<SATForm />} />
+        <Route path="/satpractice/paymentsuccess/:id"element={<SatPaymentSuccess />}/>
         <Route path="/satexam" element={<SATExam />} />
+        
 {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
 {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
+
+<Route path="/cts-scholarship" element={<AdminProtectedRoute>
+          <CtsScholarship />
+        </AdminProtectedRoute>
+        } />
       </Routes>
     </div>
   );

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ExamPayment } from "../../../../store/Actions/servicesAction";
 import { getallexams } from "../../../../store/Actions/adminAction";
 import { RiArrowLeftSLine } from "@remixicon/react";
+import { asynccurrentUser } from "../../../../store/Actions/userActions";
 
 const IELTSHome = () => {
   const key = import.meta.env.VITE_RAZORPAY_KEY;
@@ -52,7 +53,10 @@ const IELTSHome = () => {
   const handleIELTSChange = (value) => {
     setHasTakenIELTS(value === "yes");
   };
-
+  useEffect(() => {
+    dispatch( asynccurrentUser());
+  }, [])
+  
   useEffect(() => {
     if (user) {
       setUserInput((prevInput) => ({
