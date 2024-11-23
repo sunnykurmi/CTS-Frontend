@@ -22,7 +22,6 @@ export default function Component1({ Component, setComponent }) {
   const [isReviewPage, setIsReviewPage] = useState(false);
   const [timeLeft, setTimeLeft] = useState(32 * 60);
 
-
   const handleMouseMove = (e) => {
     setCursorPosition({ x: e.clientX, y: e.clientY });
   };
@@ -129,10 +128,9 @@ export default function Component1({ Component, setComponent }) {
 
   useEffect(() => {
     if (timeLeft <= 0) {
-      setComponent('component2');
+      setComponent("component2");
     }
   }, [timeLeft, setComponent]);
-  
 
   return (
     <div
@@ -248,8 +246,7 @@ export default function Component1({ Component, setComponent }) {
                 )}
 
                 <div
-            
-                  onClick={() => setComponent('component2')}
+                  onClick={() => setComponent("component2")}
                   className="px-4 cursor-pointer h-12 rounded-full border-2 bg-blue-700 border-blue-700 text-white center"
                 >
                   Submit Module
@@ -270,7 +267,11 @@ export default function Component1({ Component, setComponent }) {
               onMouseUp={handleTextHighlight}
               className="w-[50%] h-full  border-r-2 border-[#555555] p-10  overflow-y-scroll scrollernone  "
             >
-              <p>{currentQuestion.questioninfo}</p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: currentQuestion.questioninfo,
+                }}
+              />{" "}
             </div>
             <div className="w-[50%] h-full border-l-2 border-[#555555] p-10 overflow-y-scroll scrollernone ">
               <div className="w-[95%] flex items-center justify-between h-8  mb-2 bg-slate-200">
@@ -355,7 +356,7 @@ export default function Component1({ Component, setComponent }) {
               <RiArrowUpSLine />
             </div>
             {isModalOpen && (
-              <div className=" cursor-default  w-[60%] h-[50vh] translate-y-[-55%] rounded-lg absolute text-black  bg-white drop-shadow-xl">
+              <div className=" cursor-default  w-[60%] h-[60vh] translate-y-[-55%] rounded-lg absolute text-black  bg-white drop-shadow-xl">
                 <div className=" relative  w-full h-20 center text-center">
                   <p className="font-medium text-xl">
                     Section 1 , Module 1 : Reading and Writing

@@ -13,7 +13,7 @@ import React, { useEffect, useState } from "react";
 import { SAT_Section1_Module2 } from "./SAT_Section1_Module2";
 import Loader from "../Loader/Loader";
 
-export default function Component4({ Component, setComponent }) {
+export default function Component3({ Component, setComponent }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userInputs, setUserInputs] = useState([]);
   const [highlightMode, setHighlightMode] = useState(false);
@@ -196,7 +196,7 @@ export default function Component4({ Component, setComponent }) {
               <div className="w-full center">
                 <div className="w-[90%] h-[10vh] border-b-2 flex items-center justify-between">
                   <p className="font-medium text-xl">
-                    Section 1 , Module 1 : Reading and Writing
+                    Section 1 , Module 2 : Reading and Writing
                   </p>
                   <div className="flex gap-5">
                     <div className=" h-full flex  items-center gap-2 ">
@@ -270,7 +270,12 @@ export default function Component4({ Component, setComponent }) {
               onMouseUp={handleTextHighlight}
               className="w-[50%] h-full  border-r-2 border-[#555555] p-10  overflow-y-scroll scrollernone  "
             >
-              <p>{currentQuestion.questioninfo}</p>
+             <div
+                dangerouslySetInnerHTML={{
+                  __html: currentQuestion.questioninfo,
+                }}
+              />{" "}
+
             </div>
             <div className="w-[50%] h-full border-l-2 border-[#555555] p-10 overflow-y-scroll scrollernone ">
               <div className="w-[95%] flex items-center justify-between h-8  mb-2 bg-slate-200">
@@ -355,7 +360,7 @@ export default function Component4({ Component, setComponent }) {
               <RiArrowUpSLine />
             </div>
             {isModalOpen && (
-              <div className=" cursor-default  w-[60%] h-[50vh] translate-y-[-55%] rounded-lg absolute text-black  bg-white drop-shadow-xl">
+              <div className=" cursor-default  w-[60%] h-[60vh] translate-y-[-55%] rounded-lg absolute text-black  bg-white drop-shadow-xl">
                 <div className=" relative  w-full h-20 center text-center">
                   <p className="font-medium text-xl">
                     Section 1 , Module 1 : Reading and Writing
