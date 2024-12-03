@@ -7,21 +7,22 @@ function SatPractice() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuth = useSelector((state) => state.user.isAuth);
-  const {user} = useSelector((state) => state.user);
-  const [loading, setloading] = useState(false)
-  const [formData, setFormData] = useState(
-    {
-      email: "",
-      code: "",
-    }
-  );
+  const { user } = useSelector((state) => state.user);
+  const [loading, setloading] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    code: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setloading(true)
-    if(formData.email === user.email && formData.code === user.satpracticetestcode){
+    setloading(true);
+    if (
+      formData.email === user.email &&
+      formData.code === user.satpracticetestcode
+    ) {
       setTimeout(() => {
-        setloading(true)
+        setloading(true);
         localStorage.removeItem("LunchBreakStartTime");
         localStorage.removeItem("component");
         localStorage.removeItem("component1startTime");
@@ -32,14 +33,12 @@ function SatPractice() {
         localStorage.removeItem("section2");
         localStorage.removeItem("section3");
         localStorage.removeItem("section4");
-        navigate("/satexam")
+        navigate("/satexam");
       }, 2000);
+    } else {
+      window.alert("Invalid Email or Code");
+      setloading(false);
     }
-    else{
-      window.alert("Invalid Email or Code")
-      setloading(false)
-    }
-  
   };
   const checkLoginHandler = () => {
     if (!isAuth) {
@@ -66,23 +65,22 @@ function SatPractice() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  }
+  };
   useEffect(() => {
-    checkLoginHandler()
-    dispatch(asynccurrentUser())
-  }, [])
-  
+    checkLoginHandler();
+    dispatch(asynccurrentUser());
+  }, []);
 
   return (
     <div>
-      <div className="w-full h-screen flex items-center justify-center">
+      <div className="w-full h-screen flex items-center justify-center max-[600px]:hidden">
         <div className="w-[30%] p-14 h-fit shadow-xl flex flex-col items-center justify-center text-center max-[600px]:w-full max-[600px]:p-5 max-[600px]:shadow-none">
           <p className="font-medium text-3xl">Start SAT Exam 📖</p> <br />
           <p className="text-base font-medium text-gray-500">
-            Please enter the email address and verification code that you recieved in your email
+            Please enter the email address and verification code that you
+            recieved in your email
           </p>
           <form onSubmit={handleSubmit} className="w-full" action="">
-          
             <input
               className="w-full  border-b-2 h-10 outline-none pl-2 mt-5 "
               placeholder="Enter Email Address"
@@ -124,6 +122,16 @@ function SatPractice() {
             Page
           </p>
         </div>
+      </div>
+      <div className="w-full h-screen center gap-10 flex-col min-[600px]:hidden">
+        <p className=" text-3xl font-semibold text-center">
+          Site Not Support Mobile Devices Try to give exam from Laptop or PC{" "}
+        </p>
+        <Link to="/" className="text-blue-500 text-center">
+        <button className="px-4 py-2 rounded-full bg-blue-500 text-white font-semibold">
+          Home Page
+        </button>
+        </Link>
       </div>
     </div>
   );
