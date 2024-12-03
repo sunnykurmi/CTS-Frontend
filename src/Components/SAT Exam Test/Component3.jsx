@@ -3,6 +3,7 @@ import {
   RiArrowUpSLine,
   RiCloseLine,
   RiEraserFill,
+  RiHome4Line,
   RiMapPin2Line,
   RiMapPinLine,
   RiMarkPenLine,
@@ -12,19 +13,39 @@ import {
 import React, { useEffect, useState } from "react";
 import { SAT_Section1_Module2 } from "./SAT_Section1_Module2";
 import Loader from "../Loader/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { asynccurrentUser } from "../../store/Actions/userActions";
+import { Link, useNavigate } from "react-router-dom";
+
 
 export default function Component3({ Component, setComponent }) {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
+
+  const [section2Data, setSection2Data] = useState(() => {
+    const saved = localStorage.getItem('section2');
+    return saved ? JSON.parse(saved) : { userInputs: [], marks: 0 };
+  });
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userInputs, setUserInputs] = useState([]);
   const [highlightMode, setHighlightMode] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isReviewPage, setIsReviewPage] = useState(false);
   const [timeLeft, setTimeLeft] = useState(32 * 60);
 
-
   const handleMouseMove = (e) => {
     setCursorPosition({ x: e.clientX, y: e.clientY });
+  };
+  const navigate = useNavigate();
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    const confirmRedirect = window.confirm(
+      "Your all changes will be Discarded if redirected to the home page. Do you want to continue?"
+    );
+    if (confirmRedirect) {
+      navigate("/");
+    }
   };
 
   const handleGoToReviewPage = () => {
@@ -35,20 +56,67 @@ export default function Component3({ Component, setComponent }) {
     setIsReviewPage(false);
   };
 
-  const handleOptionSelect = (question, selectedOption) => {
-    const updatedInputs = [...userInputs];
+  const handleOptionSelect = (questioninfo, realanswer, selectedOption) => {
+    const updatedInputs = [...section2Data.userInputs];
     const existingInputIndex = updatedInputs.findIndex(
-      (input) => input.question === question
+      (input) => input.questioninfo === questioninfo
     );
 
+    let updatedMarks = section2Data.marks;
+
     if (existingInputIndex >= 0) {
-      updatedInputs[existingInputIndex].answer = selectedOption;
+      const previousAnswer = updatedInputs[existingInputIndex].useranswer;
+      if (previousAnswer === realanswer && selectedOption !== realanswer) {
+        updatedMarks -= 1;
+      } else if (previousAnswer !== realanswer && selectedOption === realanswer) {
+        updatedMarks += 1;
+      }
+      updatedInputs[existingInputIndex].useranswer = selectedOption;
     } else {
-      updatedInputs.push({ question, answer: selectedOption });
+      if (selectedOption === realanswer) {
+        updatedMarks += 1;
+      }
+      updatedInputs.push({ questioninfo, realanswer, useranswer: selectedOption });
     }
 
-    setUserInputs(updatedInputs);
+    const updatedSection2Data = { userInputs: updatedInputs, marks: updatedMarks };
+    setSection2Data(updatedSection2Data);
+    localStorage.setItem('section2', JSON.stringify(updatedSection2Data));
   };
+
+  const handleRemoveSelection = () => {
+    const updatedInputs = section2Data.userInputs.filter(
+      (input) => input.questioninfo !== currentQuestion.questioninfo
+    );
+
+    const existingInputIndex = section2Data.userInputs.findIndex(
+      (input) => input.questioninfo === currentQuestion.questioninfo
+    );
+
+    let updatedMarks = section2Data.marks;
+
+    if (existingInputIndex >= 0) {
+      const previousAnswer = section2Data.userInputs[existingInputIndex].useranswer;
+      if (previousAnswer === currentQuestion.answer) {
+        updatedMarks -= 1;
+      }
+    }
+    const updatedSection2Data = { userInputs: updatedInputs, marks: updatedMarks };
+    setSection2Data(updatedSection2Data);
+    localStorage.setItem('section2', JSON.stringify(updatedSection2Data));
+  };
+
+
+
+
+  useEffect(() => {
+    localStorage.setItem('section2', JSON.stringify(section2Data));
+  }, [section2Data]);
+
+  useEffect(() => {
+    dispatch(asynccurrentUser());
+  }, [dispatch]);
+
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < SAT_Section1_Module2.length - 1) {
@@ -60,13 +128,6 @@ export default function Component3({ Component, setComponent }) {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
-  };
-
-  const handleRemoveSelection = () => {
-    const updatedInputs = userInputs.filter(
-      (input) => input.question !== currentQuestion.question
-    );
-    setUserInputs(updatedInputs);
   };
 
   const currentQuestion = SAT_Section1_Module2[currentQuestionIndex];
@@ -163,14 +224,24 @@ export default function Component3({ Component, setComponent }) {
         <div className="h-full w-[30%]  flex items-center justify-center text-3xl text-red-500 font-semibold">
           <p>{formatTime(timeLeft)}</p>
         </div>
-        <div className="h-full w-[30%]  items-center justify-end flex">
-          <div
-            className="flex flex-col h-full items-center cursor-pointer"
+        <div className="h-full w-[30%] gap-5  items-center justify-end flex">
+        <div
+            className="flex flex-col  h-full justify-center items-center cursor-pointer"
             onClick={handleHighlightText}
           >
             <RiMarkPenLine className="w-6" />
             <p className="text-sm font-medium">Highlight Text</p>
           </div>
+          <Link
+            className="flex flex-col h-full w-fit  justify-center items-center cursor-pointer"
+            to="/"
+            onClick={handleHomeClick}
+          >
+            <div className="w-full h-full flex flex-col items-center justify-center">
+              <RiHome4Line className="w-6" />
+              <p className="text-sm font-medium">Home</p>
+            </div>
+          </Link>
         </div>
       </div>
       {isReviewPage ? (
@@ -183,15 +254,15 @@ export default function Component3({ Component, setComponent }) {
           <div className="w-full h-[10vh] text-4xl center ">
             Check Your Work
           </div>
-          <div className="w-full h-[5vh] text-xl center ">
+          <div className="w-full h-[4vh] text-xl center ">
             On test day , you wan't be able to move on to the next module until
             time expires
           </div>
-          <div className="w-full h-[5vh] text-xl center ">
+          <div className="w-full h-[4vh] text-xl center ">
             For these practice questions , you can click{" "}
             <b className="px-2"> Next </b> when you're ready to move on
           </div>
-          <div className="w-full h-[70%] center">
+          <div className="w-full  center">
             <div className="w-[60%] h-[80%] bg-[#F5FAFE] drop-shadow-xl rounded-lg">
               <div className="w-full center">
                 <div className="w-[90%] h-[10vh] border-b-2 flex items-center justify-between">
@@ -213,9 +284,9 @@ export default function Component3({ Component, setComponent }) {
               <div className="w-full center">
                 <div className="w-[90%] grid  grid-cols-10">
                   {SAT_Section1_Module2.map((_, index) => {
-                    const isAnswered = userInputs.some(
+                    const isAnswered = section2Data.userInputs.some(
                       (input) =>
-                        input.question === SAT_Section1_Module2[index].question
+                        input.questioninfo === SAT_Section1_Module2[index].questioninfo
                     );
 
                     return (
@@ -300,10 +371,10 @@ export default function Component3({ Component, setComponent }) {
               </div>
               <div className="pl-5 flex flex-col gap-2 w-[95%]">
                 {currentQuestion.options.map((option, index) => {
-                  const isSelected = userInputs.some(
+                  const isSelected = section2Data.userInputs.some(
                     (input) =>
-                      input.question === currentQuestion.question &&
-                      input.answer === option
+                      input.questioninfo === currentQuestion.questioninfo &&
+                      input.useranswer === option
                   );
 
                   return (
@@ -315,7 +386,7 @@ export default function Component3({ Component, setComponent }) {
                         timeLeft <= 0 ? "pointer-events-none opacity-50" : ""
                       }`}
                       onClick={() => {
-                        handleOptionSelect(currentQuestion.question, option);
+                        handleOptionSelect(currentQuestion.questioninfo, currentQuestion.answer , option);
                         setIsModalOpen(false);
                       }}
                     >
@@ -341,7 +412,8 @@ export default function Component3({ Component, setComponent }) {
       )}
       <div className="w-full h-[10vh] bg-[#E7F9FF] items-center flex justify-between">
         <div className="w-[20%]  h-full font-semibold text-2xl flex items-center  justify-center">
-          <p>Sunny Kurmi</p>
+        <p className="capitalize">{user && user.name}</p>
+
         </div>
         {isReviewPage ? (
           ""
@@ -363,7 +435,7 @@ export default function Component3({ Component, setComponent }) {
               <div className=" cursor-default  w-[60%] h-[60vh] translate-y-[-55%] rounded-lg absolute text-black  bg-white drop-shadow-xl">
                 <div className=" relative  w-full h-20 center text-center">
                   <p className="font-medium text-xl">
-                    Section 1 , Module 1 : Reading and Writing
+                    Section 1 , Module 2 : Reading and Writing
                   </p>
                   <RiCloseLine
                     onClick={toggleModal}
@@ -389,10 +461,10 @@ export default function Component3({ Component, setComponent }) {
                 <div className="w-full center">
                   <div className="w-[90%] grid  grid-cols-10">
                     {SAT_Section1_Module2.map((_, index) => {
-                      const isAnswered = userInputs.some(
+                      const isAnswered = section2Data.userInputs.some(
                         (input) =>
-                          input.question ===
-                          SAT_Section1_Module2[index].question
+                          input.questioninfo ===
+                          SAT_Section1_Module2[index].questioninfo
                       );
 
                       return (

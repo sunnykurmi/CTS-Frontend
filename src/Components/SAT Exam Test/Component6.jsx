@@ -1,27 +1,62 @@
 import {
   RiArrowDownSLine,
   RiArrowUpSLine,
+  RiCalculatorLine,
   RiCloseLine,
+  RiDragMove2Line,
   RiEraserFill,
+  RiHome4Line,
   RiMapPin2Line,
   RiMapPinLine,
   RiMarkPenLine,
+  RiMovie2Line,
   RiPencilLine,
   RiUserLocationLine,
 } from "@remixicon/react";
 import React, { useEffect, useState } from "react";
 import { SAT_Section1_Module3 } from "./SAT_Section1_Module3";
 import Loader from "../Loader/Loader";
+import { motion, useDragControls } from "framer-motion";
+
+import { useDispatch, useSelector } from "react-redux";
+import { asynccurrentUser } from "../../store/Actions/userActions";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Component6({ Component, setComponent }) {
+  const dragControls = useDragControls();
+
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
+
+  const [section3Data, setSection3Data] = useState(() => {
+    const saved = localStorage.getItem('section3');
+    return saved ? JSON.parse(saved) : { userInputs: [], marks: 0 };
+  });
+
+  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userInputs, setUserInputs] = useState([]);
   const [highlightMode, setHighlightMode] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isReviewPage, setIsReviewPage] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(32 * 60);
-  
+  const [timeLeft, setTimeLeft] = useState(35 * 60);
+
+  const toggleCalculator = () => {
+    setIsCalculatorOpen(!isCalculatorOpen);
+  };
+
+  const navigate = useNavigate();
+const handleHomeClick = (e) => {
+  e.preventDefault();
+  const confirmRedirect = window.confirm(
+    "Your all changes will be Discarded if redirected to the home page. Do you want to continue?"
+  );
+  if (confirmRedirect) {
+    navigate("/");
+  }
+};
+
+
   const handleMouseMove = (e) => {
     setCursorPosition({ x: e.clientX, y: e.clientY });
   };
@@ -34,20 +69,66 @@ export default function Component6({ Component, setComponent }) {
     setIsReviewPage(false);
   };
 
-  const handleOptionSelect = (question, selectedOption) => {
-    const updatedInputs = [...userInputs];
+  const handleOptionSelect = (questioninfo, realanswer, selectedOption) => {
+    const updatedInputs = [...section3Data.userInputs];
     const existingInputIndex = updatedInputs.findIndex(
-      (input) => input.question === question
+      (input) => input.questioninfo === questioninfo
     );
 
+    let updatedMarks = section3Data.marks;
+
     if (existingInputIndex >= 0) {
-      updatedInputs[existingInputIndex].answer = selectedOption;
+      const previousAnswer = updatedInputs[existingInputIndex].useranswer;
+      if (previousAnswer === realanswer && selectedOption !== realanswer) {
+        updatedMarks -= 1;
+      } else if (previousAnswer !== realanswer && selectedOption === realanswer) {
+        updatedMarks += 1;
+      }
+      updatedInputs[existingInputIndex].useranswer = selectedOption;
     } else {
-      updatedInputs.push({ question, answer: selectedOption });
+      if (selectedOption === realanswer) {
+        updatedMarks += 1;
+      }
+      updatedInputs.push({ questioninfo, realanswer, useranswer: selectedOption });
     }
 
-    setUserInputs(updatedInputs);
+    const updatedSection3Data = { userInputs: updatedInputs, marks: updatedMarks };
+    setSection3Data(updatedSection3Data);
+    localStorage.setItem('section3', JSON.stringify(updatedSection3Data));
   };
+
+  const handleRemoveSelection = () => {
+    const updatedInputs = section3Data.userInputs.filter(
+      (input) => input.questioninfo !== currentQuestion.questioninfo
+    );
+
+    const existingInputIndex = section3Data.userInputs.findIndex(
+      (input) => input.questioninfo === currentQuestion.questioninfo
+    );
+
+    let updatedMarks = section3Data.marks;
+
+    if (existingInputIndex >= 0) {
+      const previousAnswer = section3Data.userInputs[existingInputIndex].useranswer;
+      if (previousAnswer === currentQuestion.answer) {
+        updatedMarks -= 1;
+      }
+    }
+    const updatedSection3Data = { userInputs: updatedInputs, marks: updatedMarks };
+    setSection3Data(updatedSection3Data);
+    localStorage.setItem('section3', JSON.stringify(updatedSection3Data));
+  };
+
+
+
+
+  useEffect(() => {
+    localStorage.setItem('section3', JSON.stringify(section3Data));
+  }, [section3Data]);
+
+  useEffect(() => {
+    dispatch(asynccurrentUser());
+  }, [dispatch]);
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < SAT_Section1_Module3.length - 1) {
@@ -59,13 +140,6 @@ export default function Component6({ Component, setComponent }) {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
-  };
-
-  const handleRemoveSelection = () => {
-    const updatedInputs = userInputs.filter(
-      (input) => input.question !== currentQuestion.question
-    );
-    setUserInputs(updatedInputs);
   };
 
   const currentQuestion = SAT_Section1_Module3[currentQuestionIndex];
@@ -109,7 +183,7 @@ export default function Component6({ Component, setComponent }) {
       localStorage.setItem("component6startTime", now);
     } else {
       const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-      setTimeLeft(32 * 60 - elapsedTime);
+      setTimeLeft(35 * 60 - elapsedTime);
     }
 
     const timer = setInterval(() => {
@@ -132,6 +206,14 @@ export default function Component6({ Component, setComponent }) {
     }
   }, [timeLeft, setComponent]);
 
+  useEffect(() => {
+    if (isCalculatorOpen) {
+      const elt = document.getElementById('calculator');
+      if (elt) {
+        const calculator = Desmos.GraphingCalculator(elt);
+      }
+    }
+  }, [isCalculatorOpen]);
   return (
     <div
       onMouseMove={handleMouseMove}
@@ -148,11 +230,34 @@ export default function Component6({ Component, setComponent }) {
           }}
         />
       )}
+      {isCalculatorOpen && (
+      <motion.div
+        drag
+        className="absolute z-[9] w-[50vh]"
+        dragControls={dragControls}
+        dragListener={false}
+        dragConstraints={{ top: 0, left: 0, right: window.innerWidth - 300, bottom: window.innerHeight - 200 }}
+        >
+        <div
+          onPointerDown={(e) => {
+            dragControls.start(e);
+          }}
+        >
+          <div className="h-[5vh]   flex items-center text-lg font-semibold text-white justify-between bg-black">
+            <p className="cursor-default">Calculator</p>
+            <RiDragMove2Line className="-ml-12 cursor-grab" />
+            <RiCloseLine
+            onClick={toggleCalculator} 
+             size={30} className="cursor-pointer" />
+          </div>
+        </div>
+
+        <div id="calculator" className="w-full h-[70vh]"></div>
+      </motion.div>
+      )}
       <div className="w-full h-[10vh] bg-[#E7F9FF] p-2 px-10 flex items-center justify-between border-dashed  border-b-2 border-black">
         <div className="w-[30%] h-full  flex flex-col items-start justify-evenly ">
-          <p className="font-medium">
-            Section 2 , Module 1 : Maths
-          </p>
+          <p className="font-medium">Section 2 , Module 1 : Maths</p>
           <div className="flex h-full items-center">
             <p>Direction</p>
             <RiArrowDownSLine />
@@ -161,14 +266,32 @@ export default function Component6({ Component, setComponent }) {
         <div className="h-full w-[30%]  flex items-center justify-center text-3xl text-red-500 font-semibold">
           <p>{formatTime(timeLeft)}</p>
         </div>
-        <div className="h-full w-[30%]  items-center justify-end flex">
+        <div className="h-full w-[30%] gap-5  items-center justify-end flex">
           <div
-            className="flex flex-col h-full items-center cursor-pointer"
+          onClick={toggleCalculator}
+            className="flex flex-col h-full items-center justify-center cursor-pointer"
+           
+          >
+            <RiCalculatorLine className="w-6" />
+            <p className="text-sm font-medium">Calculator</p>
+          </div>
+          <div
+            className="flex flex-col  h-full justify-center items-center cursor-pointer"
             onClick={handleHighlightText}
           >
             <RiMarkPenLine className="w-6" />
             <p className="text-sm font-medium">Highlight Text</p>
           </div>
+          <Link
+  className="flex flex-col h-full w-fit  justify-center items-center cursor-pointer"
+  to="/"
+  onClick={handleHomeClick}
+>
+  <div className="w-full h-full flex flex-col items-center justify-center">
+    <RiHome4Line className="w-6" />
+    <p className="text-sm font-medium">Home</p>
+  </div>
+</Link>
         </div>
       </div>
       {isReviewPage ? (
@@ -211,9 +334,9 @@ export default function Component6({ Component, setComponent }) {
               <div className="w-full center">
                 <div className="w-[90%] grid  grid-cols-10">
                   {SAT_Section1_Module3.map((_, index) => {
-                    const isAnswered = userInputs.some(
+                    const isAnswered = section3Data.userInputs.some(
                       (input) =>
-                        input.question === SAT_Section1_Module3[index].question
+                        input.questioninfo === SAT_Section1_Module3[index].questioninfo
                     );
 
                     return (
@@ -297,10 +420,10 @@ export default function Component6({ Component, setComponent }) {
               <div className="pl-5 flex flex-col gap-2 w-[95%]">
                 {currentQuestion.options.length > 0 ? (
                   currentQuestion.options.map((option, index) => {
-                    const isSelected = userInputs.some(
+                    const isSelected = section3Data.userInputs.some(
                       (input) =>
-                        input.question === currentQuestion.question &&
-                        input.answer === option
+                        input.questioninfo === currentQuestion.questioninfo &&
+                        input.useranswer === option
                     );
 
                     return (
@@ -312,7 +435,11 @@ export default function Component6({ Component, setComponent }) {
                           timeLeft <= 0 ? "pointer-events-none opacity-50" : ""
                         }`}
                         onClick={() => {
-                          handleOptionSelect(currentQuestion.question, option);
+                          handleOptionSelect(
+                            currentQuestion.questioninfo,
+                            currentQuestion.answer,
+                            option
+                          );
                           setIsModalOpen(false);
                         }}
                       >
@@ -354,7 +481,8 @@ export default function Component6({ Component, setComponent }) {
       )}
       <div className="w-full h-[10vh] bg-[#E7F9FF] items-center flex justify-between">
         <div className="w-[20%]  h-full font-semibold text-2xl flex items-center  justify-center">
-          <p>Sunny Kurmi</p>
+        <p className="capitalize">{user && user.name}</p>
+
         </div>
         {isReviewPage ? (
           ""
@@ -402,10 +530,10 @@ export default function Component6({ Component, setComponent }) {
                 <div className="w-full center">
                   <div className="w-[90%] grid  grid-cols-10">
                     {SAT_Section1_Module3.map((_, index) => {
-                      const isAnswered = userInputs.some(
+                      const isAnswered = section3Data.userInputs.some(
                         (input) =>
-                          input.question ===
-                          SAT_Section1_Module3[index].question
+                          input.questioninfo ===
+                          SAT_Section1_Module3[index].questioninfo
                       );
 
                       return (

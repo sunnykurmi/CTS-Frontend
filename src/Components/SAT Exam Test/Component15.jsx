@@ -5,7 +5,6 @@ import {
   RiCloseLine,
   RiDragMove2Line,
   RiEraserFill,
-  RiHome4Line,
   RiMapPin2Line,
   RiMapPinLine,
   RiMarkPenLine,
@@ -18,10 +17,10 @@ import Loader from "../Loader/Loader";
 import { motion, useDragControls } from "framer-motion";
 
 import { useDispatch, useSelector } from "react-redux";
-import { asynccurrentUser } from "../../store/Actions/userActions";
-import { Link, useNavigate } from "react-router-dom";
 
-export default function Component8({ Component, setComponent }) {
+import { asynccurrentUser } from "../../store/Actions/userActions";
+
+export default function Component15({ Component, setComponent }) {
   const dragControls = useDragControls();
   const { user } = useSelector((state) => state.user);
 
@@ -38,7 +37,7 @@ export default function Component8({ Component, setComponent }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isReviewPage, setIsReviewPage] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(35 * 60);
+  const [timeLeft, setTimeLeft] = useState(32 * 60);
 
   const toggleCalculator = () => {
     setIsCalculatorOpen(!isCalculatorOpen);
@@ -47,18 +46,6 @@ export default function Component8({ Component, setComponent }) {
   const handleMouseMove = (e) => {
     setCursorPosition({ x: e.clientX, y: e.clientY });
   };
-
-  const navigate = useNavigate();
-const handleHomeClick = (e) => {
-  e.preventDefault();
-  const confirmRedirect = window.confirm(
-    "Your all changes will be Discarded if redirected to the home page. Do you want to continue?"
-  );
-  if (confirmRedirect) {
-    navigate("/");
-  }
-};
-
 
   const handleGoToReviewPage = () => {
     setIsReviewPage(true);
@@ -180,41 +167,6 @@ const handleHomeClick = (e) => {
     toggleModal();
   };
 
-  const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
-  };
-
-  useEffect(() => {
-    const startTime = localStorage.getItem("component8startTime");
-    if (!startTime) {
-      const now = Date.now();
-      localStorage.setItem("component8startTime", now);
-    } else {
-      const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-      setTimeLeft(35 * 60 - elapsedTime);
-    }
-
-    const timer = setInterval(() => {
-      setTimeLeft((prevTimeLeft) => {
-        if (prevTimeLeft <= 1) {
-          clearInterval(timer);
-          setIsReviewPage(true);
-          return 0;
-        }
-        return prevTimeLeft - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    if (timeLeft <= 0) {
-      setComponent("component9");
-    }
-  }, [timeLeft, setComponent]);
 
   useEffect(() => {
     if (isCalculatorOpen) {
@@ -281,36 +233,22 @@ const handleHomeClick = (e) => {
             <RiArrowDownSLine />
           </div>
         </div>
-        <div className="h-full w-[30%]  flex items-center justify-center text-3xl text-red-500 font-semibold">
-          <p>{formatTime(timeLeft)}</p>
-        </div>
+
         <div className="h-full w-[30%] gap-5  items-center justify-end flex">
           <div
-          onClick={toggleCalculator}
-            className="flex flex-col h-full items-center justify-center cursor-pointer"
-           
+            onClick={toggleCalculator}
+            className="flex flex-col h-full items-center cursor-pointer"
           >
             <RiCalculatorLine className="w-6" />
             <p className="text-sm font-medium">Calculator</p>
           </div>
           <div
-            className="flex flex-col  h-full justify-center items-center cursor-pointer"
+            className="flex flex-col h-full items-center cursor-pointer"
             onClick={handleHighlightText}
           >
             <RiMarkPenLine className="w-6" />
             <p className="text-sm font-medium">Highlight Text</p>
           </div>
-          <Link
-  className="flex flex-col h-full w-fit  justify-center items-center cursor-pointer"
-  to="/"
-  onClick={handleHomeClick}
->
-  <div className="w-full h-full flex flex-col items-center justify-center">
-    <RiHome4Line className="w-6" />
-    <p className="text-sm font-medium">Home</p>
-  </div>
-</Link>
-
         </div>
       </div>
       {isReviewPage ? (
@@ -389,10 +327,10 @@ const handleHomeClick = (e) => {
                 )}
 
                 <div
-                  onClick={() => setComponent("component9")}
+                  onClick={() => setComponent("component11")}
                   className="px-4 cursor-pointer h-12 rounded-full border-2 bg-blue-700 border-blue-700 text-white center"
                 >
-                  Submit Module
+                 Go to Score Page
                 </div>
               </div>
             </div>
@@ -427,73 +365,61 @@ const handleHomeClick = (e) => {
                     {SAT_Section1_Module4.length}{" "}
                   </p>
                 </div>
-                <div
-                  onClick={handleRemoveSelection}
-                  className="w-8 cursor-pointer h-8 border-2 center rounded-lg border-[#363636d7]"
-                >
-                  <RiEraserFill className="w-4" />
-                </div>
               </div>
               <div onMouseUp={handleTextHighlight}>
                 <p>{currentQuestion.question}</p>
               </div>
               <div className="pl-5 flex flex-col gap-2 w-[95%]">
-                {currentQuestion.options.length > 0 ? (
-                  currentQuestion.options.map((option, index) => {
-                    const isSelected = section4Data.userInputs.some(
-                      (input) =>
-                        input.questioninfo === currentQuestion.questioninfo &&
-                        input.useranswer === option
-                    );
+                {currentQuestion.options.map((option, index) => {
+                  const userInput = section4Data.userInputs.find(
+                    (input) =>
+                      input.questioninfo === currentQuestion.questioninfo
+                  );
 
-                    return (
-                      <div
-                        key={index}
-                        className={`cursor-pointer p-2 border-2 rounded-lg ${
-                          isSelected ? "border-green-500" : ""
-                        }${
-                          timeLeft <= 0 ? "pointer-events-none opacity-50" : ""
-                        }`}
-                        onClick={() => {
-                          handleOptionSelect(
-                            currentQuestion.questioninfo,
-                            currentQuestion.answer,
-                            option
-                          );
-                          setIsModalOpen(false);
-                        }}
-                      >
-                        <div className="flex items-center gap-2">
-                          <div
-                            className={`w-6 h-6  ${
-                              isSelected
+                  const isSelected =
+                    userInput && userInput.useranswer === option;
+                  const isCorrectAnswer = option === currentQuestion.answer;
+                  const isIncorrectAnswer =
+                    userInput &&
+                    userInput.useranswer !== currentQuestion.answer &&
+                    userInput.useranswer === option;
+
+                  return (
+                    <div
+                      key={index}
+                      className={`cursor-pointer p-2 border-2 rounded-lg ${
+                        isSelected
+                          ? isCorrectAnswer
+                            ? "border-green-500"
+                            : "border-red-500"
+                          : isCorrectAnswer
+                          ? "border-green-500"
+                          : ""
+                      }`}
+                      onClick={() => {
+                        // handleOptionSelect(currentQuestion.questioninfo, currentQuestion.answer, option);
+                        setIsModalOpen(false);
+                      }}
+                    >
+                      <div className="flex items-center gap-2">
+                        <div
+                          className={`w-6 h-6 ${
+                            isSelected
+                              ? isCorrectAnswer
                                 ? "bg-green-500 text-white"
-                                : " text-black  bg-transparent border-2 border-black"
-                            } center rounded-full shrink-0`}
-                          >
-                            <p className="">{index + 1}</p>
-                          </div>
-                          <div className="ml-2">{option} </div>
+                                : "bg-red-500 text-white"
+                              : isCorrectAnswer
+                              ? "bg-green-500 text-white"
+                              : "text-black bg-transparent border-2 border-black"
+                          } center rounded-full shrink-0`}
+                        >
+                          <p className="">{index + 1}</p>
                         </div>
+                        <div className="ml-2">{option}</div>
                       </div>
-                    );
-                  })
-                ) : (
-                  <input
-                    type="text"
-                    placeholder="Enter your answer here"
-                    className="p-2 border-2 outline-none rounded-lg"
-                    onInput={(e) => {
-                      const value = e.target.value;
-                      // Allow only numbers with optional + or - signs, and no alphabets
-                      if (/^[+-]?\d*$/.test(value)) {
-                        handleOptionSelect(currentQuestion.question, value);
-                      } else {
-                        e.target.value = value.slice(0, -1); // Remove the last character if it's not valid
-                      }
-                    }}
-                  />
-                )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -501,7 +427,7 @@ const handleHomeClick = (e) => {
       )}
       <div className="w-full h-[10vh] bg-[#E7F9FF] items-center flex justify-between">
         <div className="w-[20%]  h-full font-semibold text-2xl flex items-center  justify-center">
-          <p>Sunny Kurmi</p>
+          <p className="capitalize">{user && user.name}</p>
         </div>
         {isReviewPage ? (
           ""

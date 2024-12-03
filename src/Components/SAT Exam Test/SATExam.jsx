@@ -10,6 +10,10 @@ import Component8 from './Component8';
 import Component9 from './Component9';
 import Component10 from './Component10';
 import Component11 from './Component11';
+import Component12 from './Component12';
+import Component13 from './Component13';
+import Component14 from './Component14';
+import Component15 from './Component15';
 
 export default function SATExam() {
   const [Component, setComponent] = useState(localStorage.getItem('component') || 'component1');
@@ -18,7 +22,6 @@ export default function SATExam() {
     localStorage.setItem('component', Component);
   }, [Component]);
 
-  console.log(Component);
 
   return (
     <div>
@@ -33,6 +36,10 @@ export default function SATExam() {
       {Component === 'component9' && <Component9 Component={Component} setComponent={setComponent} />}
       {Component === 'component10' && <Component10 Component={Component} setComponent={setComponent} />}
       {Component === 'component11' && <Component11 Component={Component} setComponent={setComponent} />}
+      {Component === 'component12' && <Component12 Component={Component} setComponent={setComponent} />}
+      {Component === 'component13' && <Component13 Component={Component} setComponent={setComponent} />}
+      {Component === 'component14' && <Component14 Component={Component} setComponent={setComponent} />}
+      {Component === 'component15' && <Component15 Component={Component} setComponent={setComponent} />}
     </div>
   );
 }

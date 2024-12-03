@@ -36,14 +36,14 @@ export const SAT_Section1_Module3 = [
       "A printer produces posters at a constant rate of 42 posters per minute. At what rate, in posters per hour, does the printer produce the posters?",
     question:
       "At what rate, in posters per hour, does the printer produce the posters?",
-    options: [],
+    options: ["2520", "2250", "2950", "2420"],
     answer: "2520",
   },
   {
     questioninfo:
       "The function f is defined by the equation f(x) = 7x + 2. What is the value of f(x) when x = 4?",
     question: "What is the value of f(x) when x = 4?",
-    options: [],
+    options: ["40", "50", "30", "10"],
     answer: "30",
   },
   {
@@ -90,7 +90,7 @@ export const SAT_Section1_Module3 = [
     questioninfo:
       "Vivian bought party hats and cupcakes for $71. Each package of party hats cost $3, and each cupcake cost $1. If Vivian bought 10 packages of party hats, how many cupcakes did she buy?",
     question: "How many cupcakes did She buy?",
-    options: [],
+    options: ["41", "55", "92", "13"],
     answer: "41",
   },
   {
@@ -165,44 +165,5 @@ export const SAT_Section1_Module3 = [
     question: "What is the measure of angle T, in degrees?",
     options: ["75", "120", "195", "390"],
     answer: "195",
-  },
-  {
-    questioninfo:
-      "A certain town has an area of 4.36 square miles. (1 mile = 1,760 yards)",
-    question: "What is the area, in square yards, of this town?",
-    options: ["404", "7,674", "710,459", "13,505,536"],
-    answer: "13,505,536",
-  },
-  {
-    questioninfo: ` <img src="/Images/SAT Test/Module3/Q24.png" alt="Q24 Image"/> <br>  For line h, the table shows three values of x and their corresponding values of y. Line k is the result of translating line h down 5 units in the xy-plane.`,
-    question: "What is the x-intercept of line k?",
-    options: ["(-26/3, 0)", "(-9/2, 0)", "(-11/3, 0)", "(-17/6, 0)"],
-    answer: "(-17/6, 0)",
-  },
-  {
-    questioninfo:
-      "In the xy-plane, the graph of the equation y = x² − 9x − 100 intersects the line y = c at exactly one point.",
-    question: "What is the value of c?",
-    options: ["-481/4", "-100", "-319/4", "-9/2"],
-    answer: "-319/4",
-  },
-  {
-    questioninfo: "2x + y/3 = 7 <br> 10x + y/15 = 35.",
-    question:
-      "For each real number r, which of the following points lies on the graph of each equation in the xy-plane for the given system?",
-    options: [
-      "(r + 7/5, -r + 35/5)",
-      "(-3r/2 + 7/2 ,r)",
-      "(r, 2/3r + 7/3)",
-      "(r, 3/2r + 7/2)",
-    ],
-    answer: "(-3r/2 + 7/2 ,r)",
-  },
-  {
-    questioninfo:
-      "The perimeter of an equilateral triangle is 624 centimeters, and the height is given as k√3 centimeters.",
-    question: "What is the value of k?",
-    options: ["104", "108", "112", "116"],
-    answer: "104",
   },
 ];

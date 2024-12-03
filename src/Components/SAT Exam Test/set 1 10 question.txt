@@ -1,0 +1,153 @@
+
+{
+  questioninfo: 
+    "Experts and environmental advocates emphasize that the spread of invasive species, which leads to a reduction in biodiversity, is ____ . For example, travelers can help prevent this by thoroughly cleaning their vehicles to avoid transferring invasive pests to new locations.",
+  question: 
+    "Which choice completes the text with the most logical and precise word or phrase?",
+  options: ["avoidable", "unquestionable", "uncommon", "important"],
+  answer: "avoidable"
+}
+
+{
+  "questioninfo": 
+    "It is by no means ____ to acknowledge the influence of French sculptor Auguste Rodin on contemporary artists; in fact, many modern sculptors cite Rodin's work as a major source of inspiration. However, some critics argue that other artists, such as Constantin Brâncuși, had an even greater impact on modern sculpture.",
+  "question": 
+    "Which choice completes the text with the most logical and precise word or phrase?",
+  "options": ["important", "unnoticed", "imperfect", "expected"],
+  "answer": "important"
+}
+
+3
+{
+  "questioninfo": 
+    "Astronomers are certain that the star Aldebaran will eventually burn out and cease to shine. However, they are uncertain about the timeline for this event, as it depends on various factors that are not fully understood. Astrophysicists Maria Lopez and colleagues recently tested whether fluctuations in the star’s brightness could offer insights into its future, but their results indicated that this method would not provide enough clarity to predict Aldebaran’s ultimate fate.",
+  "question": 
+    "Which choice best describes the function of the second sentence in the overall structure of the text?",
+  "options": [
+    "It highlights the uncertainty that exists regarding the timeline of Aldebaran's demise.",
+    "It elaborates on the results of Lopez and colleagues' research and their findings.",
+    "It explains the process that Lopez and colleagues used to analyze the star's behavior.",
+    "It compares the research on Aldebaran with studies on other stars."
+  ],
+  "answer": "It highlights the uncertainty that exists regarding the timeline of Aldebaran's demise."
+}
+
+
+4 
+{
+  "questioninfo": 
+    "The European ash tree is native to Europe, where the ash borer beetle, Agrilus planipennis, feeds on its bark. In the early 2000s, the beetle was unintentionally introduced to North America. Despite being isolated from European ash trees for centuries, the beetle’s relationship with the ash trees remains strong. By 2010, large swaths of North American ash trees had been decimated by the beetle.",
+  "question": 
+    "Which choice best describes the function of the third sentence in the overall structure of the text?",
+  "options": [
+    "It offers an explanation for the beetle’s spread to new locations.",
+    "It introduces a counterargument to the study of the ash borer’s impact.",
+    "It describes a significant environmental change in North America.",
+    "It suggests a potential solution to control the beetle population."
+  ],
+  "answer": "It describes a significant environmental change in North America."
+}
+
+
+5
+{
+  "questioninfo": {
+    "text1": 
+      "When companies in the same sector announce a potential merger, they often claim that the merger will help reduce costs and benefit consumers. Economist Clara Williams examined this idea in the context of the automobile industry. She modeled a hypothetical merger between two major car manufacturers and found that car prices would likely rise as a result of the merger.",
+    "text2": 
+      "Economists Philip Jensen and Lara Foster have argued that research into the effects of mergers on prices typically overlooks long-term benefits. In their study of the telecommunications industry, they show that over the course of several years, the efficiencies resulting from mergers can lead to lower prices and improved services for consumers.",
+  },
+  "question": 
+    "Based on the texts, how would Jensen and Foster (Text 2) most likely respond to Williams’ findings (Text 1)?",
+  "options": [
+    "They would recommend that Williams examine the effects of a merger in a different industry to draw a more accurate conclusion.",
+    "They would suggest that Williams consider the long-term impacts of mergers on pricing, rather than focusing only on immediate effects.",
+    "They would argue that mergers in the automobile industry cannot lead to efficiencies that benefit consumers in the long run.",
+    "They would claim that mergers in the automobile industry have a unique impact on consumer pricing that is not seen in other industries."
+  ],
+  "answer": "They would suggest that Williams consider the long-term impacts of mergers on pricing, rather than focusing only on immediate effects."
+}
+
+
+6
+{
+  "questioninfo": 
+    "The following text is from Herman Melville’s 1851 novel Moby-Dick. Ishmael is the narrator, and he reflects on the mysterious Captain Ahab.\n\nAhab’s manner was dark, and his command, though often harsh, was unquestionably effective. Though many of his crew had doubts about his leadership, Ishmael admired Ahab’s determination and ability to inspire his men to face dangers they might otherwise avoid.",
+  "question": 
+    "According to the text, what is true about Captain Ahab?",
+  "options": [
+    "Ahab's leadership is respected but causes significant fear among his crew.",
+    "Ahab's leadership is unquestioned, and his actions are always welcomed by the crew.",
+    "Ishmael believes that Ahab's leadership is flawed but effective in achieving his goals.",
+    "Ahab is often criticized for not being an effective leader, despite his authority."
+  ],
+  "answer": "Ishmael believes that Ahab's leadership is flawed but effective in achieving his goals."
+}
+
+
+7
+{
+  "questioninfo": 
+    "The following text is adapted from Mark Twain's 1884 novel The Adventures of Huckleberry Finn.\n\nJim was a man of many contradictions. Though he was highly superstitious, he often acted with great wisdom and compassion. His strong moral compass guided him through challenging situations, but his fear of the unknown sometimes led him to make irrational decisions.",
+  "question": 
+    "Based on the text, what is true about Jim?",
+  "options": [
+    "Jim’s beliefs often conflict with his actions and decisions.",
+    "Jim's fears cause him to become irrational in most situations.",
+    "Jim acts purely based on reason and logic, regardless of superstition.",
+    "Jim’s compassion is overshadowed by his superstition and fear."
+  ],
+  "answer": "Jim’s beliefs often conflict with his actions and decisions."
+}
+
+
+
+8
+{
+  "questioninfo": 
+    "The following text is from William Wordsworth’s 1807 poem ‘Lines Composed a Few Miles Above Tintern Abbey.’ The speaker reflects on the passage of time and the power of memory.\n\nFive years have passed; five summers, with the length\nOf five long winters! and again I hear\nThese waters, rolling from their mountain-springs\nWith a sweet inland murmur. – Once again\nDo I behold these steep and lofty cliffs.",
+  "question": 
+    "What is the main idea of the text?",
+  "options": [
+    "The speaker is reflecting on the natural beauty and changes over time.",
+    "The speaker is describing a recent visit to a familiar location.",
+    "The speaker expresses regret about the passage of time.",
+    "The speaker is planning a future trip to the cliffs."
+  ],
+  "answer": "The speaker is reflecting on the natural beauty and changes over time."
+}
+
+
+9
+{
+  "questioninfo": 
+    "Soybeans (Glycine max) are rich in protein and other nutrients, but they are also known to cause digestive discomfort due to their high levels of fiber and compounds like oligosaccharides. Researchers Julia Herrera and Carlos Silva from the University of São Paulo claim that fermenting soybeans with beneficial bacteria can improve their digestibility and nutritional value.",
+  "question": 
+    "Which finding from Herrera and Silva’s research, if true, would most directly support their claim?",
+  "options": [
+    "Fermented soybeans contained significantly fewer oligosaccharides and fiber compared to nonfermented soybeans, and they also showed a reduction in antinutrients.",
+    "Fermented soybeans had more fiber and oligosaccharides but contained higher amounts of protein compared to nonfermented soybeans.",
+    "Fermentation of soybeans led to an increase in the presence of specific bacteria that enhance digestion in humans.",
+    "Both fermented and nonfermented soybeans were found to contain similar levels of protein and fiber after being cooked at high temperatures."
+  ],
+  "answer": "Fermented soybeans contained significantly fewer oligosaccharides and fiber compared to nonfermented soybeans, and they also showed a reduction in antinutrients."
+}
+
+
+10
+{
+  "questioninfo": "During the Romantic period (late 18th to mid-19th century), poets often focused on emotion, nature, and individualism. While these themes marked a departure from the rationalism of the Enlightenment, they shared a common appreciation for human creativity and expression.",
+  "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+  "options": [
+    "Enlightenment however",
+    "Enlightenment, however",
+    "Enlightenment however;",
+    "Enlightenment; however,"
+  ],
+  "answer": "Enlightenment; however,"
+}
+
+
+
+
+

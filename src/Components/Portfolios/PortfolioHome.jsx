@@ -61,7 +61,7 @@ export default function PortfolioHome() {
       <div className="text-5xl font-medium uppercase text-center mt-3 min-[600px]:hidden">Portfolio</div>
       <div className="portfolio-hero w-full h-[60vh] max-[600px]:h-fit p-10 px-28 max-[600px]:pt-4 max-[600px]:px-0 flex justify-between max-[600px]:flex-col-reverse">
         <div className="portfolio-info w-1/2 h-full pt-16 max-[600px]:p-5 max-[600px]:w-full max-[600px]:h-1/2">
-          <div className="text-5xl font-medium uppercase max-[600px]:hidden">Portfolio</div>
+          <div className="text-5xl font-medium uppercase max-[600px]:hidden"> Ivy Portfolio</div>
           <div className="text-md mt-3 font-medium leading-5">
             Personalized portfolio-building service designed exclusively to
             boost your college application success. With a customized domain and

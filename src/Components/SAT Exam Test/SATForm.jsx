@@ -34,9 +34,9 @@ const SATForm = () => {
   };
 
   useEffect(() => {
-    dispatch( asynccurrentUser());
-  }, [])
-  
+    dispatch(asynccurrentUser());
+  }, []);
+
   useEffect(() => {
     if (user) {
       setUserInput((prevInput) => ({
@@ -48,7 +48,7 @@ const SATForm = () => {
 
   useEffect(() => {
     const { name, contact, email } = userInput;
-    if (name && contact && email ) {
+    if (name && contact && email) {
       setIsCheckboxEnabled(true);
     } else {
       setIsCheckboxEnabled(false);
@@ -133,7 +133,6 @@ const SATForm = () => {
     }
   };
 
-
   return (
     <div className="w-full p-5 flex flex-col ">
       <div className="w-full h-fit">
@@ -148,11 +147,13 @@ const SATForm = () => {
             <button className="mr-2">Go Back</button>
           </Link>
         </div>
-        <h1 className="text-4xl font-bold text-center">SAT Practice Test <sub className="text-xs text-gray-700">(Beta version)</sub></h1>
+        <h1 className="text-4xl font-bold text-center">
+          SAT Practice Test{" "}
+          <sub className="text-xs text-gray-700">(Beta version)</sub>
+        </h1>
       </div>
-
       <div className="w-[70vw] h-fit m-auto   rounded-xl p-5  max-[456px]:w-full max-[456px]:border-none max-[456px]:rounded-none max-[456px]:shadow-none max-[456px]:mt-1 sm:p-5">
-        <ul className="list-disc list-inside text-md text-justify text-gray-800 mt-10 ml-15 px-20 text-xl text-center max-[600px]:px-5 max-[600px]:text-lg max-[600px]:text-start max-[600px]:leading-6">
+        <ul className="list-disc list-inside text-md text-justify text-gray-800 mt-10 ml-15 px-20 text-xl  max-[600px]:px-5 max-[600px]:text-lg max-[600px]:text-start max-[600px]:leading-6">
           "Unlock your potential with our comprehensive SAT Practice Test
           Module. Choose from various practice tests that mirror the real SAT
           experience, covering sections like Math, Evidence-Based Reading, and
@@ -164,29 +165,36 @@ const SATForm = () => {
           journey toward mastering the SAT and achieving your desired score."
         </ul>
       </div>
-
       <div className="w-[70vw] m-auto h-fit p-5 flex flex-col justify-center mt-10 ">
         <h1 className="text-4xl font-bold text-center">Get Started</h1>
         <p className="text-xl text-center mt-5 max-[600px]:text-lg max-[600px]:w-full max-[600px]:px-5">
           Fill the form details to get access to the SAT Practice Test Module
         </p>
-       
       </div>
       <div className="w-full center">
-        <button
-          onClick={checkLoginHandler}
-          className="bg-[#008BDC] text-white font-medium text-xl  px-8 py-2 rounded-md shadow-lg"
-        >
-          Get now
-        </button>
+        {user && user.satpracticetestcode ? (
+          <Link to="/satpractice/sat-verification-form">
+            <button className="bg-[#008BDC] text-white font-medium text-xl  px-8 py-2 rounded-md shadow-lg">
+              Start Test
+            </button>
+          </Link>
+        ) : (
+          <button
+            onClick={checkLoginHandler}
+            className="bg-[#008BDC] text-white font-medium text-xl  px-8 py-2 rounded-md shadow-lg"
+          >
+            Get now
+          </button>
+        )}
       </div>
-      {isAuth ? (
+      {user && user.satpracticetestcode ? (
+        ""
+      ) : isAuth ? (
         <div className="steps-mom w-full overflow-hidden h-fit p-20 px-48 max-[600px]:p-0">
           <div className="step1-wrapper max-[600px]:w-full ">
             <h1 className="text-2xl font-semibold">STEP-1:</h1>
             <p className="ml-2">
-              Fill the form below to enroll in SAT Practice Test and get
-              started
+              Fill the form below to enroll in SAT Practice Test and get started
             </p>
 
             <div className="flex items-center justify-between w-full p-10 px-20 max-[600px]:px-10 max-[600px]:flex-col max-[1180px]:px-10">
@@ -228,7 +236,6 @@ const SATForm = () => {
                     value={userInput.contact}
                   />
                 </div>
-
               </div>
             </div>
           </div>
@@ -257,8 +264,9 @@ const SATForm = () => {
           <div className="step3-wrapper mt-10">
             <h1 className="text-2xl font-semibold">STEP-3:</h1>
             <p className="ml-2">
-              Complete your payment of ₹{userInput.amount} to access premium services and
-              unlock exclusive features. Click the button to proceed.
+              Complete your payment of ₹{userInput.amount} to access premium
+              services and unlock exclusive features. Click the button to
+              proceed.
             </p>
             <div className="center">
               <button

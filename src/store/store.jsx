@@ -5,6 +5,6 @@ import roadmapReducer from "./Reducers/roadmapSlice";
 export const store = configureStore({
   reducer: {
     user: userReducer,
-    roadmap: roadmapReducer
+    roadmap: roadmapReducer,
   },
 });

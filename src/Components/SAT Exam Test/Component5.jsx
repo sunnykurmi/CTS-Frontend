@@ -38,14 +38,10 @@ export default function Component5({ Component, setComponent }) {
     }
   }, []);
 
-  //   useEffect(() => {
-  //       var elt = document.getElementById('calculator');
-  // var calculator = Desmos.GraphingCalculator(elt);
-  //   }, [])
+
 
   return (
     <div>
-      {/* <div id="calculator" className= " absolute z-[9] w-[70vh] h-[70vh]"></div> */}
 
       <div className="w-full h-screen bg-[#1c1c1c]">
         <div className="w-full h-[90%] flex">

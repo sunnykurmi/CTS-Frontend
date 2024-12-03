@@ -1,11 +1,8 @@
 import {
   RiArrowDownSLine,
   RiArrowUpSLine,
-  RiCalculatorLine,
   RiCloseLine,
-  RiDragMove2Line,
   RiEraserFill,
-  RiHome4Line,
   RiMapPin2Line,
   RiMapPinLine,
   RiMarkPenLine,
@@ -13,51 +10,31 @@ import {
   RiUserLocationLine,
 } from "@remixicon/react";
 import React, { useEffect, useState } from "react";
-import { SAT_Section1_Module4 } from "./SAT_Section1_Module4";
+import { SAT_Section1_Module2 } from "./SAT_Section1_Module2";
 import Loader from "../Loader/Loader";
-import { motion, useDragControls } from "framer-motion";
-
 import { useDispatch, useSelector } from "react-redux";
 import { asynccurrentUser } from "../../store/Actions/userActions";
-import { Link, useNavigate } from "react-router-dom";
 
-export default function Component8({ Component, setComponent }) {
-  const dragControls = useDragControls();
+
+export default function Component13({ Component, setComponent }) {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
 
-  const [section4Data, setSection4Data] = useState(() => {
-    const saved = localStorage.getItem("section4");
+  const [section2Data, setSection2Data] = useState(() => {
+    const saved = localStorage.getItem('section2');
     return saved ? JSON.parse(saved) : { userInputs: [], marks: 0 };
   });
 
-
-  const dispatch = useDispatch();
-  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [highlightMode, setHighlightMode] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isReviewPage, setIsReviewPage] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(35 * 60);
-
-  const toggleCalculator = () => {
-    setIsCalculatorOpen(!isCalculatorOpen);
-  };
+  const [timeLeft, setTimeLeft] = useState(32 * 60);
 
   const handleMouseMove = (e) => {
     setCursorPosition({ x: e.clientX, y: e.clientY });
   };
-
-  const navigate = useNavigate();
-const handleHomeClick = (e) => {
-  e.preventDefault();
-  const confirmRedirect = window.confirm(
-    "Your all changes will be Discarded if redirected to the home page. Do you want to continue?"
-  );
-  if (confirmRedirect) {
-    navigate("/");
-  }
-};
 
 
   const handleGoToReviewPage = () => {
@@ -69,21 +46,18 @@ const handleHomeClick = (e) => {
   };
 
   const handleOptionSelect = (questioninfo, realanswer, selectedOption) => {
-    const updatedInputs = [...section4Data.userInputs];
+    const updatedInputs = [...section2Data.userInputs];
     const existingInputIndex = updatedInputs.findIndex(
       (input) => input.questioninfo === questioninfo
     );
 
-    let updatedMarks = section4Data.marks;
+    let updatedMarks = section2Data.marks;
 
     if (existingInputIndex >= 0) {
       const previousAnswer = updatedInputs[existingInputIndex].useranswer;
       if (previousAnswer === realanswer && selectedOption !== realanswer) {
         updatedMarks -= 1;
-      } else if (
-        previousAnswer !== realanswer &&
-        selectedOption === realanswer
-      ) {
+      } else if (previousAnswer !== realanswer && selectedOption === realanswer) {
         updatedMarks += 1;
       }
       updatedInputs[existingInputIndex].useranswer = selectedOption;
@@ -91,57 +65,50 @@ const handleHomeClick = (e) => {
       if (selectedOption === realanswer) {
         updatedMarks += 1;
       }
-      updatedInputs.push({
-        questioninfo,
-        realanswer,
-        useranswer: selectedOption,
-      });
+      updatedInputs.push({ questioninfo, realanswer, useranswer: selectedOption });
     }
 
-    const updatedSection4Data = {
-      userInputs: updatedInputs,
-      marks: updatedMarks,
-    };
-    setSection4Data(updatedSection4Data);
-    localStorage.setItem("section4", JSON.stringify(updatedSection4Data));
+    const updatedSection2Data = { userInputs: updatedInputs, marks: updatedMarks };
+    setSection2Data(updatedSection2Data);
+    localStorage.setItem('section2', JSON.stringify(updatedSection2Data));
   };
 
   const handleRemoveSelection = () => {
-    const updatedInputs = section4Data.userInputs.filter(
+    const updatedInputs = section2Data.userInputs.filter(
       (input) => input.questioninfo !== currentQuestion.questioninfo
     );
 
-    const existingInputIndex = section4Data.userInputs.findIndex(
+    const existingInputIndex = section2Data.userInputs.findIndex(
       (input) => input.questioninfo === currentQuestion.questioninfo
     );
 
-    let updatedMarks = section4Data.marks;
+    let updatedMarks = section2Data.marks;
 
     if (existingInputIndex >= 0) {
-      const previousAnswer =
-        section4Data.userInputs[existingInputIndex].useranswer;
+      const previousAnswer = section2Data.userInputs[existingInputIndex].useranswer;
       if (previousAnswer === currentQuestion.answer) {
         updatedMarks -= 1;
       }
     }
-    const updatedSection4Data = {
-      userInputs: updatedInputs,
-      marks: updatedMarks,
-    };
-    setSection4Data(updatedSection4Data);
-    localStorage.setItem("section4", JSON.stringify(updatedSection4Data));
+    const updatedSection2Data = { userInputs: updatedInputs, marks: updatedMarks };
+    setSection2Data(updatedSection2Data);
+    localStorage.setItem('section2', JSON.stringify(updatedSection2Data));
   };
 
+
+
+
   useEffect(() => {
-    localStorage.setItem("section4", JSON.stringify(section4Data));
-  }, [section4Data]);
+    localStorage.setItem('section2', JSON.stringify(section2Data));
+  }, [section2Data]);
 
   useEffect(() => {
     dispatch(asynccurrentUser());
   }, [dispatch]);
 
+
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < SAT_Section1_Module4.length - 1) {
+    if (currentQuestionIndex < SAT_Section1_Module2.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   };
@@ -152,7 +119,7 @@ const handleHomeClick = (e) => {
     }
   };
 
-  const currentQuestion = SAT_Section1_Module4[currentQuestionIndex];
+  const currentQuestion = SAT_Section1_Module2[currentQuestionIndex];
 
   const handleHighlightText = () => {
     setHighlightMode(!highlightMode);
@@ -179,51 +146,7 @@ const handleHomeClick = (e) => {
     setCurrentQuestionIndex(index);
     toggleModal();
   };
-
-  const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
-  };
-
-  useEffect(() => {
-    const startTime = localStorage.getItem("component8startTime");
-    if (!startTime) {
-      const now = Date.now();
-      localStorage.setItem("component8startTime", now);
-    } else {
-      const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-      setTimeLeft(35 * 60 - elapsedTime);
-    }
-
-    const timer = setInterval(() => {
-      setTimeLeft((prevTimeLeft) => {
-        if (prevTimeLeft <= 1) {
-          clearInterval(timer);
-          setIsReviewPage(true);
-          return 0;
-        }
-        return prevTimeLeft - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    if (timeLeft <= 0) {
-      setComponent("component9");
-    }
-  }, [timeLeft, setComponent]);
-
-  useEffect(() => {
-    if (isCalculatorOpen) {
-      const elt = document.getElementById("calculator");
-      if (elt) {
-        const calculator = Desmos.GraphingCalculator(elt);
-      }
-    }
-  }, [isCalculatorOpen]);
+  
 
   return (
     <div
@@ -241,76 +164,25 @@ const handleHomeClick = (e) => {
           }}
         />
       )}
-      {isCalculatorOpen && (
-        <motion.div
-          drag
-          className="absolute z-[9] w-[50vh]"
-          dragControls={dragControls}
-          dragListener={false}
-          dragConstraints={{
-            top: 0,
-            left: 0,
-            right: window.innerWidth - 300,
-            bottom: window.innerHeight - 200,
-          }}
-        >
-          <div
-            onPointerDown={(e) => {
-              dragControls.start(e);
-            }}
-          >
-            <div className="h-[5vh]   flex items-center text-lg font-semibold text-white justify-between bg-black">
-              <p className="cursor-default">Calculator</p>
-              <RiDragMove2Line className="-ml-12 cursor-grab" />
-              <RiCloseLine
-                onClick={toggleCalculator}
-                size={30}
-                className="cursor-pointer"
-              />
-            </div>
-          </div>
-
-          <div id="calculator" className="w-full h-[70vh]"></div>
-        </motion.div>
-      )}
       <div className="w-full h-[10vh] bg-[#E7F9FF] p-2 px-10 flex items-center justify-between border-dashed  border-b-2 border-black">
         <div className="w-[30%] h-full  flex flex-col items-start justify-evenly ">
-          <p className="font-medium">Section 2 , Module 2 : Maths</p>
+          <p className="font-medium">
+            Section 1 , Module 2 : Reading and Writing
+          </p>
           <div className="flex h-full items-center">
             <p>Direction</p>
             <RiArrowDownSLine />
           </div>
         </div>
-        <div className="h-full w-[30%]  flex items-center justify-center text-3xl text-red-500 font-semibold">
-          <p>{formatTime(timeLeft)}</p>
-        </div>
-        <div className="h-full w-[30%] gap-5  items-center justify-end flex">
+        <div className="h-full w-[30%]  flex items-center justify-center text-3xl text-red-500 font-semibold"></div>
+        <div className="h-full w-[30%]  items-center justify-end flex">
           <div
-          onClick={toggleCalculator}
-            className="flex flex-col h-full items-center justify-center cursor-pointer"
-           
-          >
-            <RiCalculatorLine className="w-6" />
-            <p className="text-sm font-medium">Calculator</p>
-          </div>
-          <div
-            className="flex flex-col  h-full justify-center items-center cursor-pointer"
+            className="flex flex-col h-full items-center cursor-pointer"
             onClick={handleHighlightText}
           >
             <RiMarkPenLine className="w-6" />
             <p className="text-sm font-medium">Highlight Text</p>
           </div>
-          <Link
-  className="flex flex-col h-full w-fit  justify-center items-center cursor-pointer"
-  to="/"
-  onClick={handleHomeClick}
->
-  <div className="w-full h-full flex flex-col items-center justify-center">
-    <RiHome4Line className="w-6" />
-    <p className="text-sm font-medium">Home</p>
-  </div>
-</Link>
-
         </div>
       </div>
       {isReviewPage ? (
@@ -323,20 +195,20 @@ const handleHomeClick = (e) => {
           <div className="w-full h-[10vh] text-4xl center ">
             Check Your Work
           </div>
-          <div className="w-full h-[5vh] text-xl center ">
+          <div className="w-full h-[4vh] text-xl center ">
             On test day , you wan't be able to move on to the next module until
             time expires
           </div>
-          <div className="w-full h-[5vh] text-xl center ">
+          <div className="w-full h-[4vh] text-xl center ">
             For these practice questions , you can click{" "}
             <b className="px-2"> Next </b> when you're ready to move on
           </div>
-          <div className="w-full h-[70%] center">
+          <div className="w-full  center">
             <div className="w-[60%] h-[80%] bg-[#F5FAFE] drop-shadow-xl rounded-lg">
               <div className="w-full center">
                 <div className="w-[90%] h-[10vh] border-b-2 flex items-center justify-between">
                   <p className="font-medium text-xl">
-                    Section 2 , Module 2 : Maths
+                    Section 1 , Module 2 : Reading and Writing
                   </p>
                   <div className="flex gap-5">
                     <div className=" h-full flex  items-center gap-2 ">
@@ -352,11 +224,11 @@ const handleHomeClick = (e) => {
               </div>
               <div className="w-full center">
                 <div className="w-[90%] grid  grid-cols-10">
-                  {SAT_Section1_Module4.map((_, index) => {
-                    const isAnswered = section4Data.userInputs.some(
+                  {SAT_Section1_Module2.map((_, index) => {
+                    const isAnswered = section2Data.userInputs.some(
                       (input) =>
                         input.questioninfo ===
-                        SAT_Section1_Module4[index].questioninfo
+                        SAT_Section1_Module2[index].questioninfo
                     );
 
                     return (
@@ -379,20 +251,20 @@ const handleHomeClick = (e) => {
                 </div>
               </div>
               <div className="w-full h-24 flex items-center justify-evenly">
-                {timeLeft > 0 && (
+                {
                   <div
                     onClick={handleGoToPreviousPage}
                     className="px-4 cursor-pointer h-12 rounded-full border-2 border-blue-700 text-blue-700 center"
                   >
                     Go to Previous Page
                   </div>
-                )}
+                }
 
                 <div
-                  onClick={() => setComponent("component9")}
+                  onClick={() => setComponent("component14")}
                   className="px-4 cursor-pointer h-12 rounded-full border-2 bg-blue-700 border-blue-700 text-white center"
                 >
-                  Submit Module
+                  Next  Module
                 </div>
               </div>
             </div>
@@ -424,76 +296,63 @@ const handleHomeClick = (e) => {
                   </div>
                   <p className="ml-2 font-medium">
                     Question {currentQuestionIndex + 1} of{" "}
-                    {SAT_Section1_Module4.length}{" "}
+                    {SAT_Section1_Module2.length}{" "}
                   </p>
-                </div>
-                <div
-                  onClick={handleRemoveSelection}
-                  className="w-8 cursor-pointer h-8 border-2 center rounded-lg border-[#363636d7]"
-                >
-                  <RiEraserFill className="w-4" />
                 </div>
               </div>
               <div onMouseUp={handleTextHighlight}>
                 <p>{currentQuestion.question}</p>
               </div>
               <div className="pl-5 flex flex-col gap-2 w-[95%]">
-                {currentQuestion.options.length > 0 ? (
-                  currentQuestion.options.map((option, index) => {
-                    const isSelected = section4Data.userInputs.some(
-                      (input) =>
-                        input.questioninfo === currentQuestion.questioninfo &&
-                        input.useranswer === option
-                    );
+                {currentQuestion.options.map((option, index) => {
+                  const userInput = section2Data.userInputs.find(
+                    (input) =>
+                      input.questioninfo === currentQuestion.questioninfo
+                  );
+                  const isSelected =
+                    userInput && userInput.useranswer === option;
+                  const isCorrectAnswer = option === currentQuestion.answer;
+                  const isIncorrectAnswer =
+                    userInput &&
+                    userInput.useranswer !== currentQuestion.answer &&
+                    userInput.useranswer === option;
 
-                    return (
-                      <div
-                        key={index}
-                        className={`cursor-pointer p-2 border-2 rounded-lg ${
-                          isSelected ? "border-green-500" : ""
-                        }${
-                          timeLeft <= 0 ? "pointer-events-none opacity-50" : ""
-                        }`}
-                        onClick={() => {
-                          handleOptionSelect(
-                            currentQuestion.questioninfo,
-                            currentQuestion.answer,
-                            option
-                          );
-                          setIsModalOpen(false);
-                        }}
-                      >
-                        <div className="flex items-center gap-2">
-                          <div
-                            className={`w-6 h-6  ${
-                              isSelected
+                  return (
+                    <div
+                      key={index}
+                      className={`cursor-pointer p-2 border-2 rounded-lg ${
+                        isSelected
+                          ? isCorrectAnswer
+                            ? "border-green-500"
+                            : "border-red-500"
+                          : isCorrectAnswer
+                          ? "border-green-500"
+                          : ""
+                      }`}
+                      onClick={() => {
+                        // handleOptionSelect(currentQuestion.questioninfo, currentQuestion.answer, option);
+                        setIsModalOpen(false);
+                      }}
+                    >
+                      <div className="flex items-center gap-2">
+                        <div
+                          className={`w-6 h-6 ${
+                            isSelected
+                              ? isCorrectAnswer
                                 ? "bg-green-500 text-white"
-                                : " text-black  bg-transparent border-2 border-black"
-                            } center rounded-full shrink-0`}
-                          >
-                            <p className="">{index + 1}</p>
-                          </div>
-                          <div className="ml-2">{option} </div>
+                                : "bg-red-500 text-white"
+                              : isCorrectAnswer
+                              ? "bg-green-500 text-white"
+                              : "text-black bg-transparent border-2 border-black"
+                          } center rounded-full shrink-0`}
+                        >
+                          <p className="">{index + 1}</p>
                         </div>
+                        <div className="ml-2">{option}</div>
                       </div>
-                    );
-                  })
-                ) : (
-                  <input
-                    type="text"
-                    placeholder="Enter your answer here"
-                    className="p-2 border-2 outline-none rounded-lg"
-                    onInput={(e) => {
-                      const value = e.target.value;
-                      // Allow only numbers with optional + or - signs, and no alphabets
-                      if (/^[+-]?\d*$/.test(value)) {
-                        handleOptionSelect(currentQuestion.question, value);
-                      } else {
-                        e.target.value = value.slice(0, -1); // Remove the last character if it's not valid
-                      }
-                    }}
-                  />
-                )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -501,7 +360,7 @@ const handleHomeClick = (e) => {
       )}
       <div className="w-full h-[10vh] bg-[#E7F9FF] items-center flex justify-between">
         <div className="w-[20%]  h-full font-semibold text-2xl flex items-center  justify-center">
-          <p>Sunny Kurmi</p>
+          <p className="capitalize">{user && user.name}</p>
         </div>
         {isReviewPage ? (
           ""
@@ -514,7 +373,7 @@ const handleHomeClick = (e) => {
               <div className=" ">
                 <p>
                   Question {currentQuestionIndex + 1} of{" "}
-                  {SAT_Section1_Module4.length}
+                  {SAT_Section1_Module2.length}
                 </p>
               </div>
               <RiArrowUpSLine />
@@ -523,7 +382,7 @@ const handleHomeClick = (e) => {
               <div className=" cursor-default  w-[60%] h-[60vh] translate-y-[-55%] rounded-lg absolute text-black  bg-white drop-shadow-xl">
                 <div className=" relative  w-full h-20 center text-center">
                   <p className="font-medium text-xl">
-                    Section 2 , Module 2 : Maths
+                    Section 1 , Module 2 : Reading and Writing
                   </p>
                   <RiCloseLine
                     onClick={toggleModal}
@@ -548,11 +407,11 @@ const handleHomeClick = (e) => {
                 </div>
                 <div className="w-full center">
                   <div className="w-[90%] grid  grid-cols-10">
-                    {SAT_Section1_Module4.map((_, index) => {
-                      const isAnswered = section4Data.userInputs.some(
+                    {SAT_Section1_Module2.map((_, index) => {
+                      const isAnswered = section2Data.userInputs.some(
                         (input) =>
                           input.questioninfo ===
-                          SAT_Section1_Module4[index].questioninfo
+                          SAT_Section1_Module2[index].questioninfo
                       );
 
                       return (
@@ -613,7 +472,7 @@ const handleHomeClick = (e) => {
           <div
             className="py-2 px-6 rounded-full bg-blue-700 text-white font-medium cursor-pointer"
             onClick={() => {
-              if (currentQuestionIndex === SAT_Section1_Module4.length - 1) {
+              if (currentQuestionIndex === SAT_Section1_Module2.length - 1) {
                 setIsReviewPage(true);
               } else {
                 handleNextQuestion();

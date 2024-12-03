@@ -28,6 +28,10 @@ function SatPractice() {
         localStorage.removeItem("component3startTime");
         localStorage.removeItem("component6startTime");
         localStorage.removeItem("component8startTime");
+        localStorage.removeItem("section1");
+        localStorage.removeItem("section2");
+        localStorage.removeItem("section3");
+        localStorage.removeItem("section4");
         navigate("/satexam")
       }, 2000);
     }
@@ -46,6 +50,19 @@ function SatPractice() {
       return;
     }
   };
+
+  useEffect(() => {
+    localStorage.removeItem("LunchBreakStartTime");
+    localStorage.removeItem("component");
+    localStorage.removeItem("component1startTime");
+    localStorage.removeItem("component3startTime");
+    localStorage.removeItem("component6startTime");
+    localStorage.removeItem("component8startTime");
+    localStorage.removeItem("section1");
+    localStorage.removeItem("section2");
+    localStorage.removeItem("section3");
+    localStorage.removeItem("section4");
+  }, [user]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

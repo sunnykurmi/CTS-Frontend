@@ -94,13 +94,13 @@ export const SAT_Section1_Module4 = [
   {
     questioninfo: ` <img src="/Images/SAT Test/Module4/Q13.png" alt="Q13 Image"/> <br> In the figure shown, line c intersects parallel lines s and t. ?`,
     question: "What is the value of x ",
-    options: [],
+    options: ["40", "55", "70", "80"],
     answer: "70",
   },
   {
     questioninfo: `A list of 10 data values is shown. <br> 6, 8, 16, 4, 17, 26, 8, 5, 5, 5 `,
     question: "What is the mean of these data?",
-    options: [],
+    options: ["25", "10", "20", "15"],
     answer: "10",
   },
 
@@ -172,52 +172,5 @@ export const SAT_Section1_Module4 = [
       "What is the volume of the space in the cube not taken up by the sphere?",
     options: ["149,796", "164,500", "190,955", "310,800"],
     answer: "149,796",
-  },
-  {
-    questioninfo:
-      "What is the diameter of the circle in the xy-plane with equation (x − 5)² + (y − 3)² = 16 ?",
-    question: "What is the diameter of the circle?",
-    options: ["4", "8", "16", "32"],
-    answer: "8",
-  },
-  {
-    questioninfo:
-      "For the exponential function f, the value of f(1) is k, where k is a constant. Which of the following equivalent forms of the function f shows the value of k as the coefficient or the base?",
-    question:
-      "Which form of the function shows the value of k as the coefficient or the base?",
-    options: [
-      "f(x) = 50(1.6)ˣ⁺¹",
-      "f(x) = 80(1.6)ˣ",
-      "f(x) = 128(1.6)ˣ⁻¹",
-      "f(x) = 204.8(1.6)ˣ⁻²",
-    ],
-    answer: "f(x) = 128(1.6)ˣ⁻¹",
-  },
-  {
-    questioninfo:
-      "A model estimates that at the end of each year from 2015 to 2020, the number of squirrels in a population was 150% more than the number of squirrels in the population at the end of the previous year. The model estimates that at the end of 2016, there were 180 squirrels in the population. Which equation represents this model?",
-    question: "Which equation represents the squirrel population model?",
-    options: ["n = 72(1.5)ᵗ", "n = 72(2.5)ᵗ", "n = 180(1.5)ᵗ", "n = 180(2.5)ᵗ"],
-    answer: "n = 72(2.5)ᵗ",
-  },
-  {
-    questioninfo:
-      "5x + 7y = 1 <br> ax + by = 1 <br> In the given pair of equations, a and b are constants. The graph of this pair of equations in the xy-plane is a pair of perpendicular lines. Which of the following pairs of equations also represents a pair of perpendicular lines?",
-    question:
-      "Which pair of equations also represents a pair of perpendicular lines?",
-    options: [
-      "10x + 7y = 1, ax - 2by = 1",
-      "10x + 7y = 1, ax + 2by = 1",
-      "10x + 7y = 1, 2ax + by = 1",
-      "5x - 7y = 1, ax + by = 1",
-    ],
-    answer: "10x + 7y = 1, ax + 2by = 1",
-  },
-  {
-    questioninfo:
-      "x² - 34x + c = 0  <br> In the given equation, c is a constant. The equation has no real solutions if c > n. What is the least possible value of n?",
-    question: "What is the least possible value of n?",
-    options: [],
-    answer: "289",
   },
 ];

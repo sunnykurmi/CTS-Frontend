@@ -153,7 +153,7 @@ export default function App() {
 {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
 {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
 
-<Route path="/cts-scholarship" element={<AdminProtectedRoute>
+          <Route path="/cts-scholarship" element={<AdminProtectedRoute>
           <CtsScholarship />
         </AdminProtectedRoute>
         } />
