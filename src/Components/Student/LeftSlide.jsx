@@ -93,7 +93,7 @@ export default function LeftSlide({
             <a
               className={getButtonClass("Community")}
               // onClick={() => {setSelectedComponent("Community"); closeSidebar();}}
-              href="https://wa.me/9174491318"
+              href="https://nas.io/Cross-The-Skylimits"
             >
               <RiTeamLine />
               <p>Community</p>

@@ -73,7 +73,10 @@ const closeSidebar = () => {
           <LeftSlide selectedComponent={selectedComponent} setSelectedComponent={setSelectedComponent} closeSidebar={closeSidebar} />
         </div>
         <div className="w-[82%] max-[600px]:w-full h-[89vh]">
-          <RiArrowRightLine onClick={toggleSidebar} className='ml-5 hidden max-[600px]:block cursor-pointer'/>
+          <div className="center font-semibold gap-2 w-fit ml-5" onClick={toggleSidebar} >
+<p>menu</p>
+          <RiArrowRightLine className=' hidden max-[600px]:block cursor-pointer'/>
+          </div>
           {selectedComponent === 'Dashboard' && <Dashboard />}
           {selectedComponent === 'Roadmap' && <Roadmap />}
           {selectedComponent === 'Community' && <Community />}
