@@ -12,7 +12,7 @@ import { asynccurrentUser } from "../../../../store/Actions/userActions";
 import Loader from "../../../Loader/Loader";
 
 const EssayHome = () => {
-  const key = import.meta.env.VITE_RAZORPAY_KEY
+  const key = import.meta.env.VITE_RAZORPAY_KEY;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuth = useSelector((state) => state.user.isAuth);
@@ -23,12 +23,12 @@ const EssayHome = () => {
   const [isFileInputDisabled, setIsFileInputDisabled] = useState(false);
   const [isTextareaDisabled, setIsTextareaDisabled] = useState(false);
   const [selectedFileName, setSelectedFileName] = useState("");
-
+  const [openpopup, setopenpopup] = useState(false);
   const fileInputRef = useRef(null);
 
   const [userInput, setUserInput] = useState({
     essaytype: "",
-    instructions: "",
+    instructions: "no instructions",
     essaytext: "",
     price: "",
     essayfile: null,
@@ -129,7 +129,6 @@ const EssayHome = () => {
   const submithandler = async () => {
     if (
       !userInput.essaytype ||
-      !userInput.instructions ||
       !userInput.price ||
       !userInput.id
     ) {
@@ -179,8 +178,9 @@ const EssayHome = () => {
         description: "Payment for Essay Editing",
         image: "https://crosstheskylimits.online/Images/CTS%20%20%20Logo.png", //loggedinuser img
         order_id: order.id,
-        callback_url:
-          `${import.meta.env.VITE_BACKEND_URL}/api/v1/services/essay-verify-payment`,
+        callback_url: `${
+          import.meta.env.VITE_BACKEND_URL
+        }/api/v1/services/essay-verify-payment`,
         prefill: {
           name: user.name, //loggedinuser name
           email: user.email, //loggedinuser email
@@ -214,8 +214,6 @@ const EssayHome = () => {
     fileInputRef.current.click();
   };
 
-
-
   return (
     <div className="w-full p-5 flex flex-col items-center bg-white">
       <div className="w-full h-fit">
@@ -230,11 +228,15 @@ const EssayHome = () => {
             <button className="mr-2 ">Go Back</button>
           </Link>
         </div>
-        <h1 className="text-4xl font-bold text-center mt-16">Exclusive Services</h1>
+        <h1 className="text-4xl font-bold text-center mt-16">
+          Exclusive Services
+        </h1>
       </div>
 
       <div className="w-[70vw] h-fit mt-10 shadow-lg rounded-xl p-0 border-2 max-[456px]:w-full max-[456px]:border-none max-[456px]:rounded-none max-[456px]:shadow-none max-[456px]:mt-1 sm:p-5">
-        <h1 className="text-4xl mt-7 max-[456px]:mt-1 max-[456px]:ml-5 ml-10 text-center">Essay Editing</h1>
+        <h1 className="text-4xl mt-7 max-[456px]:mt-1 max-[456px]:ml-5 ml-10 text-center">
+          Essay Editing
+        </h1>
         <p className="w-[60%] max-[456px]:w-full text-center mt-5 m-auto text-zinc-500">
           Essays Aren’t Just Essays. They’re Your Story—Let’s Make It
           Unforgettable. We’re the Experts in Crafting Standout Applications,
@@ -280,144 +282,150 @@ const EssayHome = () => {
           </li>
         </ul>
         <div className="w-full center">
-          <button
-            onClick={checkLoginHandler}
-            className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
-          >
-            Edit Your Essay Now
-          </button>
+          {isAuth ? (
+            <button
+              onClick={() => setopenpopup(true)}
+              className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
+            >
+              Submit Essay Details
+            </button>
+          ) : (
+            <button
+              onClick={checkLoginHandler}
+              className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
+            >
+              Edit Your Essay Now
+            </button>
+          )}
         </div>
       </div>
 
-      {isAuth && (
-        <div className="wrapper-div w-full mt-10 flex flex-col items-center py-10 sm:p-10 sm:px-32">
-
-
-
-          <div className="w-full grid grid-cols-3 place-items-center max-[456px]:grid-cols-1">
-            <div className="w-full ">
-              <div className="relative inline-block w-full text-left mt-4">
-                <button
-                  type="button"
-                  className="w-full flex items-center justify-between px-4 py-2 text-xl font-semibold text-white bg-[#008BDC] rounded-md"
-                  onClick={toggleDropdown}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  {userInput.essaytype
-                    ? userInput.essaytype
-                    : "Select Essay Editing Type"}
-                  <RiArrowDownSLine className="ml-2" />
-                </button>
-                {dropdownOpen && (
-                  <div
-                    className="z-10 absolute mt-2 w-full rounded-md bg-white shadow-lg"
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <div className="py-2">
-                      {classes.map((option, index) => (
-                        <div
-                          key={index}
-                          onClick={() => handleOptionClick(option)}
-                          className="cursor-pointer px-4 py-2 hover:bg-gray-200 text-xl"
-                        >
-                          {option.essaytype}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <div
-                className={`choose-file w-40 bg-[#008BDC] p-3 mt-3 center rounded-md cursor-pointer text-xl text-white font-medium gap-2 ${
-                  isFileInputDisabled ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-                onClick={handleChooseFileClick}
-              >
-                <RiFileAddFill className="inline-block" />
-                <h1>Select File</h1>
-              </div>
-
-              <div className="w-full mt-4 center">
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  onChange={handleFileChange}
-                  disabled={isFileInputDisabled}
-                  className="hidden"
-                />
-                {selectedFileName && (
-                  <div className="center gap-3">
-                    <p className="mt-2 text-lg text-gray-700">
-                      {selectedFileName}
-                    </p>
-                    <RiCloseFill
-                      className="cursor-pointer mt-1"
-                      onClick={handleFileCancel}
-                    />
-                  </div>
-                )}
-              </div>
-              <h1 className="text-3xl font-medium mb-2 mt-2">
-                Add Your Discription Here
-              </h1>
-              <p className="text-sm mb-2 text-zinc-500">
-                You can add a detailed description of your essay here, including
-                specific guidelines or instructions you'd like to provide. This
-                will help ensure your essay is edited and reviewed according to
-                your unique requirements.
-              </p>
-              <textarea
-                placeholder="Enter Discription Text Here..."
-                value={userInput.instructions}
-                onChange={handleInstructionsChange}
-                maxLength={500}
-                className="w-full mt-2 h-40 p-4 border-2 rounded-md focus:outline-none focus:ring-orange-400 focus:border-[#008BDC]"
-              ></textarea>
+      {openpopup && (
+        <div className="  fixed top-0  w-full h-screen flex wrapper-div  items-center justify-center bg-[#74747443]">
+          
+          <div className="w-[60%] py-5 bg-white drop-shadow-2xl">
+            <div 
+            onClick={()=>setopenpopup(false)}
+             className=" cursor-pointer absolute right-5 top-5 ">
+              <RiCloseFill/>
             </div>
-
-            <h1 className="text-xl font-medium mt-3 ">OR</h1>
-
-            <div className="">
-              <div className="w-fit  mt-16 max-[456px]:w-full">
-                <h1 className="text-3xl font-medium mb-5">
-                  Write Your Essay Here
-                </h1>
-                <p className="text-sm mb-2 text-zinc-500">
-                  Use this space to write a clear, structured essay that
-                  effectively communicates your ideas with proper grammar and
-                  flow.
-                </p>
-                <textarea
-                  placeholder="Enter Essay Text Here..."
-                  value={userInput.essaytext}
-                  // maxLength={5000}
-                  onChange={handleTextareaChange}
-                  disabled={isTextareaDisabled}
-                  className={`w-full h-64 p-4 border-2 rounded-md focus:outline-none focus:ring-orange-400 focus:border-[#008BDC] ${
-                    isTextareaDisabled ? "opacity-50" : ""
-                  }`}
-                ></textarea>
-              </div>
-            </div>
-          </div>
-          <div className="mt-4">
-            <button
-              disabled={isLoading}
-              onClick={submithandler}
-              className="bg-[#008BDC] text-xl font-medium p-5 text-white py-2 rounded-md"
-            >
-              {isLoading ? (
-                <div className="center gap-3">
-                  <div className="loader"></div>
-                  Please Wait...
+            <div className="w-full flex flex-col items-center">
+              <div className="w-full ">
+                <div className="center">
+                  <p className="font-medium text-2xl mt-5">
+                    Fill your Essay Details
+                  </p>
                 </div>
-              ) : (
-                `Pay ${userInput.price ? `₹${userInput.price}` : ""}`
-              )}
-            </button>
+                <div className="center">
+                  <div className="relative inline-block w-[40%] text-left mt-4">
+                    <button
+                      type="button"
+                      className="w-full flex items-center justify-between px-4 py-2 text-xl font-semibold text-white bg-[#008BDC] rounded-md"
+                      onClick={toggleDropdown}
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      {userInput.essaytype
+                        ? userInput.essaytype
+                        : "Select Essay Editing Type"}
+                      <RiArrowDownSLine className="ml-2" />
+                    </button>
+                    {dropdownOpen && (
+                      <div
+                        className="z-10 absolute mt-2 w-full rounded-md bg-white shadow-lg"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                      >
+                        <div className="py-2">
+                          {classes.map((option, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleOptionClick(option)}
+                              className="cursor-pointer px-4 py-2 hover:bg-gray-200 text-xl"
+                            >
+                              {option.essaytype}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="center mt-5">
+                  <div
+                    className={`choose-file w-[40%] bg-[#008BDC] px-4 py-2 mt-3 center rounded-md cursor-pointer text-xl text-white font-medium gap-2 ${
+                      isFileInputDisabled ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                    onClick={handleChooseFileClick}
+                  >
+                    <RiFileAddFill className="inline-block" />
+                    <h1>Select File</h1>
+                  </div>
+                </div>
+
+                <div className="w-full mt-4 center">
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleFileChange}
+                    disabled={isFileInputDisabled}
+                    className="hidden"
+                  />
+                  {selectedFileName && (
+                    <div className="center gap-3">
+                      <p className="mt-2 text-lg text-gray-700">
+                        {selectedFileName}
+                      </p>
+                      <RiCloseFill
+                        className="cursor-pointer mt-1"
+                        onClick={handleFileCancel}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <h1 className="text-xl font-medium mt-3 ">OR</h1>
+
+              <div className="">
+                <div className="w-fit">
+                  <h1 className="text-2xl font-medium ">
+                    Write Your Essay Here
+                  </h1>
+                  <p className="text-sm mb-2 text-zinc-500">
+                    Use this space to write a clear, structured essay that
+                    effectively communicates your ideas with proper grammar and
+                    flow.
+                  </p>
+                  <textarea
+                    placeholder="Enter Essay Text Here..."
+                    value={userInput.essaytext}
+                    // maxLength={5000}
+                    onChange={handleTextareaChange}
+                    disabled={isTextareaDisabled}
+                    className={`w-full h-44 p-4 border-2 rounded-md focus:outline-none focus:ring-orange-400 focus:border-[#008BDC] ${
+                      isTextareaDisabled ? "opacity-50" : ""
+                    }`}
+                  ></textarea>
+                </div>
+              </div>
+            <div className="mt-4">
+              <button
+                disabled={isLoading}
+                onClick={submithandler}
+                className="bg-[#008BDC] text-xl font-medium p-5 text-white py-2 rounded-md"
+              >
+                {isLoading ? (
+                  <div className="center gap-3">
+                    <div className="loader"></div>
+                    Please Wait...
+                  </div>
+                ) : (
+                  `Fees ${userInput.price ? `₹${userInput.price}` : ""}`
+                )}
+              </button>
+            </div>
+            </div>
           </div>
         </div>
       )}

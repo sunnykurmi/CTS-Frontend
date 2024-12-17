@@ -1,8 +1,8 @@
 import { RiCloseLine, RiMenuLine, RiArrowDownSLine } from "@remixicon/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { asynccurrentUser } from "./../../store/Actions/userActions";
+import { Link, useNavigate } from "react-router-dom";
+import { asynccurrentUser, asyncremoveUser } from "./../../store/Actions/userActions";
 import Headroom from "react-headroom";
 
 const HomeNav = () => {
@@ -10,6 +10,7 @@ const HomeNav = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -22,6 +23,14 @@ const HomeNav = () => {
   useEffect(() => {
     dispatch(asynccurrentUser());
   }, [dispatch]);
+
+    const handleLogout = () => {
+      setTimeout(() => {
+        dispatch(asyncremoveUser());
+        navigate("/");
+        window.location.reload();
+      }, 1000);
+    };
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -187,21 +196,21 @@ const HomeNav = () => {
 
 
       <div className="w-full h-fit py-5 flex items-center justify-center min-[600px]:hidden max-[600px]:h-16 z-[999] max-[600px]:bg-[#e7f9ff]">
-          <div className="w-fit bg-[#e7f9ff] h-24 rounded-full flex items-center justify-evenly max-[600px]:w-full max-[600px]:rounded-none max-[600px]:pr-2 max-[600px]:h-fit max-[600px]:justify-between max-[600px]:px-5">
-            <Link className="w-[15%] max-[600px]:w-[30%] center" to="/">
-              <img
-                className="w-full"
-                src="/Images/home/CTSLogo.png"
-                alt=""
-              />
-            </Link>
-           
-          
-            <div className="center flex-col min-[600px]:hidden">
-              <RiMenuLine onClick={toggleMenu} />
-            </div>
+        <div className="w-fit bg-[#e7f9ff] h-24 rounded-full flex items-center justify-evenly max-[600px]:w-full max-[600px]:rounded-none max-[600px]:pr-2 max-[600px]:h-fit max-[600px]:justify-between max-[600px]:px-5">
+          <Link className="w-[15%] max-[600px]:w-[30%] center" to="/">
+            <img
+              className="w-full"
+              src="/Images/home/CTSLogo.png"
+              alt=""
+            />
+          </Link>
+
+
+          <div className="center flex-col min-[600px]:hidden">
+            <RiMenuLine onClick={toggleMenu} />
           </div>
         </div>
+      </div>
 
       <div
         className={`w-full h-fit pb-10 fixed top-0 left-0 z-[9999] min-[600px]:hidden transition-transform duration-500 bg-white shadow-md rounded-md ${menuOpen ? "translate-y-0" : "-translate-y-full"
@@ -217,7 +226,7 @@ const HomeNav = () => {
           </Link>
           <RiCloseLine className="scale-150" onClick={toggleMenu} />
         </div>
-        <div className="pl-10 flex-col uppercase text-xl font-semibold flex gap-4">
+        <div className="pl-10 flex-col uppercase text-lg font-semibold flex gap-2">
           <a className="hover-link w-fit" href="/">Home</a>
           <Link className="hover-link w-fit" to="/ivy">
             ivy acclerator
@@ -232,18 +241,35 @@ const HomeNav = () => {
           <Link className="hover-link w-fit" to={"/about-us"}>
             about us
           </Link>
-          <div className="login-sigup flex gap-4">
-            <Link to="/login" className="text-[#008BDC] p-2 px-4 text-xl font-medium rounded-md border-[#008BDC] border-2">
-              <button>
-                LOG IN
-              </button>
-            </Link>
-            <Link to="/signup" className="">
-              <button className="bg-[#008BDC] text-white rounded-md p-2 px-4 font-medium uppercase border-[#008BDC] border-2">
-                Register
-              </button>
-            </Link>
-          </div>
+
+          {isAuth ? (
+            <div className="flex gap-4">
+              <Link to="/home" className="text-[#008BDC] w-fit p-1 px-4 text-lg font-medium rounded-md border-[#008BDC] border-2">
+                <button>
+                  Dashboard
+                </button>
+              </Link>
+              <div className="bg-[#008BDC] text-white p-1 px-4 text-lg font-medium rounded-md border-[#008BDC] border-2">
+                <button onClick={handleLogout}>
+                  Logout
+                </button>
+              </div>
+            </div>
+
+          ) : (
+            <div className="login-sigup flex gap-4">
+              <Link to="/login" className="text-[#008BDC] p-1 px-4 text-lg font-medium rounded-md border-[#008BDC] border-2">
+                <button>
+                  LOG IN
+                </button>
+              </Link>
+              <Link to="/signup" className="">
+                <button className="bg-[#008BDC] text-white rounded-md p-1 px-4 font-medium uppercase border-[#008BDC] border-2">
+                  Register
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </>
