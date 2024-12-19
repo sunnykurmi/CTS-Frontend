@@ -95,11 +95,12 @@ export const SAT_Section1_Module3 = [
   },
   {
     questioninfo:
-      "Solve the equation z^2 + 10z - 24 = 0. What is one of the solutions to the given equation?",
+      "Solve the equation z² + 10z - 24 = 0. What is one of the solutions to the given equation?",
     question: "What is one of the solutions to the equation?",
     options: ["z = -12", "z = -2", "z = 2", "z = 12"],
     answer: "z = 2",
   },
+  
   {
     questioninfo:
       "Bacteria are growing in a liquid growth medium. There were 300,000 cells per milliliter during an initial observation. The number of cells per milliliter doubles every 3 hours. How many cells per milliliter will there be 15 hours after the initial observation?",
@@ -110,16 +111,17 @@ export const SAT_Section1_Module3 = [
   },
   {
     questioninfo:
-      "Which expression is equivalent to (6x^8 + x^2y^2)/(x^12y^6)?",
-    question: "Which expression is equivalent to (6x^8 + x^2y^2)/(x^12y^6)?",
+      "Which expression is equivalent to (6x⁸ + x²y²)/(x¹²y⁶)?",
+    question: "Which expression is equivalent to (6x⁸ + x²y²)/(x¹²y⁶)?",
     options: [
-      "6x^2y^(-4) + x^(-6)",
-      "6/x^2y^4 + x^(-6)",
-      "6x^(-4)y^(-4) + x^(-6)",
-      "6/x^4y^4 + x^(-6)",
+      "6x²y⁻⁴ + x⁻⁶",
+      "6/x²y⁴ + x⁻⁶",
+      "6x⁻⁴y⁻⁴ + x⁻⁶",
+      "6/x⁴y⁴ + x⁻⁶",  
     ],
-    answer: "6x^(-4)y^(-4) + x^(-6)",
+    answer: "6x⁻⁴y⁻⁴ + x⁻⁶",
   },
+  
   {
     questioninfo:
       "A neighborhood consists of a 2-hectare park and a 35-hectare residential area. The total number of trees in the neighborhood is 3,934. The equation 2x + 35y = 3,934 represents this situation.",

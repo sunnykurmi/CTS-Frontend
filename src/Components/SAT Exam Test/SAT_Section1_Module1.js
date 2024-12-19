@@ -1,308 +1,318 @@
 export const SAT_Section1_Module1 = [
   {
-    questioninfo:
-      "Former astronaut Ellen Ochoa says that although she doesn’t have a definite idea of when it might happen, she _______ that humans will someday need to be able to live in other environments than those found on Earth. This conjecture informs her interest in future research missions to the moon. ",
-    question:
-      "Which choice completes the text with the most logical and precise word or phrase? ",
-    options: ["demands", "speculates", "doubts", "establishes"],
-    answer: "speculates",
+    questioninfo: 
+      "Experts and environmental advocates emphasize that the spread of invasive species, which leads to a reduction in biodiversity, is ____ . For example, travelers can help prevent this by thoroughly cleaning their vehicles to avoid transferring invasive pests to new locations.",
+    question: 
+      "Which choice completes the text with the most logical and precise word or phrase?",
+    options: ["avoidable", "unquestionable", "uncommon", "important"],
+    answer: "avoidable"
   },
   {
-    questioninfo:
-      "Beginning in the 1950s, Navajo Nation legislator Annie Dodge Wauneka continuously worked to promote public health; this _______ effort involved traveling throughout the vast Navajo homeland and writing a medical dictionary for speakers of Diné bizaad, the Navajo language. ",
-    question:
+    questioninfo: 
+      "It is by no means ____ to acknowledge the influence of French sculptor Auguste Rodin on contemporary artists; in fact, many modern sculptors cite Rodin's work as a major source of inspiration. However, some critics argue that other artists, such as Constantin Brâncuși, had an even greater impact on modern sculpture.",
+    question: 
       "Which choice completes the text with the most logical and precise word or phrase?",
-    options: ["impartial", "offhand", "persistent", "mandatory"],
-    answer: "persistent",
+    options: ["important", "unnoticed", "imperfect", "expected"],
+    answer: "important"
   },
   {
-    questioninfo:
-      "Given that the conditions in binary star systems should make planetary formation nearly impossible, it’s not surprising that the existence of planets in such systems has lacked _______ explanation. Roman Rafikov and Kedron Silsbee shed light on the subject when they used modeling to determine a complex set of factors that could support planets’ development.",
-    question:
-      "Which choice completes the text with the most logical and precise word or phrase?",
+    questioninfo: 
+      "Astronomers are certain that the star Aldebaran will eventually burn out and cease to shine. However, they are uncertain about the timeline for this event, as it depends on various factors that are not fully understood. Astrophysicists Maria Lopez and colleagues recently tested whether fluctuations in the star’s brightness could offer insights into its future, but their results indicated that this method would not provide enough clarity to predict Aldebaran’s ultimate fate.",
+    question: 
+      "Which choice best describes the function of the second sentence in the overall structure of the text?",
     options: [
-      "a discernible",
-      "a straightforward",
-      "an inconclusive",
-      "an unbiased",
+      "It highlights the uncertainty that exists regarding the timeline of Aldebaran's demise.",
+      "It elaborates on the results of Lopez and colleagues' research and their findings.",
+      "It explains the process that Lopez and colleagues used to analyze the star's behavior.",
+      "It compares the research on Aldebaran with studies on other stars."
     ],
-    answer: "a unbiased",
+    answer: "It highlights the uncertainty that exists regarding the timeline of Aldebaran's demise."
   },
   {
-    questioninfo:
-      "The parasitic dodder plant increases its reproductive success by flowering at the same time as the host plant it has latched onto. In 2020, Jianqiang Wu and his colleagues determined that the tiny dodder achieves this _______ with its host by absorbing and utilizing a protein the host produces when it is about to flower.",
-    question:
-      "Which choice completes the text with the most logical and precise word or phrase?",
-    options: ["synchronization", "hibernation", "prediction", "moderation"],
-    answer: "synchronization",
-  },
-  {
-    questioninfo:
-      "Given that the conditions in binary star systems should make planetary formation nearly impossible, it’s not surprising that the existence of planets in such systems has lacked _______ explanation. Roman Rafikov and Kedron Silsbee shed light on the subject when they used modeling to determine a complex set of factors that could support planets’ development.",
-    question:
-      "Which choice completes the text with the most logical and precise word or phrase?",
+    questioninfo: 
+      "The European ash tree is native to Europe, where the ash borer beetle, Agrilus planipennis, feeds on its bark. In the early 2000s, the beetle was unintentionally introduced to North America. Despite being isolated from European ash trees for centuries, the beetle’s relationship with the ash trees remains strong. By 2010, large swaths of North American ash trees had been decimated by the beetle.",
+    question: 
+      "Which choice best describes the function of the third sentence in the overall structure of the text?",
     options: [
-      "a discernible",
-      "a straightforward",
-      "an inconclusive",
-      "an unbiased",
+      "It offers an explanation for the beetle’s spread to new locations.",
+      "It introduces a counterargument to the study of the ash borer’s impact.",
+      "It describes a significant environmental change in North America.",
+      "It suggests a potential solution to control the beetle population."
     ],
-    answer: "a straightforward",
+    answer: "It describes a significant environmental change in North America."
+  },
+  {
+    questioninfo: {
+      text1: 
+        "When companies in the same sector announce a potential merger, they often claim that the merger will help reduce costs and benefit consumers. Economist Clara Williams examined this idea in the context of the automobile industry. She modeled a hypothetical merger between two major car manufacturers and found that car prices would likely rise as a result of the merger.",
+      text2: 
+        "Economists Philip Jensen and Lara Foster have argued that research into the effects of mergers on prices typically overlooks long-term benefits. In their study of the telecommunications industry, they show that over the course of several years, the efficiencies resulting from mergers can lead to lower prices and improved services for consumers."
+    },
+    question: 
+      "Based on the texts, how would Jensen and Foster (Text 2) most likely respond to Williams’ findings (Text 1)?",
+    options: [
+      "They would recommend that Williams examine the effects of a merger in a different industry to draw a more accurate conclusion.",
+      "They would suggest that Williams consider the long-term impacts of mergers on pricing, rather than focusing only on immediate effects.",
+      "They would argue that mergers in the automobile industry cannot lead to efficiencies that benefit consumers in the long run.",
+      "They would claim that mergers in the automobile industry have a unique impact on consumer pricing that is not seen in other industries."
+    ],
+    answer: "They would suggest that Williams consider the long-term impacts of mergers on pricing, rather than focusing only on immediate effects."
+  },
+  {
+    questioninfo: 
+      "The following text is from Herman Melville’s 1851 novel Moby-Dick. Ishmael is the narrator, and he reflects on the mysterious Captain Ahab.\n\nAhab’s manner was dark, and his command, though often harsh, was unquestionably effective. Though many of his crew had doubts about his leadership, Ishmael admired Ahab’s determination and ability to inspire his men to face dangers they might otherwise avoid.",
+    question: 
+      "According to the text, what is true about Captain Ahab?",
+    options: [
+      "Ahab's leadership is respected but causes significant fear among his crew.",
+      "Ahab's leadership is unquestioned, and his actions are always welcomed by the crew.",
+      "Ishmael believes that Ahab's leadership is flawed but effective in achieving his goals.",
+      "Ahab is often criticized for not being an effective leader, despite his authority."
+    ],
+    answer: "Ishmael believes that Ahab's leadership is flawed but effective in achieving his goals."
+  },
+  {
+    questioninfo: 
+      "The following text is adapted from Mark Twain's 1884 novel The Adventures of Huckleberry Finn.\n\nJim was a man of many contradictions. Though he was highly superstitious, he often acted with great wisdom and compassion. His strong moral compass guided him through challenging situations, but his fear of the unknown sometimes led him to make irrational decisions.",
+    question: 
+      "Based on the text, what is true about Jim?",
+    options: [
+      "Jim’s beliefs often conflict with his actions and decisions.",
+      "Jim's fears cause him to become irrational in most situations.",
+      "Jim acts purely based on reason and logic, regardless of superstition.",
+      "Jim’s compassion is overshadowed by his superstition and fear."
+    ],
+    answer: "Jim’s beliefs often conflict with his actions and decisions."
+  },
+  {
+    questioninfo: 
+      "The following text is from William Wordsworth’s 1807 poem ‘Lines Composed a Few Miles Above Tintern Abbey.’ The speaker reflects on the passage of time and the power of memory.\n\nFive years have passed; five summers, with the length\nOf five long winters! and again I hear\nThese waters, rolling from their mountain-springs\nWith a sweet inland murmur. – Once again\nDo I behold these steep and lofty cliffs.",
+    question: 
+      "What is the main idea of the text?",
+    options: [
+      "The speaker is reflecting on the natural beauty and changes over time.",
+      "The speaker is describing a recent visit to a familiar location.",
+      "The speaker expresses regret about the passage of time.",
+      "The speaker is planning a future trip to the cliffs."
+    ],
+    answer: "The speaker is reflecting on the natural beauty and changes over time."
+  },
+  {
+    questioninfo: 
+      "Soybeans (Glycine max) are rich in protein and other nutrients, but they are also known to cause digestive discomfort due to their high levels of fiber and compounds like oligosaccharides. Researchers Julia Herrera and Carlos Silva from the University of São Paulo claim that fermenting soybeans with beneficial bacteria can improve their digestibility and nutritional value.",
+    question: 
+      "Which finding from Herrera and Silva’s research, if true, would most directly support their claim?",
+    options: [
+      "Fermented soybeans contained significantly fewer oligosaccharides and fiber compared to nonfermented soybeans, and they also showed a reduction in antinutrients.",
+      "Fermented soybeans had more fiber and oligosaccharides but contained higher amounts of protein compared to nonfermented soybeans.",
+      "Fermentation of soybeans led to an increase in the presence of specific bacteria that enhance digestion in humans.",
+      "Both fermented and nonfermented soybeans were found to contain similar levels of protein and fiber after being cooked at high temperatures."
+    ],
+    answer: "Fermented soybeans contained significantly fewer oligosaccharides and fiber compared to nonfermented soybeans, and they also showed a reduction in antinutrients."
+  },
+  {
+    questioninfo: 
+      "During the Romantic period (late 18th to mid-19th century), poets often focused on emotion, nature, and individualism. While these themes marked a departure from the rationalism of the Enlightenment, they shared a common appreciation for human creativity and expression.",
+    question: 
+      "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    options: [
+      "Enlightenment however",
+      "Enlightenment, however",
+      "Enlightenment however;",
+      "Enlightenment; however,"
+    ],
+    answer: "Enlightenment; however,"
+  },
+	
+   {
+    question: "Which choice best completes the text?",
+    questioninfo: "The Industrial Revolution, which began in the late 18th century, brought significant advancements in manufacturing, transportation, and technology. As factories sprang up, workers migrated from rural areas to urban centers in search of employment.",
+    options: [
+      "It marked the end of industrialization in Europe.",
+      "It led to widespread environmental destruction.",
+      "It was a period of economic prosperity for all workers.",
+      "It transformed economies and societies across the world."
+    ],
+    answer: "It transformed economies and societies across the world."
+  },
+  {
+    question: "Which choice best explains the effect of the invention of the printing press?",
+    questioninfo: "The printing press, invented by Johannes Gutenberg in the 15th century, revolutionized the way books were produced. It allowed for the mass production of written materials, making knowledge more accessible and leading to the spread of ideas across Europe.",
+    options: [
+      "It decreased the spread of ideas throughout Europe.",
+      "It helped spread literacy and new ideas to a wider audience.",
+      "It led to the decline of the church's influence on education.",
+      "It had little impact on the spread of knowledge."
+    ],
+    answer: "It helped spread literacy and new ideas to a wider audience."
+  },
+  {
+    question: "Which choice best describes the relationship between the American colonies and Great Britain?",
+    questioninfo: "The American colonies were subject to British rule, which involved strict control over trade and governance. However, many colonists began to resist British policies, particularly those involving taxation without representation.",
+    options: [
+      "The colonies were fully independent from Great Britain.",
+      "The colonies were governed by their own elected leaders.",
+      "The colonies were subject to British control but sought independence.",
+      "The colonies welcomed British rule and taxation."
+    ],
+    answer: "The colonies were subject to British control but sought independence."
+  },
+  {
+    question: "Which choice best explains the impact of the Magna Carta on English government?",
+    questioninfo: "The Magna Carta, signed in 1215, limited the powers of the king and established certain legal rights for citizens. It is considered one of the foundational documents in the development of constitutional law.",
+    options: [
+      "It gave the king absolute power over the citizens.",
+      "It limited the king's power and established rights for citizens.",
+      "It ended the concept of law and order in England.",
+      "It had little effect on the development of law in England."
+    ],
+    answer: "It limited the king's power and established rights for citizens."
+  },
+  {
+    question: "Which choice best describes the significance of the Declaration of Independence?",
+    questioninfo: "The Declaration of Independence, written by Thomas Jefferson in 1776, declared the American colonies' independence from Great Britain. It laid out the philosophical justification for the colonies' break from British rule.",
+    options: [
+      "It was the document that ended the American Civil War.",
+      "It marked the beginning of a peaceful relationship with Britain.",
+      "It outlined the reasons for the American colonies' break from Britain.",
+      "It was a call for stronger British control over the colonies."
+    ],
+    answer: "It outlined the reasons for the American colonies' break from Britain."
+  },
+  {
+    question: "Which choice best explains the cause of the Cold War?",
+    questioninfo: "The Cold War was a period of geopolitical tension between the Soviet Union and the United States, which began after World War II. It was characterized by ideological conflict, nuclear arms race, and competition for global influence.",
+    options: [
+      "It was caused by a trade dispute between the two countries.",
+      "It resulted from religious differences between the two nations.",
+      "It was caused by the ideological conflict between communism and democracy.",
+      "It was sparked by territorial disputes between the Soviet Union and the United States."
+    ],
+    answer: "It was caused by the ideological conflict between communism and democracy."
+  },
+  {
+    question: "Which choice best explains the significance of the Emancipation Proclamation?",
+    questioninfo: "Issued by President Abraham Lincoln in 1863, the Emancipation Proclamation declared all slaves in Confederate states to be free. It was a significant step toward ending slavery in the United States.",
+    options: [
+      "It officially ended slavery in all states immediately.",
+      "It only freed slaves in the Union states.",
+      "It declared all slaves in Confederate states to be free.",
+      "It had no impact on slavery in the United States."
+    ],
+    answer: "It declared all slaves in Confederate states to be free."
+  },
+  {
+    question: "Which choice best explains the role of the United Nations?",
+    questioninfo: "The United Nations (UN) is an international organization founded in 1945 to promote peace, security, and cooperation among countries. It provides a platform for addressing global issues such as conflict, human rights, and development.",
+    options: [
+      "It serves as a military alliance between the world's superpowers.",
+      "It is a forum for promoting peace and resolving global conflicts.",
+      "It is a political organization for controlling global trade.",
+      "It focuses solely on the economic development of member states."
+    ],
+    answer: "It is a forum for promoting peace and resolving global conflicts."
+  },
+  {
+    question: "Which choice best completes the text?",
+    questioninfo: "The development of the internet has transformed the way people communicate, work, and access information. It has connected people around the world, enabling instant communication and the sharing of knowledge on a global scale.",
+    options: [
+      "The internet has made traditional forms of communication obsolete.",
+      "The internet has facilitated global communication and access to information.",
+      "The internet has led to the decline of all forms of communication.",
+      "The internet has made communication more expensive and difficult."
+    ],
+    answer: "The internet has facilitated global communication and access to information."
+  },
+  
+  {
+    question: "Which choice best describes the role of women during World War II?",
+    questioninfo: "During World War II, women took on a variety of roles traditionally held by men, including working in factories, serving in military capacities, and contributing to the war effort in other ways. Their involvement marked a shift in gender roles in many societies.",
+    options: [
+      "Women were not allowed to participate in any way in the war.",
+      "Women only contributed by serving in military combat positions.",
+      "Women took on roles in the workforce and the military to support the war effort.",
+      "Women were primarily focused on maintaining the home front and raising families."
+    ],
+    answer: "Women took on roles in the workforce and the military to support the war effort."
+  },
+  {
+    question: "Which choice best explains the significance of the Bill of Rights?",
+    questioninfo: "The Bill of Rights, ratified in 1791, consists of the first ten amendments to the U.S. Constitution. It guarantees fundamental rights and freedoms, such as freedom of speech, religion, and the press, as well as protection against unfair government actions.",
+    options: [
+      "It provided the framework for the government's economic policies.",
+      "It limited the rights of citizens in the United States.",
+      "It ensured certain rights and freedoms for U.S. citizens.",
+      "It granted full equality for all people in the United States."
+    ],
+    answer: "It ensured certain rights and freedoms for U.S. citizens."
+  },
+  {
+    question: "Which choice best explains the cause of the French Revolution?",
+    questioninfo: "The French Revolution, which began in 1789, was primarily caused by widespread discontent with the monarchy, economic hardship, and inequality in French society. It led to the overthrow of the monarchy and the rise of radical political movements.",
+    options: [
+      "It was caused by the economic prosperity of the French monarchy.",
+      "It was caused by a desire to expand the French Empire.",
+      "It was caused by dissatisfaction with the monarchy and inequality in society.",
+      "It was caused by an invasion from neighboring countries."
+    ],
+    answer: "It was caused by dissatisfaction with the monarchy and inequality in society."
+  },
+  {
+    question: "Which choice best completes the text?",
+    questioninfo: "The Great Depression of the 1930s caused widespread economic hardship in the United States. Unemployment soared, and many businesses shuttered. The New Deal, a series of programs introduced by President Franklin D. Roosevelt, aimed to provide relief, recovery, and reform to the struggling nation.",
+    options: [
+      "To reduce unemployment and improve the economy during the Great Depression",
+      "To introduce new laws that led to the end of the Great Depression",
+      "To challenge the authority of President Roosevelt",
+      "To promote free-market policies in a time of crisis"
+    ],
+    answer: "To reduce unemployment and improve the economy during the Great Depression"
+  },
+  {
+    question: "Which choice best states the main idea of the text?",
+    questioninfo: "The Renaissance was a cultural movement that began in Italy during the 14th century. It saw a revival of classical art, literature, and learning, and helped to lay the foundation for the modern world. The movement spread across Europe, influencing various fields such as science, art, and philosophy.",
+    options: [
+      "The Renaissance sparked significant cultural changes in Europe.",
+      "Italy was the only country influenced by the Renaissance.",
+      "The Renaissance focused primarily on religious art and literature.",
+      "The Renaissance led to the decline of classical knowledge."
+    ],
+    answer: "The Renaissance sparked significant cultural changes in Europe."
+  },
+  {
+    question: "Which choice best completes the text with the most logical phrase?",
+    questioninfo: "The scientific method is a systematic approach to inquiry used by scientists to investigate phenomena. It involves making observations, forming hypotheses, conducting experiments, and analyzing data to reach conclusions. This method has played a crucial role in the development of modern science.",
+    options: [
+      "The scientific method is only useful in the field of biology.",
+      "The method is widely recognized as the foundation of scientific research.",
+      "The scientific method is often disregarded in scientific studies.",
+      "This approach limits the scope of scientific exploration."
+    ],
+    answer: "The method is widely recognized as the foundation of scientific research."
+  },
+  {
+    question: "Which choice completes the text with the most logical phrase?",
+    questioninfo: "The American Revolution began in 1775 as a response to British colonial policies that the American colonists felt were unfair. The colonists, led by figures such as George Washington and Thomas Jefferson, sought independence and self-governance, eventually defeating the British in 1783.",
+    options: [
+      "The American Revolution was one of the most peaceful revolutions in history.",
+      "The British were ultimately defeated after years of intense conflict.",
+      "The revolution led to an economic decline in the colonies.",
+      "The colonists sought independence only for political reasons."
+    ],
+    answer: "The British were ultimately defeated after years of intense conflict."
   },
 
   {
-    questioninfo:
-      "Seminole/Muscogee director Sterlin Harjo _______ television’s tendency to situate Native characters in the distant past: this rejection is evident in his series Reservation Dogs, which revolves around teenagers who dress in contemporary styles and whose dialogue is laced with current slang.",
-    question:
-      "Which choice completes the text with the most logical and precise word or phrase?",
-    options: ["repudiates", "proclaims", "foretells", "recants"],
-    answer: "repudiates",
-  },
-  {
-    questioninfo:
-      "In 2007, computer scientist Luis von Ahn was working on converting printed books into a digital format. He found that some words were distorted enough that digital scanners couldn’t recognize them, but most humans could easily read them. Based on that finding, von Ahn invented a simple security test to keep automated “bots” out of websites. The first version of the reCAPTCHA test asked users to type one known word and one of the many words scanners couldn’t recognize. Correct answers proved the users were humans and added data to the book-digitizing project.",
-    question: "Which choice best states the main purpose of the text?",
+    question: "Which choice best summarizes the main theme of the passage?",
+    questioninfo: "In her memoir, author Alice Walker reflects on the complexities of race and gender in her life as an African-American woman growing up in the South.",
     options: [
-      "To discuss von Ahn’s invention of reCAPTCHA",
-      "To explain how digital scanners work",
-      "To call attention to von Ahn’s book-digitizing project",
-      "To indicate how popular reCAPTCHA is",
+      "Alice Walker describes her early life in the South.",
+      "The passage highlights the struggles of African-American women.",
+      "Alice Walker uses her personal experiences to explore broader themes of race and gender.",
+      "The author emphasizes the importance of family and community."
     ],
-    answer: "To discuss von Ahn’s invention of reCAPTCHA",
-  },
-  {
-    questioninfo:
-      "The following text is from Edith Wharton’s 1905 novel The House of Mirth. Lily Bart and a companion are walking through a park. <br> <br>  Lily had no real intimacy with nature, but she had a passion for the appropriate and could be keenly sensitive to a scene which was the fitting background of her own sensations. <u> The landscape outspread below her seemed an enlargement of her present mood, and she found something of herself in its calmness, its breadth, its long free reaches. </u> On the nearer slopes the sugar-maples wavered like pyres of light; lower down was a massing of grey orchards, and here and there the lingering green of an oak-grove.",
-    question:
-      "Which choice best describes the function of the underlined sentence in the text as a whole?",
-    options: [
-      "It creates a detailed image of the physical setting of the scene.",
-      "It establishes that a character is experiencing an internal conflict.",
-      "It makes an assertion that the next sentence then expands on.",
-      "It illustrates an idea that is introduced in the previous sentence.",
-    ],
-    answer:
-      "It illustrates an idea that is introduced in the previous sentence.",
-  },
-  {
-    questioninfo:
-      "A study by a team including finance professor Madhu Veeraraghavan suggests that exposure to sunshine during the workday can lead to overly optimistic behavior. <u>Using data spanning from 1994 to 2010 for a set of US companies, the team compared over 29,000 annual earnings forecasts to the actual earnings later reported by those companies. </u>  The team found that the greater the exposure to sunshine at work in the two weeks before a manager submitted an earnings forecast, the more the manager’s forecast exceeded what the company actually earned that year.",
-    question:
-      "Which choice best states the function of the underlined sentence in the overall structure of the text?",
-    options: [
-      "To summarize the results of the team’s analysis",
-      "To present a specific example that illustrates the study’s findings",
-      "To explain part of the methodology used in the team’s study",
-      "To call out a challenge the team faced in conducting its analysis",
-    ],
-    answer: "To explain part of the methodology used in the team’s study",
-  },
-  {
-    questioninfo:
-      "The following text is adapted from Edith Nesbit’s 1906 novel <i> The Railway Children. </i> <br><br> Mother did not spend all her time in paying dull [visits] to dull ladies, and sitting dully at home waiting for dull ladies to pay [visits] to her. She was almost always there, ready to play with the children, and read to them, and help them to do their home-lessons. Besides this she used to write stories for them while they were at school, and read them aloud after tea, and she always made up funny pieces of poetry for their birthdays and for other great occasions.",
-    question: "According to the text, what is true about Mother?",
-    options: [
-      "She wishes that more ladies would visit her.",
-      "Birthdays are her favorite special occasion.",
-      "She creates stories and poems for her children.",
-      "Reading to her children is her favorite activity.",
-    ],
-    answer: "She creates stories and poems for her children.",
-  },
-  {
-    questioninfo:
-      "The following text is from Maggie Pogue Johnson’s 1910 poem “Poet of Our Race.” In this poem, the speaker is addressing Paul Laurence Dunbar, a Black author. <br> <br> Thou, with stroke of mighty pen,<br> Hast told of joy and mirth,<br> And read the hearts and souls of men<br> As cradled from their birth.<br> The language of the flowers, <br>Thou hast read them all,<br> And e’en the little brook <br>Responded to thy call.",
-    question: "Which choice best states the main purpose of the text?",
-    options: [
-      "To praise a certain writer for being especially perceptive regarding people and nature",
-      "To establish that a certain writer has read extensively about a variety of topics",
-      "To call attention to a certain writer’s careful and elaborately detailed writing process",
-      "To recount fond memories of an afternoon spent in nature with a certain writer",
-    ],
-    answer:
-      "To praise a certain writer for being especially perceptive regarding people and nature",
-  },
-  {
-    questioninfo:
-      "“To You” is an 1856 poem by Walt Whitman. In the poem, Whitman suggests that readers, whom he addresses directly, have not fully understood themselves, writing, _______ <br><br> Which quotation from “To You” most effectively illustrates the claim?",
-    question:
-      "Which quotation from 'To You' most effectively illustrates the claim?",
-    options: [
-      "“You have not known what you are, you have slumber’d upon yourself / all your life, / Your eyelids have been the same as closed most of the time.”",
-      "“These immense meadows, these interminable rivers, you are immense / and interminable as they.”",
-      "“I should have made my way straight to you long ago, / I should have blabb’d nothing but you, I should have chanted nothing / but you.”",
-      "“I will leave all and come and make the hymns of you, / None has understood you, but I understand you.”",
-    ],
-    answer:
-      "“You have not known what you are, you have slumber’d upon yourself / all your life, / Your eyelids have been the same as closed most of the time.”",
-  },
-  {
-    questioninfo:
-      "Born in 1891 to a Quechua-speaking family in the Andes Mountains of Peru, Martín Chambi is today considered to be one of the most renowned figures of Latin American photography. In a paper for an art history class, a student claims that Chambi’s photographs have considerable ethnographic value—in his work, Chambi was able to capture diverse elements of Peruvian society, representing his subjects with both dignity and authenticity.",
-    question:
-      "Which finding, if true, would most directly support the student’s claim?",
-    options: [
-      "Chambi took many commissioned portraits of wealthy Peruvians, but he also produced hundreds of images carefully documenting the peoples, sites, and customs of Indigenous communities of the Andes.",
-      "Chambi’s photographs demonstrate a high level of technical skill, as seen in his strategic use of illumination to create dramatic light and shadow contrasts.",
-      "During his lifetime, Chambi was known and celebrated both within and outside his native Peru, as his work was published in places like Argentina, Spain, and Mexico.",
-      "Some of the peoples and places Chambi photographed had long been popular subjects for Peruvian photographers.",
-    ],
-    answer:
-      "Chambi took many commissioned portraits of wealthy Peruvians, but he also produced hundreds of images carefully documenting the peoples, sites, and customs of Indigenous communities of the Andes.",
-  },
-  {
-    questioninfo:
-      '<img src="/Images/SAT Test/Module1/Q14.png" alt="Q14 Image"/> <br> Some researchers studying Indigenous actors and filmmakers in the United States have turned their attention to the early days of cinema, particularly the 1910s and 1920s, when people like James Young Deer, Dark Cloud, Edwin Carewe, and Lillian St. Cyr (known professionally as Red Wing) were involved in one way or another with numerous films. In fact, so many films and associated records for this era have been lost that counts of those four figures’ output should be taken as bare minimums rather than totals; it’s entirely possible, for example, that _______',
-    question:
-      "Which choice most effectively uses data from the table to complete the example?",
-    options: [
-      "Dark Cloud acted in significantly fewer films than did Lillian St. Cyr, who is credited with 66 performances.",
-      "Edwin Carewe’s 47 credited acting roles includes only films made after 1934.",
-      "Lillian St. Cyr acted in far more than 66 films and Edwin Carewe directed more than 58.",
-      "James Young Deer actually directed 33 films and acted in only 10.",
-    ],
-    answer:
-      "Lillian St. Cyr acted in far more than 66 films and Edwin Carewe directed more than 58.",
-  },
-  {
-    questioninfo:
-      ' <img src="/Images/SAT Test/Module1/Q15.png" alt="Q15 Image"/> <br> Alicia Montesinos-Navarro, Isabelle Storer, and Rocío Perez-Barrales recently examined several plots within a diverse plant community in southeast Spain. The researchers calculated that if individual plants were randomly distributed on this particular landscape, only about 15% would be with other plants in patches of vegetation. They counted the number of juvenile plants of five species growing in patches of vegetation and the number growing alone on bare ground and compared those numbers to what would be expected if the plants were randomly distributed. Based on these results, they claim that plants of these species that grow in close proximity to other plants gain an advantage at an early developmental stage.',
-    question:
-      "Which choice best describes data from the table that support the researchers’ claim?",
-    options: [
-      "For all five species, less than 75% of juvenile plants were growing in patches of vegetation.",
-      "The species with the greatest number of juvenile plants growing in patches of vegetation was H. stoechas.",
-      "For T. libanitis and T. moroderi, the percentage of juvenile plants growing in patches of vegetation was less than what would be expected if plants were randomly distributed.",
-      "For each species, the percentage of juvenile plants growing in patches of vegetation was substantially higher than what would be expected if plants were randomly distributed.",
-    ],
-    answer:
-      "For each species, the percentage of juvenile plants growing in patches of vegetation was substantially higher than what would be expected if plants were randomly distributed.",
-  },
-  {
-    questioninfo:
-      "In the mountains of Brazil, Barbacenia tomentosa and Barbacenia macrantha—two plants in the Velloziaceae family—establish themselves on soilless, nutrient-poor patches of quartzite rock. Plant ecologists Anna Abrahão and Patricia de Britto Costa used microscopic analysis to determine that the roots of B. tomentosa and B. macrantha, which grow directly into the quartzite, have clusters of fine hairs near the root tip; further analysis indicated that these hairs secrete both malic and citric acids. The researchers hypothesize that the plants depend on dissolving underlying rock with these acids, as the process not only creates channels for continued growth but also releases phosphates that provide the vital nutrient phosphorus.",
-    question:
-      "Which finding, if true, would most directly support the researchers’ hypothesis?",
-    options: [
-      "Other species in the Velloziaceae family are found in terrains with more soil but have root structures similar to those of B. tomentosa and B. macrantha.",
-      "Though B. tomentosa and B. macrantha both secrete citric and malic acids, each species produces the acids in different proportions.",
-      "The roots of B. tomentosa and B. macrantha carve new entry points into rocks even when cracks in the surface are readily available.",
-      "B. tomentosa and B. macrantha thrive even when transferred to the surfaces of rocks that do not contain phosphates.",
-    ],
-    answer:
-      "The roots of B. tomentosa and B. macrantha carve new entry points into rocks even when cracks in the surface are readily available.",
-  },
-  {
-    questioninfo:
-      "Herbivorous sauropod dinosaurs could grow more than 100 feet long and weigh up to 80 tons, and some researchers have attributed the evolution of sauropods to such massive sizes to increased plant production resulting from high levels of atmospheric carbon dioxide during the Mesozoic era. However, there is no evidence of significant spikes in carbon dioxide levels coinciding with relevant periods in sauropod evolution, such as when the first large sauropods appeared, when several sauropod lineages underwent further evolution toward gigantism, or when sauropods reached their maximum known sizes, suggesting that _______",
-    question: "Which choice most logically completes the text?",
-    options: [
-      "fluctuations in atmospheric carbon dioxide affected different sauropod lineages differently.",
-      "the evolution of larger body sizes in sauropods did not depend on increased atmospheric carbon dioxide.",
-      "atmospheric carbon dioxide was higher when the largest known sauropods lived than it was when the first sauropods appeared.",
-      "sauropods probably would not have evolved to such immense sizes if atmospheric carbon dioxide had been even slightly higher.",
-    ],
-    answer:
-      "the evolution of larger body sizes in sauropods did not depend on increased atmospheric carbon dioxide.",
-  },
-  {
-    questioninfo:
-      "In documents called judicial opinions, judges explain the reasoning behind their legal rulings, and in those explanations they sometimes cite and discuss historical and contemporary philosophers. Legal scholar and philosopher Anita L. Allen argues that while judges are naturally inclined to mention philosophers whose views align with their own positions, the strongest judicial opinions consider and rebut potential objections; discussing philosophers whose views conflict with judges’ views could therefore _______",
-    question: "Which choice most logically completes the text?",
-    options: [
-      "allow judges to craft judicial opinions without needing to consult philosophical works.",
-      "help judges improve the arguments they put forward in their judicial opinions.",
-      "make judicial opinions more comprehensible to readers without legal or philosophical training.",
-      "bring judicial opinions in line with views that are broadly held among philosophers.",
-    ],
-    answer:
-      "help judges improve the arguments they put forward in their judicial opinions.",
-  },
-  {
-    questioninfo:
-      "Public-awareness campaigns about the need to reduce single-use plastics can be successful, says researcher Kim Borg of Monash University in Australia, when these campaigns give consumers a choice: for example, Japan achieved a 40 percent reduction in plastic-bag use after cashiers were instructed to ask customers whether _______ wanted a bag.",
-    question:
-      "Which choice completes the text so that it conforms to the conventions of Standard English?",
-    options: ["they", "one", "you", "it"],
-    answer: "they",
-  },
-  {
-    questioninfo:
-      "In ancient Greece, an Epicurean was a follower of Epicurus, a philosopher whose beliefs revolved around the pursuit of pleasure. Epicurus defined pleasure as 'the absence of pain in the body and of trouble in the _______ that all life’s virtues derived from this absence.",
-    question:
-      "Which choice completes the text so that it conforms to the conventions of Standard English?",
-    options: [
-      "soul,” positing",
-      "soul”: positing",
-      "soul”; positing",
-      "soul.” Positing",
-    ],
-    answer: "soul,” positing",
-  },
-  {
-    questioninfo:
-      "British scientists James Watson and Francis Crick won the Nobel Prize in part for their 1953 paper announcing the double helix structure of DNA, but it is misleading to say that Watson and Crick discovered the double helix. _______ findings were based on a famous X-ray image of DNA fibers, 'Photo 51,' developed by X-ray crystallographer Rosalind Franklin and her graduate student Raymond Gosling.",
-    question:
-      "Which choice completes the text so that it conforms to the conventions of Standard English?",
-    options: ["They’re", "It’s", "Their", "Its"],
-    answer: "Their",
-  },
-  {
-    questioninfo:
-      "In 1937, Chinese American screen actor Anna May Wong, who had portrayed numerous villains and secondary characters but never a heroine, finally got a starring role in Paramount Pictures’ *Daughter of Shanghai*, a film that _______ “expanded the range of possibilities for Asian images on screen.”",
-    question:
-      "Which choice completes the text so that it conforms to the conventions of Standard English?",
-    options: [
-      "critic, Stina Chyn, claims",
-      "critic, Stina Chyn, claims,",
-      "critic Stina Chyn claims",
-      "critic Stina Chyn, claims,",
-    ],
-    answer: "critic Stina Chyn claims",
-  },
-  {
-    questioninfo:
-      "In 1637, the price of tulips skyrocketed in Amsterdam, with single bulbs of rare varieties selling for up to the equivalent of $200,000 in today’s US dollars. Some historians _______ that this 'tulip mania' was the first historical instance of an asset bubble, which occurs when investors drive prices to highs not supported by actual demand.",
-    question:
-      "Which choice completes the text so that it conforms to the conventions of Standard English?",
-    options: ["claiming", "claim", "having claimed", "to claim"],
-    answer: "claim",
-  },
-  {
-    questioninfo:
-      "Researchers studying magnetosensation have determined why some soil-dwelling roundworms in the Southern Hemisphere move in the opposite direction of Earth’s magnetic field when searching for _______ in the Northern Hemisphere, the magnetic field points down, into the ground, but in the Southern Hemisphere, it points up, toward the surface and away from worms’ food sources.",
-    question:
-      "Which choice completes the text so that it conforms to the conventions of Standard English?",
-    options: ["food:", "food,", "food while", "food"],
-    answer: "food:",
-  },
-  {
-    questioninfo:
-      "Scientists believe that, unlike most other species of barnacle, turtle barnacles (Chelonibia testudinari) can dissolve the cement-like secretions they use to attach _______ to a sea turtle shell, enabling the barnacles to move short distances across the shell’s surface.",
-    question:
-      "Which choice completes the text so that it conforms to the conventions of Standard English?",
-    options: ["it", "themselves", "them", "itself"],
-    answer: "themselves",
-  },
-  {
-    questioninfo:
-      "The classic children’s board game Chutes and Ladders is a version of an ancient Nepalese game, Paramapada Sopanapata. In both games, players encounter 'good' or 'bad' spaces while traveling along a path; landing on one of the good spaces _______ a player to skip ahead and arrive closer to the end goal.",
-    question:
-      "Which choice completes the text so that it conforms to the conventions of Standard English?",
-    options: ["allows", "are allowing", "have allowed", "allow"],
-    answer: "allows",
-  },
-  {
-    questioninfo:
-      "In 1943, in the midst of World War II, mathematics professor Grace Hopper was recruited by the US military to help the war effort by solving complex equations. Hopper’s subsequent career would involve more than just _______ as a pioneering computer programmer, Hopper would help usher in the digital age.",
-    question:
-      "Which choice completes the text so that it conforms to the conventions of Standard English?",
-    options: [
-      "equations, though:",
-      "equations, though,",
-      "equations. Though,",
-      "equations though",
-    ],
-    answer: "equations, though:",
+    answer: "Alice Walker uses her personal experiences to explore broader themes of race and gender.",
+    topic: "Theme Identification",
+    difficulty: "Medium"
   },
 ];

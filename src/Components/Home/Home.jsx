@@ -79,6 +79,35 @@ export default function Home() {
     },
   ];
 
+  const calculateTimeLeft = () => {
+    const now = new Date();
+    const targetDate = new Date(now.getFullYear() + 1, 0, 1); // January 1st of the next year
+    const difference = targetDate - now;
+
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+  
   return (
     <div id="home" className="bg-[#F5FAFE]">
       <div className="w-full flex items-center justify-center fixed z-[9] max-[600px]:bg-[#E7F9FF]">
@@ -91,20 +120,28 @@ export default function Home() {
             dream university <span className="text-[#008BDC]">?</span>
           </p>
 
-          <p className="font-medium text-2xl mt-5 max-[600px]:text-xl">
-            Ivy Accelerator: Your 600% Acceptance Boost
+          <p className="font-medium text-2xl mt-5 pr-5 max-[600px]:text-xl">
+            🚀 Exclusive 1-1 Session with Krishna MIT! 🌟
           </p>
 
-          <p className="text-xl font-normal w-[60%] opacity-70  text-justify mt-1 max-[600px]:w-[90%] ">
-            For five years, Ivy Accelerator has been the most innovative,
-            first-of-its-kind program crafted with insights from Ivy League
-            students.
+          <p className="text-xl font-medium w-[60%] opacity-70  text-justify mt-1 max-[600px]:w-[90%] ">
+            Join one of the world’s top counselors who’s transformed thousands
+            of college applications and skyrocketed admission chances by 400%.
+            💡 Don’t miss this FREE opportunity to craft your personalized
+            success roadmap! Offer valid only until Jan 1. 🗓️
           </p>
-          <Link to={"/ivy"}>
-            <button className=" mt-10 w-32 h-14 rounded-lg bg-[#008BDC] text-white font-bold uppercase">
-              Explore ivy
+          <a
+            href="https://scheduler.zoom.us/ekiv2mqhqucm9n7w7-4-wg/krishna-mit"
+            target="a"
+          >
+            <button className=" mt-5 px-6 h-10 rounded-lg bg-[#008BDC] text-white font-bold uppercase">
+              JOIN 1V1 SESSION !!
             </button>
-          </Link>
+          </a>
+          <p className="mt-5 text-orange-500 text-xl font-medium">
+            {timeLeft.days} DAYS {timeLeft.hours} HOURS {timeLeft.minutes} MIN{" "}
+            {timeLeft.seconds} SEC !!
+          </p>
         </div>
         <img
           className="  h-full object-contain absolute right-[-0vh] max-[600px]:hidden"
