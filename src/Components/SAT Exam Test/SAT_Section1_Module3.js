@@ -1,72 +1,113 @@
 export const SAT_Section1_Module3 = [
   {
-    questioninfo: "What is 10% of 470?",
-    question: "What is 10% of 470?",
-    options: ["37", "47", "423", "460"],
-    answer: "47",
+    questioninfo: "Simplifying quadratic expressions by factoring",
+    question: "The expression x² – 12x + 35 is equivalent to which of the following?",
+    options: ["(x - 5)(x - 7)", "(x - 6)(x - 6)", "(x - 4)(x - 9)", "(x - 7)(x + 5)"],
+    answer: "(x - 5)(x - 7)"
   },
   {
-    questioninfo: "4x + 6 = 18",
-    question: "Which equation has the same solution as the given equation?",
-    options: ["4x = 108", "4x = 24", "4x = 12", "4x = 3"],
-    answer: "4x = 12",
+    questioninfo: "Finding missing angle in a triangle",
+    question: "In triangle ABC, angle A measures 50° and angle B measures 60°. What is the measure of angle C?",
+    options: ["30°", "60°", "70°", "80°"],
+    answer: "70°"
   },
   {
-    questioninfo:
-      "The total cost, in dollars, to rent a surfboard consists of a $25 service fee and a $10 per hour rental fee. A person rents a surfboard for t hours and intends to spend a maximum of $75 to rent the surfboard. Which inequality represents this situation?",
-    question: "Which inequality represents this situation?",
-    options: ["10t ≤ 75", "10 + 25t ≤ 75", "25t ≤ 75", "25 + 10t ≤ 75"],
-    answer: "25 + 10t ≤ 75",
+    questioninfo: "Basic probability of an event",
+    question: "A bag contains 8 red marbles, 5 blue marbles, and 7 green marbles. What is the probability of randomly drawing a blue marble?",
+    options: ["5/20", "1/4", "1/3", "5/15"],
+    answer: "5/20"
   },
   {
-    questioninfo: "The function g is defined by g(x) = 2x + 9",
-    question: "For which value of x is g(x) = 25?",
-    options: ["4", "5", "9", "13"],
-    answer: "4",
+    questioninfo: "Linear equation and x-intercept",
+    question: "What is the x-intercept of the line y = 3x - 12?",
+    options: ["(0, -12)", "(4, 0)", "(-4, 0)", "(0, 12)"],
+    answer: "(4, 0)"
   },
   {
-    questioninfo:
-      "Each face of a fair 14-sided die is labeled with a number from 1 through 14. If the die is rolled one time, what is the probability of rolling a 2?",
-    question: "What is the probability of rolling a 2?",
-    options: ["1/14", "2/14", "12/14", "13/14"],
-    answer: "1/14",
+    questioninfo: "Volume of a sphere",
+    question: "What is the volume of a sphere with a radius of 3 units? (Use π ≈ 3.14)",
+    options: ["113.04", "56.52", "84.78", "36.00"],
+    answer: "113.04"
   },
   {
-    questioninfo:
-      "A printer produces posters at a constant rate of 42 posters per minute. At what rate, in posters per hour, does the printer produce the posters?",
-    question:
-      "At what rate, in posters per hour, does the printer produce the posters?",
-    options: ["2520", "2250", "2950", "2420"],
-    answer: "2520",
+    questioninfo: "Algebraic expression simplification",
+    question: "Simplify: 2x² + 3x - 5x² + 4x",
+    options: ["-3x² + 7x", "3x² + 7x", "-3x² - x", "3x² - x"],
+    answer: "-3x² + 7x"
   },
   {
-    questioninfo:
-      "The function f is defined by the equation f(x) = 7x + 2. What is the value of f(x) when x = 4?",
-    question: "What is the value of f(x) when x = 4?",
-    options: ["40", "50", "30", "10"],
-    answer: "30",
+    questioninfo: "Percent increase",
+    question: "A jacket originally cost $80. After a 25% increase, what is the new price?",
+    options: ["$90", "$100", "$105", "$120"],
+    answer: "$100"
   },
   {
-    questioninfo:
-      "A teacher is creating an assignment worth 70 points. The assignment will consist of questions worth 1 point and questions worth 3 points. Which equation represents this situation, where x represents the number of 1-point questions and y represents the number of 3-point questions?",
-    question: "Which equation represents this situation?",
-    options: ["4xy = 70", "4(x + y) = 70", "3x + y = 70", "x + 3y = 70"],
-    answer: "x + 3y = 70",
+    questioninfo: "Finding the slope of a line",
+    question: "What is the slope of the line passing through points (2, 4) and (6, 10)?",
+    options: ["1", "2", "3", "1.5"],
+    answer: "1.5"
   },
   {
-    questioninfo:
-      "Right triangles LMN and PQR are similar, where L and M correspond to P and Q, respectively. Angle M has a measure of 53°. What is the measure of angle Q?",
-    question: "What is the measure of angle Q?",
-    options: ["37°", "53°", "127°", "143°"],
-    answer: "53°",
+    questioninfo: "Solving systems of linear equations",
+    question: "Solve for x: 3x + 2y = 14 and x - y = 4.",
+    options: ["x = 2", "x = 3", "x = 4", "x = 6"],
+    answer: "x = 6"
   },
   {
-    questioninfo: "y x = -3 <br> 4x y + = 15 ",
-    question:
-      "The solution to the given system of equations is (x, y). What is the value of x ?  ",
-    options: ["1", "5", "15", "45"],
-    answer: "15",
+    questioninfo: "Area of a triangle",
+    question: "A triangle has a base of 10 cm and a height of 8 cm. What is its area?",
+    options: ["40 cm²", "80 cm²", "50 cm²", "60 cm²"],
+    answer: "40 cm²"
   },
+  {
+    questioninfo: "Solving absolute value equations",
+    question: "Solve for x: |2x - 6| = 4.",
+    options: ["x = 5 or x = 1", "x = 4 or x = 2", "x = 3 or x = -1", "x = 6 or x = 0"],
+    answer: "x = 5 or x = 1"
+  },
+  {
+    questioninfo: "Exponential growth",
+    question: "If a bacteria colony doubles every 2 hours and starts with 100 bacteria, how many will there be after 6 hours?",
+    options: ["200", "400", "800", "1600"],
+    answer: "800"
+  },
+  {
+    questioninfo: "Basic arithmetic and percentages",
+    question: "A store is offering a 20% discount on a $250 item. What is the final price?",
+    options: ["$200", "$210", "$220", "$240"],
+    answer: "$200"
+  },
+  {
+    questioninfo: "Mean of a data set",
+    question: "Find the mean of the following data set: 4, 7, 10, 13, 16.",
+    options: ["8", "10", "11", "12"],
+    answer: "10"
+  },
+  {
+    questioninfo: "Solving for perimeter of a rectangle",
+    question: "A rectangle has a length of 15 meters and a width of 8 meters. What is its perimeter?",
+    options: ["30 meters", "46 meters", "58 meters", "64 meters"],
+    answer: "46 meters"
+  },
+  {
+    questioninfo: "Finding roots of quadratic equations",
+    question: "What are the roots of the equation x² - 5x + 6 = 0?",
+    options: ["x = 2 and x = 3", "x = -2 and x = -3", "x = 1 and x = 6", "x = -1 and x = -6"],
+    answer: "x = 2 and x = 3"
+  },
+  {
+    questioninfo: "Multiplying exponents with same base",
+    question: "Simplify: 3² × 3³",
+    options: ["3⁵", "3⁶", "9⁵", "9⁶"],
+    answer: "3⁵"
+  },
+  {
+    questioninfo: "Solving inequalities",
+    question: "Solve for x: 2x - 7 > 3.",
+    options: ["x > 2", "x > 5", "x < 5", "x = 5"],
+    answer: "x > 5"
+  },
+
 
   {
     questioninfo: `  <img src="/Images/SAT Test/Module3/Q11.png" alt="Q11 Image"/> <br>   Which of the following equations is the most appropriate linear model for the data shown in the scatterplot?`,
@@ -86,86 +127,19 @@ export const SAT_Section1_Module3 = [
     options: ["One", "Two", "Three", "Four"],
     answer: "Three",
   },
-  {
-    questioninfo:
-      "Vivian bought party hats and cupcakes for $71. Each package of party hats cost $3, and each cupcake cost $1. If Vivian bought 10 packages of party hats, how many cupcakes did she buy?",
-    question: "How many cupcakes did She buy?",
-    options: ["41", "55", "92", "13"],
-    answer: "41",
-  },
-  {
-    questioninfo:
-      "Solve the equation z² + 10z - 24 = 0. What is one of the solutions to the given equation?",
-    question: "What is one of the solutions to the equation?",
-    options: ["z = -12", "z = -2", "z = 2", "z = 12"],
-    answer: "z = 2",
-  },
-  
-  {
-    questioninfo:
-      "Bacteria are growing in a liquid growth medium. There were 300,000 cells per milliliter during an initial observation. The number of cells per milliliter doubles every 3 hours. How many cells per milliliter will there be 15 hours after the initial observation?",
-    question:
-      "How many cells per milliliter will there be 15 hours after the initial observation?",
-    options: ["1,500,000", "2,400,000", "4,500,000", "9,600,000"],
-    answer: "9,600,000",
-  },
-  {
-    questioninfo:
-      "Which expression is equivalent to (6x⁸ + x²y²)/(x¹²y⁶)?",
-    question: "Which expression is equivalent to (6x⁸ + x²y²)/(x¹²y⁶)?",
-    options: [
-      "6x²y⁻⁴ + x⁻⁶",
-      "6/x²y⁴ + x⁻⁶",
-      "6x⁻⁴y⁻⁴ + x⁻⁶",
-      "6/x⁴y⁴ + x⁻⁶",  
-    ],
-    answer: "6x⁻⁴y⁻⁴ + x⁻⁶",
-  },
-  
-  {
-    questioninfo:
-      "A neighborhood consists of a 2-hectare park and a 35-hectare residential area. The total number of trees in the neighborhood is 3,934. The equation 2x + 35y = 3,934 represents this situation.",
-    question:
-      "Which of the following is the best interpretation of x in this context?",
-    options: [
-      "The average number of trees per hectare in the park",
-      "The average number of trees per hectare in the residential area",
-      "The total number of trees in the park",
-      "The total number of trees in the residential area",
-    ],
-    answer: "The average number of trees per hectare in the park",
-  },
+ 
   {
     questioninfo: ` <img src="/Images/SAT Test/Module3/Q18.png" alt="Q18 Image"/> <br>   The graph shows the relationship between the number of shares of stock from Company A, x, and the number of shares of stock from Company B, y, that Simone can purchase.`,
     question: "Which equation could represent this relationship?",
     options: ["y = 8x + 12", "8x + 12y = 480", "y = 12x + 8", "12x + 8y = 480"],
     answer: "8x + 12y = 480",
   },
-  {
-    questioninfo:
-      "Circle A has a radius of 3n and Circle B has a radius of 129n, where n is a positive constant.",
-    question: "The area of Circle B is how many times the area of Circle A?",
-    options: ["43", "86", "129", "1,849"],
-    answer: "1,849",
-  },
+
   {
     questioninfo: ` <img src="/Images/SAT Test/Module3/Q20.png" alt="Q20 Image"/> <br>  The frequency table summarizes the 57 data values in a data set.`,
     question: " What is the maximum data value in the data set?",
     options: ["14", "16", "8", "20"],
     answer: "14",
   },
-  {
-    questioninfo:
-      "A circle in the xy-plane has a diameter with endpoints (2, 4) and (2, 14). An equation of this circle is (x − 2)² + (y − 9)² = r², where r is a positive constant.",
-    question: "What is the value of r?",
-    options: ["5", "10", "6", "14"],
-    answer: "5",
-  },
-  {
-    questioninfo:
-      "The measure of angle R is 2π/3 radians. The measure of angle T is 5π/12 radians greater than the measure of angle R.",
-    question: "What is the measure of angle T, in degrees?",
-    options: ["75", "120", "195", "390"],
-    answer: "195",
-  },
+
 ];

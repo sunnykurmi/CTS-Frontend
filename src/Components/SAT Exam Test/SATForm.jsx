@@ -1,4 +1,4 @@
-import { RiArrowLeftSLine } from "@remixicon/react";
+import { RiArrowLeftSLine, RiCloseFill } from "@remixicon/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -16,6 +16,7 @@ const SATForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCheckboxEnabled, setIsCheckboxEnabled] = useState(false);
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+  const [openPopup, setOpenPopup] = useState(false);
 
   const [userInput, setUserInput] = useState({
     name: "",
@@ -77,59 +78,58 @@ const SATForm = () => {
   };
 
   const submitHandler = async () => {
-    if (!isCheckboxChecked) {
-      alert("Please check the box to confirm your information.");
+    const { name, contact, email, userid } = userInput;
+    if (!name || !contact || !email || !userid) {
+      alert("Please fill all Form Details.");
       return;
     }
 
-    if (isCheckboxEnabled) {
-      const formData = new FormData();
-      formData.append("name", userInput.name || null);
-      formData.append("contact", userInput.contact || null);
-      formData.append("email", userInput.email || null);
-      formData.append("amount", userInput.amount);
-      formData.append("userid", userInput.userid);
-      setIsLoading(true);
-      try {
-        const order = await dispatch(SatPracticePayment(formData));
-        const options = {
-          key: key,
-          amount: userInput.amount * 100,
-          currency: "INR",
-          name: "Cross The Skylimits",
-          description: "Payment for SAT Practice Test",
-          image: "https://crosstheskylimits.online/Images/CTS%20%20%20Logo.png",
-          order_id: order.id,
-          callback_url: `${
-            import.meta.env.VITE_BACKEND_URL
-          }/api/v1/satpractice/sat-practice-verify-payment`,
-          prefill: {
-            name: user.name,
-            email: user.email,
-          },
-          notes: {
-            address: "CTS Bhopal",
-          },
-          theme: {
-            color: "#121212",
-          },
-          method: {
-            netbanking: true,
-            card: true,
-            upi: true,
-            wallet: false,
-            paylater: false,
-            banktransfer: true,
-            qr: false,
-          },
-        };
-        const razor = new window.Razorpay(options);
-        razor.open();
-      } catch (error) {
-        console.error("Payment failed:", error);
-      } finally {
-        setIsLoading(false);
-      }
+    const formData = new FormData();
+    formData.append("name", userInput.name || null);
+    formData.append("contact", userInput.contact || null);
+    formData.append("email", userInput.email || null);
+    formData.append("amount", userInput.amount);
+    formData.append("userid", userInput.userid);
+    setIsLoading(true);
+    try {
+      const order = await dispatch(SatPracticePayment(formData));
+      const options = {
+        key: key,
+        amount: userInput.amount * 100,
+        currency: "INR",
+        name: "Cross The Skylimits",
+        description: "Payment for SAT Practice Test",
+        image: "https://crosstheskylimits.online/Images/CTS%20%20%20Logo.png",
+        order_id: order.id,
+        callback_url: `${
+          import.meta.env.VITE_BACKEND_URL
+        }/api/v1/satpractice/sat-practice-verify-payment`,
+        prefill: {
+          name: user.name,
+          email: user.email,
+        },
+        notes: {
+          address: "CTS Bhopal",
+        },
+        theme: {
+          color: "#121212",
+        },
+        method: {
+          netbanking: true,
+          card: true,
+          upi: true,
+          wallet: false,
+          paylater: false,
+          banktransfer: true,
+          qr: false,
+        },
+      };
+      const razor = new window.Razorpay(options);
+      razor.open();
+    } catch (error) {
+      console.error("Payment failed:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -178,116 +178,108 @@ const SATForm = () => {
               Start Test
             </button>
           </Link>
+        ) : isAuth ? (
+          <button
+            onClick={() => setOpenPopup(true)}
+            className="bg-[#008BDC] text-white font-medium text-xl  px-8 py-2 rounded-md shadow-lg"
+          >
+            Get now
+          </button>
         ) : (
           <button
             onClick={checkLoginHandler}
             className="bg-[#008BDC] text-white font-medium text-xl  px-8 py-2 rounded-md shadow-lg"
           >
-            Get now
+            Login now to get started
           </button>
         )}
       </div>
-      {user && user.satpracticetestcode ? (
-        ""
-      ) : isAuth ? (
-        <div className="steps-mom w-full overflow-hidden h-fit p-20 px-48 max-[600px]:p-0">
-          <div className="step1-wrapper max-[600px]:w-full ">
-            <h1 className="text-2xl font-semibold">STEP-1:</h1>
-            <p className="ml-2">
-              Fill the form below to enroll in SAT Practice Test and get started
-            </p>
 
-            <div className="flex items-center justify-between w-full p-10 px-20 max-[600px]:px-10 max-[600px]:flex-col max-[1180px]:px-10">
-              <div className="flex flex-col gap-5 w-80">
-                <div className="">
-                  <h2 className="font-medium">Your Full Name</h2>
-                  <input
-                    onChange={handleChange("name")}
-                    placeholder="Enter your Name"
-                    type="text"
-                    name="name"
-                    id=""
-                    className="field rounded-md"
-                    value={userInput.name}
-                  />
+      {openPopup && (
+        <div className="fixed top-0 w-full h-screen flex items-center justify-center bg-[#74747443]">
+          <div className="w-[60%] py-5 bg-white drop-shadow-2xl">
+            <div
+              onClick={() => setOpenPopup(false)}
+              className="cursor-pointer absolute right-5 top-5"
+            >
+              <RiCloseFill />
+            </div>
+            <div className="w-full flex flex-col items-center">
+              <div className="w-full flex flex-col items-center justify-center">
+                <div className="center">
+                  <p className="font-medium text-2xl mt-5">
+                    Fill the form below to enroll in SAT Practice Test and get
+                    started
+                  </p>
                 </div>
-                <div className="">
-                  <h2 className="font-medium">Your Email Address</h2>
-                  <input
-                    onChange={handleChange("email")}
-                    placeholder="Enter your Email"
-                    type="text"
-                    name="email"
-                    id=""
-                    className="field rounded-md"
-                    value={userInput.email}
-                  />
+                <div className="center mt-5">
+                  <div className="flex flex-col gap-5 w-80">
+                    <div className="">
+                      <h2 className="font-medium">Your Full Name</h2>
+                      <input
+                        onChange={handleChange("name")}
+                        placeholder="Enter your Name"
+                        type="text"
+                        name="name"
+                        id=""
+                        className="field rounded-md"
+                        value={userInput.name}
+                      />
+                    </div>
+                    <div className="">
+                      <h2 className="font-medium">Your Email Address</h2>
+                      <input
+                        onChange={handleChange("email")}
+                        placeholder="Enter your Email"
+                        type="text"
+                        name="email"
+                        id=""
+                        className="field rounded-md"
+                        value={userInput.email}
+                      />
+                    </div>
+
+                    <div className="">
+                      <h2 className="font-medium">WhatsApp No.</h2>
+                      <input
+                        className="field rounded-md"
+                        placeholder="Enter your Number"
+                        onChange={handleChange("contact")}
+                        type="number"
+                        name="contact"
+                        id=""
+                        value={userInput.contact}
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="">
-                  <h2 className="font-medium">WhatsApp No.</h2>
-                  <input
-                    className="field rounded-md"
-                    placeholder="Enter your Number"
-                    onChange={handleChange("contact")}
-                    type="number"
-                    name="contact"
-                    id=""
-                    value={userInput.contact}
-                  />
+                <div className="step3-wrapper mt-10">
+                  <p className="ml-2  text-center">
+                    Complete your payment of ₹{userInput.amount} to access
+                    premium services and unlock exclusive features. Click the
+                    button to proceed.
+                  </p>
+                  <div className="center">
+                    <button
+                      onClick={submitHandler}
+                      className="bg-[#008BDC] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
+                    >
+                      {isLoading ? (
+                        <div className="center gap-3">
+                          <div className="loader"></div>
+                          Please Wait...
+                        </div>
+                      ) : (
+                        ` Pay ₹${userInput.amount}`
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="step2-wrapper max-[600px]:w-[95%]">
-            <h1 className="text-2xl font-semibold">STEP-2:</h1>
-            <p className="w-1/2 max-[1180px]:w-full ml-2">
-              By checking this box, you agree to share your details securely. We
-              prioritize your privacy and use advanced encryption to protect
-              your data at all times.
-            </p>
-            <p className="px-20 pt-8 items-center flex text-xl max-[600px]:text-lg max-[600px]:px-0">
-              <input
-                type="checkbox"
-                disabled={!isCheckboxEnabled}
-                className="mr-2 custom-checkbox max-[600px]:w-20 max-[600px]:h-10"
-                onClick={handleCheckboxClick}
-                checked={isCheckboxChecked}
-                onChange={() => {}}
-              />
-              I confirm that the information provided is accurate, and I agree
-              to the terms and conditions.
-            </p>
-          </div>
-
-          <div className="step3-wrapper mt-10">
-            <h1 className="text-2xl font-semibold">STEP-3:</h1>
-            <p className="ml-2">
-              Complete your payment of ₹{userInput.amount} to access premium
-              services and unlock exclusive features. Click the button to
-              proceed.
-            </p>
-            <div className="center">
-              <button
-                disabled={isLoading || !isCheckboxChecked}
-                onClick={submitHandler}
-                className="bg-[#008BDC] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
-              >
-                {isLoading ? (
-                  <div className="center gap-3">
-                    <div className="loader"></div>
-                    Please Wait...
-                  </div>
-                ) : (
-                  ` Pay ₹${userInput.amount}`
-                )}
-              </button>
-            </div>
-          </div>
         </div>
-      ) : (
-        ""
       )}
     </div>
   );
