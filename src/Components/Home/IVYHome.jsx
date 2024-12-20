@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link, useNavigate } from "react-router-dom";
-import { RiArrowLeftSLine } from "@remixicon/react";
-import { useSelector } from "react-redux";
+import { RiArrowLeftSLine, RiCloseFill, RiCloseLine } from "@remixicon/react";
+import { useDispatch, useSelector } from "react-redux";
+import { asynccurrentUser } from './../../store/Actions/userActions';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function IVYHome() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const isAuth = useSelector((state) => state.user.isAuth);
+  const { user } = useSelector((state) => state.user);
 
   const checkLoginHandler = () => {
     if (!isAuth) {
@@ -19,11 +22,6 @@ function IVYHome() {
       return;
     }
   };
-
-
-
-
-
 
   useEffect(() => {
     gsap.to(".straightLine", {
@@ -41,6 +39,13 @@ function IVYHome() {
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible);
   };
+
+  useEffect(() => {
+
+    dispatch(asynccurrentUser())
+   
+  }, [])
+  
 
   return (
     <div className="w-full h-fit">
@@ -78,7 +83,9 @@ function IVYHome() {
         </div>
       </div>
       <div className="ivy-acceptance center flex-col mt-24">
-        <h1 className="text-4xl Rubik font-bold max-[600px]:text-3xl">Acceptance Rate : 16%</h1>
+        <h1 className="text-4xl Rubik font-bold max-[600px]:text-3xl">
+          Acceptance Rate : 16%
+        </h1>
         <p className="text-lg Rubik font-[500] w-[55%] text-center leading-6 mt-5 max-[600px]:w-full">
           Note: We focus on quality, not quantity. With an acceptance rate of
           just 16%, IVY Accelerator is an elite program designed for those who
@@ -88,18 +95,18 @@ function IVYHome() {
         </p>
         {isAuth ? (
           <Link to={"/ivy-form"}>
-          <button  className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
+            <button className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
+              Apply Now
+            </button>
+          </Link>
+        ) : (
+          <button
+            onClick={checkLoginHandler}
+            className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5"
+          >
             Apply Now
           </button>
-        </Link>
-        ):(
-          <button 
-          onClick={checkLoginHandler} className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
-            Apply Now
-          </button>
-          
         )}
-        
       </div>
       <div className="ivyhero w-full h-fit p-5">
         <h2 className="text-zinc-400 text-xl font-medium text-start ml-48 max-[600px]:ml-0">
@@ -141,20 +148,19 @@ function IVYHome() {
               handle the rest.{" "}
             </p>
             {isAuth ? (
-          <Link to={"/ivy-form"}>
-          <button  className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
-            Apply Now
-          </button>
-        </Link>
-        ):(
-          <button 
-          onClick={checkLoginHandler} className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
-            Apply Now
-          </button>
-          
-        )}
-              
-          
+              <Link to={"/ivy-form"}>
+                <button className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
+                  Apply Now
+                </button>
+              </Link>
+            ) : (
+              <button
+                onClick={checkLoginHandler}
+                className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5"
+              >
+                Apply Now
+              </button>
+            )}
           </div>
         </div>
         <div className="ivystep-1 flex justify-between mt-20 items-center bg-white max-[600px]:flex-col-reverse">
@@ -173,15 +179,15 @@ function IVYHome() {
               scheduling link—your future awaits.
             </p>
             <a
-            href="https://www.gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="center"
-          >
-            <button className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
-              Check Your Mail Here
-            </button>
-          </a>
+              href="https://www.gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="center"
+            >
+              <button className="text-[#008BDC] px-10 py-2 text-xl font-medium rounded-full border-[#008BDC] border-2 mt-5">
+                Check Your Mail Here
+              </button>
+            </a>
           </div>
           <div className="ivyleft w-[45%] h-fit overflow-hidden max-[600px]:w-full">
             <img
@@ -305,13 +311,36 @@ function IVYHome() {
         </Link>
       </div>
 
-      {isPopupVisible && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      {isPopupVisible &&
+        (user && user.ivystudent === "yes" ? (
+        
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white p-5 rounded-lg  shadow-lg text-center center flex-col w-[50vh] h-[35vh]">
+              <div         onClick={togglePopup}  className="w-full flex justify-end ">
+
+              <RiCloseLine className="text-black cursor-pointer "/>
+              </div>
+              <h2 className="text-2xl font-bold mb-4">Enrolled</h2>
+              <p className="mb-4">
+                 Congratulation You are  enrolled in the IVY Accelerator Program. Click Below to Genearte Roadmap
+              </p>
+              <Link to={"/create-roadmap"}>
+              <button
+                
+                className="text-[#008BDC] px-10 py-2  text-xl font-medium rounded-full border-[#008BDC] border-2"
+              >
+                Generate Roadmap
+              </button>
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-5 rounded-lg shadow-lg text-center center flex-col w-[50vh] h-[30vh]">
             <h2 className="text-2xl font-bold mb-4">Not Enrolled</h2>
             <p className="mb-4">
-              You are not enrolled in the IVY Accelerator Program. Please enroll
-              to access this feature.
+              You are not enrolled in the IVY Accelerator Program. Please
+              enroll to access this feature.
             </p>
             <button
               onClick={togglePopup}
@@ -321,7 +350,7 @@ function IVYHome() {
             </button>
           </div>
         </div>
-      )}
+        ))}
     </div>
   );
 }

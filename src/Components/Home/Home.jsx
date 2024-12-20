@@ -12,6 +12,7 @@ import HomeFooter from "./HomeFooter";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Home() {
+  
   const navigate = useNavigate();
 
   const feedbackData = [
