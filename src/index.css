@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,120 +15,160 @@ html {
 }
 
 .Rubik {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 }
-.darkcolor{
+.darkcolor {
   background-color: #30c8ff;
 }
-.lightcolor{
-  background-color: #F5FAFE;
+.lightcolor {
+  background-color: #f5fafe;
 }
 
 .scroller::-webkit-scrollbar {
-    width: 4px;
-    background-color: #008BDC;
+  width: 4px;
+  background-color: #008bdc;
 }
 .scroller::-webkit-scrollbar-thumb {
-    background-color: black;
-    border-radius: 10px;
+  background-color: black;
+  border-radius: 10px;
 }
 
 .loader {
-    border: 2px solid #f3f3f3;
-    border-top: 2px solid black;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid black;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
 
-  .scrollernone::-webkit-scrollbar {
-    display: none;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
-  .center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-  }
+.scrollernone::-webkit-scrollbar {
+  display: none;
+}
 
-  .hover-link {
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-  }
-  
-  .hover-link::after {
-    content: '';
-    position: absolute;
-    margin-top: -3px;
-    width: 0;
-    height: 2px;
-    display: block;
-    left: 50%;
-    right: 50%;
-    background: #2222229d;
-    transition: width 0.3s ease, left 0.3s ease, right 0.3s ease;
-  }
-  
-  .hover-link:hover::after {
-    width: 100%;
-    left: 0;
-    right: 0;
-  }
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.hover-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
 
+.hover-link::after {
+  content: "";
+  position: absolute;
+  margin-top: -3px;
+  width: 0;
+  height: 2px;
+  display: block;
+  left: 50%;
+  right: 50%;
+  background: #2222229d;
+  transition: width 0.3s ease, left 0.3s ease, right 0.3s ease;
+}
 
+.hover-link:hover::after {
+  width: 100%;
+  left: 0;
+  right: 0;
+}
 
-  .custom-checkbox {
-    appearance: none;
-    width: 2.25rem; /* Adjust size as needed */
-    height: 2.25rem; /* Adjust size as needed */
-    background-color: white;
-    border: 2px solid #008BDC;
-    border-radius: 0.25rem; /* Optional: for rounded corners */
-    cursor: pointer;
+.custom-checkbox {
+  appearance: none;
+  width: 2.25rem; /* Adjust size as needed */
+  height: 2.25rem; /* Adjust size as needed */
+  background-color: white;
+  border: 2px solid #008bdc;
+  border-radius: 0.25rem; /* Optional: for rounded corners */
+  cursor: pointer;
+}
+
+.custom-checkbox:checked {
+  background-color: white;
+  border: 2px solid #008bdc;
+}
+
+.custom-checkbox:disabled {
+  background-color: #fff;
+  border: 2px solid #008bdc;
+  cursor: not-allowed;
+}
+
+.custom-checkbox:checked::before {
+  content: "✔"; /* Checkmark symbol */
+  display: block;
+  text-align: center;
+  color: #008bdc;
+  margin-top: 3px;
+  font-size: 1.5rem; /* Adjust size as needed */
+}
+
+@keyframes dropdown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
   }
-  
-  .custom-checkbox:checked {
-    background-color: white;
-    border: 2px solid #008BDC;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .custom-checkbox:disabled {
-    background-color: #fff;
-    border: 2px solid #008BDC;
-    cursor: not-allowed;
-  }
-  
-  .custom-checkbox:checked::before {
-    content: '✔'; /* Checkmark symbol */
-    display: block;
-    text-align: center;
-    color: #008BDC;
-    margin-top: 3px;
-    font-size: 1.5rem; /* Adjust size as needed */
-  }
-  
-  @keyframes dropdown {
-    from {
-      transform: translateY(-10px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  .animate-dropdown {
-    animation: dropdown 0.3s ease-in-out forwards;
-  }
+}
+
+.animate-dropdown {
+  animation: dropdown 0.3s ease-in-out forwards;
+}
+
+.react-tel-input {
+  width: 100%;
+  border: 2px solid #008bdc;
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+}
+
+.react-tel-input .form-control {
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  /* border-radius: 0.75rem; */
+}
+
+.custom-phone-input-container {
+  display: flex;
+  align-items: center;
+  border: 2px solid #008bdc;
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+}
+
+.custom-phone-input-field {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.react-tel-input .flag-dropdown {
+  background-color: transparent; /* Make the dropdown transparent */
+  border: none;
+  height: 40px; /* Match the height of the input field */
+  align-items: center;
+  padding: 0;
+  /* scale: 1.2; */
+}

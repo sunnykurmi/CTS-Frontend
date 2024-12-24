@@ -141,8 +141,8 @@ const DETHome = () => {
   }, [dispatch]);
 
   return (
-    <div className="w-full p-5 flex flex-col ">
-      <div className="w-full h-fit">
+    <div className="w-full  flex flex-col ">
+      <div className="w-full p-5 h-fit">
         <div className="w-44 absolute left-0 flex items-center justify-center text-base">
           <Link
             className="h-12 gap-3 rounded-full bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
@@ -207,10 +207,10 @@ const DETHome = () => {
 
       {openPopup && (
         <div className="fixed top-0 w-full h-screen flex items-center justify-center bg-[#74747443]">
-          <div className="w-[60%] py-5 bg-white drop-shadow-2xl">
+          <div className="w-[60%] py-5 bg-white drop-shadow-2xl max-[600px]:w-[80%]">
             <div
               onClick={() => setOpenPopup(false)}
-              className="cursor-pointer absolute right-5 top-5"
+              className="cursor-pointer absolute right-5 top-5 max-[600px]:right-2 max-[600px]:top-3"
             >
               <RiCloseFill />
             </div>
@@ -222,7 +222,7 @@ const DETHome = () => {
                   </p>
                 </div>
                 <div className="center mt-5">
-                  <div className="flex flex-col gap-5 w-80">
+                  <div className="flex flex-col gap-5 w-80 max-[600px]:w-64">
                     <div className="">
                       <h2 className="font-medium">Your Full Name</h2>
                       <input
@@ -230,7 +230,7 @@ const DETHome = () => {
                         placeholder="Enter your Name"
                         type="text"
                         name="name"
-                        className="field rounded-md"
+                        className="field rounded-md max-[600px]:h-10"
                         value={userInput.name}
                       />
                     </div>
@@ -241,7 +241,7 @@ const DETHome = () => {
                         placeholder="Enter your Email"
                         type="text"
                         name="email"
-                        className="field rounded-md"
+                        className="field rounded-md max-[600px]:h-10"
                         value={userInput.email}
                       />
                     </div>
@@ -249,7 +249,7 @@ const DETHome = () => {
                     <div className="">
                       <h2 className="font-medium">WhatsApp No.</h2>
                       <input
-                        className="field rounded-md"
+                        className="field rounded-md max-[600px]:h-10"
                         placeholder="Enter your Number"
                         onChange={handleChange("contact")}
                         type="number"
@@ -265,7 +265,7 @@ const DETHome = () => {
                       <div className="flex gap-5">
                         <button
                           className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${hasTakenDET
-                              ? "bg-[#008BDC] text-white"
+                              ? "bg-[#008BDC] text-white border-2 border-[#008BDC]"
                               : "border-[#008BDC]"
                             }`}
                           onClick={() => handleDETChange("yes")}
@@ -274,7 +274,7 @@ const DETHome = () => {
                         </button>
                         <button
                           className={`w-20 h-10 border-2 rounded-lg px-2 flex items-center justify-center ${!hasTakenDET
-                              ? "bg-[#008BDC] text-white"
+                              ? "bg-[#008BDC] text-white border-2 border-[#008BDC]"
                               : "border-[#008BDC]"
                             }`}
                           onClick={() => handleDETChange("no")}
@@ -285,10 +285,10 @@ const DETHome = () => {
                     </div>
 
                     {hasTakenDET && (
-                      <div className="mt-5">
+                      <div className="mt-5 max-[600px]:mt-0">
                         <h2 className="font-medium">Enter your DET exam marks</h2>
                         <input
-                          className="field rounded-md"
+                          className="field rounded-md max-[600px]:h-10"
                           placeholder="Enter your DET marks"
                           onChange={handleChange("score")}
                           type="number"
@@ -301,7 +301,7 @@ const DETHome = () => {
                 </div>
 
                 <div className="step3-wrapper mt-10">
-                  <p className="ml-2 text-center">
+                  <p className="ml-2 text-center max-[600px]:leading-tight">
                     Complete your payment of ₹{userInput.amount} to access premium services
                     and unlock exclusive features. Click the button to proceed.
                   </p>

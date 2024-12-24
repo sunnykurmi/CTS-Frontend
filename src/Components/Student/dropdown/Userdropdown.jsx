@@ -46,7 +46,7 @@ export default function Userdropdown() {
           <Link to="/" className="hover:bg-zinc-300 w-full p-2 rounded-md">
             <div className="flex cursor-pointer gap-2 items-center justify-start w-full">
               <RiHome2Line className="w-5 h-5" />
-              Home Page
+              Home 
             </div>
           </Link>
           {currentPath !== "/home" && (
@@ -66,7 +66,7 @@ export default function Userdropdown() {
           >
             <div className="flex cursor-pointer gap-2 items-center justify-start w-ful l">
               <RiEditBoxLine className="w-5 h-5" />
-              Profile Page
+              Profile 
             </div>
           </Link>
           {admins.map((admin, index) =>

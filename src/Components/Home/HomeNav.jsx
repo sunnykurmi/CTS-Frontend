@@ -1,4 +1,4 @@
-import { RiCloseLine, RiMenuLine, RiArrowDownSLine } from "@remixicon/react";
+import { RiCloseLine, RiMenuLine, RiArrowDownSLine, RiLoginBoxLine } from "@remixicon/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -24,13 +24,13 @@ const HomeNav = () => {
     dispatch(asynccurrentUser());
   }, [dispatch]);
 
-    const handleLogout = () => {
-      setTimeout(() => {
-        dispatch(asyncremoveUser());
-        navigate("/");
-        window.location.reload();
-      }, 1000);
-    };
+  const handleLogout = () => {
+    setTimeout(() => {
+      dispatch(asyncremoveUser());
+      navigate("/");
+      window.location.reload();
+    }, 1000);
+  };
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -204,8 +204,6 @@ const HomeNav = () => {
               alt=""
             />
           </Link>
-
-
           <div className="center flex-col min-[600px]:hidden">
             <RiMenuLine onClick={toggleMenu} />
           </div>
@@ -226,10 +224,13 @@ const HomeNav = () => {
           </Link>
           <RiCloseLine className="scale-150" onClick={toggleMenu} />
         </div>
-        <div className="pl-10 flex-col uppercase text-lg font-semibold flex gap-2">
+        <div className="pl-10 flex-col capitalize text-lg font-normal flex gap-3">
           <a className="hover-link w-fit" href="/">Home</a>
           <Link className="hover-link w-fit" to="/ivy">
             ivy acclerator
+          </Link>
+          <Link className="hover-link w-fit" to="/satpractice/sat-verification-form">
+            SAT 1600
           </Link>
           <Link className="hover-link w-fit" to="/portfolio">
             Portfolio
@@ -242,35 +243,36 @@ const HomeNav = () => {
             about us
           </Link>
 
-          {isAuth ? (
-            <div className="flex gap-4">
-              <Link to="/home" className="text-[#008BDC] w-fit p-1 px-4 text-lg font-medium rounded-md border-[#008BDC] border-2">
-                <button>
-                  Dashboard
-                </button>
-              </Link>
-              <div className="bg-[#008BDC] text-white p-1 px-4 text-lg font-medium rounded-md border-[#008BDC] border-2">
-                <button onClick={handleLogout}>
-                  Logout
-                </button>
-              </div>
-            </div>
-
-          ) : (
-            <div className="login-sigup flex gap-4">
-              <Link to="/login" className="text-[#008BDC] p-1 px-4 text-lg font-medium rounded-md border-[#008BDC] border-2">
-                <button>
-                  LOG IN
-                </button>
-              </Link>
-              <Link to="/signup" className="">
-                <button className="bg-[#008BDC] text-white rounded-md p-1 px-4 font-medium uppercase border-[#008BDC] border-2">
-                  Register
-                </button>
-              </Link>
-            </div>
-          )}
         </div>
+        {isAuth ? (
+          <div className="flex gap-4 mt-5 ml-6">
+            <Link to="/home" className="text-[#008BDC] w-fit p-1 px-4 text-lg font-medium rounded-md border-[#008BDC] border-2">
+              <button>
+                Dashboard
+              </button>
+            </Link>
+            <div className="bg-[#008BDC] text-white p-1 px-4 text-lg font-medium rounded-md border-[#008BDC] border-2">
+              <button className="center gap-2" onClick={handleLogout}>
+                <RiLoginBoxLine className="w-5 h-5" />
+                Logout
+              </button>
+            </div>
+          </div>
+
+        ) : (
+          <div className="login-sigup flex gap-4 mt-5 ml-6">
+            <Link to="/login" className="text-[#008BDC] p-1 px-4 text-lg font-medium rounded-md border-[#008BDC] border-2">
+              <button>
+                LOG IN
+              </button>
+            </Link>
+            <Link to="/signup" className="bg-[#008BDC] text-white text-lg rounded-md p-1 px-4 font-medium border-[#008BDC] border-2">
+              <button className="uppercase">
+                Register
+              </button>
+            </Link>
+          </div>
+        )}
       </div>
     </>
   );

@@ -67,6 +67,33 @@ const About = () => {
     },
   ];
 
+  const ourOfferings = [
+    {
+      id: 1,
+      img: "/Images/aboutus/SatLogoOffring.png",
+    },
+    {
+      id: 2,
+      img: "/Images/aboutus/ivyOffering.png",
+    },
+    {
+      id: 3,
+      img: "/Images/aboutus/ieltsOffering.png",
+    },
+    {
+      id: 4,
+      img: "/Images/aboutus/eduOffring.PNG",
+    },
+    {
+      id: 5,
+      img: "/Images/aboutus/ColorfulOffering.png",
+    },
+    {
+      id: 5,
+      img: "/Images/aboutus/RoadmapOffering.png",
+    },
+  ];
+
   return (
     <>
       <div className="papa-container w-full h-fit bg-[#F5FAFE]">
@@ -119,10 +146,10 @@ const About = () => {
           </div>
         </div>
         <div className="our-story w-full h-fit py-20 max-[600px]:py-10 px-36 max-[600px]:px-5 max-[600px]:flex-col bg-[#ECF6FF] flex">
-          <div className="our-story-lft w-[60%] max-[600px]:w-full">
+          <div className="our-story-lft w-[55%] max-[600px]:w-full">
             <h1 className="text-4xl font-medium text-[#36C2F3]">Our Story</h1>
             <h1 className="text-5xl font-medium mt-5">This is us</h1>
-            <p className="font-medium text-lg mt-5 text-justify">
+            <p className="font-medium text-lg mt-5 text-justify leading-tight">
               Cross The Skylimits is a dynamic profile-building firm committed
               to revolutionizing the college application journey for ambitious
               international students. We believe in making this
@@ -140,9 +167,9 @@ const About = () => {
               Know more
             </button>
           </div>
-          <div className="our-story-rgt w-[40%] max-[600px]:w-full p-10 center rounded-md">
-            <div className="w-full h-[35vh] bg-[#36C2F3] overflow-hidden rounded-md">
-              <img className="w-full h-full object-cover" src="" alt="" />
+          <div className="our-story-rgt w-[45%] max-[600px]:w-full p-10 center rounded-md">
+            <div className="w-full h-[40vh] bg-[#36C2F3] overflow-hidden rounded-md">
+              <img className="w-full h-full object-cover" src="/Images/aboutus/aboutus.PNG" alt="" />
             </div>
           </div>
         </div>
@@ -182,12 +209,14 @@ const About = () => {
               to get into top universities
             </h1>
             <div className="offerings-circle-wrapper w-full mt-5 grid grid-cols-3 gap-y-8 place-items-start max-[600px]:place-items-center pr-36 max-[600px]:pr-0">
-              <div className="offerings-circle size-28 max-[600px]:size-20 shadow-inner border-2 rounded-full border-[#36C2F3] cursor-pointer"></div>
-              <div className="offerings-circle size-28 max-[600px]:size-20 shadow-inner border-2 rounded-full border-[#36C2F3] cursor-pointer"></div>
-              <div className="offerings-circle size-28 max-[600px]:size-20 shadow-inner border-2 rounded-full border-[#36C2F3] cursor-pointer"></div>
-              <div className="offerings-circle size-28 max-[600px]:size-20 shadow-inner border-2 rounded-full border-[#36C2F3] cursor-pointer"></div>
-              <div className="offerings-circle size-28 max-[600px]:size-20 shadow-inner border-2 rounded-full border-[#36C2F3] cursor-pointer"></div>
-              <div className="offerings-circle size-28 max-[600px]:size-20 shadow-inner border-2 rounded-full border-[#36C2F3] cursor-pointer"></div>
+              {ourOfferings.map((data) => (
+                <div
+                  key={data.id}
+                  className="offerings-circle size-28 max-[600px]:size-20 shadow-inner border-2 rounded-full border-[#36C2F3] overflow-hidden"
+                >
+                  <img className="w-full h-full object-cover" src={data.img} alt="" />
+                </div>
+              ))}
             </div>
           </div>
           <div className="our-offerings-rgt w-[35%] max-[600px]:w-full center max-[600px]:pt-10">
@@ -195,19 +224,16 @@ const About = () => {
               <div className="offering-img-container w-[80%] h-[50vh] max-[600px]:w-[70%] max-[600px]:h-[30vh]">
                 <img
                   className="w-full h-full object-cover"
-                  src="/Images/aboutus/student.jpeg"
+                  src="/Images/aboutus/ivy-offring.png"
                   alt=""
                 />
               </div>
-              <p className="font-medium text-lg mt-5 text-justify">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure,
-                accusamus eum vero fugiat facilis molestias quisquam iusto est
-                libero tenetur debitis eos dolore sapiente numquam quidem dicta
-                ut quos placeat! Lorem ipsum dolor sit amet consectetur
+              <p className="font-medium text-lg mt-5 text-justify leading-tight">
+                The world’s first student brand-building program, Ivy Accelerator is more than a program—it’s your exclusive gateway to top Ivy League universities and beyond. With a proven 600% boost to your chances, this elite opportunity is designed for just 30 ambitious students who don’t just dream of studying abroad but aim to redefine the future. If you’re ready to unlock your full potential and change the world, this is your path.
               </p>
-              <button className="text-2xl rounded-full font-medium border-2 border-[#36C2F3] text-[#36C2F3] p-1 px-8 mt-5 hover:bg-[#36C2F3] hover:text-white  transition-all">
-                Know more
-              </button>
+              <a href="/ivy" className="text-xl rounded-full font-medium border-2 border-[#36C2F3] text-[#36C2F3] p-1 px-8 mt-5 hover:bg-[#36C2F3] hover:text-white  transition-all">
+                learn more
+              </a>
             </div>
           </div>
         </div>
@@ -248,7 +274,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="motivators w-full h-fit py-10 px-36 max-[600px]:px-5 bg-[#ECF6FF]">
+        {/* <div className="motivators w-full h-fit py-10 px-36 max-[600px]:px-5 bg-[#ECF6FF]">
           <h1 className="text-4xl font-medium text-[#36C2F3]">
             Individual motivators
           </h1>
@@ -264,7 +290,7 @@ const About = () => {
                 </div>
               ))}
           </div>
-        </div>
+        </div> */}
         <div className="our-team w-full h-[100vh] max-[600px]:h-fit py-20 max-[600px]:py-10 px-36 max-[600px]:px-5 flex max-[600px]:flex-col-reverse gap-10 max-[600px]:gap-0">
           <div className="our-team-lft w-[40%] max-[600px]:w-full max-[600px]:p-20">
             <div className="slides w-full h-full">

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   RiAddLine,
@@ -12,6 +12,9 @@ import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { sendivyform } from "../../store/Actions/userActions";
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+import { use } from "react";
 
 export default function IvyForm() {
   const dispatch = useDispatch();
@@ -41,8 +44,11 @@ export default function IvyForm() {
   });
   const [hoverTimeout, setHoverTimeout] = useState(null);
 
-  const handleChange = (name) => (event) => {
-    const value = event.target.value;
+  const handleChange = (name) => (eventOrValue) => {
+    const value = typeof eventOrValue === "object" && eventOrValue.target
+    ? eventOrValue.target.value // For regular inputs
+    : eventOrValue; // For direct values like dropdowns
+
     setUserInput((prevInput) => ({
       ...prevInput,
       [name]: value,
@@ -100,11 +106,11 @@ export default function IvyForm() {
   const supportOptions = [
     {
       label: "Ivy League Students ",
-     
+
     },
     {
       label: "Social Media",
-     
+
     },
     {
       label: "Friends",
@@ -126,13 +132,9 @@ export default function IvyForm() {
     },
   ];
 
-
-
-
-
   const [support, setsupport] = useState([]);
 
-  
+
   const toggleSupportOption = (label) => {
     let updatedSupport;
     if (label === "Other") {
@@ -216,12 +218,6 @@ export default function IvyForm() {
     uni.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-
-
-
-
-
-
   const handleMouseLeave = () => {
     const timeoutId = setTimeout(() => {
       setDropdownOpen(false);
@@ -239,7 +235,7 @@ export default function IvyForm() {
   };
 
   const validateForm = () => {
-    const excludedFields = ["physicaldisabilitiestype","satScore"];
+    const excludedFields = ["physicaldisabilitiestype", "satScore"];
     return Object.entries(userInput)
       .filter(([key]) => !excludedFields.includes(key))
       .every(([, value]) => typeof value === "string" ? value.trim() !== "" : value !== null && value !== undefined);
@@ -273,7 +269,7 @@ export default function IvyForm() {
 
   useEffect(() => {
     console.log(userInput);
-  })
+  }, [userInput]);
 
   const handleConfirmClose = () => {
     setFormSubmitted(false);
@@ -349,15 +345,25 @@ export default function IvyForm() {
                   className="field rounded-xl"
                 />
               </div>
-              <div className="input-field w-[45%]  max-[600px]:w-full">
+              <div className="input-field w-[45%] max-[600px]:w-full">
                 <p className="font-medium text-medium">Contact</p>
-                <input
-                  type="text"
-                  placeholder="Enter your contact number with country code"
+                <PhoneInput
+                  country={'in'}
+                  placeholder="Enter your number"
                   name="contact"
-                  onChange={handleChange("contact")}
+                  onChange={(value, country, e, formattedValue) => {
+                    setUserInput((prevInput) => ({
+                      ...prevInput,
+                      contact: formattedValue,
+                    }));
+                  }}
                   value={userInput.contact}
-                  className="field rounded-xl"
+                  containerClass="custom-phone-input-container"
+                  inputClass="custom-phone-input-field"
+                  buttonClass="field rounded-xl w-fit h-10  mt-1.5 bg-transparent"
+                  inputProps={{
+                    required: true,
+                  }}
                 />
               </div>
             </div>
@@ -391,21 +397,19 @@ export default function IvyForm() {
                 <p className="font-medium text-medium">Gender:</p>
                 <div className="relative w-fit font-semibold gap-10 h-10 flex items-center justify-end max-[600px]:ml-10">
                   <button
-                    className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                      userInput.gender === "Male"
-                        ? "bg-[#008BDC] text-white"
-                        : "border-[#008BDC]"
-                    }`}
+                    className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${userInput.gender === "Male"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
+                      }`}
                     onClick={handleGenderChange("Male")}
                   >
                     Male
                   </button>
                   <button
-                    className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                      userInput.gender === "Female"
-                        ? "bg-[#008BDC] text-white"
-                        : "border-[#008BDC]"
-                    }`}
+                    className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${userInput.gender === "Female"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
+                      }`}
                     onClick={handleGenderChange("Female")}
                   >
                     Female
@@ -466,7 +470,6 @@ export default function IvyForm() {
                     className=" w-full h-full  outline-none"
                     name="educationBoard"
                     autoComplete="off"
-                    id=""
                   />
                   <RiArrowDownSLine className=" text-[#008BDC]" />
                   {dropdownOpen2 && (
@@ -491,11 +494,10 @@ export default function IvyForm() {
                 <p className="text-medium font-medium ">What About SAT Exam?</p>
                 <div className="relative w-full  font-semibold text-sm  h-10 flex items-center  justify-start gap-5  ">
                   <button
-                    className={`w-fit h-full border-2 rounded-lg px-5 flex items-center justify-center ${
-                      userInput.aboutsatexam === "Already Taken"
-                        ? "bg-[#008BDC] text-white"
-                        : "border-[#008BDC]"
-                    }`}
+                    className={`w-fit h-full border-2 rounded-lg px-5 flex items-center justify-center ${userInput.aboutsatexam === "Already Taken"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
+                      }`}
                     onClick={() =>
                       handleChange("aboutsatexam")({
                         target: { value: "Already Taken" },
@@ -505,11 +507,10 @@ export default function IvyForm() {
                     Already Taken
                   </button>
                   <button
-                    className={`w-fit h-full border-2 rounded-lg px-2 flex items-center max-[600px]:whitespace-nowrap justify-center ${
-                      userInput.aboutsatexam === "Will Take"
-                        ? "bg-[#008BDC] text-white"
-                        : "border-[#008BDC]"
-                    }`}
+                    className={`w-fit h-full border-2 rounded-lg px-2 flex items-center max-[600px]:whitespace-nowrap justify-center ${userInput.aboutsatexam === "Will Take"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
+                      }`}
                     onClick={() =>
                       handleChange("aboutsatexam")({
                         target: { value: "Will Take" },
@@ -519,11 +520,10 @@ export default function IvyForm() {
                     Will Take
                   </button>
                   <button
-                    className={`w-fit h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                      userInput.aboutsatexam === "Optional"
-                        ? "bg-[#008BDC] text-white"
-                        : "border-[#008BDC]"
-                    }`}
+                    className={`w-fit h-full border-2 rounded-lg px-2 flex items-center justify-center ${userInput.aboutsatexam === "Optional"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
+                      }`}
                     onClick={() =>
                       handleChange("aboutsatexam")({
                         target: { value: "Optional" },
@@ -595,11 +595,10 @@ export default function IvyForm() {
                 </p>
                 <div className="relative   font-semibold text-sm gap-2 w-full h-10 flex items-center ">
                   <button
-                    className={`w-28 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                      userInput.englishtest === "DET"
-                        ? "bg-[#008BDC] text-white"
-                        : "border-[#008BDC]"
-                    }`}
+                    className={`w-28 h-full border-2 rounded-lg px-2 flex items-center justify-center ${userInput.englishtest === "DET"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
+                      }`}
                     onClick={() =>
                       handleChange("englishtest")({
                         target: { value: "DET" },
@@ -609,11 +608,10 @@ export default function IvyForm() {
                     DET
                   </button>
                   <button
-                    className={`w-28 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                      userInput.englishtest === "IELTS"
-                        ? "bg-[#008BDC] text-white"
-                        : "border-[#008BDC]"
-                    }`}
+                    className={`w-28 h-full border-2 rounded-lg px-2 flex items-center justify-center ${userInput.englishtest === "IELTS"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
+                      }`}
                     onClick={() =>
                       handleChange("englishtest")({
                         target: { value: "IELTS" },
@@ -623,11 +621,10 @@ export default function IvyForm() {
                     IELTS
                   </button>
                   <button
-                    className={`w-28 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                      userInput.englishtest === "TOEFL"
-                        ? "bg-[#008BDC] text-white"
-                        : "border-[#008BDC]"
-                    }`}
+                    className={`w-28 h-full border-2 rounded-lg px-2 flex items-center justify-center ${userInput.englishtest === "TOEFL"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
+                      }`}
                     onClick={() =>
                       handleChange("englishtest")({
                         target: { value: "TOEFL" },
@@ -637,11 +634,10 @@ export default function IvyForm() {
                     TOEFL
                   </button>
                   <button
-                    className={`w-28 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                      userInput.englishtest === "Not Sure"
-                        ? "bg-[#008BDC] text-white"
-                        : "border-[#008BDC]"
-                    }`}
+                    className={`w-28 h-full border-2 rounded-lg px-2 flex items-center justify-center ${userInput.englishtest === "Not Sure"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
+                      }`}
                     onClick={() =>
                       handleChange("englishtest")({
                         target: { value: "Not Sure" },
@@ -656,8 +652,8 @@ export default function IvyForm() {
                 <p className="text-medium font-medium">
                   Enter Dream University .{" "}
                 </p>
-                <div 
-                onMouseLeave={handleMouseLeave} className=" cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
+                <div
+                  onMouseLeave={handleMouseLeave} className=" cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]">
                   <input
                     type="text"
                     placeholder="MIT , Harvard , etc."
@@ -671,18 +667,18 @@ export default function IvyForm() {
                   />
                   <RiSearch2Line className=" text-[#008BDC]" />
                   {dropdownVisible && (
-                  <div className="w-[101%] h-[30vh] overflow-y-scroll absolute top-[105%] shadow-lg bg-white z-[9] ">
-                    {filteredUniversities.map((uni) => (
-                      <div
-                        key={uni}
-                        className="w-full h-10 flex items-center justify-start pl-5 hover:bg-[#008BDC] hover:text-white"
-                        onClick={() => handleUniClick(uni)}
-                      >
-                        {uni}
-                      </div>
-                    ))}
-                  </div>
-                )}
+                    <div className="w-[101%] h-[30vh] overflow-y-scroll absolute top-[105%] shadow-lg bg-white z-[9] ">
+                      {filteredUniversities.map((uni) => (
+                        <div
+                          key={uni}
+                          className="w-full h-10 flex items-center justify-start pl-5 hover:bg-[#008BDC] hover:text-white"
+                          onClick={() => handleUniClick(uni)}
+                        >
+                          {uni}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -705,29 +701,29 @@ export default function IvyForm() {
             </div>
 
             <div className="w-full">
-            <p className=" font-medium capitalize">How You get to know about this program !</p>
-            <div className=" w-full  gap-2 grid grid-cols-4 max-[600px]:grid-cols-2">
-              {supportOptions.map((option, index) => (
-                <div  
-                  key={index}
-                  className="w-fit flex  items-center justify-center"
-                >
+              <p className=" font-medium capitalize">How You get to know about this program !</p>
+              <div className=" w-full  gap-2 grid grid-cols-4 max-[600px]:grid-cols-2">
+                {supportOptions.map((option, index) => (
                   <div
-                    className="w-5 h-5 border-2 border-[#008BDC]  flex items-center justify-center rounded-sm cursor-pointer"
-                    onClick={() => toggleSupportOption(option.label)}
+                    key={index}
+                    className="w-fit flex  items-center justify-center"
                   >
-                    {support.includes(option.label) && <RiCheckLine />}
+                    <div
+                      className="w-5 h-5 border-2 border-[#008BDC]  flex items-center justify-center rounded-sm cursor-pointer"
+                      onClick={() => toggleSupportOption(option.label)}
+                    >
+                      {support.includes(option.label) && <RiCheckLine />}
+                    </div>
+                    <div
+                      className="w-full flex items-center font-medium justify-start pl-5  rounded-lg px-2 py-2 cursor-pointer"
+                      onClick={() => toggleSupportOption(option.label)}
+                    >
+                      {option.label}
+
+                    </div>
                   </div>
-                  <div
-                    className="w-full flex items-center font-medium justify-start pl-5  rounded-lg px-2 py-2 cursor-pointer"
-                    onClick={() => toggleSupportOption(option.label)}
-                  >
-                    {option.label}
-                  
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
             </div>
 
 
@@ -743,11 +739,10 @@ export default function IvyForm() {
                 ].map((option) => (
                   <button
                     key={option}
-                    className={`w-24 h-full border-2 rounded-lg px-2 flex items-center justify-center max-[600px]:scale-75 ${
-                      userInput.familyincome === option
-                        ? "bg-[#008BDC] text-white"
-                        : "border-[#008BDC]"
-                    }`}
+                    className={`w-24 h-full border-2 rounded-lg px-2 flex items-center justify-center max-[600px]:scale-75 ${userInput.familyincome === option
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
+                      }`}
                     onClick={() =>
                       handleChange("familyincome")({
                         target: { value: option },
@@ -766,11 +761,10 @@ export default function IvyForm() {
               </p>
               <div className="relative w-[45%]  max-[600px]:w-full font-semibold gap-6 h-10 flex items-center ">
                 <button
-                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center max-[600px]:scale-75 justify-center ${
-                    userInput.physicaldisabilities === "YES"
-                      ? "bg-[#008BDC] text-white"
-                      : "border-[#008BDC]"
-                  }`}
+                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center max-[600px]:scale-75 justify-center ${userInput.physicaldisabilities === "YES"
+                    ? "bg-[#008BDC] text-white"
+                    : "border-[#008BDC]"
+                    }`}
                   onClick={() =>
                     handleChange("physicaldisabilities")({
                       target: { value: "YES" },
@@ -780,11 +774,10 @@ export default function IvyForm() {
                   YES
                 </button>
                 <button
-                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center max-[600px]:scale-75 justify-center ${
-                    userInput.physicaldisabilities === "NO"
-                      ? "bg-[#008BDC] text-white"
-                      : "border-[#008BDC]"
-                  }`}
+                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center max-[600px]:scale-75 justify-center ${userInput.physicaldisabilities === "NO"
+                    ? "bg-[#008BDC] text-white"
+                    : "border-[#008BDC]"
+                    }`}
                   onClick={() =>
                     handleChange("physicaldisabilities")({
                       target: { value: "NO" },
