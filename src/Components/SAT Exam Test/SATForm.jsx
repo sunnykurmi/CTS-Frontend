@@ -134,154 +134,217 @@ const SATForm = () => {
   };
 
   return (
-    <div className="w-full p-5 flex flex-col ">
-      <div className="w-full h-fit">
-        <div className="w-44 absolute left-0 flex items-center justify-center text-base">
+    <>
+      <div className="w-full h-screen flex max-[600px]:flex-col-reverse max-[600px]:h-auto ">
+        <div className=" min-[600px]:hidden   absolute left-0 z-[99] top-2 flex items-center justify-center text-base">
           <Link
-            className="h-12 gap-3 rounded-full bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
+            className="h-12 gap-3 rounded-full  text-white flex items-center justify-center p-2 font-bold"
             to={"/services/exam-prepration"}
           >
-            <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white">
-              <RiArrowLeftSLine className="text-[#0000009b]" />
+            <div className="w-8 flex items-center justify-center h-8 rounded-full bg-[#008BDC]">
+              <RiArrowLeftSLine className="text-[#ffffff]" />
             </div>
-            <button className="mr-2">Go Back</button>
           </Link>
         </div>
-        <h1 className="text-4xl font-bold text-center">
-          SAT Practice Test{" "}
-          <sub className="text-xs text-gray-700">(Beta version)</sub>
-        </h1>
-      </div>
-      <div className="w-[70vw] h-fit m-auto   rounded-xl p-5  max-[456px]:w-full max-[456px]:border-none max-[456px]:rounded-none max-[456px]:shadow-none max-[456px]:mt-1 sm:p-5">
-        <ul className="list-disc list-inside text-md text-justify text-gray-800 mt-10 ml-15 px-20 text-xl  max-[600px]:px-5 max-[600px]:text-lg max-[600px]:text-start max-[600px]:leading-6">
-          "Unlock your potential with our comprehensive SAT Practice Test
-          Module. Choose from various practice tests that mirror the real SAT
-          experience, covering sections like Math, Evidence-Based Reading, and
-          Writing. Each test is designed to assess your understanding, pinpoint
-          areas for improvement, and boost your confidence. Receive detailed
-          feedback on scores, insights on question patterns, and step-by-step
-          solutions to strengthen your problem-solving skills. With targeted
-          practice and a clear track of your progress, our module supports your
-          journey toward mastering the SAT and achieving your desired score."
-        </ul>
-      </div>
-      <div className="w-[70vw] m-auto h-fit p-5 flex flex-col justify-center mt-10 ">
-        <h1 className="text-4xl font-bold text-center">Get Started</h1>
-        <p className="text-xl text-center mt-5 max-[600px]:text-lg max-[600px]:w-full max-[600px]:px-5">
-          Fill the form details to get access to the SAT Practice Test Module
-        </p>
-      </div>
-      <div className="w-full center">
-        {user && user.satpracticetestcode ? (
-          <Link to="/satpractice/sat-verification-form">
-            <button className="bg-[#008BDC] text-white font-medium text-xl  px-8 py-2 rounded-md shadow-lg">
-              Start Test
-            </button>
-          </Link>
-        ) : isAuth ? (
-          <button
-            onClick={() => setOpenPopup(true)}
-            className="bg-[#008BDC] text-white font-medium text-xl  px-8 py-2 rounded-md shadow-lg"
+        <div className=" max-[600px]:hidden  w-44  absolute left-0 z-[99] top-5 flex items-center justify-center text-base">
+          <Link
+            className="h-12 gap-3 rounded-full bg-white text-white flex items-center justify-center p-2 font-bold"
+            to={"/services/exam-prepration"}
           >
-            Get now
-          </button>
-        ) : (
-          <button
-            onClick={checkLoginHandler}
-            className="bg-[#008BDC] text-white font-medium text-xl  px-8 py-2 rounded-md shadow-lg"
-          >
-            Login now to get started
-          </button>
-        )}
-      </div>
-
-      {openPopup && (
-        <div className="fixed top-0 w-full h-screen flex items-center justify-center bg-[#74747443]">
-          <div className="w-[60%] py-5 bg-white drop-shadow-2xl">
-            <div
-              onClick={() => setOpenPopup(false)}
-              className="cursor-pointer absolute right-5 top-5"
-            >
-              <RiCloseFill />
+            <div className="w-8 flex items-center justify-center h-8 rounded-full bg-[#008BDC]">
+              <RiArrowLeftSLine className="text-[#ffffff]" />
             </div>
-            <div className="w-full flex flex-col items-center">
-              <div className="w-full flex flex-col items-center justify-center">
-                <div className="center">
-                  <p className="font-medium text-2xl mt-5">
-                    Fill the form below to enroll in SAT Practice Test and get
-                    started
-                  </p>
-                </div>
-                <div className="center mt-5">
-                  <div className="flex flex-col gap-5 w-80">
-                    <div className="">
-                      <h2 className="font-medium">Your Full Name</h2>
-                      <input
-                        onChange={handleChange("name")}
-                        placeholder="Enter your Name"
-                        type="text"
-                        name="name"
-                        id=""
-                        className="field rounded-md"
-                        value={userInput.name}
-                      />
-                    </div>
-                    <div className="">
-                      <h2 className="font-medium">Your Email Address</h2>
-                      <input
-                        onChange={handleChange("email")}
-                        placeholder="Enter your Email"
-                        type="text"
-                        name="email"
-                        id=""
-                        className="field rounded-md"
-                        value={userInput.email}
-                      />
-                    </div>
+            <button className="mr-2 text-[#008BDC]">Go Back</button>
+          </Link>
+        </div>
+        <div className="w-[35%]  center relative h-full bg-[#008BDC] max-[600px]:w-full max-[600px]:h-[30%] ">
+          <img
+            className="absolute w-[10%] opacity-60 right-14 top-14"
+            src="/Images/SAT Test/airplane.png"
+            alt=""
+          />
+          <img
+            className="absolute w-[10%] opacity-60 right-44 top-32"
+            src="/Images/SAT Test/airplane.png"
+            alt=""
+          />
+          <img
+            className="absolute w-[10%] opacity-60 right-14 top-44"
+            src="/public/Images/SAT Test/airplane.png"
+            alt=""
+          />
+          <div className="w-full h-[40vh] flex justify-center flex-col  px-10">
+            <p className="text-2xl text-white mb-10">
+              "Prepare for the SAT with confidence!"
+            </p>
+            <p className="text-white">
+              Prepare effectively with realistic practice tests, detailed
+              feedback, and proven strategies to improve your performance and
+              boost your confidence for SAT success.
+            </p>
+          </div>
+          <img
+            className="absolute w-[10%] opacity-50 left-14  grayscale-[1]   bottom-14"
+            src="/public/Images/SAT Test/star.png"
+            alt=""
+          />
+          <img
+            className="absolute w-[10%] opacity-50 left-44  grayscale-[1]   bottom-32"
+            src="/public/Images/SAT Test/star.png"
+            alt=""
+          />
+          <img
+            className="absolute w-[10%] opacity-50 left-14  grayscale-[1]   bottom-44"
+            src="/public/Images/SAT Test/star.png"
+            alt=""
+          />
+        </div>
+        <div className="w-[65%] h-full flex flex-col items-center justify-evenly max-[600px]:w-full max-[600px]:gap-3">
+          <div className="center max-[600px]:w-full max-[600px]:mt-3 ">
+            <p className="text-3xl font-bold">
+              SAT Practice Test <sub className="text-xs">(Beta)</sub>
+            </p>
+          </div>
+          <div className="center">
+            <div className="max-[600px]:scale-[.7]">
+              <img src="/Images/SAT Test/Sat1600.png" alt="" />
+            </div>
+          </div>
+          <div className="center">
+            <p className="w-[70%] text-xl text-justify max-[600px]:w-[90%] max-[600px]:text-base">
+              "Unlock your potential with our comprehensive SAT Practice Test
+              Module. Choose from various practice tests that mirror the real
+              SAT experience, covering sections Math, Evidence -Based Reading,
+              and Writing Each test is designed to assess your understanding,
+              pinpoint areas for improvement, and boost your confidence Receive
+              detailed feedback on scores, insights on question patterns, and
+              step-by-step solutions to strengthen your problem-solving skills.
+              With targeted practice and a clear track of your progress, our
+              module supports your journey toward mastering the SAT and
+              achieving your desired score."
+            </p>
+          </div>
+          <div className="center">
+            <p className="text-2xl font-semibold text-[#008BDC]">Get Started</p>
+          </div>
+          <div className="center">
+            <p className="text-xl text-center font-medium max-[600px]:text-base">
+              Fill the form details to get access to the <br /> SAT Practice
+              Test Module
+            </p>
+          </div>
+          <div className="w-full center max-[600px]:mb-5">
+            {user && user.satpracticetestcode ? (
+              <Link to="/satpractice/sat-verification-form">
+                <button className="bg-[#008BDC] text-white font-medium text-xl  px-8 py-2 rounded-md shadow-lg">
+                  Start Test
+                </button>
+              </Link>
+            ) : isAuth ? (
+              <button
+                onClick={() => setOpenPopup(true)}
+                className="bg-[#008BDC] text-white font-medium text-xl  px-8 py-2 rounded-md shadow-lg"
+              >
+                Get now
+              </button>
+            ) : (
+              <button
+                onClick={checkLoginHandler}
+                className="bg-[#008BDC] text-white font-medium text-xl  px-8 py-2 rounded-md shadow-lg"
+              >
+                Login now to get started
+              </button>
+            )}
+          </div>
+        </div>
+        {openPopup && (
+          <div className="fixed top-0 w-full h-screen flex items-center justify-center bg-[#74747443]">
+            <div className="w-[60%] py-5 bg-white drop-shadow-2xl max-[600px]:w-full">
+              <div
+                onClick={() => setOpenPopup(false)}
+                className="cursor-pointer absolute right-5 top-5"
+              >
+                <RiCloseFill />
+              </div>
+              <div className="w-full flex flex-col items-center">
+                <div className="w-full flex flex-col items-center justify-center">
+                  <div className="center">
+                    <p className="font-medium text-2xl p-5">
+                      Fill the form below to enroll in SAT Practice Test and get
+                      started
+                    </p>
+                  </div>
+                  <div className="center mt-5">
+                    <div className="flex flex-col gap-5 w-80">
+                      <div className="">
+                        <h2 className="font-medium">Your Full Name</h2>
+                        <input
+                          onChange={handleChange("name")}
+                          placeholder="Enter your Name"
+                          type="text"
+                          name="name"
+                          id=""
+                          className="field rounded-md"
+                          value={userInput.name}
+                        />
+                      </div>
+                      <div className="">
+                        <h2 className="font-medium">Your Email Address</h2>
+                        <input
+                          onChange={handleChange("email")}
+                          placeholder="Enter your Email"
+                          type="text"
+                          name="email"
+                          id=""
+                          className="field rounded-md"
+                          value={userInput.email}
+                        />
+                      </div>
 
-                    <div className="">
-                      <h2 className="font-medium">WhatsApp No.</h2>
-                      <input
-                        className="field rounded-md"
-                        placeholder="Enter your Number"
-                        onChange={handleChange("contact")}
-                        type="number"
-                        name="contact"
-                        id=""
-                        value={userInput.contact}
-                      />
+                      <div className="">
+                        <h2 className="font-medium">WhatsApp No.</h2>
+                        <input
+                          className="field rounded-md"
+                          placeholder="Enter your Number"
+                          onChange={handleChange("contact")}
+                          type="number"
+                          name="contact"
+                          id=""
+                          value={userInput.contact}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="step3-wrapper mt-10">
-                  <p className="ml-2  text-center">
-                    Complete your payment of ₹{userInput.amount} to access
-                    premium services and unlock exclusive features. Click the
-                    button to proceed.
-                  </p>
-                  <div className="center">
-                    <button
-                      onClick={submitHandler}
-                      className="bg-[#008BDC] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
-                    >
-                      {isLoading ? (
-                        <div className="center gap-3">
-                          <div className="loader"></div>
-                          Please Wait...
-                        </div>
-                      ) : (
-                        ` Pay ₹${userInput.amount}`
-                      )}
-                    </button>
+                  <div className="step3-wrapper mt-10">
+                    <p className="ml-2  text-center">
+                      Complete your payment of ₹{userInput.amount} to access
+                      premium services and unlock exclusive features. Click the
+                      button to proceed.
+                    </p>
+                    <div className="center">
+                      <button
+                        onClick={submitHandler}
+                        className="bg-[#008BDC] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
+                      >
+                        {isLoading ? (
+                          <div className="center gap-3">
+                            <div className="loader"></div>
+                            Please Wait...
+                          </div>
+                        ) : (
+                          ` Pay ₹${userInput.amount}`
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 
