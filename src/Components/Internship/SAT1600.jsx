@@ -15,33 +15,38 @@ const SAT1600 = () => {
 
 
   const [userInput, setUserInput] = useState({
-    name: "",
+    name: user?.name || "",
+    email: user?.email || "",
     userid: "",
     class: "",
     contact: "",
-    email: "",
     skills: "",
     city: "",
     workinghours: "",
     whyinterest: "",
     experience: "",
     satformat: "",
+    status:"working",
     creationskills: "",
     whatsapp_group_link: "https://chat.whatsapp.com/DGhLcOj0WBSLpve7xokUmK",
   });
-
-  useEffect(() => {
-    dispatch(asynccurrentUser());
-  }, [dispatch]);
 
   useEffect(() => {
     if (user) {
       setUserInput((prevInput) => ({
         ...prevInput,
         userid: user._id,
+        name: user.name,
+        email: user.email,
       }));
     }
   }, [user]);
+
+  useEffect(() => {
+    dispatch(asynccurrentUser());
+  }, [dispatch]);
+
+``
 
   const checkLoginHandler = () => {
     if (!isAuth) {
@@ -125,13 +130,13 @@ const SAT1600 = () => {
           <div className="sat-img w-full h-[40vh] max-[600px]:h-[25vh] mt-10 px-20 max-[600px]:px-0">
             <img className='w-full h-full object-contain max-[600px]:object-cover' src="/Images/internship/SAT1600page.png" alt="" />
           </div>
-          <h1 className="text-4xl font-normal text-center mt-2 max-[600px]:mt-5">Benifits</h1>
-          <div className="intern-cards w-full max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:scroll-snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-3 grid grid-cols-3 gap-y-12 px-24 py-12 max-[600px]:py-4 max-[600px]:px-5" style={{ scrollBehavior: 'smooth' }}>
+          <h1 className="text-4xl font-normal text-center mt-2 max-[600px]:mt-5 max-[600px]:text-2xl ">Benifits</h1>
+          <div className="intern-cards w-full max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-3 grid grid-cols-3 gap-y-12 px-24 py-12 max-[600px]:py-4 max-[600px]:px-5" style={{ scrollBehavior: 'smooth' }}>
             {
               BenefitsCards.map((card, index) => (
                 <div
                   key={index}
-                  className="card w-96 h-[30vh] flex-shrink-0 rounded-md p-4 py-5 flex flex-col justify-between card-shadow max-[600px]:scroll-snap-align-center"
+                  className="card w-96 h-[30vh] flex-shrink-0 rounded-md p-4 py-5 flex flex-col justify-between card-shadow max-[600px]:w-[35vh]  max-[600px]:snap-center"
                 >
                   <div className="img-container w-fit h-16 overflow-hidden rounded-md">
                     <img className='w-full h-full object-cover' src="/Images/internship/benefitsicon.png" alt="" />
@@ -309,10 +314,8 @@ const SAT1600 = () => {
                   </div>
                 </div>
 
-                <div className="step3-wrapper mt-10">
-                  <p className="ml-2 text-center max-[600px]:leading-tight">
-                    Complete your application to access premium services and unlock exclusive features. Click the button to proceed.
-                  </p>
+                <div className="step3-wrapper ">
+                 
                   <div className="center">
                   <button
                       onClick={handleSubmit}

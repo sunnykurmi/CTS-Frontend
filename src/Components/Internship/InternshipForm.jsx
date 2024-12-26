@@ -70,12 +70,12 @@ const InternshipForm = () => {
           </div>
           <h1 className="text-4xl font-bold text-center mt-2">CTS Internship</h1>
           <p className='mt-3 w-full px-48 text-center text-lg max-[600px]:px-5 max-[600px]:text-justify'>We are offering a dynamic internship program tailored to individuals passionate about diverse fields such as Digital Marketing, Content Creation, SAT Tutoring (requiring a 1500+ SAT score), Research & Development, UI/UX Design, Video Editing, and Web Development. Join us to gain hands-on experience, contribute to innovative projects like SAT1600 practice tests, and hone your skills in a collaborative and growth-oriented environment.</p>
-          <div className="intern-cards max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:scroll-snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-3 grid grid-cols-4 gap-y-12 px-24 py-12 max-[600px]:px-5" style={{ scrollBehavior: 'smooth' }}>
+          <div className="intern-cards max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:snap-x max-[600px]:snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-3 grid grid-cols-4 gap-y-12 px-24 py-12 max-[600px]:px-5" style={{ scrollBehavior: 'smooth' }}>
             {
               internshipCards.map((card, index) => (
                 <div
                   key={index}
-                  className="card w-72 h-[55vh] flex-shrink-0 rounded-md p-4 py-5 flex flex-col justify-between card-shadow max-[600px]:scroll-snap-align-center"
+                  className="card w-64 h-[55vh] flex-shrink-0 rounded-md p-4 py-5 flex flex-col justify-between card-shadow max-[600px]:snap-center"
                 >
                   <div className="img-container w-full h-44 overflow-hidden rounded-md">
                     <img className='w-full h-full object-cover' src={card.img} alt="" />
@@ -83,7 +83,7 @@ const InternshipForm = () => {
                   <h1 className="heading font-bold text-lg mt-2 leading-5 bg-gray-300 p-2 w-fit">
                     {card.title}
                   </h1>
-                  <p className="text-sm mt-2 mb-4 w-full h-32 overflow-hidden leading-tight">
+                  <p className="text-sm mt-2 mb-4 w-full h-32 overflow-hidden leading-tight text-justify">
                     {card.description}
                   </p>
                   <a href={card.link} className="bg-[#008BDC] font-medium p-5 text-white py-2 rounded-md w-fit">
