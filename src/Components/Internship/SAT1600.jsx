@@ -13,15 +13,16 @@ const SAT1600 = () => {
   const { user } = useSelector((state) => state.user);
    const [isLoading, setLoading] = useState(false);
 
+   console.log(user);
 
   const [userInput, setUserInput] = useState({
     name: user?.name || "",
     email: user?.email || "",
     userid: "",
     class: "",
-    contact: "",
+    contact: user?.contact || "",
     skills: "",
-    city: "",
+    city:user?.city || "",
     workinghours: "",
     whyinterest: "",
     experience: "",
@@ -38,6 +39,8 @@ const SAT1600 = () => {
         userid: user._id,
         name: user.name,
         email: user.email,
+        contact: user.contact,
+        city: user.city,
       }));
     }
   }, [user]);

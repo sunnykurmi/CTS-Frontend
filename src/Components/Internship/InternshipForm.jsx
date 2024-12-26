@@ -75,18 +75,18 @@ const InternshipForm = () => {
               internshipCards.map((card, index) => (
                 <div
                   key={index}
-                  className="card w-64 h-[55vh] flex-shrink-0 rounded-md p-4 py-5 flex flex-col justify-between card-shadow max-[600px]:snap-center"
+                  className="card w-72 max-[600px]:w-64 h-[55vh] flex-shrink-0 rounded-md p-4 py-5 flex flex-col justify-between card-shadow max-[600px]:snap-center"
                 >
                   <div className="img-container w-full h-44 overflow-hidden rounded-md">
                     <img className='w-full h-full object-cover' src={card.img} alt="" />
                   </div>
-                  <h1 className="heading font-bold text-lg mt-2 leading-5 bg-gray-300 p-2 w-fit">
+                  <h1 className="heading font-bold text-lg mt-2 leading-5 bg-blue-100 p-2 w-full rounded-md">
                     {card.title}
                   </h1>
                   <p className="text-sm mt-2 mb-4 w-full h-32 overflow-hidden leading-tight text-justify">
                     {card.description}
                   </p>
-                  <a href={card.link} className="bg-[#008BDC] font-medium p-5 text-white py-2 rounded-md w-fit">
+                  <a href={card.link} className="bg-[#008BDC] font-medium w-full center p-5 text-white py-2 rounded-md">
                     View More
                   </a>
                 </div>
