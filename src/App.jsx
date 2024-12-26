@@ -42,6 +42,14 @@ import SATForm from "./Components/SAT Exam Test/SATForm";
 import SatPaymentSuccess from "./Components/SAT Exam Test/SatPaymentSuccess";
 import SatPractice from "./Components/SAT Exam Test/SatPractice";
 import CtsScholarship from './Components/Home/CtsScholarship';
+import ContentCreation from './Components/Internship/ContentCreation';
+import DigitalMarketing from './Components/Internship/DigitalMarketing';
+import WebDevelopment from './Components/Internship/WebDevelopment';
+import VideoEditing from './Components/Internship/VideoEditing';
+import UiUx from './Components/Internship/UiUx';
+import Sat1600 from './Components/Internship/SAT1600';
+import SatTutor from './Components/Internship/SATTutor';
+import RnD from './Components/Internship/RnD';
 
 export default function App() {
   const GoogleAuthWrapper = ({ isLogin }) => {
@@ -62,7 +70,19 @@ export default function App() {
         <Route path="/Signup" element={<GoogleAuthWrapper isLogin={false} />} />
         <Route path="/login" element={<GoogleAuthWrapper isLogin={true} />} />
 
-        <Route path="/apply-internship-form" element={<InternshipForm />} />
+      {/* {internship routes} */}
+
+        <Route path="/apply-internship" element={<InternshipForm />} />
+        <Route path="/apply-internship/digital-marketing" element={<DigitalMarketing />} />
+        <Route path="/apply-internship/content-creation" element={<ContentCreation />} />
+        <Route path="/apply-internship/research&development" element={<RnD />} />
+        <Route path="/apply-internship/SAT-tutor" element={<SatTutor />} />
+        <Route path="/apply-internship/SAT-1600" element={<Sat1600 />} />
+        <Route path="/apply-internship/UI-UX" element={<UiUx />} />
+        <Route path="/apply-internship/video-editing" element={<VideoEditing />} />
+        <Route path="/apply-internship/web-development" element={<WebDevelopment />} />
+
+      {/* {internship routes} */}
 
         <Route path="/abroadstudy" element={<AbroadHome />} />
 

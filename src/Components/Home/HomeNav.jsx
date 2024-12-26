@@ -86,7 +86,7 @@ const HomeNav = () => {
                         </Link>
                         <Link
                           className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                          to="/apply-internship-form"
+                          to="/apply-internship"
                         >
                           Internship
                         </Link>
@@ -229,13 +229,13 @@ const HomeNav = () => {
           <Link className="hover-link w-fit" to="/ivy">
             ivy acclerator
           </Link>
-          <Link className="hover-link w-fit" to="/satpractice/sat-verification-form">
+          <Link className="hover-link w-fit" to="/satpractice/sat-verification">
             SAT 1600
           </Link>
           <Link className="hover-link w-fit" to="/portfolio">
             Portfolio
           </Link>
-          <Link className="hover-link w-fit" to="/portfolio">
+          <Link className="hover-link w-fit" to="/apply-internship">
             Internship
           </Link>
           <Link className="hover-link w-fit" to={"/services"}>Services</Link>

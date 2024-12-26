@@ -124,8 +124,9 @@ function SatPractice() {
         </div>
       </div>
       <div className="w-full h-screen center gap-10 flex-col min-[600px]:hidden">
-        <p className=" text-3xl font-semibold text-center">
-          Site Not Support Mobile Devices Try to give exam from Laptop or PC{" "}
+        <p className=" text-3xl font-semibold text-center p-5">
+        This exam cannot be taken on a mobile device. Please use a laptop or
+        PC to continue.{" "}
         </p>
         <Link to="/" className="text-blue-500 text-center">
         <button className="px-4 py-2 rounded-full bg-blue-500 text-white font-semibold">

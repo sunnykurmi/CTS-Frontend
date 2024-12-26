@@ -1,529 +1,103 @@
-import { RiArrowDownSLine } from "@remixicon/react";
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { SubmitInternship } from "../../store/Actions/internshipAction";
-import { useDispatch, useSelector } from "react-redux";
-import HomeNav from "../Home/HomeNav";
-import Nav from "../Student/Nav";
-import { asynccurrentUser } from "../../store/Actions/userActions";
+import React from 'react'
+import { RiArrowLeftSLine } from '@remixicon/react'
+import { Link } from 'react-router-dom'
 
-export default function InternshipForm() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const isAuth = useSelector((state) => state.user.isAuth);
-  const [loading, setLoading] = useState(false);
-  const [hoverTimeout, setHoverTimeout] = useState(null);
-  const [userInput, setUserInput] = useState({
-    name: "",
-    email: "",
-    contact: "",
-    dateofbirth: "",
-    classGrade: "",
-    city: "",
-    income: "",
-    mode: "",
-    board: "",
-    dreamuniversity: "",
-    reason: "",
-    skills: [],
-    ecs: "",
-  });
-
-  const handleChange = (name) => (event) => {
-    const value = event.target.value;
-    setUserInput((prevInput) => ({
-      ...prevInput,
-      [name]: value,
-    }));
-  };
-
-  const handleModeChange = (mode) => (event) => {
-    event.preventDefault();
-    handleChange("mode")({ target: { value: mode } });
-  };
-
-  const handleArrayChange = (name, value) => {
-    setUserInput((prevInput) => ({
-      ...prevInput,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const allFieldsFilled = Object.values(userInput).every(
-      (value) => value !== "" && value.length !== 0
-    );
-    if (!allFieldsFilled) {
-      alert("All fields are required");
-      return;
-    }
-    setLoading(true);
-    const success = await dispatch(SubmitInternship(userInput));
-    setLoading(false);
-    if (success) {
-      alert("Form Submitted Successfully");
-      navigate("/");
-    }
-  };
-
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const classes = [
-    "9th Class",
-    "10th Class",
-    "11th Class",
-    "12th Class",
-    "12th Pass",
-  ];
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
-  const handleOptionClick = (value) => {
-    setDropdownOpen(false);
-    handleChange("classGrade")({ target: { value } });
-  };
-
-  const handleInputChange = (e) => {
-    setDropdownOpen(true);
-    handleChange("classGrade")(e);
-  };
-
-  const [dropdownOpen2, setDropdownOpen2] = useState(false);
-  const boards = ["CBSE", "ICSE", "IGCSE", "IB", "State Board", "Other"];
-  const toggleDropdown2 = () => {
-    setDropdownOpen2(!dropdownOpen2);
-  };
-
-  const handleOptionClick2 = (value) => {
-    setDropdownOpen2(false);
-    handleChange("board")({ target: { value } });
-  };
-
-  const handleInputChange2 = (e) => {
-    setDropdownOpen2(true);
-    handleChange("board")(e);
-  };
-
-  const [dropdownOpenInterest, setDropdownOpenInterest] = useState(false);
-  const [selectedInterests, setSelectedInterests] = useState([]);
-  const [inputValueInterest, setInputValueInterest] = useState("");
-
-  const interestsArray = [
-    "Leadership",
-    "Video Editing",
-    "Tutor",
-    "Web Development",
-    "Designing",
-    "Marketing",
-    "Management",
-    "Finance",
-    "Entrepreneurship",
-    "Public Speaking",
-    "Dance",
-    "Music",
-    "Sports",
-    "Reading",
-    "Writing",
-    "Photography",
-    "Cooking",
-    "Travelling",
-    "Volunteering",
-    "Art",
-    "Craft",
-    "Fashion",
-    "Robotics",
-  ];
-
-  const toggleDropdownInterest = () => {
-    setDropdownOpenInterest(!dropdownOpenInterest);
-  };
-
-  const handleOptionClickInterest = (value) => {
-    const newSelectedInterests = selectedInterests.includes(value)
-      ? selectedInterests.filter((interest) => interest !== value)
-      : [...selectedInterests, value];
-    setSelectedInterests(newSelectedInterests);
-    setInputValueInterest(newSelectedInterests.join(" | "));
-    setDropdownOpenInterest(false);
-    handleArrayChange("skills", newSelectedInterests);
-  };
-
-  const handleInputChangeInterest = (e) => {
-    setInputValueInterest(e.target.value);
-    setDropdownOpenInterest(true);
-    handleChange("skills")(e);
-  };
-
-  const handleMouseLeave = () => {
-    const timeoutId = setTimeout(() => {
-      setDropdownOpen(false);
-      setDropdownOpen2(false);
-    }, 1000);
-    setHoverTimeout(timeoutId);
-  };
-
-  const handleMouseEnter = () => {
-    if (hoverTimeout) {
-      clearTimeout(hoverTimeout);
-      setHoverTimeout(null);
-    }
-  };
-
-  useEffect(() => {
-    dispatch(asynccurrentUser());
-  }, [dispatch])
-  
-
+const InternshipForm = () => {
+  const internshipCards = [
+    {
+      title: 'Digital Marketing',
+      description: 'Digital marketing leverages online channels like social media, SEO, email, and content marketing to promote brands, engage audiences, and drive sales effectively in the digital age.',
+      img: '/Images/internship/DM.png',
+      link: '/apply-internship/digital-marketing',
+    },
+    {
+      title: 'Content Creation',
+      description: 'Content creation is the process of producing engaging blogs, videos, or social media posts to inform, attract, and retain audiences, enhancing brand visibility and engagement.',
+      img: '/Images/internship/cc.png',
+      link: '/apply-internship/content-creation',
+    },
+    {
+      title: 'Research & Development',
+      description: 'Research and Development (R&D) focuses on innovation, creating new products or improving existing ones through scientific research, testing, and experimentation to drive growth and meet market demands.',
+      img: '/Images/internship/r&d.png',
+      link: '/apply-internship/research&development', 
+    },
+    {
+      title: 'SAT Tutor (Paid)',
+      description: 'Hiring a paid SAT tutor with a 1500+ score to deliver expert guidance, personalized strategies, and test preparation tips to help students achieve exceptional results and academic success.',
+      img: '/Images/internship/stt.png',
+      link: '/apply-internship/SAT-tutor',
+    },
+    {
+      title: ' SAT1600 - SAT Practice test',
+      description: 'SAT  1600  practice  tests  provide  realistic simulations to help  students  prepare,  improve skills, and boost confidence, aiming for a perfect score with effective test-taking strategies.',
+      img: '/Images/internship/sat1600.png',
+      link: '/apply-internship/SAT-1600',
+    },
+    {
+      title: 'UI/UX',
+      description: 'UI/UX design focuses on creating user-friendly interfaces and seamless experiences, enhancing usability, aesthetics, and overall satisfaction for digital products or websites.',
+      img: '/Images/internship/uiux.png',
+      link: '/apply-internship/UI-UX',
+    },
+    {
+      title: 'Video Editing',
+      description: 'Video editing involves enhancing raw footage by   cutting , arranging,  and  adding  effects, transitions , and  audio  to  create polished, engaging videos for various purposes.',
+      img: '/Images/internship/ve.png',
+      link: '/apply-internship/video-editing',
+    },
+    {
+      title: 'Web-Development',
+      description: 'Web   development    involves   building   and maintaining websites, including front-end design, back-end    coding,  and ensuring  functionality, performance, and user experience across various devices and platforms.',
+      img: '/Images/internship/wd.png',
+      link: '/apply-internship/web-development',
+    },
+  ]
   return (
-    <div>
-          {!isAuth ? (
-      <HomeNav />
-    ) : (
-      <Nav />
-    )}
-      <div className="w-full center p-5 overflow-x-hidden flex-col max-[600px]:p-0 ">
-        <div className="flex max-[600px]:flex-col">
-
-        <div className="w-[50%] p-10 h-screen flex items-start justify-center max-[600px]:h-fit max-[600px]:items-center max-[600px]:w-full">
-          <img className="w-full shadow-lg" src="/Images/intern2.jpg" alt="" />
-        </div>
-        <div className="w-[50%]   p-5 max-[600px]:w-full ">
-          <div className="w-full center mb-10">
-            <p className="text-2xl font-medium">Apply for Internship In CTS</p>
+    <>
+      <div className='w-full'>
+        <div className="w-full h-fit p-5">
+          <div className="w-44 max-[600px]:w-20 absolute left-0 flex items-center justify-center text-base">
+            <Link
+              className="h-12 gap-3 rounded-full bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
+              to={`/`}
+            >
+              <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white max-[600px]:bg-transparent">
+                <RiArrowLeftSLine className="text-[#0000009b] max-[600px]:text-white" />
+              </div>
+              <button className="mr-2 max-[600px]:hidden">Go Back</button>
+            </Link>
           </div>
-          <form onSubmit={handleSubmit}>
-            <div className="w-full flex items-center justify-between">
-              <div className="input-field w-[45%]">
-                <p className="font-medium text-lg">Name</p>
-                <input
-                  type="text"
-                  placeholder="Enter your full name"
-                  name="name"
-                  onChange={handleChange("name")}
-                  value={userInput.name}
-                  className="field rounded-xl"
-                />
-              </div>
-              <div className="input-field w-[45%]">
-                <p className="font-medium text-lg">Date Of Birth</p>
-                <input
-                  type="date"
-                  name="dateofbirth"
-                  onChange={handleChange("dateofbirth")}
-                  value={userInput.dateofbirth}
-                  className="field rounded-xl"
-                />
-              </div>
-            </div>
-            <div className="w-full flex items-center justify-between mt-3">
-              <div className="input-field w-[45%] ">
-                <p className="font-medium text-lg">Email</p>
-                <input
-                  type="text"
-                  placeholder="Enter Email address"
-                  name="email"
-                  onChange={handleChange("email")}
-                  value={userInput.email}
-                  className="field rounded-xl"
-                />
-              </div>
-              <div className="input-field w-[45%]">
-                <p className="font-medium text-lg">Contact</p>
-                <input
-                  type="text"
-                  placeholder="Enter your contact number"
-                  name="contact"
-                  onChange={handleChange("contact")}
-                  value={userInput.contact}
-                  className="field rounded-xl"
-                />
-              </div>
-            </div>
-            <div className="w-full flex items-center justify-between mt-3">
-              <div className="input-field w-[45%] mt-2">
-                <p className="font-medium text-lg">City</p>
-                <input
-                  type="text"
-                  placeholder="Enter City name"
-                  name="city"
-                  onChange={handleChange("city")}
-                  value={userInput.city}
-                  className="field rounded-xl"
-                />
-              </div>
-              <div className="input-field w-[45%]">
-                <p className="font-medium text-lg">
-                  FamilyAnnual Income{" "}
-                  <span className="text-xs font-medium">(inRs)</span>{" "}
-                </p>
-                <input
-                  type="text"
-                  placeholder="Enter your family income"
-                  name="income"
-                  onChange={handleChange("income")}
-                  value={userInput.income}
-                  className="field rounded-xl"
-                />
-              </div>
-            </div>
-            <div className="w-full flex items-center justify-between mt-3">
-              <div className="flex w-[45%] flex-col ">
-                <p className="text-lg font-medium">Class</p>
+          <h1 className="text-4xl font-bold text-center mt-2">CTS Internship</h1>
+          <p className='mt-3 w-full px-48 text-center text-lg max-[600px]:px-5 max-[600px]:text-justify'>We are offering a dynamic internship program tailored to individuals passionate about diverse fields such as Digital Marketing, Content Creation, SAT Tutoring (requiring a 1500+ SAT score), Research & Development, UI/UX Design, Video Editing, and Web Development. Join us to gain hands-on experience, contribute to innovative projects like SAT1600 practice tests, and hone your skills in a collaborative and growth-oriented environment.</p>
+          <div className="intern-cards max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:scroll-snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-3 grid grid-cols-4 gap-y-12 px-24 py-12 max-[600px]:px-5" style={{ scrollBehavior: 'smooth' }}>
+            {
+              internshipCards.map((card, index) => (
                 <div
-                  onClick={toggleDropdown}
-                  className="cursor-pointer relative w-full field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]"
+                  key={index}
+                  className="card w-72 h-[55vh] flex-shrink-0 rounded-md p-4 py-5 flex flex-col justify-between card-shadow max-[600px]:scroll-snap-align-center"
                 >
-                  <input
-                    type="text"
-                    onMouseLeave={handleMouseLeave}
-                    onMouseEnter={handleMouseEnter}
-                    value={userInput.classGrade}
-                    onChange={handleInputChange}
-                    readOnly
-                    placeholder="Select Class"
-                    className="w-full h-full outline-none"
-                    name="class"
-                    autoComplete="off"
-                  />
-                  <RiArrowDownSLine className="text-[#008BDC]" />
-                  {dropdownOpen && (
-                    <div className="absolute w-full shadow-lg border-2 border-b-0 top-[105%] z-[99] bg-white">
-                      {classes.map((cls) => (
-                        <div
-                          key={cls}
-                          className="w-full h-10 flex border-r-2 border-b-2 text-center items-center justify-center font-semibold hover:bg-[#008BDC] hover:text-white"
-                          onClick={() => handleOptionClick(cls)}
-                        >
-                          <p>{cls}</p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  <div className="img-container w-full h-44 overflow-hidden rounded-md">
+                    <img className='w-full h-full object-cover' src={card.img} alt="" />
+                  </div>
+                  <h1 className="heading font-bold text-lg mt-2 leading-5 bg-gray-300 p-2 w-fit">
+                    {card.title}
+                  </h1>
+                  <p className="text-sm mt-2 mb-4 w-full h-32 overflow-hidden leading-tight">
+                    {card.description}
+                  </p>
+                  <a href={card.link} className="bg-[#008BDC] font-medium p-5 text-white py-2 rounded-md w-fit">
+                    View More
+                  </a>
                 </div>
-              </div>
-              <div className="flex w-[45%] flex-col ">
-                <p className="text-lg font-medium">Education Board</p>
-                <div
-                  onClick={toggleDropdown2}
-                  className="cursor-pointer relative field border-2 rounded-lg px-2 flex items-center justify-center border-[#008BDC]"
-                >
-                  <input
-                    type="text"
-                    readOnly
-                    onMouseLeave={handleMouseLeave}
-                    onMouseEnter={handleMouseEnter}
-                    value={userInput.board}
-                    onChange={handleInputChange2}
-                    placeholder="Select Board"
-                    className="w-full h-full outline-none"
-                    name="board"
-                    autoComplete="off"
-                  />
-                  <RiArrowDownSLine className="text-[#008BDC]" />
-                  {dropdownOpen2 && (
-                    <div className="absolute shadow-lg top-[105%] z-[99] border-2 border-b-0 w-full bg-white h-fit">
-                      {boards.map((cls) => (
-                        <div
-                          key={cls}
-                          className="flex h-10 items-center justify-center font-semibold border-b-2 hover:bg-[#008BDC] hover:text-white"
-                          onClick={() => handleOptionClick2(cls)}
-                        >
-                          <p>{cls}</p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div className="w-full flex items-center justify-between mt-3">
-              <div className="input-field w-[45%] ">
-                <p className="font-medium text-lg">Dream University</p>
-                <input
-                  type="text"
-                  placeholder="MIT, Harvard, etc."
-                  name="dreamuniversity"
-                  onChange={handleChange("dreamuniversity")}
-                  value={userInput.dreamuniversity}
-                  className="field rounded-xl"
-                />
-              </div>
-              <div className="w-[45%] flex flex-wrap justify-end">
-                <div className="w-full h-fit">
-                  <p className="font-medium text-lg">Skills</p>
-                </div>
-                <div className="w-full relative flex items-center justify-center">
-                  <textarea
-                    placeholder="Select Field Of Interest"
-                    value={inputValueInterest}
-                    onChange={handleInputChangeInterest}
-                    onFocus={toggleDropdownInterest}
-                    className="field min-h-12 outline-none resize-none h-fit scroller rounded-xl"
-                    rows={inputValueInterest ? 3 : 1} // Increase height when filled
-                  />
-                  <RiArrowDownSLine className="absolute right-2 cursor-pointer text-[#008BDC]" />
-                  {dropdownOpenInterest && (
-                    <div
-                      className="absolute right-0 p-5 shadow-lg top-[103%] z-[9] w-[50vw] gap-2 flex flex-wrap bg-white h-fit max-[600px]:w-[100vw] max-[600px]:right-0 max-[600px]:p-0 max-[600px]:scale-75"
-                      onMouseLeave={handleMouseLeave}
-                      onMouseEnter={handleMouseEnter}
-                    >
-                      {interestsArray
-                        .filter(
-                          (interest) => !selectedInterests.includes(interest)
-                        )
-                        .map((interest) => (
-                          <div
-                            key={interest}
-                            className="w-fit py-1 min-w-20 flex items-center justify-center font-semibold border-[#008BDC] rounded-full px-2 border-2 hover:bg-[#008BDC] hover:text-white cursor-pointer"
-                            onClick={() => handleOptionClickInterest(interest)}
-                          >
-                            <p>{interest}</p>
-                          </div>
-                        ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div className="w-full flex justify-between items-center mt-3">
-              <p className="font-medium text-lg">Mode Of Internship</p>
-              <div className="relative w-[45%] font-semibold gap-6 h-12 flex items-center ">
-                <button
-                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                    userInput.mode === "Online"
-                      ? "bg-[#008BDC] text-white"
-                      : "border-[#008BDC]"
-                  }`}
-                  onClick={handleModeChange("Online")}
-                >
-                  Online
-                </button>
-                <button
-                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                    userInput.mode === "Offline"
-                      ? "bg-[#008BDC] text-white"
-                      : "border-[#008BDC]"
-                  }`}
-                  onClick={handleModeChange("Offline")}
-                >
-                  Offline
-                </button>
-              </div>
-            </div>
-            <div className="w-full flex justify-between items-center mt-3">
-              <div className="h-full w-[45%] pt-3">
-                <p className="font-medium text-lg">
-                  Reason for joining Internship
-                </p>
-              </div>
-              <div className="w-[45%] flex flex-wrap justify-end gap-2">
-                <div className="w-full relative flex items-center justify-center">
-                  <textarea
-                    placeholder="Start Writing here"
-                    name="reason"
-                    onChange={handleChange("reason")}
-                    value={userInput.reason}
-                    className="field min-h-12 outline-none resize-none h-fit scroller rounded-xl"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="w-full flex justify-between items-center mt-3">
-              <div className="h-full w-[45%] pt-3">
-                <p className="font-medium text-lg">
-                  Your Extra Curricular Activities
-                </p>
-              </div>
-              <div className="w-[45%] flex flex-wrap justify-end gap-2">
-                <div className="w-full relative flex items-center justify-center">
-                  <textarea
-                    placeholder="Start Writing here"
-                    name="ecs"
-                    onChange={handleChange("ecs")}
-                    value={userInput.ecs}
-                    className="field min-h-12 outline-none resize-none h-fit scroller rounded-xl"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="w-full center mt-5">
-              <button
-            type="submit" disabled={loading}
-                className="bg-[#008BDC] text-white font-semibold py-2 px-4 rounded-lg"
-              >
-         {loading ? "Submitting..." : "Submit"}
-              </button>
-            </div>
-          </form>
+              ))
+            }
+          </div>
         </div>
-        </div>
-        <div className="flex w-full items-center justify-evenly">
-          <img className="w-[30%] max-[600px]:w-[40%]" src="/Images/intern1.jpg" alt="" />
-          <img className="w-[30%] max-[600px]:w-[40%]" src="/Images/intern3.jpg" alt="" />
-        </div>
-    
-     
-        <div className="w-full center flex-col p-20 px-44 max-[600px]:p-4">
-          <p className="text-2xl font-medium mb-10">About Internship</p>
-
-          <p>
-            <b>What You’ll Gain from This Internship:</b>
-            <br />- Hands-on Experience: Work on cutting-edge projects like
-            Project Future Kalam, BoostEd Asia, and other international
-            initiatives. <br />
-            - Collaboration with Top Institutes: Collaborate with brilliant
-            students from NIT and VIT, Ivy League. <br />
-            - International Connections: Gain exposure and networking
-            opportunities with professionals from international companies that
-            we are partnered with. <br />- Global Exposure: Cross The Skylimits
-            has the existence in 109 countries, giving you an opportunity to
-            work in a global environment. <br />
-            - Certification: Upon successful completion, you’ll receive a
-            prestigious certification from FWC and Cross The Skylimits. <br />
-            - Stipend Opportunities: The top three performers will receive a
-            stipend ranging from ₹3,000 to ₹10,000. <br />
-            - All-Inclusive Experience: We will cover your accommodation, food,
-            and all local expenses during your stay in Bhopal. <br />
-            <br />
-            <b>Who Should Apply?</b>
-            <br />
-            We are looking for highly motivated high school students or young
-            talents with a serious interest in entrepreneurship, computer
-            science, economics, or business. This Program is highly competitive,
-            with an acceptance rate of only 5-8%. So if you're passionate,
-            hardworking, and ready to dive into real-world challenges, this is
-            for you! <br />
-            <br />
-            <b>How Does It Work?</b>
-            <br />
-            1. Fill out the application form carefully and submit it. <br />
-            2. Applications will be reviewed thoroughly. <br />
-            3. Shortlisted candidates will go through a quick interview. <br />
-            4. Final selections will be made based on your passion, dedication,
-            and qualifications. <br />
-            <br />
-            <b>Important Details:</b>
-            <br />- The internship will be held in Bhopal, one of our key
-            offices. <br />- While we cover most of your expenses
-            (accommodation, food, etc.), there is a small program fee involved.
-            This is necessary as we operate as a non-profit, and the fee will be
-            communicated during the process. <br />
-            - You’ll have the chance to work on real-world projects, network
-            with industry leaders, and gain invaluable experience—all while
-            being part of a fast-growing global startup. <br />
-            <br />
-            <b>Apply Now!</b>
-            <br />
-            If you want to work with a global community, take your first steps
-            towards entrepreneurship, and gain real-world experience, apply now!
-            Remember to fill out the application form below carefully and make
-            sure all your details are correct. <br />
-          </p>
-        </div>
-       
       </div>
-    </div>
-  );
+    </>
+  )
+
 }
+
+export default InternshipForm
