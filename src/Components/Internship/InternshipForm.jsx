@@ -6,49 +6,49 @@ const InternshipForm = () => {
   const internshipCards = [
     {
       title: 'Digital Marketing',
-      description: 'Digital marketing leverages online channels like social media, SEO, email, and content marketing to promote brands, engage audiences, and drive sales effectively in the digital age.',
+      description: 'Dive into the world of digital marketing! Help us expand our reach through outreach, collaborations, creativity and social media management.',
       img: '/Images/internship/DM.png',
       link: '/apply-internship/digital-marketing',
     },
     {
       title: 'Content Creation',
-      description: 'Content creation is the process of producing engaging blogs, videos, or social media posts to inform, attract, and retain audiences, enhancing brand visibility and engagement.',
+      description: 'Unleash your creativity! Create engaging content, from blogs to videos, and shape the narrative of Cross the Sky Limits.',
       img: '/Images/internship/cc.png',
       link: '/apply-internship/content-creation',
     },
     {
       title: 'Research & Development',
-      description: 'Research and Development (R&D) focuses on innovation, creating new products or improving existing ones through scientific research, testing, and experimentation to drive growth and meet market demands.',
+      description: 'Dive into research! Create valuable resources like university lists and selected essays to support students',
       img: '/Images/internship/r&d.png',
       link: '/apply-internship/research&development', 
     },
     {
       title: 'SAT Tutor (Paid)',
-      description: 'Hiring a paid SAT tutor with a 1500+ score to deliver expert guidance, personalized strategies, and test preparation tips to help students achieve exceptional results and academic success.',
+      description: 'Share your expertise! Teach SAT aspirants and help them achieve their dream scores.',
       img: '/Images/internship/stt.png',
       link: '/apply-internship/SAT-tutor',
     },
     {
       title: ' SAT1600 - SAT Practice test',
-      description: 'SAT  1600  practice  tests  provide  realistic simulations to help  students  prepare,  improve skills, and boost confidence, aiming for a perfect score with effective test-taking strategies.',
+      description: 'Be a part of innovation! Help us perfect our SAT practice tests through question creation and review',
       img: '/Images/internship/sat1600.png',
       link: '/apply-internship/SAT-1600',
     },
     {
       title: 'UI/UX',
-      description: 'UI/UX design focuses on creating user-friendly interfaces and seamless experiences, enhancing usability, aesthetics, and overall satisfaction for digital products or websites.',
+      description: 'Redesign with flair! Reimagine pages of our website to make them more user-friendly and innovative.',
       img: '/Images/internship/uiux.png',
       link: '/apply-internship/UI-UX',
     },
     {
       title: 'Video Editing',
-      description: 'Video editing involves enhancing raw footage by   cutting , arranging,  and  adding  effects, transitions , and  audio  to  create polished, engaging videos for various purposes.',
+      description: 'Bring stories to life! Edit videos, interviews, and shorts to captivate our audience.',
       img: '/Images/internship/ve.png',
       link: '/apply-internship/video-editing',
     },
     {
       title: 'Web-Development',
-      description: 'Web   development    involves   building   and maintaining websites, including front-end design, back-end    coding,  and ensuring  functionality, performance, and user experience across various devices and platforms.',
+      description: 'Build the future! Use your coding skills to develop and enhance our web platforms.',
       img: '/Images/internship/wd.png',
       link: '/apply-internship/web-development',
     },
@@ -75,18 +75,18 @@ const InternshipForm = () => {
               internshipCards.map((card, index) => (
                 <div
                   key={index}
-                  className="card w-72 max-[600px]:w-64 h-[55vh] flex-shrink-0 rounded-md p-4 py-5 flex flex-col justify-between card-shadow max-[600px]:snap-center"
+                  className="card w-64 h-[50vh] flex-shrink-0 rounded-md p-4 py-5 flex flex-col justify-between card-shadow max-[600px]:snap-center"
                 >
                   <div className="img-container w-full h-44 overflow-hidden rounded-md">
                     <img className='w-full h-full object-cover' src={card.img} alt="" />
                   </div>
-                  <h1 className="heading font-bold text-lg mt-2 leading-5 bg-blue-100 p-2 w-full rounded-md">
+                  <h1 className="heading font-bold text-lg mt-2 leading-5 bg-gray-300 p-2 w-fit">
                     {card.title}
                   </h1>
                   <p className="text-sm mt-2 mb-4 w-full h-32 overflow-hidden leading-tight text-justify">
                     {card.description}
                   </p>
-                  <a href={card.link} className="bg-[#008BDC] font-medium w-full center p-5 text-white py-2 rounded-md">
+                  <a href={card.link} className="bg-[#008BDC] font-medium p-5 text-white py-2 rounded-md w-fit">
                     View More
                   </a>
                 </div>

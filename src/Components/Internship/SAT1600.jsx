@@ -13,7 +13,6 @@ const SAT1600 = () => {
   const { user } = useSelector((state) => state.user);
    const [isLoading, setLoading] = useState(false);
 
-   console.log(user);
 
   const [userInput, setUserInput] = useState({
     name: user?.name || "",
@@ -22,7 +21,7 @@ const SAT1600 = () => {
     class: "",
     contact: user?.contact || "",
     skills: "",
-    city:user?.city || "",
+    city: user?.city || "",
     workinghours: "",
     whyinterest: "",
     experience: "",
@@ -30,6 +29,7 @@ const SAT1600 = () => {
     status:"working",
     creationskills: "",
     whatsapp_group_link: "https://chat.whatsapp.com/DGhLcOj0WBSLpve7xokUmK",
+    internshiptype: "SAT-1600",
   });
 
   useEffect(() => {
@@ -87,28 +87,34 @@ const SAT1600 = () => {
 
   const BenefitsCards = [
     {
-      title: 'Familiarity with Test Format and Length',
-      description: 'Familiarity with test format and length enhances performance by reducing anxiety, improving time management, and ensuring efficient navigation through questions within given limits.',
+      title: 'Verified Certificate',
+      description1: 'Receive a professional, verifiable certificate that you can proudly showcase on your profile.',
+      description2: 'Unique feature: Anyone can click "Verify Now" on the certificate to instantly confirm its authenticity.',
     },
     {
-      title: 'Enhanced Problem-Solving Skills',
-      description: 'Enhanced problem-solving skills are developed through practice, exposure to various question types, and application of strategies to solve complex problems efficiently and accurately.',
+      title: 'Prestigious Letter of Recommendation (LOR)',
+      description1: 'Earn a personalized LoR from Krishna MIT, Founder & CEO of Cross The Sky Limits.',
+      description2: 'This LoR highlights your strengths and adds a competitive edge to your college applications.',
     },
     {
-      title: 'Improved Time Management',
-      description: 'Improved time management is achieved through practice, understanding question types, and developing strategies to allocate time effectively to each section, ensuring completion within time limits.',
+      title: 'Exclusive Networking Opportunities',
+      description1: "Connect with brilliant minds preparing for the SAT and applying to the world's top universities.",
+      description2: 'Build meaningful relationships with like-minded peers and mentors to enhance your profile and broaden your horizons.',
     },
     {
-      title: 'Enhanced Critical Thinking and Analytical Skills',
-      description: 'Enhanced critical thinking and analytical skills are developed through practice, exposure to various question types, and application of strategies to solve complex problems efficiently and accurately.',
+      title: 'Stipend and Cash Prizes',
+      description1: 'Showcase your dedication and hard work for a chance to be among the top two performers to win a stipend and cash prize.',
+      description2: 'This is your opportunity to demonstrate your commitment and stand out!',
     },
     {
-      title: 'Increased Confidence and Reduced Anxiety',
-      description: 'Increased confidence and reduced anxiety are achieved through practice, familiarity with test format, and length, and application of strategies to solve problems efficiently and accurately.',
+      title: 'College Application Support',
+      description1: 'Work closely with Krishna MIT and the CTS team to receive personalized guidance and suggestions for your college applications.',
+      description2: 'Get insights that can make a significant impact on your academic journey.',
     },
     {
-      title: 'Improved Test-Taking Strategies',
-      description: 'Improved test-taking strategies are developed through practice, understanding question types, and developing strategies to allocate time effectively to each section, ensuring completion within time limits.',
+      title: 'Hands-On Learning Experience',
+      description1: 'Gain practical experience in SAT strategies, resource creation, and collaboration.',
+      description2: 'Enhance your skills and build expertise while contributing to impactful projects.',
     },
   ];
 
@@ -134,7 +140,7 @@ const SAT1600 = () => {
             <img className='w-full h-full object-contain max-[600px]:object-cover' src="/Images/internship/SAT1600page.png" alt="" />
           </div>
           <h1 className="text-4xl font-normal text-center mt-2 max-[600px]:mt-5 max-[600px]:text-2xl ">Benifits</h1>
-          <div className="intern-cards w-full max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-3 grid grid-cols-3 gap-y-12 px-24 py-12 max-[600px]:py-4 max-[600px]:px-5" style={{ scrollBehavior: 'smooth' }}>
+          <div className="intern-cards w-full max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-3 grid grid-cols-3 gap-y-12 px-24 py-12 max-[600px]:py-4 max-[600px]:px-5">
             {
               BenefitsCards.map((card, index) => (
                 <div
@@ -147,9 +153,12 @@ const SAT1600 = () => {
                   <h1 className="heading font-bold text-lg mt-2 leading-5 w-fit">
                     {card.title}
                   </h1>
-                  <p className="text-sm mt-2 mb-4 w-full h-32 overflow-hidden leading-tight">
-                    {card.description}
-                  </p>
+                  <h2 className="text-sm mt-2 mb-4 w-full h-44 overflow-hidden leading-tight">
+                    <ul className='list-disc list-inside'>
+                      <li>{card.description1}</li>
+                      <li className='mt-2'>{card.description2}</li>
+                    </ul>
+                  </h2>
                 </div>
               ))
             }
