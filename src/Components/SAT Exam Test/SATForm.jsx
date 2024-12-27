@@ -170,7 +170,7 @@ const SATForm = () => {
           />
           <img
             className="absolute w-[10%] opacity-60 right-14 top-44"
-            src="/public/Images/SAT Test/airplane.png"
+            src="/Images/SAT Test/airplane.png"
             alt=""
           />
           <div className="w-full h-[40vh] flex justify-center flex-col  px-10">
@@ -185,17 +185,17 @@ const SATForm = () => {
           </div>
           <img
             className="absolute w-[10%] opacity-50 left-14  grayscale-[1]   bottom-14"
-            src="/public/Images/SAT Test/star.png"
+            src="/Images/SAT Test/star.png"
             alt=""
           />
           <img
             className="absolute w-[10%] opacity-50 left-44  grayscale-[1]   bottom-32"
-            src="/public/Images/SAT Test/star.png"
+            src="/Images/SAT Test/star.png"
             alt=""
           />
           <img
             className="absolute w-[10%] opacity-50 left-14  grayscale-[1]   bottom-44"
-            src="/public/Images/SAT Test/star.png"
+            src="/Images/SAT Test/star.png"
             alt=""
           />
         </div>

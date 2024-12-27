@@ -80,13 +80,13 @@ const InternshipForm = () => {
                   <div className="img-container w-full h-44 overflow-hidden rounded-md">
                     <img className='w-full h-full object-cover' src={card.img} alt="" />
                   </div>
-                  <h1 className="heading font-bold text-lg mt-2 leading-5 bg-gray-300 p-2 w-fit">
+                  <h1 className="heading font-bold text-lg mt-2 leading-5 bg-blue-100 p-2 w-full rounded-md text-center">
                     {card.title}
                   </h1>
                   <p className="text-sm mt-2 mb-4 w-full h-32 overflow-hidden leading-tight text-justify">
                     {card.description}
                   </p>
-                  <a href={card.link} className="bg-[#008BDC] font-medium p-5 text-white py-2 rounded-md w-fit">
+                  <a href={card.link} className="bg-[#008BDC] font-medium p-5 text-white py-2 w-full rounded-md center">
                     View More
                   </a>
                 </div>

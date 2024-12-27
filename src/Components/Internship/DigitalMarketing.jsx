@@ -14,21 +14,22 @@ const DigitalMarketing = () => {
   const [isLoading, setLoading] = useState(false);
 
 
+
+
   const [userInput, setUserInput] = useState({
     name: user?.name || "",
     email: user?.email || "",
     userid: "",
     class: "",
-    contact: "",
+    contact: user?.contact || "",
+    city: user?.city || "",
     skills: "",
-    city: "",
     workinghours: "",
     whyinterest: "",
-    experience: "",
-    satformat: "",
+    socialplatforms: "",
     status: "working",
-    creationskills: "",
-    whatsapp_group_link: "https://chat.whatsapp.com/DGhLcOj0WBSLpve7xokUmK",
+    whatsapp_group_link: "https://chat.whatsapp.com/DrwXzKgpyrDCWNucqrHm29",
+    internshiptype: "Digital-Marketing",
   });
 
   useEffect(() => {
@@ -38,6 +39,8 @@ const DigitalMarketing = () => {
         userid: user._id,
         name: user.name,
         email: user.email,
+        contact: user.contact,
+        city: user.city,
       }));
     }
   }, [user]);
@@ -51,7 +54,7 @@ const DigitalMarketing = () => {
   const checkLoginHandler = () => {
     if (!isAuth) {
       window.alert("Please login first");
-      navigate("/login", { state: { from: `/apply-internship/SAT-1600` } });
+      navigate("/login", { state: { from: `/apply-internship/digital-marketing` } });
       return;
     }
   };
@@ -84,29 +87,30 @@ const DigitalMarketing = () => {
 
   const BenefitsCards = [
     {
-      title: 'Familiarity with Test Format and Length',
-      description: 'Familiarity with test format and length enhances performance by reducing anxiety, improving time management, and ensuring efficient navigation through questions within given limits.',
+      title: 'Verified Certificate',
+      description1: 'Get certificates that you can verify online, adding credibility to your profile.- ',
     },
     {
-      title: 'Enhanced Problem-Solving Skills',
-      description: 'Enhanced problem-solving skills are developed through practice, exposure to various question types, and application of strategies to solve complex problems efficiently and accurately.',
+      title: 'Prestigious Letter of Recommendation (LOR)',
+      description1: 'Earn LoRs from the Founder and CEO of Cross the Sky Limits',
     },
     {
-      title: 'Improved Time Management',
-      description: 'Improved time management is achieved through practice, understanding question types, and developing strategies to allocate time effectively to each section, ensuring completion within time limits.',
+      title: 'College Application Support',
+      description1: 'Work closely with Krishna MIT and the CTS team to receive personalized guidance and suggestions for your college applications.',
     },
     {
-      title: 'Enhanced Critical Thinking and Analytical Skills',
-      description: 'Enhanced critical thinking and analytical skills are developed through practice, exposure to various question types, and application of strategies to solve complex problems efficiently and accurately.',
+      title: 'Stipend Opportunities',
+      description1: "Dedication and hard work can lead to stipends and additional perks.",
     },
     {
-      title: 'Increased Confidence and Reduced Anxiety',
-      description: 'Increased confidence and reduced anxiety are achieved through practice, familiarity with test format, and length, and application of strategies to solve problems efficiently and accurately.',
+      title: 'Surprise Perks',
+      description1: 'Expect exciting surprises along the way!',
     },
-    {
-      title: 'Improved Test-Taking Strategies',
-      description: 'Improved test-taking strategies are developed through practice, understanding question types, and developing strategies to allocate time effectively to each section, ensuring completion within time limits.',
-    },
+    // {
+    //   title: 'Hands-On Learning Experience',
+    //   description1: 'Gain practical experience in SAT strategies, resource creation, and collaboration.',
+    //   description2: 'Enhance your skills and build expertise while contributing to impactful projects.',
+    // },
   ];
 
   return (
@@ -116,7 +120,7 @@ const DigitalMarketing = () => {
           <div className="w-44 max-[600px]:w-20 absolute left-0 flex items-center justify-center text-base">
             <Link
               className="h-12 gap-3 rounded-full bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
-              to={`/`}
+              to={`/apply-internship`}
             >
               <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white max-[600px]:bg-transparent">
                 <RiArrowLeftSLine className="text-[#0000009b] max-[600px]:text-white" />
@@ -130,7 +134,7 @@ const DigitalMarketing = () => {
             <img className='w-full h-full object-contain max-[600px]:object-cover' src="/Images/internship/DMimg.png" alt="" />
           </div>
           <h1 className="text-4xl font-normal text-center mt-2 max-[600px]:mt-5 max-[600px]:text-2xl ">Benifits</h1>
-          <div className="intern-cards w-full max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-3 grid grid-cols-3 gap-y-12 px-24 py-12 max-[600px]:py-4 max-[600px]:px-5" style={{ scrollBehavior: 'smooth' }}>
+          <div className="intern-cards w-full max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-2 max-[1337px]:place-items-center grid grid-cols-3 gap-y-12 px-24 py-12 max-[600px]:py-4 max-[600px]:px-5" style={{ scrollBehavior: 'smooth' }}>
             {
               BenefitsCards.map((card, index) => (
                 <div
@@ -143,9 +147,11 @@ const DigitalMarketing = () => {
                   <h1 className="heading font-bold text-lg mt-2 leading-5 w-fit">
                     {card.title}
                   </h1>
-                  <p className="text-sm mt-2 mb-4 w-full h-32 overflow-hidden leading-tight">
-                    {card.description}
-                  </p>
+                  <h2 className="text-sm mt-2 mb-4 w-full h-44 overflow-hidden leading-tight">
+                    <ul className='list-disc list-inside'>
+                      <li>{card.description1}</li>
+                    </ul>
+                  </h2>
                 </div>
               ))
             }
@@ -278,35 +284,13 @@ const DigitalMarketing = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Test Prep Experience: Yes/No (Describe if Yes)</h2>
+                      <h2 className="font-normal text-sm">Social Media Platforms you are active on</h2>
                       <input
-                        placeholder="Enter your Experience"
-                        onChange={handleChange("experience")}
-                        value={userInput.experience}
+                        placeholder="Enter your Social Platforms"
+                        onChange={handleChange("socialplatforms")}
+                        value={userInput.socialplatforms}
                         type="text"
-                        name="experience"
-                        className="field rounded-md max-[600px]:h-10"
-                      />
-                    </div>
-                    <div className="">
-                      <h2 className="font-normal text-sm">Familiarity with SAT Format: Brief description</h2>
-                      <input
-                        placeholder="Enter your SAT Format"
-                        onChange={handleChange("satformat")}
-                        value={userInput.satformat}
-                        type="text"
-                        name="satformat"
-                        className="field rounded-md max-[600px]:h-10"
-                      />
-                    </div>
-                    <div className="">
-                      <h2 className="font-normal text-sm">Question Creation Skills: Yes/No (Describe if Yes)</h2>
-                      <input
-                        placeholder="Enter your Creation Skills"
-                        onChange={handleChange("creationskills")}
-                        value={userInput.creationskills}
-                        type="text"
-                        name="creationskills"
+                        name="socialplatforms"
                         className="field rounded-md max-[600px]:h-10"
                       />
                     </div>

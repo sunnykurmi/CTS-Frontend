@@ -125,7 +125,7 @@ const SAT1600 = () => {
           <div className="w-44 max-[600px]:w-20 absolute left-0 flex items-center justify-center text-base">
             <Link
               className="h-12 gap-3 rounded-full bg-[#008BDC] text-white flex items-center justify-center p-2 font-bold"
-              to={`/`}
+              to={`/apply-internship`}
             >
               <div className="w-8 flex items-center justify-center h-8 rounded-full bg-white max-[600px]:bg-transparent">
                 <RiArrowLeftSLine className="text-[#0000009b] max-[600px]:text-white" />
@@ -140,7 +140,7 @@ const SAT1600 = () => {
             <img className='w-full h-full object-contain max-[600px]:object-cover' src="/Images/internship/SAT1600page.png" alt="" />
           </div>
           <h1 className="text-4xl font-normal text-center mt-2 max-[600px]:mt-5 max-[600px]:text-2xl ">Benifits</h1>
-          <div className="intern-cards w-full max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-3 grid grid-cols-3 gap-y-12 px-24 py-12 max-[600px]:py-4 max-[600px]:px-5">
+          <div className="intern-cards w-full max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-2 max-[1337px]:place-items-center grid grid-cols-3 gap-y-12 px-24 py-12 max-[600px]:py-4 max-[600px]:px-5">
             {
               BenefitsCards.map((card, index) => (
                 <div
