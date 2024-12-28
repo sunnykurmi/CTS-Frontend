@@ -26,7 +26,6 @@ const WebDevelopment = () => {
     experience: "",
     language: "",
     projects: "",
-    status: "working",
     userid: "",
     whatsapp_group_link: "https://chat.whatsapp.com/J0VqDhrL99sBINFsp4Gxt1",
     internshiptype: "webdevelopment",

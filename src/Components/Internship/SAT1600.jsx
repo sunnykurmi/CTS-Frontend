@@ -16,20 +16,21 @@ const SAT1600 = () => {
 
   const [userInput, setUserInput] = useState({
     name: user?.name || "",
-    email: user?.email || "",
-    userid: "",
     class: "",
+    email: user?.email || "",
     contact: user?.contact || "",
-    skills: "",
     city: user?.city || "",
+    skills: "",
     workinghours: "",
     whyinterest: "",
-    experience: "",
-    satformat: "",
-    status:"working",
-    creationskills: "",
+
+    userid: "",
     whatsapp_group_link: "https://chat.whatsapp.com/DGhLcOj0WBSLpve7xokUmK",
     internshiptype: "SAT-1600",
+
+    experience: "",
+    satformat: "",
+    creationskills: "",
   });
 
   useEffect(() => {

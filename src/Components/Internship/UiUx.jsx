@@ -26,7 +26,6 @@ const UiUx = () => {
     experience: "",
     tools: "",
     portfolio: "",
-    status: "working",
     userid: "",
     whatsapp_group_link: "https://chat.whatsapp.com/IKP2rLygIjJHt8oEIpFFL3",
     internshiptype: "uiux",

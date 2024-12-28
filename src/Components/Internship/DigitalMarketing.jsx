@@ -27,7 +27,6 @@ const DigitalMarketing = () => {
     workinghours: "",
     whyinterest: "",
     socialplatforms: "",
-    status: "working",
     whatsapp_group_link: "https://chat.whatsapp.com/DrwXzKgpyrDCWNucqrHm29",
     internshiptype: "Digital-Marketing",
   });

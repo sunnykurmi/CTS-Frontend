@@ -27,7 +27,6 @@ const RnD = () => {
     research: "",
     previousProjects: "",
     areainterest: "",
-    status: "working",
     whatsapp_group_link: "https://chat.whatsapp.com/DHiMjW3q2mdHcIOUQr0jax",
     internshiptype: "rnd",
   });

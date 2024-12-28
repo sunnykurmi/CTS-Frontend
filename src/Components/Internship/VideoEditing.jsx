@@ -26,7 +26,6 @@ const VideoEditing = () => {
     experience: "",
     tools: "",
     work: "",
-    status: "working",
     userid: "",
     whatsapp_group_link: "https://chat.whatsapp.com/En7viQsfgb660IA9PRhgJw",
     internshiptype: "videoediting",

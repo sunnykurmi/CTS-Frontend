@@ -25,7 +25,6 @@ const ContentCreation = () => {
     whyinterest: "",
     contentcreation: "",
     samplework: "",
-    status: "working",
     userid: "",
     whatsapp_group_link: "https://chat.whatsapp.com/DZL0EcXCv6HGgOpq0gTpx9",
     internshiptype: "Content-creation",

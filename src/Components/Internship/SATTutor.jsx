@@ -27,7 +27,6 @@ const SATTutor = () => {
     satscore: "",
     teachingexperience: "",
     subjects: "",
-    status: "working",
     whatsapp_group_link: "https://chat.whatsapp.com/BrdU6s7umMF1GVEMgillJ9",
     internshiptype: "satTutor",
   });
