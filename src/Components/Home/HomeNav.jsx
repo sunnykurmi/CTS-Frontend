@@ -74,7 +74,7 @@ const HomeNav = () => {
                 {dropdownOpen && (
                   <div className="absolute z-[99] -left-[200%] mt-2 w-fit p-5 bg-white border border-gray-200 rounded-md shadow-lg font-medium text-sm">
                     <div className="px-4 py-2 border-b-2">
-                      <Link to={"/portfolio"}>
+                      <Link to={"/services"}>
                         <h1 className="text-sm text-zinc-400">Services</h1>
                       </Link>
                       <div className="flex items-center gap-5">
@@ -161,6 +161,9 @@ const HomeNav = () => {
                   </div>
                 )}
               </div>
+              <Link className="hover-link" to="/SAT1600">
+                SAT1600
+              </Link>
               <Link className="hover-link" to={'/about-us'}>
                 about us
               </Link>
@@ -229,8 +232,8 @@ const HomeNav = () => {
           <Link className="hover-link w-fit" to="/ivy">
             ivy acclerator
           </Link>
-          <Link className="hover-link w-fit" to="/satpractice/sat-verification">
-            SAT 1600
+          <Link className="hover-link w-fit" to="/SAT1600">
+            SAT1600
           </Link>
           <Link className="hover-link w-fit" to="/portfolio">
             Portfolio

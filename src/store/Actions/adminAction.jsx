@@ -88,25 +88,6 @@ export const getallinternships = () => async (dispatch) => {
   }
 };
 
-
-export const markcomplete = (id) => async (dispatch) => {
-  try {
-    dispatch(setLoading(true));
-    const response = await axios.post(
-      "/api/v1/admin/complete-internship",
-      {
-        id,
-      },
-      getBearerToken()
-    );
-    dispatch(setLoading(false));
-    return response.data;
-  } catch (error) {
-    dispatch(setLoading(false));
-    throw error;
-  }
-};
-
 export const uploadportfolio = (formdata) => async (dispatch) => {
   try {
     dispatch(setLoading(true));

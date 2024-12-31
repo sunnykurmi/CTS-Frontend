@@ -50,6 +50,7 @@ import UiUx from './Components/Internship/UiUx';
 import Sat1600 from './Components/Internship/SAT1600';
 import SatTutor from './Components/Internship/SATTutor';
 import RnD from './Components/Internship/RnD';
+import SATPage from "./Components/SAT1600/SATPage";
 
 export default function App() {
   const GoogleAuthWrapper = ({ isLogin }) => {
@@ -70,7 +71,7 @@ export default function App() {
         <Route path="/Signup" element={<GoogleAuthWrapper isLogin={false} />} />
         <Route path="/login" element={<GoogleAuthWrapper isLogin={true} />} />
 
-      {/* {internship routes} */}
+        {/* {internship routes} */}
 
         <Route path="/apply-internship" element={<InternshipForm />} />
         <Route path="/apply-internship/digital-marketing" element={<DigitalMarketing />} />
@@ -82,7 +83,7 @@ export default function App() {
         <Route path="/apply-internship/video-editing" element={<VideoEditing />} />
         <Route path="/apply-internship/web-development" element={<WebDevelopment />} />
 
-      {/* {internship routes} */}
+        {/* {internship routes} */}
 
         <Route path="/abroadstudy" element={<AbroadHome />} />
 
@@ -162,21 +163,23 @@ export default function App() {
         <Route path="/privacy-policy" element={<Policy />} />
         <Route path="/about-us" element={<About />} />
 
-{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
-{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
+        {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
+        {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
 
         <Route path="/satpractice/sat-verification-form" element={<SatPractice />} />
         <Route path="/satpractice" element={<SATForm />} />
-        <Route path="/satpractice/paymentsuccess/:id"element={<SatPaymentSuccess />}/>
+        <Route path="/satpractice/paymentsuccess/:id" element={<SatPaymentSuccess />} />
         <Route path="/satexam" element={<SATExam />} />
-        
-{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
-{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
 
-          <Route path="/cts-scholarship" element={<AdminProtectedRoute>
+        {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
+        {/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}{/* SAT Exam Routes */}
+
+        <Route path="/cts-scholarship" element={<AdminProtectedRoute>
           <CtsScholarship />
         </AdminProtectedRoute>
         } />
+        {/* {SAT1600-page Route}  */}
+        <Route path="/SAT1600" element={<SATPage />} />
       </Routes>
     </div>
   );
