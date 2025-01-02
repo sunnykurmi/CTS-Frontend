@@ -65,7 +65,7 @@ const SATPage = () => {
         },
         {
             icon: "/Images/SAT1600/SVG1.png",
-            infor: "Registration fees may  vary, beccause we  we are providing scholarships, waivers, and discounts for the registration.        ",
+            infor: "Registration fees may  vary, because we  we are providing scholarships, waivers, and discounts for the registration.        ",
         }
     ]
     const SATCards = [

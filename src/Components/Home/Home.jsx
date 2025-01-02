@@ -82,11 +82,11 @@ export default function Home() {
 
   const calculateTimeLeft = () => {
     const now = new Date();
-    const targetDate = new Date(now.getFullYear() + 1, 0, 1); // January 1st of the next year
+    const targetDate = new Date(2025, 0, 5); // January 5, 2025
     const difference = targetDate - now;
-
+  
     let timeLeft = {};
-
+  
     if (difference > 0) {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -95,17 +95,17 @@ export default function Home() {
         seconds: Math.floor((difference / 1000) % 60),
       };
     }
-
+  
     return timeLeft;
   };
-
+  
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
+  
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
-
+  
     return () => clearInterval(timer);
   }, []);
   
@@ -129,7 +129,7 @@ export default function Home() {
             Join one of the world’s top counselors who’s transformed thousands
             of college applications and skyrocketed admission chances by 400%.
             💡 Don’t miss this FREE opportunity to craft your personalized
-            success roadmap! Offer valid only until Jan 1. 🗓️
+            success roadmap! Offer valid only until Jan 5. 🗓️
           </p>
           <a
             href="https://scheduler.zoom.us/ekiv2mqhqucm9n7w7-4-wg/krishna-mit"
