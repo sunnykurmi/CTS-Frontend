@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { asynccurrentUser } from '../../store/Actions/userActions';
 import { SubmitInternship } from '../../store/Actions/internshipAction';
 import { RiArrowLeftSLine, RiCloseFill } from '@remixicon/react';
+import { toast, ToastContainer } from 'react-toastify';
 
 const RnD = () => {
   const [openPopup, setOpenPopup] = useState(false);
@@ -72,15 +73,17 @@ const RnD = () => {
       (value) => value !== "" && value.length !== 0
     );
     if (!allFieldsFilled) {
-      alert("All fields are required");
+      toast.error("All fields are required");
       return;
     }
     setLoading(true);
     const success = await dispatch(SubmitInternship(userInput));
     setLoading(false);
     if (success) {
-      alert("Form Submitted Successfully");
-      navigate("/");
+      toast.success("Form Submitted Successfully");
+      setTimeout(() => {
+        navigate("/apply-internship");
+      }, 5000);
     }
   };
 
@@ -114,6 +117,7 @@ const RnD = () => {
 
   return (
     <>
+      <ToastContainer />
       <div className='w-full'>
         <div className="w-full h-fit p-5 flex flex-col items-center">
           <div className="w-44 max-[600px]:w-20 absolute left-0 flex items-center justify-center text-base">
