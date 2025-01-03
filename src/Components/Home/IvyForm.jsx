@@ -9,7 +9,7 @@ import {
   RiSearch2Line,
 } from "@remixicon/react";
 import { useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { sendivyform } from "../../store/Actions/userActions";
 import PhoneInput from 'react-phone-input-2'
@@ -46,8 +46,8 @@ export default function IvyForm() {
 
   const handleChange = (name) => (eventOrValue) => {
     const value = typeof eventOrValue === "object" && eventOrValue.target
-    ? eventOrValue.target.value // For regular inputs
-    : eventOrValue; // For direct values like dropdowns
+      ? eventOrValue.target.value // For regular inputs
+      : eventOrValue; // For direct values like dropdowns
 
     setUserInput((prevInput) => ({
       ...prevInput,
@@ -254,22 +254,19 @@ export default function IvyForm() {
         setLoading(false);
       }
     } else {
-      toast.error("❌Fill All The Details❌", {
+      toast.error("Fill All The Details", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
-        closeOnClick: true,
+        closeOnClick: false,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "dark",
+        theme: "light",
+        transition: Bounce,
       });
     }
   };
-
-  useEffect(() => {
-    console.log(userInput);
-  }, [userInput]);
 
   const handleConfirmClose = () => {
     setFormSubmitted(false);
@@ -827,12 +824,13 @@ export default function IvyForm() {
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
-        closeOnClick
+        closeOnClick={false}
         rtl={false}
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
+        theme="light"
+        transition={Bounce}
       />
     </div>
   );

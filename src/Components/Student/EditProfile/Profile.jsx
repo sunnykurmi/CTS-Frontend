@@ -9,6 +9,7 @@ import EditProfileForm from "./EditProfileForm";
 import Loader from "../../Loader/Loader";
 import AddEducation from "./AddEducation";
 import AddSocial from "./AddSocial";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -49,13 +50,22 @@ export default function Profile() {
     setShowSocialMedia(false);
   };
 
+  const showToast = (message, type) => {
+    if (type === "success") {
+      toast.success(message);
+    } else if(type === "error") {
+      toast.error(message);
+    }
+  };
+
   if (!user) {
     return <Loader />;
   }
   return (
     <>
+      <ToastContainer />
       {ShowAvatar && <EditAvatar onClose={closeaddavatar} />}
-      {ShowForm && <EditProfileForm onClose={closeeditform} />}
+      {ShowForm && <EditProfileForm onClose={closeeditform} showToast={showToast} />}
       {ShowEducation && <AddEducation onClose={closeEducation} />}
       {ShowSocialMedia && <AddSocial onClose={closeSocialMedia} />}
       <Nav />

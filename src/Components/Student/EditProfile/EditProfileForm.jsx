@@ -9,7 +9,18 @@ export default function EditProfileForm(props) {
   const { user } = useSelector((state) => state.user);
   const [loading, setLoading] = useState(false);
 
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    contact: "",
+    city: "",
+    state: "",
+    country: "",
+    dateofbirth: "",
+    gender: "",
+    bio: "",
+    summary: "",
+  });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,10 +33,11 @@ export default function EditProfileForm(props) {
     setLoading(true);
     try {
       await dispatch(editprofile(formData, user._id));
+      props.showToast("Profile Updated Successfully", "success");
       props.onClose();
-      window.location.reload(); 
+      // window.location.reload(); 
     } catch (error) {
-      //(error.response.data);
+      props.showToast("Something went wrong", "error");
     } finally {
       setLoading(false);
     }
@@ -37,7 +49,18 @@ export default function EditProfileForm(props) {
 
   useEffect(() => {
     if (user) {
-      setFormData(user);
+      setFormData({
+        name: user.name || "",
+        email: user.email || "",
+        contact: user.contact || "",
+        city: user.city || "",
+        state: user.state || "",
+        country: user.country || "",
+        dateofbirth: user.dateofbirth || "",
+        gender: user.gender || "",
+        bio: user.bio || "",
+        summary: user.summary || "",
+      });
     }
   }, [user]);
 
@@ -49,156 +72,154 @@ export default function EditProfileForm(props) {
     <div>
       <div className=" overflow-hidden z-10 flex items-center justify-center fixed h-full w-full bg-black/30">
         <div className="w-[60%] h-screen max-[600px]:w-full max-[600px]:px-5 py-10 px-20 bg-white overflow-y-scroll scroller ">
-            <div className="w-full flex items-center justify-end">
-          <RiCloseLine
-            size={30}
-            className="ml-auto cursor-pointer   "
-            onClick={props.onClose}
-            color="#1c1c1c9d" // set custom `width` and `height`
-          />
-            </div>
-          <div 
-           className="w-full text-2xl flex items-center justify-center font-medium uppercase">
+          <div className="w-full flex items-center justify-end">
+            <RiCloseLine
+              size={30}
+              className="ml-auto cursor-pointer   "
+              onClick={props.onClose}
+              color="#1c1c1c9d" // set custom `width` and `height`
+            />
+          </div>
+          <div
+            className="w-full text-2xl flex items-center justify-center font-medium uppercase">
             Edit Profile
           </div>
-            <form action="" onSubmit={handleSubmit}>
-          <div className="flex justify-between pt-10 items-center ">
-            <div className="input-field w-[45%]">
-              <p className="font-medium text-lg">Name</p>
-              <input
-                type="text"
-                placeholder="Enter your full name"
-                name="name"
-                onChange={handleChange}
-                value={formData.name}
-                className="field rounded-xl"
-              />
-            </div>
-            <div className="input-field w-[45%]">
-              <p className="font-medium text-lg">Email</p>
-              <input
-                type="text"
-                placeholder="Enter Valid Email"
-                name="email"
-                onChange={handleChange}
-                value={formData.email}
-                className="field rounded-xl"
-              />
-            </div>
-          </div>
-          <div className="flex justify-between pt-4  items-center ">
-            <div className="input-field w-[45%]">
-              <p className="font-medium text-lg">Contact</p>
-              <input
-                type="text"
-                placeholder="+91 987654XXX"
-                name="contact"
-                onChange={handleChange}
-                value={formData.contact}
-                className="field rounded-xl"
-              />
-            </div>
-            <div className="input-field w-[45%]">
-              <p className="font-medium text-lg">City</p>
-              <input
-                type="text"
-                placeholder="Bangalore/Mumbai/Delhi"
-                name="city"
-                onChange={handleChange}
-                value={formData.city}
-                className="field rounded-xl"
-              />
-            </div>
-          </div>
-          <div className="flex justify-between pt-4  items-center ">
-            <div className="input-field w-[45%]">
-              <p className="font-medium text-lg">State</p>
-              <input
-                type="text"
-                placeholder="Karnataka/Maharashtra"
-                name="state"
-                onChange={handleChange}
-                value={formData.state}
-                className="field rounded-xl"
-              />
-            </div>
-            <div className="input-field w-[45%]">
-              <p className="font-medium text-lg">Country</p>
-              <input
-                type="text"
-                placeholder="India"
-                name="country"
-                onChange={handleChange}
-                value={formData.country}
-                className="field rounded-xl"
-              />
-            </div>
-          </div>
-          <div className="flex justify-between pt-4  items-center ">
-            <div className="input-field w-[45%]">
-              <p className="font-medium text-lg">Date Of Birth</p>
-              <input
-                type="date"
-                name="dateofbirth"
-                onChange={handleChange}
-                value={formData.dateofbirth}
-                className="field rounded-xl"
-              />
-            </div>
-            <div className="input-field w-[45%]">
-              <p className="font-medium text-lg">Gender</p>
-              <div className="relative w-96 font-semibold gap-10 max-[600px]:gap-2 h-12 flex items-center">
-                <button
-                  type="button"
-                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                    formData.gender === "Male"
-                      ? "bg-[#008BDC] text-white"
-                      : "border-[#008BDC]"
-                  }`}
-                  onClick={() => setFormData({ ...formData, gender: "Male" })}
-                >
-                  Male
-                </button>
-                <button
-                  type="button"
-                  className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${
-                    formData.gender === "Female"
-                      ? "bg-[#008BDC] text-white"
-                      : "border-[#008BDC]"
-                  }`}
-                  onClick={() => setFormData({ ...formData, gender: "Female" })}
-                >
-                  Female
-                </button>
+          <form action="" onSubmit={handleSubmit}>
+            <div className="flex justify-between pt-10 items-center ">
+              <div className="input-field w-[45%]">
+                <p className="font-medium text-lg">Name</p>
+                <input
+                  type="text"
+                  placeholder="Enter your full name"
+                  name="name"
+                  onChange={handleChange}
+                  value={formData.name}
+                  className="field rounded-xl"
+                />
+              </div>
+              <div className="input-field w-[45%]">
+                <p className="font-medium text-lg">Email</p>
+                <input
+                  type="text"
+                  placeholder="Enter Valid Email"
+                  name="email"
+                  onChange={handleChange}
+                  value={formData.email}
+                  className="field rounded-xl"
+                />
               </div>
             </div>
-          </div>
-          <div className="flex justify-between pt-4  items-center ">
-            <div className="input-field w-[45%]">
-              <p className="font-medium text-lg">BIO</p>
-              <input
-                type="text"
-                placeholder="Enter your bio"
-                name="bio"
-                onChange={handleChange}
-                value={formData.bio}
-                className="field rounded-xl"
-              />
+            <div className="flex justify-between pt-4  items-center ">
+              <div className="input-field w-[45%]">
+                <p className="font-medium text-lg">Contact</p>
+                <input
+                  type="text"
+                  placeholder="+91 987654XXX"
+                  name="contact"
+                  onChange={handleChange}
+                  value={formData.contact}
+                  className="field rounded-xl"
+                />
+              </div>
+              <div className="input-field w-[45%]">
+                <p className="font-medium text-lg">City</p>
+                <input
+                  type="text"
+                  placeholder="Bangalore/Mumbai/Delhi"
+                  name="city"
+                  onChange={handleChange}
+                  value={formData.city}
+                  className="field rounded-xl"
+                />
+              </div>
             </div>
-            <div className="input-field w-[45%]">
-              <p className="font-medium text-lg">Summary</p>
-              <input
-                type="text"
-                placeholder="Enter your summary"
-                name="summary"
-                onChange={handleChange}
-                value={formData.summary}
-                className="field rounded-xl"
-              />
+            <div className="flex justify-between pt-4  items-center ">
+              <div className="input-field w-[45%]">
+                <p className="font-medium text-lg">State</p>
+                <input
+                  type="text"
+                  placeholder="Karnataka/Maharashtra"
+                  name="state"
+                  onChange={handleChange}
+                  value={formData.state}
+                  className="field rounded-xl"
+                />
+              </div>
+              <div className="input-field w-[45%]">
+                <p className="font-medium text-lg">Country</p>
+                <input
+                  type="text"
+                  placeholder="India"
+                  name="country"
+                  onChange={handleChange}
+                  value={formData.country}
+                  className="field rounded-xl"
+                />
+              </div>
             </div>
-          </div>
+            <div className="flex justify-between pt-4  items-center ">
+              <div className="input-field w-[45%]">
+                <p className="font-medium text-lg">Date Of Birth</p>
+                <input
+                  type="date"
+                  name="dateofbirth"
+                  onChange={handleChange}
+                  value={formData.dateofbirth}
+                  className="field rounded-xl"
+                />
+              </div>
+              <div className="input-field w-[45%]">
+                <p className="font-medium text-lg">Gender</p>
+                <div className="relative w-96 font-semibold gap-10 max-[600px]:gap-2 h-12 flex items-center">
+                  <button
+                    type="button"
+                    className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${formData.gender === "Male"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
+                      }`}
+                    onClick={() => setFormData({ ...formData, gender: "Male" })}
+                  >
+                    Male
+                  </button>
+                  <button
+                    type="button"
+                    className={`w-20 h-full border-2 rounded-lg px-2 flex items-center justify-center ${formData.gender === "Female"
+                      ? "bg-[#008BDC] text-white"
+                      : "border-[#008BDC]"
+                      }`}
+                    onClick={() => setFormData({ ...formData, gender: "Female" })}
+                  >
+                    Female
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-between pt-4  items-center ">
+              <div className="input-field w-[45%]">
+                <p className="font-medium text-lg">BIO</p>
+                <input
+                  type="text"
+                  placeholder="Enter your bio"
+                  name="bio"
+                  onChange={handleChange}
+                  value={formData.bio}
+                  className="field rounded-xl"
+                />
+              </div>
+              <div className="input-field w-[45%]">
+                <p className="font-medium text-lg">Summary</p>
+                <input
+                  type="text"
+                  placeholder="Enter your summary"
+                  name="summary"
+                  onChange={handleChange}
+                  value={formData.summary}
+                  className="field rounded-xl"
+                />
+              </div>
+            </div>
 
-          
+
             <div className="w-full flex mt-10 items-center justify-center">
               <button
                 type="submit"
@@ -208,7 +229,7 @@ export default function EditProfileForm(props) {
                 {loading ? "Loading..." : "Update Profile"}{" "}
               </button>
             </div>
-            </form>
+          </form>
         </div>
       </div>
     </div>

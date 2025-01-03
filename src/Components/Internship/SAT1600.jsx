@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { SubmitInternship } from '../../store/Actions/internshipAction';
 import { asynccurrentUser } from '../../store/Actions/userActions';
+import { toast, ToastContainer } from 'react-toastify';
 
 const SAT1600 = () => {
   const [openPopup, setOpenPopup] = useState(false);
@@ -11,8 +12,7 @@ const SAT1600 = () => {
   const navigate = useNavigate();
   const isAuth = useSelector((state) => state.user.isAuth);
   const { user } = useSelector((state) => state.user);
-   const [isLoading, setLoading] = useState(false);
-
+  const [isLoading, setLoading] = useState(false);
 
   const [userInput, setUserInput] = useState({
     name: user?.name || "",
@@ -50,7 +50,7 @@ const SAT1600 = () => {
     dispatch(asynccurrentUser());
   }, [dispatch]);
 
-``
+  ``
 
   const checkLoginHandler = () => {
     if (!isAuth) {
@@ -74,15 +74,17 @@ const SAT1600 = () => {
       (value) => value !== "" && value.length !== 0
     );
     if (!allFieldsFilled) {
-      alert("All fields are required");
+      toast.error("All fields are required");
       return;
     }
     setLoading(true);
     const success = await dispatch(SubmitInternship(userInput));
     setLoading(false);
     if (success) {
-      alert("Form Submitted Successfully");
-      navigate("/");
+      toast.success("Form Submitted Successfully");
+      setTimeout(() => {
+        navigate("/apply-internship");
+      }, 5000);
     }
   };
 
@@ -121,6 +123,7 @@ const SAT1600 = () => {
 
   return (
     <>
+      <ToastContainer />
       <div className='w-full'>
         <div className="w-full h-fit p-5 flex flex-col items-center">
           <div className="w-44 max-[600px]:w-20 absolute left-0 flex items-center justify-center text-base">
@@ -164,24 +167,24 @@ const SAT1600 = () => {
               ))
             }
           </div>
-          
+
           <div className="w-full center">
-          {isAuth ? (
-            <button
-              onClick={() => setOpenPopup(true)}
-              className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
-            >
-              Apply Now
-            </button>
-        ) : ( 
-            <button
-              onClick={checkLoginHandler}
-              className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
-            >
-              Please Login and Apply Now
-            </button>
-        )} 
-        </div>
+            {isAuth ? (
+              <button
+                onClick={() => setOpenPopup(true)}
+                className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
+              >
+                Apply Now
+              </button>
+            ) : (
+              <button
+                onClick={checkLoginHandler}
+                className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
+              >
+                Please Login and Apply Now
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -328,9 +331,9 @@ const SAT1600 = () => {
                 </div>
 
                 <div className="step3-wrapper ">
-                 
+
                   <div className="center">
-                  <button
+                    <button
                       onClick={handleSubmit}
                       className="bg-[#008BDC] text-xl font-medium p-5 text-white py-2 rounded-md mt-5 shadow-lg"
                     >
