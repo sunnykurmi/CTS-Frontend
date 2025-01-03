@@ -50,8 +50,6 @@ const SAT1600 = () => {
     dispatch(asynccurrentUser());
   }, [dispatch]);
 
-  ``;
-
   const checkLoginHandler = () => {
     if (!isAuth) {
       window.alert("Please login first to apply for the internship");
