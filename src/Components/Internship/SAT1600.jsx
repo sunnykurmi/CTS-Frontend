@@ -1,10 +1,10 @@
-import { RiArrowLeftSLine, RiCloseFill } from '@remixicon/react';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { SubmitInternship } from '../../store/Actions/internshipAction';
-import { asynccurrentUser } from '../../store/Actions/userActions';
-import { toast, ToastContainer } from 'react-toastify';
+import { RiArrowLeftSLine, RiCloseFill } from "@remixicon/react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { SubmitInternship } from "../../store/Actions/internshipAction";
+import { asynccurrentUser } from "../../store/Actions/userActions";
+import { toast, ToastContainer } from "react-toastify";
 
 const SAT1600 = () => {
   const [openPopup, setOpenPopup] = useState(false);
@@ -50,7 +50,7 @@ const SAT1600 = () => {
     dispatch(asynccurrentUser());
   }, [dispatch]);
 
-  ``
+  ``;
 
   const checkLoginHandler = () => {
     if (!isAuth) {
@@ -90,41 +90,53 @@ const SAT1600 = () => {
 
   const BenefitsCards = [
     {
-      title: 'Verified Certificate',
-      description1: 'Receive a professional, verifiable certificate that you can proudly showcase on your profile.',
-      description2: 'Unique feature: Anyone can click "Verify Now" on the certificate to instantly confirm its authenticity.',
+      title: "Verified Certificate",
+      description1:
+        "Receive a professional, verifiable certificate that you can proudly showcase on your profile.",
+      description2:
+        'Unique feature: Anyone can click "Verify Now" on the certificate to instantly confirm its authenticity.',
     },
     {
-      title: 'Prestigious Letter of Recommendation (LOR)',
-      description1: 'Earn a personalized LoR from Krishna MIT, Founder & CEO of Cross The Sky Limits.',
-      description2: 'This LoR highlights your strengths and adds a competitive edge to your college applications.',
+      title: "Prestigious Letter of Recommendation (LOR)",
+      description1:
+        "Earn a personalized LoR from Krishna MIT, Founder & CEO of Cross The Sky Limits.",
+      description2:
+        "This LoR highlights your strengths and adds a competitive edge to your college applications.",
     },
     {
-      title: 'Exclusive Networking Opportunities',
-      description1: "Connect with brilliant minds preparing for the SAT and applying to the world's top universities.",
-      description2: 'Build meaningful relationships with like-minded peers and mentors to enhance your profile and broaden your horizons.',
+      title: "Exclusive Networking Opportunities",
+      description1:
+        "Connect with brilliant minds preparing for the SAT and applying to the world's top universities.",
+      description2:
+        "Build meaningful relationships with like-minded peers and mentors to enhance your profile and broaden your horizons.",
     },
     {
-      title: 'Stipend and Cash Prizes',
-      description1: 'Showcase your dedication and hard work for a chance to be among the top two performers to win a stipend and cash prize.',
-      description2: 'This is your opportunity to demonstrate your commitment and stand out!',
+      title: "Stipend and Cash Prizes",
+      description1:
+        "Showcase your dedication and hard work for a chance to be among the top two performers to win a stipend and cash prize.",
+      description2:
+        "This is your opportunity to demonstrate your commitment and stand out!",
     },
     {
-      title: 'College Application Support',
-      description1: 'Work closely with Krishna MIT and the CTS team to receive personalized guidance and suggestions for your college applications.',
-      description2: 'Get insights that can make a significant impact on your academic journey.',
+      title: "College Application Support",
+      description1:
+        "Work closely with Krishna MIT and the CTS team to receive personalized guidance and suggestions for your college applications.",
+      description2:
+        "Get insights that can make a significant impact on your academic journey.",
     },
     {
-      title: 'Hands-On Learning Experience',
-      description1: 'Gain practical experience in SAT strategies, resource creation, and collaboration.',
-      description2: 'Enhance your skills and build expertise while contributing to impactful projects.',
+      title: "Hands-On Learning Experience",
+      description1:
+        "Gain practical experience in SAT strategies, resource creation, and collaboration.",
+      description2:
+        "Enhance your skills and build expertise while contributing to impactful projects.",
     },
   ];
 
   return (
     <>
       <ToastContainer />
-      <div className='w-full'>
+      <div className="w-full">
         <div className="w-full h-fit p-5 flex flex-col items-center">
           <div className="w-44 max-[600px]:w-20 absolute left-0 flex items-center justify-center text-base">
             <Link
@@ -137,53 +149,79 @@ const SAT1600 = () => {
               <button className="mr-2 max-[600px]:hidden">Go Back</button>
             </Link>
           </div>
-          <h1 className="text-4xl max-[600px]:text-2xl font-bold text-center mt-2">SAT 1600 Practice Test</h1>
-          <p className='mt-3 w-full text-zinc-400 px-48 text-center text-base max-[600px]:px-5'>Be a part of innovation! Help us perfect our SAT practice tests through question
-            creation and review</p>
+          <h1 className="text-4xl max-[600px]:text-2xl font-bold text-center mt-2">
+            SAT 1600 Practice Test
+          </h1>
+          <p className="mt-3 w-full text-zinc-400 px-48 text-center text-base max-[600px]:px-5">
+            Be a part of innovation! Help us perfect our SAT practice tests
+            through question creation and review
+          </p>
           <div className="sat-img w-full h-[40vh] max-[600px]:h-[25vh] mt-10 px-20 max-[600px]:px-0">
-            <img className='w-full h-full object-contain max-[600px]:object-cover' src="/Images/internship/SAT1600page.png" alt="" />
+            <img
+              className="w-full h-full object-contain max-[600px]:object-cover"
+              src="/Images/internship/SAT1600page.png"
+              alt=""
+            />
           </div>
           <div className="w-full center">
-          {isAuth ? (
-            <button
-              onClick={() => setOpenPopup(true)}
-              className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
-            >
-              Apply Now
-            </button>
-        ) : ( 
-            <button
-              onClick={checkLoginHandler}
-              className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
-            >
-             Apply Now
-            </button>
-        )} 
-        </div>
-        <br />
-          <h1 className="text-4xl font-normal text-center mt-2 max-[600px]:mt-5 max-[600px]:text-2xl ">Benifits Of internship</h1>
+            {isAuth ? (
+              <button
+                onClick={() => {
+                  if (user.internships.length > 1) {
+                    toast.error("You have already applied for 2 internships.");
+                  } else if (
+                    user.internships
+                      .map((internship) => internship.internshiptype)
+                      .includes("SAT-1600")
+                  ) {
+                    toast.error(
+                      "You have already applied for this internship."
+                    );
+                  } else {
+                    setOpenPopup(true);
+                  }
+                }}
+                className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
+              >
+                Apply Now
+              </button>
+            ) : (
+              <button
+                onClick={checkLoginHandler}
+                className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
+              >
+                Apply Now
+              </button>
+            )}
+          </div>
+          <br />
+          <h1 className="text-4xl font-normal text-center mt-2 max-[600px]:mt-5 max-[600px]:text-2xl ">
+            Benifits Of internship
+          </h1>
           <div className="intern-cards w-full max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-2 max-[1337px]:place-items-center grid grid-cols-3 gap-y-12 px-24 py-12 max-[600px]:py-4 max-[600px]:px-5">
-            {
-              BenefitsCards.map((card, index) => (
-                <div
-                  key={index}
-                  className="card w-96 h-[30vh] flex-shrink-0 rounded-md p-4 py-5 flex flex-col justify-between card-shadow max-[600px]:w-[35vh]  max-[600px]:snap-center"
-                >
-                  <div className="img-container w-fit h-16 overflow-hidden rounded-md">
-                    <img className='w-full h-full object-cover' src="/Images/internship/benefitsicon.png" alt="" />
-                  </div>
-                  <h1 className="heading font-bold text-lg mt-2 leading-5 w-fit">
-                    {card.title}
-                  </h1>
-                  <h2 className="text-sm mt-2 mb-4 w-full h-44 overflow-hidden leading-tight">
-                    <ul className='list-disc list-inside'>
-                      <li>{card.description1}</li>
-                      <li className='mt-2'>{card.description2}</li>
-                    </ul>
-                  </h2>
+            {BenefitsCards.map((card, index) => (
+              <div
+                key={index}
+                className="card w-96 h-[30vh] flex-shrink-0 rounded-md p-4 py-5 flex flex-col justify-between card-shadow max-[600px]:w-[35vh]  max-[600px]:snap-center"
+              >
+                <div className="img-container w-fit h-16 overflow-hidden rounded-md">
+                  <img
+                    className="w-full h-full object-cover"
+                    src="/Images/internship/benefitsicon.png"
+                    alt=""
+                  />
                 </div>
-              ))
-            }
+                <h1 className="heading font-bold text-lg mt-2 leading-5 w-fit">
+                  {card.title}
+                </h1>
+                <h2 className="text-sm mt-2 mb-4 w-full h-44 overflow-hidden leading-tight">
+                  <ul className="list-disc list-inside">
+                    <li>{card.description1}</li>
+                    <li className="mt-2">{card.description2}</li>
+                  </ul>
+                </h2>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -200,9 +238,7 @@ const SAT1600 = () => {
             <div className="w-full flex flex-col items-center">
               <div className="w-full flex flex-col items-center justify-center">
                 <div className="center">
-                  <p className="font-medium text-2xl mt-5">
-                    Fill your Details
-                  </p>
+                  <p className="font-medium text-2xl mt-5">Fill your Details</p>
                 </div>
                 <div className="center mt-5 w-full px-20 max-[600px]:px-5">
                   <div className="w-full grid grid-cols-2 max-[800px]:grid-cols-1 gap-y-5 gap-x-10 max-[600px]:w-64">
@@ -218,7 +254,9 @@ const SAT1600 = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Your Email Address</h2>
+                      <h2 className="font-normal text-sm">
+                        Your Email Address
+                      </h2>
                       <input
                         placeholder="Enter your Email"
                         onChange={handleChange("email")}
@@ -229,7 +267,9 @@ const SAT1600 = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Phone Number(With Country Code)</h2>
+                      <h2 className="font-normal text-sm">
+                        Phone Number(With Country Code)
+                      </h2>
                       <input
                         placeholder="Enter your Contact"
                         onChange={handleChange("contact")}
@@ -262,7 +302,9 @@ const SAT1600 = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Relevant Skills/Experience Yes/No (Describe if Yes)</h2>
+                      <h2 className="font-normal text-sm">
+                        Relevant Skills/Experience Yes/No (Describe if Yes)
+                      </h2>
                       <input
                         placeholder="Enter your Skills"
                         onChange={handleChange("skills")}
@@ -273,7 +315,9 @@ const SAT1600 = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">How many hours can you dedicate daily?</h2>
+                      <h2 className="font-normal text-sm">
+                        How many hours can you dedicate daily?
+                      </h2>
                       <input
                         placeholder="Enter your Working Hours"
                         onChange={handleChange("workinghours")}
@@ -284,7 +328,9 @@ const SAT1600 = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Why are you interested?</h2>
+                      <h2 className="font-normal text-sm">
+                        Why are you interested?
+                      </h2>
                       <input
                         placeholder="Enter your Interest"
                         onChange={handleChange("whyinterest")}
@@ -295,7 +341,9 @@ const SAT1600 = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Test Prep Experience: Yes/No (Describe if Yes)</h2>
+                      <h2 className="font-normal text-sm">
+                        Test Prep Experience: Yes/No (Describe if Yes)
+                      </h2>
                       <input
                         placeholder="Enter your Experience"
                         onChange={handleChange("experience")}
@@ -306,7 +354,9 @@ const SAT1600 = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Familiarity with SAT Format: Brief description</h2>
+                      <h2 className="font-normal text-sm">
+                        Familiarity with SAT Format: Brief description
+                      </h2>
                       <input
                         placeholder="Enter your SAT Format"
                         onChange={handleChange("satformat")}
@@ -317,7 +367,9 @@ const SAT1600 = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Question Creation Skills: Yes/No (Describe if Yes)</h2>
+                      <h2 className="font-normal text-sm">
+                        Question Creation Skills: Yes/No (Describe if Yes)
+                      </h2>
                       <input
                         placeholder="Enter your Creation Skills"
                         onChange={handleChange("creationskills")}
@@ -331,7 +383,6 @@ const SAT1600 = () => {
                 </div>
 
                 <div className="step3-wrapper ">
-
                   <div className="center">
                     <button
                       onClick={handleSubmit}

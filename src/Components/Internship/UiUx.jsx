@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { asynccurrentUser } from './../../store/Actions/userActions';
-import { SubmitInternship } from './../../store/Actions/internshipAction';
-import { RiArrowLeftSLine, RiCloseFill } from '@remixicon/react';
-import { toast, ToastContainer } from 'react-toastify';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { asynccurrentUser } from "./../../store/Actions/userActions";
+import { SubmitInternship } from "./../../store/Actions/internshipAction";
+import { RiArrowLeftSLine, RiCloseFill } from "@remixicon/react";
+import { toast, ToastContainer } from "react-toastify";
 
 const UiUx = () => {
   const [openPopup, setOpenPopup] = useState(false);
@@ -13,7 +13,6 @@ const UiUx = () => {
   const isAuth = useSelector((state) => state.user.isAuth);
   const { user } = useSelector((state) => state.user);
   const [isLoading, setLoading] = useState(false);
-
 
   const [userInput, setUserInput] = useState({
     name: user?.name || "",
@@ -48,7 +47,6 @@ const UiUx = () => {
   useEffect(() => {
     dispatch(asynccurrentUser());
   }, [dispatch]);
-
 
   const checkLoginHandler = () => {
     if (!isAuth) {
@@ -88,24 +86,28 @@ const UiUx = () => {
 
   const BenefitsCards = [
     {
-      title: 'Verified Certificate',
-      description1: 'Get certificates that you can verify online, adding credibility to your profile.- ',
+      title: "Verified Certificate",
+      description1:
+        "Get certificates that you can verify online, adding credibility to your profile.- ",
     },
     {
-      title: 'Prestigious Letter of Recommendation (LOR)',
-      description1: 'Earn LoRs from the Founder and CEO of Cross the Sky Limits',
+      title: "Prestigious Letter of Recommendation (LOR)",
+      description1:
+        "Earn LoRs from the Founder and CEO of Cross the Sky Limits",
     },
     {
-      title: 'College Application Support',
-      description1: 'Work closely with Krishna MIT and the CTS team to receive personalized guidance and suggestions for your college applications.',
+      title: "College Application Support",
+      description1:
+        "Work closely with Krishna MIT and the CTS team to receive personalized guidance and suggestions for your college applications.",
     },
     {
-      title: 'Stipend Opportunities',
-      description1: "Dedication and hard work can lead to stipends and additional perks.",
+      title: "Stipend Opportunities",
+      description1:
+        "Dedication and hard work can lead to stipends and additional perks.",
     },
     {
-      title: 'Surprise Perks',
-      description1: 'Expect exciting surprises along the way!',
+      title: "Surprise Perks",
+      description1: "Expect exciting surprises along the way!",
     },
     // {
     //   title: 'Hands-On Learning Experience',
@@ -117,7 +119,7 @@ const UiUx = () => {
   return (
     <>
       <ToastContainer />
-      <div className='w-full'>
+      <div className="w-full">
         <div className="w-full h-fit p-5 flex flex-col items-center">
           <div className="w-44 max-[600px]:w-20 absolute left-0 flex items-center justify-center text-base">
             <Link
@@ -130,15 +132,38 @@ const UiUx = () => {
               <button className="mr-2 max-[600px]:hidden">Go Back</button>
             </Link>
           </div>
-          <h1 className="text-4xl max-[600px]:text-2xl font-bold text-center mt-2">UI/UX Design</h1>
-          <p className='mt-3 w-full text-zinc-400 px-48 text-center text-base max-[600px]:px-5'>Redesign with flair! Reimagine pages of our website to make them more user-friendly and innovative.</p>
+          <h1 className="text-4xl max-[600px]:text-2xl font-bold text-center mt-2">
+            UI/UX Design
+          </h1>
+          <p className="mt-3 w-full text-zinc-400 px-48 text-center text-base max-[600px]:px-5">
+            Redesign with flair! Reimagine pages of our website to make them
+            more user-friendly and innovative.
+          </p>
           <div className="sat-img w-full h-[40vh] max-[600px]:h-[25vh] mt-10 px-20 max-[600px]:px-0">
-            <img className='w-full h-full object-contain max-[600px]:object-cover' src="/Images/internship/uiuximg.png" alt="" />
+            <img
+              className="w-full h-full object-contain max-[600px]:object-cover"
+              src="/Images/internship/uiuximg.png"
+              alt=""
+            />
           </div>
           <div className="w-full center">
             {isAuth ? (
               <button
-                onClick={() => setOpenPopup(true)}
+                onClick={() => {
+                  if (user.internships.length > 1) {
+                    toast.error("You have already applied for 2 internships.");
+                  } else if (
+                    user.internships
+                      .map((internship) => internship.internshiptype)
+                      .includes("uiux")
+                  ) {
+                    toast.error(
+                      "You have already applied for this internship."
+                    );
+                  } else {
+                    setOpenPopup(true);
+                  }
+                }}
                 className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
               >
                 Apply Now
@@ -153,31 +178,36 @@ const UiUx = () => {
             )}
           </div>
           <br />
-          <h1 className="text-4xl font-normal text-center mt-2 max-[600px]:mt-5 max-[600px]:text-2xl ">Benifits Of Internship</h1>
-          <div className="intern-cards w-full max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-2 max-[1337px]:place-items-center grid grid-cols-3 gap-y-12 px-24 py-12 max-[600px]:py-4 max-[600px]:px-5" style={{ scrollBehavior: 'smooth' }}>
-            {
-              BenefitsCards.map((card, index) => (
-                <div
-                  key={index}
-                  className="card w-96 h-[30vh] flex-shrink-0 rounded-md p-4 py-5 flex flex-col justify-between card-shadow max-[600px]:w-[35vh]  max-[600px]:snap-center"
-                >
-                  <div className="img-container w-fit h-16 overflow-hidden rounded-md">
-                    <img className='w-full h-full object-cover' src="/Images/internship/benefitsicon.png" alt="" />
-                  </div>
-                  <h1 className="heading font-bold text-lg mt-2 leading-5 w-fit">
-                    {card.title}
-                  </h1>
-                  <h2 className="text-sm mt-2 mb-4 w-full h-44 overflow-hidden leading-tight">
-                    <ul className='list-disc list-inside'>
-                      <li>{card.description1}</li>
-                    </ul>
-                  </h2>
+          <h1 className="text-4xl font-normal text-center mt-2 max-[600px]:mt-5 max-[600px]:text-2xl ">
+            Benifits Of Internship
+          </h1>
+          <div
+            className="intern-cards w-full max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-2 max-[1337px]:place-items-center grid grid-cols-3 gap-y-12 px-24 py-12 max-[600px]:py-4 max-[600px]:px-5"
+            style={{ scrollBehavior: "smooth" }}
+          >
+            {BenefitsCards.map((card, index) => (
+              <div
+                key={index}
+                className="card w-96 h-[30vh] flex-shrink-0 rounded-md p-4 py-5 flex flex-col justify-between card-shadow max-[600px]:w-[35vh]  max-[600px]:snap-center"
+              >
+                <div className="img-container w-fit h-16 overflow-hidden rounded-md">
+                  <img
+                    className="w-full h-full object-cover"
+                    src="/Images/internship/benefitsicon.png"
+                    alt=""
+                  />
                 </div>
-              ))
-            }
+                <h1 className="heading font-bold text-lg mt-2 leading-5 w-fit">
+                  {card.title}
+                </h1>
+                <h2 className="text-sm mt-2 mb-4 w-full h-44 overflow-hidden leading-tight">
+                  <ul className="list-disc list-inside">
+                    <li>{card.description1}</li>
+                  </ul>
+                </h2>
+              </div>
+            ))}
           </div>
-
-     
         </div>
       </div>
 
@@ -193,9 +223,7 @@ const UiUx = () => {
             <div className="w-full flex flex-col items-center">
               <div className="w-full flex flex-col items-center justify-center">
                 <div className="center">
-                  <p className="font-medium text-2xl mt-5">
-                    Fill your Details
-                  </p>
+                  <p className="font-medium text-2xl mt-5">Fill your Details</p>
                 </div>
                 <div className="center mt-5 w-full px-20 max-[600px]:px-5">
                   <div className="w-full grid grid-cols-2 max-[800px]:grid-cols-1 gap-y-5 gap-x-10 max-[600px]:w-64">
@@ -211,7 +239,9 @@ const UiUx = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Your Email Address</h2>
+                      <h2 className="font-normal text-sm">
+                        Your Email Address
+                      </h2>
                       <input
                         placeholder="Enter your Email"
                         onChange={handleChange("email")}
@@ -222,7 +252,9 @@ const UiUx = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Phone Number(With Country Code)</h2>
+                      <h2 className="font-normal text-sm">
+                        Phone Number(With Country Code)
+                      </h2>
                       <input
                         placeholder="Enter your Contact"
                         onChange={handleChange("contact")}
@@ -255,7 +287,9 @@ const UiUx = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Relevant Skills/Experience Yes/No (Describe if Yes)</h2>
+                      <h2 className="font-normal text-sm">
+                        Relevant Skills/Experience Yes/No (Describe if Yes)
+                      </h2>
                       <input
                         placeholder="Enter your Skills"
                         onChange={handleChange("skills")}
@@ -266,7 +300,9 @@ const UiUx = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">How many hours can you dedicate daily?</h2>
+                      <h2 className="font-normal text-sm">
+                        How many hours can you dedicate daily?
+                      </h2>
                       <input
                         placeholder="Enter your Working Hours"
                         onChange={handleChange("workinghours")}
@@ -277,7 +313,9 @@ const UiUx = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Why are you interested?</h2>
+                      <h2 className="font-normal text-sm">
+                        Why are you interested?
+                      </h2>
                       <input
                         placeholder="Enter your Interest"
                         onChange={handleChange("whyinterest")}
@@ -288,7 +326,9 @@ const UiUx = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">UI/UX Design Experience: Yes/No (Describe if Yes)</h2>
+                      <h2 className="font-normal text-sm">
+                        UI/UX Design Experience: Yes/No (Describe if Yes)
+                      </h2>
                       <input
                         placeholder="Enter your Experience"
                         onChange={handleChange("experience")}
@@ -299,7 +339,9 @@ const UiUx = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Tools Familiarity: (e.g., Figma, Adobe XD)</h2>
+                      <h2 className="font-normal text-sm">
+                        Tools Familiarity: (e.g., Figma, Adobe XD)
+                      </h2>
                       <input
                         placeholder="Enter your Tools"
                         onChange={handleChange("tools")}
@@ -310,7 +352,9 @@ const UiUx = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="font-normal text-sm">Portfolio: Links or attachments</h2>
+                      <h2 className="font-normal text-sm">
+                        Portfolio: Links or attachments
+                      </h2>
                       <input
                         placeholder="Enter your Portfolio"
                         onChange={handleChange("portfolio")}
@@ -324,7 +368,6 @@ const UiUx = () => {
                 </div>
 
                 <div className="step3-wrapper ">
-
                   <div className="center">
                     <button
                       onClick={handleSubmit}
@@ -350,4 +393,4 @@ const UiUx = () => {
   );
 };
 
-export default UiUx
+export default UiUx;
