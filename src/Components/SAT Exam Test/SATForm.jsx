@@ -23,7 +23,7 @@ const SATForm = () => {
     contact: "",
     email: "",
     userid: "",
-    amount: "9",
+    amount: "1",
   });
 
   const handleChange = (name) => (event) => {
