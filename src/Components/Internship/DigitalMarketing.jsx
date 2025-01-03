@@ -14,8 +14,6 @@ const DigitalMarketing = () => {
   const { user } = useSelector((state) => state.user);
   const [isLoading, setLoading] = useState(false);
 
-  console.log(user);
-
   const [userInput, setUserInput] = useState({
     name: user?.name || "",
     email: user?.email || "",
