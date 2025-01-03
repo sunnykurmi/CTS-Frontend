@@ -54,7 +54,7 @@ const SAT1600 = () => {
 
   const checkLoginHandler = () => {
     if (!isAuth) {
-      window.alert("Please login first");
+      window.alert("Please login first to apply for the internship");
       navigate("/login", { state: { from: `/apply-internship/SAT-1600` } });
       return;
     }
@@ -143,7 +143,25 @@ const SAT1600 = () => {
           <div className="sat-img w-full h-[40vh] max-[600px]:h-[25vh] mt-10 px-20 max-[600px]:px-0">
             <img className='w-full h-full object-contain max-[600px]:object-cover' src="/Images/internship/SAT1600page.png" alt="" />
           </div>
-          <h1 className="text-4xl font-normal text-center mt-2 max-[600px]:mt-5 max-[600px]:text-2xl ">Benifits</h1>
+          <div className="w-full center">
+          {isAuth ? (
+            <button
+              onClick={() => setOpenPopup(true)}
+              className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
+            >
+              Apply Now
+            </button>
+        ) : ( 
+            <button
+              onClick={checkLoginHandler}
+              className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
+            >
+             Apply Now
+            </button>
+        )} 
+        </div>
+        <br />
+          <h1 className="text-4xl font-normal text-center mt-2 max-[600px]:mt-5 max-[600px]:text-2xl ">Benifits Of internship</h1>
           <div className="intern-cards w-full max-[600px]:flex max-[600px]:gap-7 max-[600px]:overflow-x-auto max-[600px]:snap-x max-[600px]:scroll-snap-mandatory max-[600px]:items-center max-[1337px]:grid-cols-2 max-[1337px]:place-items-center grid grid-cols-3 gap-y-12 px-24 py-12 max-[600px]:py-4 max-[600px]:px-5">
             {
               BenefitsCards.map((card, index) => (
@@ -166,24 +184,6 @@ const SAT1600 = () => {
                 </div>
               ))
             }
-          </div>
-
-          <div className="w-full center">
-            {isAuth ? (
-              <button
-                onClick={() => setOpenPopup(true)}
-                className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
-              >
-                Apply Now
-              </button>
-            ) : (
-              <button
-                onClick={checkLoginHandler}
-                className="bg-[#008BDC] text-white font-medium text-xl mt-10 px-8 py-2 rounded-md shadow-lg"
-              >
-                Please Login and Apply Now
-              </button>
-            )}
           </div>
         </div>
       </div>
