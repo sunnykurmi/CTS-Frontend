@@ -80,9 +80,10 @@ const DigitalMarketing = () => {
     setLoading(false);
     if (success) {
       toast.success("Form Submitted Successfully");
+      setOpenPopup(false);
       setTimeout(() => {
-        navigate("/apply-internship");
-      }, 5000);
+        window.location.reload();
+      }, 2000);
     }
   };
 
